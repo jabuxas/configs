@@ -1,0 +1,197 @@
+
+[colors]
+background = #000000
+background-alt = #60ff6600
+foreground = #ff6600
+primary = #ff6600
+secondary = #ffb000
+alert = #fc0206
+dark-font = #60ff6600
+
+[bar/jabuxas]
+width = 100%
+height = 14pt
+radius = 0
+fixed-center = true
+
+; dpi = 96
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2pt
+
+border-size = 0 
+border-color = #00000000
+
+padding-left = 4
+padding-right = 4
+
+module-margin = 2
+
+; font-0 = monospace;2
+font-0 = Euro Caps:style=Regular:size=14;3
+font-1 = Hack Nerd Font:style=Render,Raw:size=11;4
+font-2 = Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=16;4.5
+
+modules-left = powermenu
+modules-center = date
+modules-right = memory cpu eth wlan 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+
+tray-position = right
+tray-padding = 2
+; wm-restack = generic
+; wm-restack = bspwm
+; wm-restack = i3
+
+; override-redirect = true
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = %name%
+label-active-background = ${colors.background-alt}
+label-active-underline= ${colors.primary}
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.disabled}
+label-empty-padding = 1
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+label-foreground = ${colors.dark-font}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
+
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.disabled}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-prefix = "VOL: "
+format-volume-prefix-foreground = ${colors.primary}
+format-volume = %{T2}<label-volume>%{T-}
+
+label-volume = %percentage%%
+
+label-muted = vol: %{T2}0%%{T-}
+label-muted-foreground = ${colors.alert}
+label-active-font = 0
+
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+#%{T3}%{T-} 
+label-layout-foreground = ${colors.primary}
+
+label-indicator = %{F#8DC8FC}[%{T5}%{T-}]%{F-} cap
+label-active-font = 3
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "RAM: "
+#
+format-prefix-foreground = ${colors.primary}
+label = %{T2}%percentage_used:2%%%{T-}
+label-font = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU: "
+#
+format-prefix-foreground = ${colors.primary}
+label = %{T2}%percentage:2%%%{T-}
+
+
+[network-base]
+type = internal/network
+interval = 5
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+
+[module/wlan]
+inherit = network-base
+interface-type = wireless
+label-active-font = 2
+label-connected = %{F#8DC8FC}[%{T5}%{T-}]%{F-} wln 
+#%essid% 
+label-disconnected = [  ] wln
+
+[module/eth]
+inherit = network-base
+interface-type = wired
+label-connected = %{F#8DC8FC}[%{T5}%{T-}]%{F-} eth
+# %local-ip%
+label-disconnected = [  ] eth
+
+[module/date]
+type = internal/date
+interval = 1
+format-NAME = date
+
+date = %a %b %{T2}%H:%M%{T-}
+date-alt = %{T2}%d/%m/%y %H:%M%{T-}
+
+label = %date%
+label-foreground = ${colors.primary}
+format-NAME-background = #EC0B43
+
+
+[module/powermenu]
+type = custom/menu
+
+format-foreground = ${colors.xcolor7}
+format-background = ${colors.xcolor0}
+
+
+label-open = "¿?"
+label-open-font = 4
+label-close = ""
+label-close-foreground = ${colors.lime}
+label-separator = " / "
+label-separator-foreground = ${colors.xcolor1}
+
+
+; reboot
+menu-0-1 = 
+menu-0-1-exec = systemctl reboot
+menu-0-1-foreground = ${colors.salmon}
+; shutdown
+menu-0-0 = ""
+menu-0-0-exec = systemctl poweroff
+menu-0-0-foreground = ${colors.salmon}
+
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+; vim:ft=dosini

@@ -1,0 +1,6 @@
+mv i405x.json into /usr/share/OpenTabletDriver/Configurations/
+systemctl --user daemon-reload
+mv 99-opentablet into /etc/udev/rules.d/
+sudo udevadm control --reload-rules
+systemctl --user daemon-reload
+sudo udevadm control --reload-rules && udevadm trigger
