@@ -1,0 +1,87 @@
+# Awesomewm
+x11-wm/awesome lua_single_target_luajit
+x11-wm/awesome -lua_single_target_lua5-1
+dev-lua/lgi lua_targets_luajit
+
+
+# Virt-manager & qemu
+net-dns/dnsmasq script
+app-emulation/qemu usbredir spice io-uring ssh virgl virtfs
+app-emulation/libvirt policykit dbus libssh
+net-misc/spice-gtk usbredir
+
+# Obs
+media-video/ffmpeg nvenc
+media-video/obs-studio nvenc v4l vlc browser
+
+# Personal Preference
+media-gfx/gimp xpm wmf webp jpeg2k heif
+x11-libs/gtk+ -wayland
+net-print/hplip parport scanner
+sys-firmware/intel-microcode initramfs
+kde-apps/kdenlive v4l
+app-admin/keepassxc autotype browser yubikey
+media-libs/libsdl2 haptic
+media-libs/libsndfile minimal
+sys-kernel/linux-firmware initramfs
+media-libs/mesa vulkan
+media-libs/mlt frei0r
+media-sound/mpd alsa audiofile curl dbus expat flac gme libmpdclient mad mikmod network openal openmpt oss soundcloud
+media-sound/ncmpcpp lto clock outputs taglib visualizer
+sys-libs/ncurses -gpm
+x11-drivers/nvidia-drivers driver dist-kernel
+media-libs/opencolorio -opengl
+media-libs/opencv contribdnn contrib
+media-libs/vulkan-loader layers
+sys-kernel/zen-sources symlink
+sys-boot/grub mount
+sys-libs/zlib minizip
+x11-terms/rxvt-unicode 256-color blink xft unicode3 perl fading-colors 24-bit-color
+dev-lang/rust-bin rust-src rustfmt rls
+dev-libs/libdbusmenu gtk3
+games-emulation/rpcs3 discord
+media-fonts/fontawesome ttf
+dev-libs/libpcre2 pcre32
+
+# Kde
+kde-plasma/plasma-meta browser-integration colord -display-manager -kwallet sddm -wallpapers -crypt -discover
+kde-plasma/plasma-desktop emoji ibus
+
+# Calibre
+app-accessibility/speech-dispatcher python
+dev-python/PyQt5 webchannel
+dev-qt/qtwebengine widgets
+dev-qt/qtwebchannel qml
+dev-qt/qtmultimedia widgets
+
+# Emacs
+sys-devel/gcc jit
+app-editors/emacs mailutils sound xft xwidgets dynamic-loading json jit
+
+# Krita
+dev-python/PyQt5 declarative
+media-gfx/krita heif qtmedia vc webp color-management
+
+# Anime Game Launcher
+dev-util/xdelta lzma
+app-emulation/wine-staging vulkan
+
+# Tor and Firefox
+net-dns/avahi python
+media-libs/libvpx postproc
+media-libs/libpng apng
+app-crypt/gpgme python
+media-libs/mesa wayland
+www-client/firefox system-png geckodriver hwaccel -pgo
+x11-base/xorg-server xvfb
+
+
+#Yuzu
+net-libs/mbedtls cmac
+dev-libs/boost context
+games-emulation/yuzu discord
+
+# Xmonad
+x11-misc/xmobar xpm xft mpd timezone doc
+x11-wm/xmonad doc
+
