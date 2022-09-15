@@ -8,29 +8,26 @@ local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
-local main = "#ff6600"
-local urgent = "#1d1ba9"
+
 local theme = {}
-local white = "#ffffff"
-local black = "#000000"
 
-theme.font          = "Euro Caps 12"
+theme.font          = "mononoki Nerd Font 11"
 
-theme.bg_normal     = main
-theme.bg_focus      = main
-theme.bg_urgent     = urgent
-theme.bg_minimize   = main
+theme.bg_normal     = "#222222"
+theme.bg_focus      = "#B79759"
+theme.bg_urgent     = "#5E8D87"
+theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = black
-theme.fg_focus      = black
-theme.fg_urgent     = black
-theme.fg_minimize   = black
+theme.fg_normal     = "#aaaaaa"
+theme.fg_focus      = "#ffffff"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
-theme.border_normal = main
-theme.border_focus  = "#d8b675"
+theme.useless_gap   = dpi(5)
+theme.border_width  = dpi(2)
+theme.border_normal = "#000000"
+theme.border_focus  = "#B79759"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -65,8 +62,8 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(25)
-theme.menu_width  = dpi(110)
+theme.menu_height = dpi(15)
+theme.menu_width  = dpi(100)
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -100,10 +97,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
---Wibar
-theme.wibar_pos = "left"
-
--- theme.wallpaper = themes_path.."default/background.png"
+theme.wallpaper = themes_path.."default/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
@@ -122,7 +116,6 @@ theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
-theme.tasklist_disable_icon = true 
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
@@ -131,10 +124,8 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = Gruvbox
 
 return theme
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
---
-
