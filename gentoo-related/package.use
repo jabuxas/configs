@@ -1,6 +1,8 @@
+dev-lang/python tk
+
 # Awesomewm
 x11-wm/awesome lua_single_target_luajit
-x11-wm/awesome -lua_single_target_lua5-1
+x11-wm/awesome -lua_single_target_lua5-1 -gnome
 dev-lua/lgi lua_targets_luajit
 
 
@@ -16,17 +18,19 @@ media-video/obs-studio nvenc v4l vlc browser
 
 # Personal Preference
 media-gfx/gimp xpm wmf webp jpeg2k heif
-x11-libs/gtk+ -wayland
+x11-libs/gtk+ wayland jpeg svg
+
+
 net-print/hplip parport scanner
 sys-firmware/intel-microcode initramfs
 kde-apps/kdenlive v4l
 app-admin/keepassxc autotype browser yubikey
-media-libs/libsdl2 haptic
+media-libs/libsdl2 haptic gles2
 media-libs/libsndfile minimal
 sys-kernel/linux-firmware initramfs
 media-libs/mesa vulkan
 media-libs/mlt frei0r
-media-sound/mpd alsa audiofile curl dbus expat flac gme libmpdclient mad mikmod network openal openmpt oss soundcloud
+media-sound/mpd alsa audiofile curl dbus expat flac gme libmpdclient mad mikmod network openal openmpt oss soundcloud qobuz
 media-sound/ncmpcpp lto clock outputs taglib visualizer
 sys-libs/ncurses -gpm
 x11-drivers/nvidia-drivers driver dist-kernel
@@ -44,12 +48,12 @@ media-fonts/fontawesome ttf
 dev-libs/libpcre2 pcre32
 
 # Kde
-kde-plasma/plasma-meta browser-integration colord -display-manager -kwallet sddm -wallpapers -crypt -discover
+kde-plasma/plasma-meta browser-integration colord -display-manager -kwallet sddm -wallpapers -crypt -discover gtk bluetooth
 kde-plasma/plasma-desktop emoji ibus
-
+gnome-base/librsvg tools
 # Calibre
 app-accessibility/speech-dispatcher python
-dev-python/PyQt5 webchannel
+dev-python/PyQt5 webchannel sql
 dev-qt/qtwebengine widgets
 dev-qt/qtwebchannel qml
 dev-qt/qtmultimedia widgets
@@ -64,7 +68,7 @@ media-gfx/krita heif qtmedia vc webp color-management
 
 # Anime Game Launcher
 dev-util/xdelta lzma
-app-emulation/wine-staging vulkan
+app-emulation/wine-staging vulkan -unwind
 
 # Tor and Firefox
 net-dns/avahi python
@@ -72,7 +76,7 @@ media-libs/libvpx postproc
 media-libs/libpng apng
 app-crypt/gpgme python
 media-libs/mesa wayland
-www-client/firefox system-png geckodriver hwaccel -pgo
+www-client/firefox system-png geckodriver pgo lto hwaccel
 x11-base/xorg-server xvfb
 
 
@@ -85,3 +89,178 @@ games-emulation/yuzu discord
 x11-misc/xmobar xpm xft mpd timezone doc
 x11-wm/xmonad doc
 
+sys-apps/bubblewrap -suid
+app-office/libreoffice gstreamer googledrive java ldap pdfimport -vulkan clang
+
+# Xfce
+#app-text/poppler -qt5
+xfce-base/xfce4-meta svg
+app-admin/conky mpd nvidia lua-cairo lua-imlib lua-rsvg imlib irc hddtemp weather-metar bundled-toluapp
+
+# Gnome
+gnome-base/gnome-extra-apps -games
+gnome-base/gnome-settings-daemon modemmanager
+gnome-extra/nm-applet appindicator
+
+# Pipewire
+media-video/pipewire sound-server
+media-sound/pulseaudio -daemon
+gui-libs/wlroots tinywl
+
+# Audio compression
+media-libs/rubberband ladspa
+
+# Steam (abi 32)
+x11-drivers/nvidia-drivers abi_x86_32
+gnome-base/librsvg abi_x86_32
+x11-libs/cairo abi_x86_32
+dev-libs/libxml2 abi_x86_32
+dev-util/sysprof-capture abi_x86_32
+media-libs/flac abi_x86_32
+x11-libs/libX11 abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libxcb abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+dev-libs/libbsd abi_x86_32
+app-crypt/libmd abi_x86_32
+x11-libs/libXcursor abi_x86_32
+x11-libs/libXfixes abi_x86_32
+x11-libs/libXi abi_x86_32
+x11-libs/libXrandr abi_x86_32
+x11-libs/libXrender abi_x86_32
+x11-libs/libXxf86vm abi_x86_32
+media-libs/libglvnd abi_x86_32
+x11-libs/libXcomposite abi_x86_32
+x11-libs/libXinerama abi_x86_32
+net-print/cups abi_x86_32
+media-libs/fontconfig abi_x86_32
+media-libs/libsdl2 abi_x86_32
+net-libs/gnutls abi_x86_32
+media-libs/freetype abi_x86_32
+sys-apps/dbus abi_x86_32
+media-libs/vulkan-loader abi_x86_32
+x11-libs/libXext abi_x86_32
+media-libs/alsa-lib abi_x86_32
+dev-libs/glib abi_x86_32
+media-libs/gst-plugins-base abi_x86_32
+media-libs/gstreamer abi_x86_32
+media-libs/libpulse abi_x86_32
+sys-apps/attr abi_x86_32
+media-plugins/gst-plugins-meta abi_x86_32
+media-libs/gst-plugins-good abi_x86_32
+media-plugins/gst-plugins-a52dec abi_x86_32
+media-plugins/gst-plugins-faad abi_x86_32
+media-plugins/gst-plugins-dts abi_x86_32
+media-libs/gst-plugins-ugly abi_x86_32
+media-plugins/gst-plugins-dvdread abi_x86_32
+media-plugins/gst-plugins-mpeg2dec abi_x86_32
+media-plugins/gst-plugins-resindvd abi_x86_32
+media-plugins/gst-plugins-libav abi_x86_32
+media-plugins/gst-plugins-flac abi_x86_32
+media-plugins/gst-plugins-mpg123 abi_x86_32
+media-plugins/gst-plugins-pulse abi_x86_32
+media-plugins/gst-plugins-x264 abi_x86_32
+media-libs/x264 abi_x86_32
+media-sound/pulseaudio abi_x86_32
+media-sound/mpg123 abi_x86_32
+media-libs/libogg abi_x86_32
+media-video/ffmpeg abi_x86_32
+x11-libs/libXv abi_x86_32
+app-arch/bzip2 abi_x86_32
+media-libs/dav1d abi_x86_32
+media-sound/lame abi_x86_32
+media-libs/xvid abi_x86_32
+media-libs/libvorbis abi_x86_32
+x11-libs/libX abi_x86_32
+sys-libs/zlib abi_x86_32
+media-libs/libdvdnav abi_x86_32
+media-libs/libdvdread abi_x86_32
+media-libs/gst-plugins-bad abi_x86_32
+dev-libs/wayland abi_x86_32
+x11-libs/libdrm abi_x86_32
+dev-lang/orc abi_x86_32
+dev-libs/libffi abi_x86_32
+media-libs/libdvdcss abi_x86_32
+media-libs/libmpeg2 abi_x86_32
+media-libs/libdca abi_x86_32
+media-libs/faad2 abi_x86_32
+media-libs/a52dec abi_x86_32
+media-libs/libsndfile abi_x86_32
+net-libs/libasyncns abi_x86_32
+sys-libs/libcap abi_x86_32
+sys-libs/pam abi_x86_32
+x11-libs/pango abi_x86_32
+media-libs/libtheora abi_x86_32
+media-libs/mesa abi_x86_32
+media-libs/graphene abi_x86_32
+media-libs/libpng abi_x86_32
+dev-libs/expat abi_x86_32
+media-libs/libjpeg-turbo abi_x86_32
+x11-libs/libxshmfence abi_x86_32
+app-arch/zstd abi_x86_32
+sys-devel/llvm abi_x86_32
+sys-libs/ncurses abi_x86_32
+dev-libs/fribidi abi_x86_32
+media-libs/harfbuzz abi_x86_32
+x11-libs/libXft abi_x86_32
+virtual/libiconv abi_x86_32
+sys-apps/systemd-utils abi_x86_32
+virtual/libudev abi_x86_32
+virtual/opengl abi_x86_32
+virtual/libintl abi_x86_32
+x11-libs/libxkbcommon abi_x86_32
+net-dns/libidn2 abi_x86_32
+dev-libs/gmp abi_x86_32
+dev-libs/nettle abi_x86_32
+dev-libs/libunistring abi_x86_32
+dev-libs/libtasn1 abi_x86_32
+dev-util/glslang abi_x86_32
+dev-util/spirv-tools abi_x86_32
+sys-apps/util-linux abi_x86_32
+dev-libs/libpcre abi_x86_32
+dev-libs/icu abi_x86_32
+media-gfx/graphite2 abi_x86_32
+dev-lang/rust-bin abi_x86_32
+virtual/rust abi_x86_32
+virtual/jpeg abi_x86_32
+media-sound/cdparanoia abi_x86_32
+media-plugins/gst-plugins-cdparanoia abi_x86_32
+media-libs/glu abi_x86_32
+virtual/glu abi_x86_32
+sys-libs/binutils-libs abi_x86_32
+x11-libs/gdk-pixbuf abi_x86_32
+media-libs/tiff abi_x86_32
+dev-libs/libevent abi_x86_32
+dev-libs/libusb abi_x86_32
+dev-libs/openssl abi_x86_32
+net-dns/avahi abi_x86_32
+sys-libs/gdbm abi_x86_32
+x11-libs/gtk+ abi_x86_32
+dev-libs/atk abi_x86_32
+media-libs/libepoxy abi_x86_32
+x11-misc/colord abi_x86_32
+app-accessibility/at-spi2-atk abi_x86_32
+x11-libs/libXdamage abi_x86_32
+app-accessibility/at-spi2-core abi_x86_32
+x11-libs/libXtst abi_x86_32
+media-libs/lcms abi_x86_32
+dev-db/sqlite abi_x86_32
+dev-libs/libgusb abi_x86_32
+dev-libs/libgudev abi_x86_32
+sys-libs/readline abi_x86_32
+virtual/libusb abi_x86_32
+media-libs/vulkan-layers abi_x86_32
+sys-apps/systemd abi_x86_32
+app-arch/lz4 abi_x86_32
+dev-libs/libgcrypt abi_x86_32
+dev-libs/libgpg-error abi_x86_32
+
+# Hyprland
+gui-libs/wlroots x11-backend
+gui-wm/hyprland
+gui-apps/waybar mpd tray network
+
+dev-lang/rust-bin clippy dist doc nightly rls rust-analyzer rust-src rustfmt
+dev-lang/rust clippy dist doc nightly rls rust-analyzer rust-src rustfmt
+gui-wm/sway tray
+games-action/prismlauncher lto

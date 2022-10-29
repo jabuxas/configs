@@ -27,20 +27,20 @@
 #UUID=58e72203-57d1-4497-81ad-97655bd56494		/		ext4		noatime		0 1
 #LABEL=swap		none		swap		sw		0 0
 #/dev/cdrom		/mnt/cdrom	auto		noauto,ro	0 0
-UUID=3dc25c44-a86e-4b5f-9bee-6a4998877f36	/               btrfs           defaults,compress=zstd,subvolid=256,subvol=@           0 0
-UUID=3dc25c44-a86e-4b5f-9bee-6a4998877f36	/home           btrfs           defaults,compress=zstd,subvolid=257,subvol=@home       0 0
-UUID=3dc25c44-a86e-4b5f-9bee-6a4998877f36	/.snapshots     btrfs           defaults,compress=zstd,subvolid=258,subvol=@.snapshots 0 0
-
-
 
 # tmpfs for portage compile directory
-tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=6G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 0 0
+#tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=8G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 0 0
 
+# /dev/sdf3
+UUID=03ae4a2b-b8d3-498b-8ffd-6b0f07ebf17a       /               ext4            rw,relatime     0 1
 
-UUID=5022-39B4 /efi            vfat            noauto,defaults 0 2
+# /dev/sdf1
+UUID=97A7-4562          /efi            vfat            rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro  0 2
 
+# /dev/sdf2 LABEL=swap
+UUID=f2c6b842-bbd8-4396-a025-a39b49376510       none            swap            defaults        0 0
 
+#UUID=fd02c07c-d37d-4ae2-b2d0-903b0ca73797	/home/klein/Games	ext4      	rw,relatime	0 2
 
-UUID=fd02c07c-d37d-4ae2-b2d0-903b0ca73797	/home/lucas/Games	ext4      	rw,relatime	0 2
+UUID=bff367e3-4886-480c-ba7c-6a37c473c0d3	/home	ext4	defaults,noatime	0	2
 
-UUID=5d45dd05-613a-42f3-a384-d908c4803acc	none	swap	sw	0	0

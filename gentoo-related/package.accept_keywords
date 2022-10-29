@@ -1,9 +1,5 @@
 sys-process/btop 
-
-#Firefox:rapid 
-www-client/firefox
-media-libs/dav1d
-
+media-libs/imgui
 sys-apps/flatpak 
 acct-user/flatpak
 acct-group/flatpak 
@@ -17,6 +13,7 @@ app-mobilephone/scrcpy
 app-misc/ufetch
 app-editors/vscodium 
 app-emulation/wine-mono 
+app-emulation/wine-gecko
 app-emulation/wine-staging 
 sys-kernel/zen-sources 
 x11-drivers/nvidia-drivers 
@@ -27,13 +24,11 @@ games-action/polymc
 dev-libs/quazip
 
 app-backup/timeshift
+media-gfx/ueberzug
 
 # Steam
-
-games-util/steam-meta
-games-util/steam-client-meta
+*/*::steam-overlay
 games-util/game-device-udev-rules
-games-util/steam-launcher
 
 # Pcmanfm
 x11-misc/pcmanfm 
@@ -45,11 +40,11 @@ dev-dotnet/dotnet-sdk-bin
 
 app-text/tldr
 net-im/discord-bin
+net-im/discord-canary-bin
 
 # Anime Game Launcher
 app-emulation/dxvk-bin
 games-misc/an-anime-game-launcher-bin
-
 app-editors/notepadqq
 dev-util/android-sdk-update-manager
 dev-libs/nss
@@ -57,9 +52,6 @@ dev-libs/nspr
 www-client/torbrowser-launcher
 media-sound/lyrebird
 media-libs/babl # https://bugs.gentoo.org/856931
-app-emulation/qemu
-app-emulation/libvirt
-app-emulation/virt-manager
 games-misc/cbonsai
 dev-lang/nim
 app-misc/openrgb
@@ -85,6 +77,99 @@ x11-misc/copyq
 
 # Xmonad, xmobar and xmonad-contrib
 x11-wm/xmonad
+dev-haskell/stack
+dev-haskell/unicode-transforms
+dev-haskell/ansi-wl-pprint
+dev-haskell/unix-time
+dev-haskell/optparse-simple
+dev-haskell/neat-interpolation
+dev-haskell/type-equality
+dev-haskell/file-embed
+dev-haskell/libyaml
+dev-haskell/conduit-combinators
+dev-haskell/th-reify-many
+dev-haskell/lifted-async
+dev-haskell/enclosed-exceptions
+dev-haskell/mtl-compat
+dev-haskell/microlens-th
+dev-haskell/old-time
+dev-haskell/microlens-mtl
+dev-haskell/constraints
+dev-haskell/retry
+dev-haskell/ed25519
+dev-haskell/megaparsec
+dev-haskell/tar-conduit
+dev-haskell/rio-orphans
+dev-haskell/vault
+dev-haskell/cryptohash-sha256
+dev-haskell/monad-loops
+dev-haskell/http-api-data
+dev-haskell/persistent
+dev-haskell/parser-combinators
+dev-haskell/base16-bytestring
+dev-haskell/tar
+dev-haskell/unicode-data
+dev-haskell/rio-prettyprint
+dev-haskell/microlens
+dev-haskell/extra
+dev-haskell/hi-file-parser
+dev-haskell/optparse-applicative
+dev-haskell/project-template
+dev-haskell/echo
+dev-haskell/fast-logger
+dev-haskell/infer-license
+dev-haskell/lifted-base
+dev-haskell/silently
+dev-haskell/open-browser
+dev-haskell/hackage-security
+dev-haskell/githash
+dev-haskell/unliftio
+dev-haskell/casa-client
+dev-haskell/zip-archive
+dev-haskell/ansi-terminal
+dev-haskell/safe
+dev-haskell/clock
+dev-haskell/annotated-wl-pprint
+dev-haskell/rio
+dev-haskell/mintty
+dev-haskell/attoparsec-iso8601
+dev-haskell/shelly
+dev-haskell/cmdargs
+dev-haskell/auto-update
+dev-haskell/th-expand-syns
+dev-haskell/filelock
+dev-haskell/easy-file
+dev-haskell/monad-logger
+dev-haskell/colour
+dev-haskell/glob
+dev-haskell/th-lift-instances
+dev-haskell/generic-deriving
+dev-haskell/yaml
+dev-haskell/path-pieces
+dev-haskell/temporary
+dev-haskell/lift-type
+dev-haskell/path-io
+dev-haskell/fsnotify
+dev-haskell/unix-compat
+dev-haskell/stm-chans
+dev-haskell/path
+dev-haskell/hpack
+dev-haskell/text-metrics
+dev-haskell/casa-types
+dev-haskell/resource-pool
+dev-haskell/pantry
+dev-haskell/mustache
+dev-haskell/monad-control
+dev-haskell/http-download
+dev-haskell/persistent-sqlite
+dev-haskell/lukko
+dev-haskell/cabal-install
+dev-haskell/edit-distance
+dev-haskell/resolv
+dev-haskell/http
+dev-haskell/persistent-template
+dev-haskell/cryptonite-conduit
+dev-haskell/digest
 dev-lang/ghc
 dev-haskell/parsec
 dev-haskell/x11
@@ -227,3 +312,36 @@ media-sound/mpd-mpris
 x11-misc/betterlockscreen
 x11-misc/i3lock-color
 x11-misc/xidle
+gui-apps/eww
+
+net-vpn/protonvpn-cli
+net-vpn/protonvpn-gui
+
+
+x11-misc/screenkey
+xfce-extra/xfce4-docklike-plugin
+xfce-extra/xfce4-panel-profiles
+x11-apps/glava
+dev-vcs/lazygit
+dev-python/neovim-remote
+x11-themes/orchis-theme 
+gui-libs/wlroots
+games-util/chiaki
+
+
+gui-wm/hyprland
+x11-libs/libdrm
+gui-libs/wlroots
+>=sys-devel/gcc-12.2.0 ~amd64
+>=sys-devel/gcc-13.0.0 -~amd64
+gui-apps/waybar **
+dev-libs/date
+gui-apps/wofi **
+#gui-apps/hyprpaper
+games-action/multimc-bin
+dev-util/rustup
+dev-lang/rust
+games-action/prismlauncher **
+app-editors/lapce **
+app-editors/helix
+
