@@ -1,0 +1,22 @@
+resolver: lts-19.23
+
+packages:
+  - . 
+
+extra-deps:
+  - github: xmonad/x11
+    commit: da9295f8b9d7768a836b5b9dca1b554f8ad1a047
+  - github: xmonad/xmonad
+    commit: 488b52ffaa03456c295575c7a6613d2fe5281903
+  - github: xmonad/xmonad-contrib
+    commit: afd6824ce00063bb8e9b7a1c5daf0737c2f61616
+  - xmobar-0.44.2
+
+flags:
+  xmobar:
+    with_xpm: true
+    with_threaded: true
+    with_xft: true
+    with_rtsopts: true
+
+arch: x86_64

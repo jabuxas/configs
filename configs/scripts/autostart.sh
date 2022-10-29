@@ -1,22 +1,22 @@
 #!/bin/bash
-sh ~/.dwm/screenlayout.sh
-
-sleep 1
+sh ~/scripts/screenlayout.sh
 
 nitrogen --restore &
+
+nvidia-settings --load-config-only
 
 setxkbmap br abnt2
 
 xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 
 xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1 
 
-pulseaudio --start
+#pulseaudio --start
 
-picom &
+#picom &
+/home/klein/.local/bin/picom-pijulius -b --experimental-backends --animations --animation-for-open-window zoom --vsync &
+# /home/klein/.local/bin/picom-jonaburg &
 
 numlockx on 
-
-dwmblocks &
 
 mpd &
 
@@ -27,16 +27,16 @@ lxqt-policykit-agent &
 touch ~/tmp/touchy
 rm -rf ~/tmp/*
 
-killall pasystray; pasystray & # killlall is needed in case you reset dwm, it will just spawn infinites pasystrays
+#killall pasystray; pasystray & # killlall is needed in case you reset dwm, it will just spawn infinites pasystrays
 
 /usr/bin/emacs --daemon &
 
-/home/lucas/.local/bin/idle &
+#/home/lucas/.local/bin/idle &
 
 #urxvtd --quiet --opendisplay --fork
 #xrdb -merge ~/.Xresources
 
-otd &
+#otd &
 
 #discord & # If using regular discord.
 #flatpak run com.discordapp.Discord & # If using flatpak

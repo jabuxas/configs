@@ -1,0 +1,42 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           xmonad-scherso
+version:        0.1.0
+synopsis:       My XMonad configuration.
+homepage:       https://github.com/Scherso/Dotfiles
+author:         Scherso
+maintainer:     Scherso
+license:        DBAD
+build-type:     Simple
+
+executable xmobar
+  main-is: xmobar.hs
+  other-modules:
+      Paths_xmonad_scherso
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -O2 -j -dynamic -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base
+    , xmobar
+    , xmonad-contrib >=0.16
+  default-language: Haskell2010
+
+executable xmonad
+  main-is: xmonad.hs
+  other-modules:
+      Paths_xmonad_scherso
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -O2 -j -dynamic
+  build-depends:
+      X11 >=1.10
+    , base
+    , containers
+    , xmonad
+    , xmonad-contrib >=0.16
+  default-language: Haskell2010

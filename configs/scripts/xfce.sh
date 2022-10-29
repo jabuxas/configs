@@ -5,11 +5,11 @@ setxkbmap br abnt2
 xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 
 xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1 
 
-pulseaudio --start
+#pulseaudio --start
 
-picom &
+#picom &
 
-numlockx on 
+#numlockx on 
 
 mpd &
 

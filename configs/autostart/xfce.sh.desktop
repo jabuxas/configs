@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/klein/xfce.sh
+Icon=dialog-scripts
+Name=xfce.sh
+Path=
+Type=Application
+X-KDE-AutostartScript=true

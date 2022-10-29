@@ -1,0 +1,24 @@
+Discord 0.0.21
+Starting app.
+Starting updater.
+[Modules] Modules initializing
+[Modules] Distribution: remote
+[Modules] Host updates: enabled
+[Modules] Module updates: enabled
+[Modules] Module install path: /home/klein/.config/discord/0.0.21/modules
+[Modules] Module installed file path: /home/klein/.config/discord/0.0.21/modules/installed.json
+[Modules] Module download path: /home/klein/.config/discord/0.0.21/modules/pending
+[Modules] No updates to install
+[Modules] Checking for host updates.
+[Modules] Host is up to date.
+[Modules] Checking for module updates at https://discord.com/api/modules/stable/versions.json
+[Modules] No module updates available.
+Optional module ./ElectronTestRpc was not included.
+WEIGHT /home/klein/.config/discord/0.0.21/modules/discord_krisp/NC_small_8k.thw
+WEIGHT /home/klein/.config/discord/0.0.21/modules/discord_krisp/NC_small_16k.thw
+WEIGHT /home/klein/.config/discord/0.0.21/modules/discord_krisp/c6.s.f.27f1a3.thw
+WEIGHT /home/klein/.config/discord/0.0.21/modules/discord_krisp/VAD_weight.thw
+[Modules] Checking for host updates.
+[Modules] Host is up to date.
+[Modules] Checking for module updates at https://discord.com/api/modules/stable/versions.json
+[Modules] No module updates available.

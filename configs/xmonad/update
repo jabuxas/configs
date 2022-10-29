@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+declare -r LATESTXMONAD=${LATESTXMONAD:-$(git ls-remote https://github.com/xmonad/xmonad.git HEAD | sed "s/HEAD//")}
+declare -r LATESTCONTRIB=${LATESTCONTRIB:-$(git ls-remote https://github.com/xmonad/xmonad-contrib.git HEAD | sed "s/HEAD//")}
+declare -r LATESTX11=${LATESTX11:-$(git ls-remote https://github.com/xmonad/x11.git HEAD | sed "s/HEAD//")}
+
+declare CURRENTXMONAD=${CURRENTXMONAD:-$(awk '/xmonad[/]xmonad$/{getline;print$2}' ${HOME}/.config/xmonad/stack.yaml)}
+declare CURRENTCONTRIB=${CURRENTCONTRIB:-$(awk '/xmonad[/]xmonad-contrib$/{getline;print$2}' ${HOME}/.config/xmonad/stack.yaml)}
+declare CURRENTX11=${CURRENTX11:-$(awk '/xmonad[/]x11$/{getline;print$2}' ${HOME}/.config/xmonad/stack.yaml)}
+
+function main() {
+	if [[ "$LATESTXMONAD" != "$CURRENTXMONAD" ]] ; then 
+		sed -i "s/${CURRENTXMONAD}/${LATESTXMONAD}/" ${HOME}/.config/xmonad/stack.yaml
+		printf "XMonad update completed\n"
+	fi
+
+	if [[ "$LATESTCONTRIB" != "$CURRENTCONTRIB" ]] ; then 
+		sed -i "s/${CURRENTCONTRIB}/${LATESTCONTRIB}/" ${HOME}/.config/xmonad/stack.yaml
+		printf "XMonad-Contrib update completed\n"
+	fi
+
+	if [[ "$LATESTX11" != "$CURRENTX11" ]] ; then
+		sed -i "s/${CURRENTX11}/${LATESTX11}/" ${HOME}/.config/xmonad/stack.yaml
+		printf "X11 update completed\n"
+	fi
+}
+
+main "$@"
