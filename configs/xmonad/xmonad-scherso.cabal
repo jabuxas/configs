@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -22,6 +22,7 @@ executable xmobar
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -O2 -j -dynamic -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       base
+    , dbus
     , xmobar
     , xmonad-contrib >=0.16
   default-language: Haskell2010
@@ -37,6 +38,7 @@ executable xmonad
       X11 >=1.10
     , base
     , containers
+    , dbus
     , xmonad
     , xmonad-contrib >=0.16
   default-language: Haskell2010

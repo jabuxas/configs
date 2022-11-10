@@ -22,6 +22,7 @@ import           System.IO.Unsafe           (unsafeDupablePerformIO)
 -- XMonad imports 
 import           XMonad
 import           XMonad.Hooks.WindowSwallowing
+-- import           XMonad.Config.Xfce
 import           XMonad.Actions.NoBorders   (toggleBorder)
 import           XMonad.Util.Ungrab
 import           XMonad.Hooks.EwmhDesktops
@@ -31,11 +32,13 @@ import           XMonad.Hooks.SetWMName
 import           XMonad.Hooks.StatusBar
 import           XMonad.Hooks.StatusBar.PP
 import           XMonad.Layout.Fullscreen
+-- import           XMonad.Actions.PhysicalScreens
 import           XMonad.Layout.SimpleFloat
 import           XMonad.Layout.NoBorders    
 import           XMonad.Layout.Spacing
 import qualified XMonad.StackSet            as W
 import           XMonad.Util.ClickableWorkspaces
+-- import           XMonad.Util.WorkspaceCompare
 import           XMonad.Util.Cursor
 import           XMonad.Util.EZConfig       
 import qualified XMonad.Util.Hacks          as Hacks
@@ -50,6 +53,8 @@ import           XMonad.Hooks.ManageDebug
 
 main :: IO ()
 main = do
+    -- dbus <- D.connectSession
+    -- getWellKnownName dbus
     xmonad
     $ debugManageHookOn "M-S-d"
     . docks
@@ -57,11 +62,11 @@ main = do
     . fullscreenSupport
     . ewmh
     . Hacks.javaHack
-    . withEasySB xmobar toggleSB
-    . withSB xmobar2 
+    -- . withEasySB xmobar toggleSB
+    -- . withSB xmobar2 
     $ myConfig
-      where
-         toggleSB XConfig {modMask = modm} = (modm, xK_m) 
+      -- where
+         -- toggleSB XConfig {modMask = modm} = (modm, xK_m) 
 
   -- Windows key/Super key
 myModMask :: KeyMask
@@ -69,7 +74,7 @@ myModMask = mod4Mask
 
   -- Default Terminal
 myTerminal :: String
-myTerminal = "urxvtc" 
+myTerminal = "kitty" 
 
   -- Default Launcher
 myLauncher :: String
@@ -97,11 +102,11 @@ myBorderWidth = 2
 
   -- Formal Unfocused Color
 myNormColor :: String
-myNormColor = "#383830" 
+myNormColor = "#5f819d" 
 
   -- Focused Color
 myFocusColor :: String
-myFocusColor = "#a6e22e" 
+myFocusColor = "#de935f" 
 
   -- Home Directory
 myHomeDir :: String
@@ -216,8 +221,8 @@ myMouseBindings XConfig {XMonad.modMask = modm} = M.fromList
 myStartupHook :: X ()
 myStartupHook = do
     traverse spawnOnce
-        [ "sh ~/.config/conky/Regulus/start.sh" 
-        , "sh ~/scripts/screenlayout.sh"
+        [ "echo launched" 
+        -- , "sh ~/scripts/screenlayout.sh"
         , "nitrogen --restore &"
         , "touch ~/tmp/touchy && rm -rf ~/tmp/*"
         , "lxqt-policykit-agent &"
@@ -230,13 +235,11 @@ myStartupHook = do
         , "mpd &"
         , "dunst -config $HOME/.config/dunst/base16-nord.dunstrc &"
         , "lxqt-policykit-agent &"
-        , "xrdb -load ~/.Xresources"
-        , "urxvtd --opendisplay --quiet --fork"
         , "/usr/bin/emacs --daemon &"
         -- , "redshift -l -23.591672:-46.561005 -t 5700:3600 &"
         ]
     setDefaultCursor xC_left_ptr
-    setWMName "jay's sin"
+    setWMName "jabuxas' bane"
 
 isInstance (ClassApp c _) = className =? c
 isInstance (TitleApp t _) = title =? t
@@ -305,7 +308,6 @@ myManageHook = manageRules
             , className ^? "jetbrains-" <&&> title    =? "splash"      --> doFloat
             , className ^? "Visual "    <&&> isDialog                  --> doCenterFloat
             , className =? "firefox-esr" --> doShift "web" 
-            , className =? "Virt-manager" --> doShift "vm"
             , className =? "steam_app_1172620" --> doShift "gfx" 
             , className =? "discord" --> doShift "irc" 
             , className =? "discord-screenaudio" --> doShift "irc" 
@@ -324,8 +326,8 @@ myManageHook = manageRules
             , className =? "Pavucontrol" --> doFloat 
             , className =? "Nitrogen" --> doFloat 
             , className =? "Wrapper-2.0" --> doFloat 
-            , className =? "TeamSpeak 3" --> doFloat  <> doShift "irc"
-            , className =? "easyeffects" --> doFloat  <> doShift "vm"
+            , className =? "TeamSpeak 3" --> doFloat 
+            , className =? "easyeffects" --> doFloat 
             , className =? "Arandr" --> doFloat 
             , resource  =? "desktop_window"                            --> doIgnore
             , resource  =? "kdesktop"                                  --> doIgnore
@@ -368,12 +370,12 @@ myLayoutHook =
 myXmobarPP :: X PP
 myXmobarPP =
     clickablePP $ filterOutWsPP ["NSP"] $ def
-        { ppCurrent          = xmobarColor "#a6e22e" "" . xmobarFont 5 . wrap "[" "]"
+        { ppCurrent          = xmobarColor "#98c379" "" . xmobarFont 5 . wrap "[" "]"
         , ppVisibleNoWindows = Just (xmobarColor "#cc6666" "")
-        , ppHidden           = xmobarColor "#a1efe4" ""
-        , ppHiddenNoWindows  = xmobarColor "#ae81ff" ""
+        , ppHidden           = xmobarColor "#d2ba8b" ""
+        , ppHiddenNoWindows  = xmobarColor "#a3846e" ""
         , ppUrgent           = xmobarColor "#F7768E" "" . wrap "!" "!"
-        , ppTitle            = xmobarColor "#a6e22e" "" . shorten 49 
+        , ppTitle            = xmobarColor "#98C379" "" . shorten 49 
         , ppSep              = wrapSep " "
         , ppTitleSanitize    = xmobarStrip
         , ppWsSep            = xmobarColor "" "#212121" "  "
@@ -397,13 +399,13 @@ xmobar :: StatusBarConfig
 xmobar = statusBarProp myXmobar myXmobarPP
 
 myXmobar :: String
-myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
+myXmobar = ("xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
 
 xmobar2 :: StatusBarConfig
 xmobar2 = statusBarProp myXmobar2 myXmobarPP
 
 myXmobar2 :: String
-myXmobar2 = (myHomeDir ++ "/.local/bin/xmobar-2nd ")
+myXmobar2 = ("xmobar-2nd ")
 
 myConfig = 
     def
@@ -413,8 +415,10 @@ myConfig =
         , mouseBindings      = myMouseBindings
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
+        -- , logHook            = logTitle dbus
         , focusedBorderColor = myFocusColor
         , layoutHook         = myLayoutHook
+                               -- <> onWorkspace "gfx" h8league
         , startupHook        = myStartupHook
         , manageHook         = myManageHook
         , handleEventHook    = Hacks.windowedFullscreenFixEventHook 
