@@ -1,266 +1,112 @@
-dev-lang/python tk
+# System
+sys-kernel/gentoo-sources experimental
+dev-lang/python sqlite tk
+sys-firmware/intel-microcode -hostonly split-ucode initramfs
+virtual/linux-sources firmware
+sys-boot/grub mount
+media-sound/pulseaudio -daemon
+media-video/pipewire sound-server pipewire-alsa
+x11-drivers/nvidia-drivers driver dist-kernel
+net-print/hplip parport scanner
+net-dns/avahi python
+app-admin/sudo offensive
 
-# Awesomewm
-x11-wm/awesome lua_single_target_luajit
-x11-wm/awesome -lua_single_target_lua5-1 -gnome
+# misc
+
+app-crypt/pinentry gnome-keyring
+media-libs/libsdl2 haptic
+net-fs/samba winbind client
+media-fonts/noto-emoji buildfont
+media-libs/mlt fftw
+app-crypt/gpgme python
+media-libs/freetype harfbuzz
+app-admin/keepassxc autotype browser yubikey
+media-gfx/gimp xpm wmf webp jpeg2k heif
+media-sound/mpd alsa audiofile curl dbus expat flac gme libmpdclient mad mikmod network openal openmpt oss soundcloud qobuz
+media-video/mpv archive bluray drm gbm openal rubberband tools
+media-sound/ncmpcpp lto clock outputs taglib visualizer
+x11-terms/rxvt-unicode 256-color blink xft unicode3 perl fading-colors 24-bit-color
+app-accessibility/speech-dispatcher python # calibre
+dev-python/PyQt5 webchannel # calibre
+media-libs/rubberband ladspa # easyeffects
+media-libs/opencolorio -opengl # circular dependency
+xfce-base/thunar -trash-panel-plugin
+sys-libs/zlib minizip
+
+# xmonad setup
+
+dev-lang/ghc binary
+x11-misc/xmobar mpd xft xpm hscolour
+
+# awesome setup
+
+x11-misc/polybar ipc mpd network curl
+x11-wm/awesome lua_single_target_luajit -lua_single_target_lua5-1 -gnome
 dev-lua/lgi lua_targets_luajit
 
 
-# Virt-manager & qemu
-net-dns/dnsmasq script
-app-emulation/qemu usbredir spice io-uring ssh virgl virtfs
-app-emulation/libvirt policykit dbus libssh
-net-misc/spice-gtk usbredir
+# kde
 
-# Obs
-media-video/ffmpeg nvenc
-media-video/obs-studio nvenc v4l vlc browser
+media-sound/elisa vlc
+kde-apps/kdenetwork-meta -bittorrent
 
-# Personal Preference
-media-gfx/gimp xpm wmf webp jpeg2k heif
-x11-libs/gtk+ wayland jpeg svg
-
-
-net-print/hplip parport scanner
-sys-firmware/intel-microcode initramfs
-kde-apps/kdenlive v4l
-app-admin/keepassxc autotype browser yubikey
-media-libs/libsdl2 haptic gles2
-media-libs/libsndfile minimal
-sys-kernel/linux-firmware initramfs
-media-libs/mesa vulkan
-media-libs/mlt frei0r
-media-sound/mpd alsa audiofile curl dbus expat flac gme libmpdclient mad mikmod network openal openmpt oss soundcloud qobuz
-media-sound/ncmpcpp lto clock outputs taglib visualizer
-sys-libs/ncurses -gpm
-x11-drivers/nvidia-drivers driver dist-kernel
-media-libs/opencolorio -opengl
-media-libs/opencv contribdnn contrib
-media-libs/vulkan-loader layers
-sys-kernel/zen-sources symlink
-sys-boot/grub mount
-sys-libs/zlib minizip
-x11-terms/rxvt-unicode 256-color blink xft unicode3 perl fading-colors 24-bit-color
-dev-lang/rust-bin rust-src rustfmt rls
-dev-libs/libdbusmenu gtk3
-games-emulation/rpcs3 discord
-media-fonts/fontawesome ttf
-dev-libs/libpcre2 pcre32
-
-# Kde
-kde-plasma/plasma-meta browser-integration colord -display-manager -kwallet sddm -wallpapers -crypt -discover gtk bluetooth
-kde-plasma/plasma-desktop emoji ibus
-gnome-base/librsvg tools
-# Calibre
-app-accessibility/speech-dispatcher python
-dev-python/PyQt5 webchannel sql
+# krita
+media-gfx/krita heif qtmedia vc webp color-management jpegxl
+dev-python/PyQt5 declarative
 dev-qt/qtwebengine widgets
 dev-qt/qtwebchannel qml
 dev-qt/qtmultimedia widgets
 
-# Emacs
-sys-devel/gcc jit
-app-editors/emacs mailutils sound xft xwidgets dynamic-loading json jit
+# libreoffice
 
-# Krita
-dev-python/PyQt5 declarative
-media-gfx/krita heif qtmedia vc webp color-management
+app-office/libreoffice bluetooth branding cups dbus googledrive gtk java ldap mariadb -accessibility -debug -eds -gstreamer -gtk2 -odk -pdfimport -postgres -test
 
-# Anime Game Launcher
-dev-util/xdelta lzma
-app-emulation/wine-staging vulkan -unwind
+# firefox
 
-# Tor and Firefox
-net-dns/avahi python
-media-libs/libvpx postproc
-media-libs/libpng apng
-app-crypt/gpgme python
-media-libs/mesa wayland
-www-client/firefox system-png geckodriver pgo lto hwaccel
+www-client/firefox pgo lto clang custom-cflags custom-optimization gmp-autoupdate hwaccel pulseaudio screenshot startup-notification system-av1 system-icu system-jpeg system-libevent system-libvpx system-sqlite system-webp -bindist -debug -eme-free geckodriver -hardened -jack -test screencast
+dev-lang/rust -clippy -debug -doc -libressl -nightly -parallel-compiler -rls rustfmt rust-src clippy -system-bootstrap system-llvm -wasm
 x11-base/xorg-server xvfb
+media-libs/libsdl2 gles2
+
+# steam
+
+games-util/steam-client-meta pulseaudio steamruntime trayicon steamfonts
+games-util/steam-games-meta steamruntime mono -steamgames_bioshock_infinite -steamgames_defenders_quest -steamgames_dirt_rally -steamgames_dont_starve -steamgames_dwarfs -steamgames_hammerwatch -steamgames_ironclad_tactics -steamgames_journey_down -steamgames_narcissu -steamgames_painkiller -steamgames_portal -steamgames_shadow_mordor -steamgames_shatter -steamgames_source_engine -steamgames_te120 -steamgames_tf2 -steamgames_trine2 -steamgames_unwritten_tales -steamgames_voidexpanse -steamgames_witcher2
+
+# wine
+
+media-libs/libsdl2 haptic
+app-emulation/wine-staging X alsa cups custom-cflags faudio fontconfig gecko jpeg lcms ldap mono mp3 ncurses nls opengl osmesa perl png pulseaudio realtime run-exes samba sdl ssl threads truetype udev udisks v4l vaapi xcomposite xinerama xml -capi -dos ffmpeg -gphoto2 -gsm -gssapi -gstreamer -kerberos -netapi -odbc openal opencl -oss -pcap -pipelight -prelink -scanner -test -themes vkd3d vulkan
+
+# qemu
+
+app-emulation/qemu aio alsa bzip2 caps curl doc fdt filecaps gnutls gtk io-uring iscsi jpeg lzo ncurses nfs nls numa opengl oss png pulseaudio python sdl seccomp slirp spice ssh udev usb usbredir vde vhost-net virgl virtfs vnc vte xattr zstd -accessibility -debug -fuse -glusterfs -infiniband --jack -jemalloc -multipath -pin-upstream-blobs -plugins -rbd -sasl -sdl-image -smartcard -snappy -static -static-user -systemtap -test -vhost-user-fs -xen -xfs
+app-emulation/libvirt bash-completion caps fuse iscsi iscsi-direct libssh libvirtd nfs nls numa policykit qemu sasl udev virt-network -zfs -apparmor -audit -dtrace -firewalld -glusterfs -lvm -lxc -parted -pcap -rbd -verify-sig -virtualbox -wireshark-plugins -xen
+net-dns/dnsmasq script
+kde-apps/krdc vnc
 
 
-#Yuzu
-net-libs/mbedtls cmac
-dev-libs/boost context
-games-emulation/yuzu discord
+# jabuxas
+net-dns/avahi mdnsresponder-compat
+sys-boot/grub device-mapper
+gnome-base/gconf ldap
+media-libs/mesa vulkan-overlay
+net-wireless/bluez experimental btpclient
 
-# Xmonad
-x11-misc/xmobar xpm xft mpd timezone doc
-x11-wm/xmonad doc
-
-sys-apps/bubblewrap -suid
-app-office/libreoffice gstreamer googledrive java ldap pdfimport -vulkan clang
-
-# Xfce
-#app-text/poppler -qt5
-xfce-base/xfce4-meta svg
-app-admin/conky mpd nvidia lua-cairo lua-imlib lua-rsvg imlib irc hddtemp weather-metar bundled-toluapp
-
-# Gnome
+# gnome
 gnome-base/gnome-extra-apps -games
-gnome-base/gnome-settings-daemon modemmanager
-gnome-extra/nm-applet appindicator
 
-# Pipewire
-media-video/pipewire sound-server
-media-sound/pulseaudio -daemon
-gui-libs/wlroots tinywl
+# obs
+media-video/obs-studio browser fdk jack lua vlc websocket speex
+media-video/ffmpeg amr amrenc amf mp3 -dav1d
 
-# Audio compression
-media-libs/rubberband ladspa
+# corectrl
+dev-qt/qtcharts qml
+dev-qt/linguist-tools qml
 
-# Steam (abi 32)
-x11-drivers/nvidia-drivers abi_x86_32
-gnome-base/librsvg abi_x86_32
-x11-libs/cairo abi_x86_32
-dev-libs/libxml2 abi_x86_32
-dev-util/sysprof-capture abi_x86_32
-media-libs/flac abi_x86_32
-x11-libs/libX11 abi_x86_32
-x11-libs/libXau abi_x86_32
-x11-libs/libxcb abi_x86_32
-x11-libs/libXdmcp abi_x86_32
-dev-libs/libbsd abi_x86_32
-app-crypt/libmd abi_x86_32
-x11-libs/libXcursor abi_x86_32
-x11-libs/libXfixes abi_x86_32
-x11-libs/libXi abi_x86_32
-x11-libs/libXrandr abi_x86_32
-x11-libs/libXrender abi_x86_32
-x11-libs/libXxf86vm abi_x86_32
-media-libs/libglvnd abi_x86_32
-x11-libs/libXcomposite abi_x86_32
-x11-libs/libXinerama abi_x86_32
-net-print/cups abi_x86_32
-media-libs/fontconfig abi_x86_32
-media-libs/libsdl2 abi_x86_32
-net-libs/gnutls abi_x86_32
-media-libs/freetype abi_x86_32
-sys-apps/dbus abi_x86_32
-media-libs/vulkan-loader abi_x86_32
-x11-libs/libXext abi_x86_32
-media-libs/alsa-lib abi_x86_32
-dev-libs/glib abi_x86_32
-media-libs/gst-plugins-base abi_x86_32
-media-libs/gstreamer abi_x86_32
-media-libs/libpulse abi_x86_32
-sys-apps/attr abi_x86_32
-media-plugins/gst-plugins-meta abi_x86_32
-media-libs/gst-plugins-good abi_x86_32
-media-plugins/gst-plugins-a52dec abi_x86_32
-media-plugins/gst-plugins-faad abi_x86_32
-media-plugins/gst-plugins-dts abi_x86_32
-media-libs/gst-plugins-ugly abi_x86_32
-media-plugins/gst-plugins-dvdread abi_x86_32
-media-plugins/gst-plugins-mpeg2dec abi_x86_32
-media-plugins/gst-plugins-resindvd abi_x86_32
-media-plugins/gst-plugins-libav abi_x86_32
-media-plugins/gst-plugins-flac abi_x86_32
-media-plugins/gst-plugins-mpg123 abi_x86_32
-media-plugins/gst-plugins-pulse abi_x86_32
-media-plugins/gst-plugins-x264 abi_x86_32
-media-libs/x264 abi_x86_32
-media-sound/pulseaudio abi_x86_32
-media-sound/mpg123 abi_x86_32
-media-libs/libogg abi_x86_32
-media-video/ffmpeg abi_x86_32
-x11-libs/libXv abi_x86_32
-app-arch/bzip2 abi_x86_32
-media-libs/dav1d abi_x86_32
-media-sound/lame abi_x86_32
-media-libs/xvid abi_x86_32
-media-libs/libvorbis abi_x86_32
-x11-libs/libX abi_x86_32
-sys-libs/zlib abi_x86_32
-media-libs/libdvdnav abi_x86_32
-media-libs/libdvdread abi_x86_32
-media-libs/gst-plugins-bad abi_x86_32
-dev-libs/wayland abi_x86_32
-x11-libs/libdrm abi_x86_32
-dev-lang/orc abi_x86_32
-dev-libs/libffi abi_x86_32
-media-libs/libdvdcss abi_x86_32
-media-libs/libmpeg2 abi_x86_32
-media-libs/libdca abi_x86_32
-media-libs/faad2 abi_x86_32
-media-libs/a52dec abi_x86_32
-media-libs/libsndfile abi_x86_32
-net-libs/libasyncns abi_x86_32
-sys-libs/libcap abi_x86_32
-sys-libs/pam abi_x86_32
-x11-libs/pango abi_x86_32
-media-libs/libtheora abi_x86_32
-media-libs/mesa abi_x86_32
-media-libs/graphene abi_x86_32
-media-libs/libpng abi_x86_32
-dev-libs/expat abi_x86_32
-media-libs/libjpeg-turbo abi_x86_32
-x11-libs/libxshmfence abi_x86_32
-app-arch/zstd abi_x86_32
-sys-devel/llvm abi_x86_32
-sys-libs/ncurses abi_x86_32
-dev-libs/fribidi abi_x86_32
-media-libs/harfbuzz abi_x86_32
-x11-libs/libXft abi_x86_32
-virtual/libiconv abi_x86_32
-sys-apps/systemd-utils abi_x86_32
-virtual/libudev abi_x86_32
-virtual/opengl abi_x86_32
-virtual/libintl abi_x86_32
-x11-libs/libxkbcommon abi_x86_32
-net-dns/libidn2 abi_x86_32
-dev-libs/gmp abi_x86_32
-dev-libs/nettle abi_x86_32
-dev-libs/libunistring abi_x86_32
-dev-libs/libtasn1 abi_x86_32
-dev-util/glslang abi_x86_32
-dev-util/spirv-tools abi_x86_32
-sys-apps/util-linux abi_x86_32
-dev-libs/libpcre abi_x86_32
-dev-libs/icu abi_x86_32
-media-gfx/graphite2 abi_x86_32
-dev-lang/rust-bin abi_x86_32
-virtual/rust abi_x86_32
-virtual/jpeg abi_x86_32
-media-sound/cdparanoia abi_x86_32
-media-plugins/gst-plugins-cdparanoia abi_x86_32
-media-libs/glu abi_x86_32
-virtual/glu abi_x86_32
-sys-libs/binutils-libs abi_x86_32
-x11-libs/gdk-pixbuf abi_x86_32
-media-libs/tiff abi_x86_32
-dev-libs/libevent abi_x86_32
-dev-libs/libusb abi_x86_32
-dev-libs/openssl abi_x86_32
-net-dns/avahi abi_x86_32
-sys-libs/gdbm abi_x86_32
-x11-libs/gtk+ abi_x86_32
-dev-libs/atk abi_x86_32
-media-libs/libepoxy abi_x86_32
-x11-misc/colord abi_x86_32
-app-accessibility/at-spi2-atk abi_x86_32
-x11-libs/libXdamage abi_x86_32
-app-accessibility/at-spi2-core abi_x86_32
-x11-libs/libXtst abi_x86_32
-media-libs/lcms abi_x86_32
-dev-db/sqlite abi_x86_32
-dev-libs/libgusb abi_x86_32
-dev-libs/libgudev abi_x86_32
-sys-libs/readline abi_x86_32
-virtual/libusb abi_x86_32
-media-libs/vulkan-layers abi_x86_32
-sys-apps/systemd abi_x86_32
-app-arch/lz4 abi_x86_32
-dev-libs/libgcrypt abi_x86_32
-dev-libs/libgpg-error abi_x86_32
+# hypr fuck
+gui-apps/rofi-wayland drun
+gui-apps/waybar tray mpd
+dev-libs/libdbusmenu gtk3
 
-# Hyprland
-gui-libs/wlroots x11-backend
-gui-wm/hyprland
-gui-apps/waybar mpd tray network
-
-dev-lang/rust-bin clippy dist doc nightly rls rust-analyzer rust-src rustfmt
-dev-lang/rust clippy dist doc nightly rls rust-analyzer rust-src rustfmt
-gui-wm/sway tray
-games-action/prismlauncher lto
+gui-apps/redshift wayland
