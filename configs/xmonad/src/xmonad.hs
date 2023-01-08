@@ -215,23 +215,24 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
 
 myStartupHook :: X ()
 myStartupHook = do
-  _ <- traverse
-    spawnOnce
-    [ "sh ~/scripts/screenlayout.sh",
-      "nitrogen --restore &",
-      "touch ~/tmp/touchy && rm -rf ~/tmp/*",
-      -- , myHomeDir ++ "/.local/bin/picom-jonaburg --glx-no-stencil --xrender-sync-fence -b &"
-      "picom --config ~/.config/picom/vander.conf",
-      "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1",
-      "setxkbmap br abnt2",
-      "nm-applet",
-      "trayer-srg -l --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0xFF181814 --height 27 --transparent false --distance 2 --margin 1 --alpha 0 --monitor 0 &",
-      "mpd &",
-      "dunst &",
-      "lxqt-policykit-agent &",
-      "xrdb -load ~/.Xresources",
-      "redshift -t 5700:3600 -l -23.5475:-46.63611 -b 0.9:0.5"
-    ]
+  _ <-
+    traverse
+      spawnOnce
+      [ "sh ~/scripts/screenlayout.sh",
+        "nitrogen --restore &",
+        "touch ~/tmp/touchy && rm -rf ~/tmp/*",
+        -- , myHomeDir ++ "/.local/bin/picom-jonaburg --glx-no-stencil --xrender-sync-fence -b &"
+        "picom --config ~/.config/picom/vander.conf",
+        "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1",
+        "setxkbmap br abnt2",
+        "nm-applet",
+        "trayer-srg -l --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0xFF181814 --height 27 --transparent false --distance 2 --margin 1 --alpha 0 --monitor 0 &",
+        "mpd &",
+        "dunst &",
+        "lxqt-policykit-agent &",
+        "xrdb -load ~/.Xresources",
+        "redshift -t 5700:3600 -l -23.5475:-46.63611 -b 0.9:0.5"
+      ]
   setDefaultCursor xC_left_ptr
   setWMName "zmonad"
 
