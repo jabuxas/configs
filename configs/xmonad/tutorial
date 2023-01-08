@@ -1,5 +1,0 @@
-cd ~/.config/xmonad
-
-stack setup
-stack install
-./build

@@ -5,13 +5,12 @@ packages:
 
 extra-deps:
   - github: xmonad/x11
-    commit: d91b15fd8bfe78fe2865976bd357d70381fd85ab				
+    commit: 8a33c4ebe7d0a1be96073d8c019f1f3901bbf344					
   - github: xmonad/xmonad
-    commit: cf4d6f31b1751318309ddcc1c5fd8aa71a6a453a				
+    commit: 57c3a131253720e542fb399b229b697614642b53					
   - github: xmonad/xmonad-contrib
-    commit: 6373dc41fa4dfb2a12c20e431976ceee6fd03837				
+    commit: 6117a867d984f97fb689eca986eff2989b2fe069					
   - xmobar-0.44.2
-  - dbus-1.2.22
 
 flags:
   xmobar:
@@ -19,7 +18,6 @@ flags:
     with_threaded: true
     with_xft: true
     with_rtsopts: true
-    with_dbus: true
     with_mpd: true
 
 arch: x86_64

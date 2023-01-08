@@ -16,14 +16,14 @@ myConfig =
         pure baseConfig
             { template = concat $ 
                 [ " <fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                  \<fn=4><fc=#C678DD,#212121:5>\xf30d </fc></fn>\
+                  \<fn=4><fc=#a54242,#212121:5>\xf30d </fc></fn>\
                   \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
                 ] 
                 <>
                 [ "<fn=5>@UnsafeXMonadLog@</fn>}{" ] 
                 <>
                 [ "<fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                  \<fn=4><fc=#E06C75,#212121:5>@mpc@</fc></fn>\
+                  \<fn=4><fc=#E06C75,#212121:5>@music@</fc></fn>\
                   \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
                 ] 
                 <>
@@ -46,8 +46,6 @@ myConfig =
                    \<fn=4><fc=#61AFEF,#212121:5>@date@</fc></fn>\
                    \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
                 ]
-               -- <>
-               -- [ "@trayer@"]
             , commands = myCommands
             } 
 
@@ -57,10 +55,10 @@ myCommands =
     , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/volume.sh" ) ["vol"] "vol" 20
     , Run $ Date "\xf017 %-l:%M %p" "date" 600
     , Run $ Cpu [ "-t", "<fc=#8c7f80><total></fc>", "-f", ":", "-H", "75", "-L", "25", "-h", "#56B6C2", "-n", "#4797a1", "-l", "#3a7b83" ] 50
-    , Run $ Memory [ "-t", "<fc=#8c7f80><freeratio></fc>", "-f", ":", "-H", "75", "-L", "25", "-h", "#c678dd", "-n", "#9f60b1", "-l", "#855094" ] 50
+    , Run $ Memory [ "-t", "<fc=#8c7f80><usedratio></fc>", "-f", ":", "-H", "75", "-L", "25", "-h", "#c678dd", "-n", "#9f60b1", "-l", "#855094" ] 50
     -- , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/gputemp.sh") ["gpu"] "gpu" 5
-    -- , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/trayer-padding.sh") ["trayer"] "trayer" 100
-    , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/mpd.sh") ["mpc"] "mpc" 20
+    , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/trayer-padding.sh") ["trayer"] "trayer" 100
+    , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/mpd.sh") ["music"] "music" 20
     -- , Run $ Com (myHomeDir <> "/.config/xmonad/src/trayer-padding.sh") ["trayer"] "trayer" 50
     -- , Run $ MPD ["-h", "127.0.0.1", "-p", "6600", "-t", "<composer> <title> <track>/<plength> <statei>", "--", "-P", ">>", "-Z", "|", "-S", "><"] 10
     ] 
@@ -68,19 +66,19 @@ myCommands =
 baseConfig :: Config
 baseConfig =
     defaultConfig
-        { font            =   "xft:mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true" 
-        , additionalFonts = [ "xft:mononoki Nerd Font:pixelsize=10:antialias=true:hinting=true"
-                            , "xft:mononoki Nerd Font:size=13:antialias=true:hinting=true"
-                            , "xft:mononoki Nerd Font:size=11:antialias=true:hinting=true"
-                            , "xft:mononoki Nerd Font:size=11:antialias=true:hinting=true"
-                            , "xft:mononoki Nerd Font:pixelsize=13:antialias=true:hinting=true"
+        { font            =   "xft:UbuntuMono Nerd Font:pixelsize=12:antialias=true:hinting=true" 
+        , additionalFonts = [ "xft:UbuntuMono Nerd Font:pixelsize=10:antialias=true:hinting=true"
+                            , "xft:UbuntuMono Nerd Font:size=13:antialias=true:hinting=true"
+                            , "xft:UbuntuMono Nerd Font:size=11:antialias=true:hinting=true"
+                            , "xft:UbuntuMono Nerd Font:size=11:antialias=true:hinting=true"
+                            , "xft:UbuntuMono Nerd Font:pixelsize=13:antialias=true:hinting=true"
                             ]
         , textOffsets      = [20, 22, 21, 21, 20]
         , bgColor          = "#212121"
         , fgColor          = "#c8b6b8"
-        , borderColor      = "#a6e22e"
+        , borderColor      = "#272727"
         , border           = FullB 
-        , borderWidth      = 1
+        , borderWidth      = 0
         {-
         , position         = Static { xpos = 13, ypos = 1034, width = 1893, height = 32 } Bottom Padded
         , position         = Static { xpos = 0, ypos = 1048, width = 1920, height = 32 } Bottom Flat
