@@ -1,4 +1,5 @@
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
+vim.opt.mouse = 'a'
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -35,3 +36,7 @@ vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.completeopt = 'menuone,noselect'
+vim.o.smartcase = true
