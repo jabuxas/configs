@@ -4,6 +4,7 @@ vim.opt.mouse = 'a'
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -33,8 +34,8 @@ vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true

@@ -2,7 +2,7 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jk", "<Esc>")
 
 vim.g.mapleader = " "
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -33,3 +33,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("t", "<leader><Esc>", [[<C-\><C-n>]])
+
+vim.keymap.set("n", "<C-f>", "ysst")
+vim.keymap.set("v", "<C-f>", "gSt")
