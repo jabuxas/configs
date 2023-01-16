@@ -47,3 +47,5 @@ luac.out
 .startup-time.log
 test.lua
 node_modules/
+xmonad.log
+.stack-work/
