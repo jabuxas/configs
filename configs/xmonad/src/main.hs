@@ -19,13 +19,7 @@ import System.Exit
 import System.IO.Unsafe (unsafeDupablePerformIO)
 -- XMonad imports
 import XMonad
--- import           XMonad.Config.Xfce
 import XMonad.Actions.NoBorders (toggleBorder)
--- import           XMonad.Actions.PhysicalScreens
-
--- import           XMonad.Util.WorkspaceCompare
-
-import XMonad.Hooks.DynamicProperty
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDebug
 import XMonad.Hooks.ManageDocks
@@ -36,7 +30,6 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
-import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
 import qualified XMonad.StackSet as W
@@ -54,8 +47,6 @@ import XMonad.Util.Ungrab
 main :: IO ()
 main =
   do
-    -- dbus <- D.connectSession
-    -- getWellKnownName dbus
     xmonad
     $ debugManageHookOn "M-S-d"
       . docks
@@ -63,12 +54,12 @@ main =
       . fullscreenSupport
       . ewmh
       . Hacks.javaHack
-    -- . withEasySB xmobar toggleSB
-    -- . withSB xmobar2
+      -- . withEasySB xmobar2 toggleSB
+      . withEasySB xmobar toggleSB
+      . withSB xmobar2
     $ myConfig
-
--- where
--- toggleSB XConfig {modMask = modm} = (modm, xK_m)
+  where
+    toggleSB XConfig {modMask = modm} = (modm, xK_m)
 
 -- Windows key/Super key
 myModMask :: KeyMask
@@ -88,27 +79,28 @@ myFileManager = "thunar"
 
 -- Default Browser
 myBrowser :: String
-myBrowser = "firefox"
+myBrowser = "chromium"
 
 myPowerMenu :: String
 myPowerMenu = myHomeDir ++ "/.config/rofi/powermenu/type-6/powermenu.sh"
 
 -- Workspaces
 myWorkspaces :: [String]
+myWorkspaces = ["dev", "web", "irc", "gfx", "vm", "msc", "eml", "stm"]
+
 -- myWorkspaces = map show [1 .. 9]
-myWorkspaces = ["dev", "web", "irc", "gfx", "vm", "music", "email", "x"]
 
 -- Border Width
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 1
 
 -- Formal Unfocused Color
 myNormColor :: String
-myNormColor = "#5f819d"
+myNormColor = "#383830"
 
 -- Focused Color
 myFocusColor :: String
-myFocusColor = "#de935f"
+myFocusColor = "#a2a2a2"
 
 -- Home Directory
 myHomeDir :: String
@@ -152,7 +144,7 @@ myAdditionalKeys =
     screenShotSelection = myHomeDir ++ "/.local/bin/print-select" :: String
     screenShotFullscreen = myHomeDir ++ "/.local/bin/print-fullscreen" :: String
     screenShotTmp = myHomeDir ++ "/.local/bin/print-tmp" :: String
-    screenShotApp = myHomeDir ++ "/.local/bin/print-select-fr" :: String
+    screenShotApp = myHomeDir ++ "/.local/bin/print-window.sh" :: String
     -- XMonad base keybinds.
     base =
       [ ("M-g", withFocused toggleBorder),
@@ -161,7 +153,7 @@ myAdditionalKeys =
         ("M-<Space>", sendMessage NextLayout),
         ("M-n", refresh),
         ("M-S-q", io exitSuccess),
-        ("C-S-r", spawn "xmonad --recompile; killall xmobar; xmonad --restart"),
+        ("C-S-r", spawn "xmonad --recompile && pkill xmobar2 && pkill xmobar && xmonad --restart"),
         ("C-S-q", spawn "pkill -KILL -u $USER")
       ]
     -- Window management keybinds.
@@ -188,10 +180,11 @@ myAdditionalKeys =
         ("M-C-<Return>", namedScratchpadAction myScratchpads "terminal"),
         ("M-S-<Escape>", spawn myPowerMenu),
         ("M-b", spawn myBrowser),
-        ("M-v", spawn "vscodium"),
+        ("M-v", spawn "code"),
+        ("M-S-s", spawn "~/steam/steam.sh"),
         ("S-<Print>", unGrab *> spawn screenShotSelection),
-        ("C-<Print>", unGrab *> spawn screenShotTmp),
-        ("C-S-<Print>", unGrab *> spawn screenShotApp),
+        ("C-S-<Print>", unGrab *> spawn screenShotTmp),
+        ("C-<Print>", unGrab *> spawn screenShotApp),
         ("<Print>", spawn screenShotFullscreen),
         ("M-S-<Return>", spawn myLauncher),
         ("M-e", spawn myFileManager)
@@ -223,27 +216,26 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
 
 myStartupHook :: X ()
 myStartupHook = do
-  traverse
-    spawnOnce
-    [ "echo launched",
-      -- , "sh ~/scripts/screenlayout.sh"
-      "nitrogen --restore &",
-      "touch ~/tmp/touchy && rm -rf ~/tmp/*",
-      "lxqt-policykit-agent &",
-      myHomeDir ++ "/.local/bin/picom-jonaburg --glx-no-stencil --xrender-sync-fence -b &",
-      "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1",
-      "setxkbmap br abnt2",
-      "nm-applet",
-      "trayer-srg -l --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0xFF181814 --height 27 --transparent false --distance 2 --margin 1 --alpha 0 --monitor 0 &",
-      "nvidia-settings --load-config-only",
-      "mpd &",
-      "dunst -config $HOME/.config/dunst/base16-nord.dunstrc &",
-      "lxqt-policykit-agent &",
-      "/usr/bin/emacs --daemon &"
-      -- , "redshift -l -23.591672:-46.561005 -t 5700:3600 &"
-    ]
+  _ <-
+    traverse
+      spawnOnce
+      [ "sh ~/scripts/screenlayout.sh",
+        "nitrogen --restore &",
+        "touch ~/tmp/touchy && rm -rf ~/tmp/*",
+        -- , myHomeDir ++ "/.local/bin/picom-jonaburg --glx-no-stencil --xrender-sync-fence -b &"
+        "picom",
+        "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1",
+        "setxkbmap -option ctrl:nocaps br abnt2",
+        "nm-applet",
+        "trayer-srg -l --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0xFF181814 --height 27 --transparent false --distance 2 --margin 1 --alpha 0 --monitor 0 &",
+        "mpd &",
+        "dunst &",
+        "lxqt-policykit-agent &",
+        "xrdb -load ~/.Xresources",
+        "redshift -t 5700:3600 -l -23.5475:-46.63611 -b 0.9:0.7"
+      ]
   setDefaultCursor xC_left_ptr
-  setWMName "jabuxas' bane"
+  setWMName "zmonad"
 
 isInstance (ClassApp c _) = className =? c
 isInstance (TitleApp t _) = title =? t
@@ -326,16 +318,22 @@ myManageHook = manageRules
             className ^? "jetbrains-" <&&> title =? "splash" --> doFloat,
             className ^? "Visual " <&&> isDialog --> doCenterFloat,
             className =? "firefox-esr" --> doShift "web",
+            className =? "Chromium-browser-chromium" --> doShift "web",
+            className =? "Virt-manager" --> doShift "vm",
             className =? "steam_app_1172620" --> doShift "gfx",
+            className =? "steam_app_960090" --> doShift "gfx",
+            className =? "steam_app_1063730" --> doShift "gfx",
+            className =? "steam_app_632360" --> doShift "gfx",
             className =? "discord" --> doShift "irc",
             className =? "discord-screenaudio" --> doShift "irc",
-            className =? "Spotify" --> doShift "music",
-            className =? "thunderbird" --> doShift "email",
-            className =? "Steam" --> doShift "x",
-            className =? "Lutris" --> doShift "gfx" <> doFloat,
+            className =? "Spotify" --> doShift "msc",
+            className =? "thunderbird" --> doShift "eml",
+            className =? "Steam" --> doShift "stm",
+            className =? "Lutris" --> doShift "vm" <> doFloat,
             className =? "leagueclientux.exe" --> doShift "gfx",
             className =? "league of legends.exe" --> doShift "gfx",
             className =? "leagueclient.exe" --> doShift "gfx",
+            className =? "explorer.exe" --> doShift "gfx",
             className =? "riotclientux.exe" --> doShift "gfx",
             className =? "dauntless-win64-shipping.exe" --> doShift "gfx",
             className =? "battle.net.exe" --> doShift "gfx" <> doFloat,
@@ -344,8 +342,8 @@ myManageHook = manageRules
             className =? "Pavucontrol" --> doFloat,
             className =? "Nitrogen" --> doFloat,
             className =? "Wrapper-2.0" --> doFloat,
-            className =? "TeamSpeak 3" --> doFloat,
-            className =? "easyeffects" --> doFloat,
+            className =? "TeamSpeak 3" --> doFloat <> doShift "irc",
+            className =? "easyeffects" --> doFloat <> doShift "vm",
             className =? "Arandr" --> doFloat,
             resource =? "desktop_window" --> doIgnore,
             resource =? "kdesktop" --> doIgnore,
@@ -358,12 +356,6 @@ myManageHook = manageRules
             -- , title     ^? "Steam - News"                                       --> doHide -- I don't like the Steam news menu
           ]
 
-myDynHook :: ManageHook
-myDynHook =
-  composeAll
-    [ title =? "Riot Client Main" --> doFloat
-    ]
-
 {- May be useful one day
 doClose = ask >>= liftX . killWindow >> mempty :: ManageHook
 doForceKill = ask >>= liftX . forceKillWindow >> mempty :: ManageHook
@@ -373,9 +365,7 @@ myEventHook :: Event -> X All
 myEventHook _ = return (All True)
 
 myLayoutHook =
-  avoidStruts
-  -- \$ onWorkspace "gfx" simpleFloat
-  $
+  avoidStruts $
     lessBorders OnlyScreenFloat $
       spacingRaw False (Border w w w w) True (Border w w w w) True $
         tiled ||| simpleFloat ||| Mirror tiled ||| Full
@@ -391,12 +381,12 @@ myXmobarPP =
   clickablePP $
     filterOutWsPP ["NSP"] $
       def
-        { ppCurrent = xmobarColor "#98c379" "" . xmobarFont 5 . wrap "[" "]",
-          ppVisibleNoWindows = Just (xmobarColor "#cc6666" ""),
-          ppHidden = xmobarColor "#d2ba8b" "",
-          ppHiddenNoWindows = xmobarColor "#a3846e" "",
+        { ppCurrent = xmobarColor "#d5d5d5" "" . xmobarFont 5 . wrap "[" "]",
+          ppVisibleNoWindows = Just (xmobarColor "#71bec0" ""),
+          ppHidden = xmobarColor "#558c8e" "",
+          ppHiddenNoWindows = xmobarColor "#595959" "",
           ppUrgent = xmobarColor "#F7768E" "" . wrap "!" "!",
-          ppTitle = xmobarColor "#98C379" "" . shorten 49,
+          ppTitle = xmobarColor "#d5d5d5" "" . shorten 49,
           ppSep = wrapSep " ",
           ppTitleSanitize = xmobarStrip,
           ppWsSep = xmobarColor "" "#212121" "  ",
@@ -417,17 +407,17 @@ myXmobarPP =
         (xmobarColor "#212121" "#212121:7" (xmobarFont 2 "\xe0b4"))
         (xmobarColor "#212121" "#212121:7" (xmobarFont 2 "\xe0b6"))
 
+myXmobar :: String
+myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
+
 xmobar :: StatusBarConfig
 xmobar = statusBarProp myXmobar myXmobarPP
 
-myXmobar :: String
-myXmobar = ("xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
+myXmobar2 :: String
+myXmobar2 = (myHomeDir ++ "/.local/bin/xmobar2 " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
 
 xmobar2 :: StatusBarConfig
 xmobar2 = statusBarProp myXmobar2 myXmobarPP
-
-myXmobar2 :: String
-myXmobar2 = ("xmobar-2nd ")
 
 myConfig =
   def
@@ -437,17 +427,14 @@ myConfig =
       mouseBindings = myMouseBindings,
       borderWidth = myBorderWidth,
       normalBorderColor = myNormColor,
-      -- , logHook            = logTitle dbus
       focusedBorderColor = myFocusColor,
       layoutHook = myLayoutHook,
-      -- <> onWorkspace "gfx" h8league
       startupHook = myStartupHook,
       manageHook = myManageHook,
       handleEventHook =
         Hacks.windowedFullscreenFixEventHook
           <> swallowEventHook (className =? "Alacritty" <||> className =? "kitty" <||> className =? "XTerm") (return True)
           <> Hacks.trayerPaddingXmobarEventHook
-          <> dynamicPropertyChange "WM_CLASS" myDynHook
           <> myEventHook,
       workspaces = myWorkspaces,
       keys = myKeys
