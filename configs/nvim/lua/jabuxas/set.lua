@@ -4,7 +4,7 @@ vim.opt.mouse = 'a'
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.clipboard:append {'unnamedplus'}
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -22,7 +22,6 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -38,6 +37,10 @@ vim.g.mapleader = " "
 -- vim.g.loaded_netrwPlugin = 1
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.completeopt = 'menuone,noselect'
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.completeopt = 'menuone,noselect'
+vim.opt.smartcase = true
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.termguicolors = true
