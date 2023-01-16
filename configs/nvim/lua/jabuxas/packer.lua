@@ -80,7 +80,6 @@ return require('packer').startup(function(use)
     use 'xiyaowong/nvim-transparent'
     -- use {
     --     "windwp/nvim-autopairs",
-    --     config = function() require("nvim-autopairs").setup ({}) end
     -- }
     use({
         'nyoom-engineering/oxocarbon.nvim',
@@ -124,10 +123,17 @@ return require('packer').startup(function(use)
         end
     })
 
+    use { "alexghergh/nvim-tmux-navigation" }
+
     use 'windwp/nvim-ts-autotag'
 
     use 'norcalli/nvim-colorizer.lua'
     use 'ThePrimeagen/vim-be-good'
+
+    use 'declancm/maximize.nvim'
+
+    use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+    use "rafamadriz/friendly-snippets"
 
     if packer_bootstrap then
         require('packer').sync()
