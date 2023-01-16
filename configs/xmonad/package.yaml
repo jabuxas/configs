@@ -17,7 +17,7 @@ source-dirs: src
   
 executables:
   xmonad:
-    main: xmonad.hs
+    main: main.hs
     dependencies:
       - xmonad
       - containers
