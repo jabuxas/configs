@@ -134,6 +134,7 @@ return require('packer').startup(function(use)
 
     use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
     use "rafamadriz/friendly-snippets"
+    use "andweeb/presence.nvim"
 
     if packer_bootstrap then
         require('packer').sync()
