@@ -16,27 +16,27 @@ packages:
   original:
     url: https://github.com/xmonad/x11/archive/8a33c4ebe7d0a1be96073d8c019f1f3901bbf344.tar.gz
 - completed:
-    size: 107338
-    url: https://github.com/xmonad/xmonad/archive/57c3a131253720e542fb399b229b697614642b53.tar.gz
+    size: 107331
+    url: https://github.com/xmonad/xmonad/archive/5ecdf7591d4f4bc3e44571326e66dfe895393a20.tar.gz
     name: xmonad
     version: 0.17.1.9
-    sha256: 3ad4fa2e31e227284d3bd5d20786cd3c960e5e56de716e9a3e8b5efa1c23a2e7
+    sha256: b5c72c205b2cc66251deb24af6cb338e2f271837e8cb67dfd484d1f107012c54
     pantry-tree:
       size: 3917
-      sha256: 56c75bff3591f9f448c730d109f16002d2b91c60a695ef3783415a1f7dc60602
+      sha256: 00c673ac7255489f7ded160e9fa9c0e7c4bf2ef697ce67bdbaf10072adc62549
   original:
-    url: https://github.com/xmonad/xmonad/archive/57c3a131253720e542fb399b229b697614642b53.tar.gz
+    url: https://github.com/xmonad/xmonad/archive/5ecdf7591d4f4bc3e44571326e66dfe895393a20.tar.gz
 - completed:
-    size: 668025
-    url: https://github.com/xmonad/xmonad-contrib/archive/6117a867d984f97fb689eca986eff2989b2fe069.tar.gz
+    size: 673668
+    url: https://github.com/xmonad/xmonad-contrib/archive/6fba80168df60d8a151515601f046a22cf9efbf5.tar.gz
     name: xmonad-contrib
     version: 0.17.1.9
-    sha256: f6ab8b33c936175f164cbe4add5c20e975e292a9d8f89e7d300f856eea157e05
+    sha256: 12efbfa9dc19ea9770d51fd6d1dabadf44e23f190f00b92791a061e82e6ded59
     pantry-tree:
-      size: 24163
-      sha256: adcdf6221b8e60f8b3138f0e88da01a4434ae923c9f9be35d3a1b4aa53d67fd7
+      size: 24370
+      sha256: 66c16f132310a956bd86076efb55122dc02e5bedbb86fb7e6d1feeda9b52a082
   original:
-    url: https://github.com/xmonad/xmonad-contrib/archive/6117a867d984f97fb689eca986eff2989b2fe069.tar.gz
+    url: https://github.com/xmonad/xmonad-contrib/archive/6fba80168df60d8a151515601f046a22cf9efbf5.tar.gz
 - completed:
     hackage: xmobar-0.44.2@sha256:a2eed5f8833194babd60e45520023cd5698ccb8d40976d1f41a9b53b350297d0,14895
     pantry-tree:
@@ -46,7 +46,7 @@ packages:
     hackage: xmobar-0.44.2
 snapshots:
 - completed:
-    size: 619399
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/23.yaml
-    sha256: f5d9002479d87103fd070f17cfe71fcd2147676f1e47a2dabca5ab91a42b846d
-  original: lts-19.23
+    size: 619204
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/33.yaml
+    sha256: 6d1532d40621957a25bad5195bfca7938e8a06d923c91bc52aa0f3c41181f2d4
+  original: lts-19.33
