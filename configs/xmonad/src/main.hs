@@ -10,6 +10,7 @@
 -- Data Imports
 
 import Data.Functor
+import Data.List (isInfixOf)
 import qualified Data.Map as M
 import Data.Monoid
 -- Used in io exitSuccess
@@ -71,7 +72,11 @@ myTerminal = "kitty"
 
 -- Default Launcher
 myLauncher :: String
-myLauncher = myHomeDir ++ "/.config/rofi/launchers/type-7/launcher.sh"
+myLauncher = myHomeDir ++ "/.config/rofi/launchers/type-6/launcher.sh"
+
+-- Default Launcher
+myWinSwitch :: String
+myWinSwitch = myHomeDir ++ "/.config/rofi/launchers/type-6/tab.sh"
 
 -- Default Launcher
 myFileManager :: String
@@ -79,7 +84,7 @@ myFileManager = "thunar"
 
 -- Default Browser
 myBrowser :: String
-myBrowser = "chromium"
+myBrowser = "brave-bin"
 
 myPowerMenu :: String
 myPowerMenu = myHomeDir ++ "/.config/rofi/powermenu/type-6/powermenu.sh"
@@ -187,6 +192,7 @@ myAdditionalKeys =
         ("C-<Print>", unGrab *> spawn screenShotApp),
         ("<Print>", spawn screenShotFullscreen),
         ("M-S-<Return>", spawn myLauncher),
+        ("M1-<Tab>", spawn myWinSwitch),
         ("M-e", spawn myFileManager)
       ]
     -- Multimedia keybinds.
@@ -222,12 +228,13 @@ myStartupHook = do
       [ "sh ~/scripts/screenlayout.sh",
         "nitrogen --restore &",
         "touch ~/tmp/touchy && rm -rf ~/tmp/*",
-        -- , myHomeDir ++ "/.local/bin/picom-jonaburg --glx-no-stencil --xrender-sync-fence -b &"
-        "picom",
+        myHomeDir ++ "/.local/bin/picom-jonaburg -b --experimental-backends &",
+        "nm-applet &",
+        -- "picom",
         "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1",
         "setxkbmap -option ctrl:nocaps br abnt2",
         "nm-applet",
-        "trayer-srg -l --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0xFF181814 --height 27 --transparent false --distance 2 --margin 1 --alpha 0 --monitor 0 &",
+        "trayer-srg -l --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x002b36 --height 30 --distance 15 --margin 10 --alpha 0 --monitor 0 --transparent true",
         "mpd &",
         "dunst &",
         "lxqt-policykit-agent &",
@@ -266,6 +273,10 @@ about = TitleApp "About Mozilla Firefox" "About Mozilla Firefox"
 message = ClassApp "Xmessage" "Xmessage"
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
+
+-- Like '=?' but matches substrings.
+q =?? x = fmap (isInfixOf x) q
+
 myManageHook = manageRules
   where
     -- Hides windows without ignoring it, see doHideIgnore in XMonad contrib.
@@ -319,20 +330,16 @@ myManageHook = manageRules
             className ^? "Visual " <&&> isDialog --> doCenterFloat,
             className =? "firefox-esr" --> doShift "web",
             className =? "Chromium-browser-chromium" --> doShift "web",
+            className =? "Brave-browser" --> doShift "web",
             className =? "Virt-manager" --> doShift "vm",
-            className =? "steam_app_1172620" --> doShift "gfx",
-            className =? "steam_app_960090" --> doShift "gfx",
-            className =? "steam_app_1063730" --> doShift "gfx",
-            className =? "steam_app_632360" --> doShift "gfx",
             className =? "discord" --> doShift "irc",
             className =? "discord-screenaudio" --> doShift "irc",
             className =? "Spotify" --> doShift "msc",
             className =? "thunderbird" --> doShift "eml",
             className =? "Steam" --> doShift "stm",
+            className =? "steam" --> doShift "stm",
+            className =? "obs" --> doShift "vm",
             className =? "Lutris" --> doShift "vm" <> doFloat,
-            className =? "leagueclientux.exe" --> doShift "gfx",
-            className =? "league of legends.exe" --> doShift "gfx",
-            className =? "leagueclient.exe" --> doShift "gfx",
             className =? "explorer.exe" --> doShift "gfx",
             className =? "riotclientux.exe" --> doShift "gfx",
             className =? "dauntless-win64-shipping.exe" --> doShift "gfx",
@@ -342,7 +349,7 @@ myManageHook = manageRules
             className =? "Pavucontrol" --> doFloat,
             className =? "Nitrogen" --> doFloat,
             className =? "Wrapper-2.0" --> doFloat,
-            className =? "TeamSpeak 3" --> doFloat <> doShift "irc",
+            className =? "TeamSpeak 3" --> doShift "irc",
             className =? "easyeffects" --> doFloat <> doShift "vm",
             className =? "Arandr" --> doFloat,
             resource =? "desktop_window" --> doIgnore,
@@ -351,9 +358,12 @@ myManageHook = manageRules
             isRole ^? "About" <||> isRole ^? "about" --> doFloat,
             "_NET_WM_WINDOW_TYPE" `isInProperty` "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doIgnore <> doRaise,
             -- Steam Game Fixes
-            className =? "steam_app_1551360" <&&> title /=? "Forza Horizon 5" --> doHide -- Prevents black screen when fullscreening.
-            -- , title     =? "Wine System Tray"                                   --> doHide -- Prevents Wine System Trays from taking input focus.
-            -- , title     ^? "Steam - News"                                       --> doHide -- I don't like the Steam news menu
+            className =? "steam_app_1551360" <&&> title /=? "Forza Horizon 5" --> doHide, -- Prevents black screen when fullscreening.
+            className =?? "league" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
+            className =?? "riot" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
+            className =? "gamescope" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
+            title =? "Wine System Tray" --> doHide, -- Prevents Wine System Trays from taking input focus.
+            className =?? "steam_app" --> doShift "gfx" <> hasBorder False
           ]
 
 {- May be useful one day
@@ -389,9 +399,9 @@ myXmobarPP =
           ppTitle = xmobarColor "#d5d5d5" "" . shorten 49,
           ppSep = wrapSep " ",
           ppTitleSanitize = xmobarStrip,
-          ppWsSep = xmobarColor "" "#212121" "  ",
+          ppWsSep = xmobarColor "" "#002b36" "  ",
           ppLayout =
-            xmobarColor "#212121" ""
+            xmobarColor "#002b36" ""
               . ( \case
                     "Spacing Tall" -> "<icon=tiled.xpm/>"
                     "Spacing Mirror Tall" -> "<icon=mirrortiled.xpm/>"
@@ -404,8 +414,8 @@ myXmobarPP =
     wrapSep :: String -> String
     wrapSep =
       wrap
-        (xmobarColor "#212121" "#212121:7" (xmobarFont 2 "\xe0b4"))
-        (xmobarColor "#212121" "#212121:7" (xmobarFont 2 "\xe0b6"))
+        (xmobarColor "#002b36" "#002b36:7" (xmobarFont 2 "\xe0b4"))
+        (xmobarColor "#002b36" "#002b36:7" (xmobarFont 2 "\xe0b6"))
 
 myXmobar :: String
 myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")

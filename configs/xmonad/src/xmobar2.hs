@@ -17,30 +17,35 @@ myConfig =
       baseConfig
         { template =
             concat $
-              [ " <fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                \<fn=4><fc=#558c8e,#212121:5>\xf30d </fc></fn>\
-                \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
+              [ " <fn=2><fc=#002b36,#002b36:7>\xe0b6</fc></fn>\
+                \<fn=4><fc=#558c8e,#002b36:5>\xf30d </fc></fn>\
+                \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn> "
               ]
-                <> ["<fn=5>@UnsafeXMonadLog@</fn>}{"]
-                <> [ "<fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                     \<fn=4><fc=#E06C75,#212121:5>@music@</fc></fn>\
-                     \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
+                <> ["<fn=5>@UnsafeXMonadLog@</fn>}"]
+                   <> [ "<fn=2><fc=#002b36,#002b36:7>\xe0b6</fc></fn>\
+                     \<fn=4><fc=#E06C75,#002b36:5>\xf001 </fc></fn>\
+                     \<fn=5><fc=#E06C75,#002b36:5>@music@</fc></fn>\
+                     \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn>{"
                    ]
-                <> [ "<fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                     \<fn=4><fc=#56B6C2,#212121:5>CPU: @cpu@%</fc></fn>\
-                     \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
+                <> [ "<fn=2><fc=#002b36,#002b36:7>\xe0b6</fc></fn>\
+                     \<fn=4><fc=#56B6C2,#002b36:5>\xf2db </fc></fn>\
+                     \<fn=5><fc=#56B6C2,#002b36:5>CPU: @cpu@%</fc></fn>\
+                     \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn> "
                    ]
-                <> [ "<fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                     \<fn=4><fc=#C678DD,#212121:5>Mem: @memory@% </fc></fn>\
-                     \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
+                <> [ "<fn=2><fc=#002b36,#002b36:7>\xe0b6</fc></fn>\
+                     \<fn=4><fc=#C678DD,#002b36:5>\xf538 </fc></fn>\
+                     \<fn=5><fc=#C678DD,#002b36:5>Mem: @memory@% </fc></fn>\
+                     \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn> "
                    ]
-                <> [ "<fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                     \<fn=4><fc=#98C379,#212121:5>@vol@</fc></fn>\
-                     \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
+                <> [ "<fn=2><fc=#002b36,#002b36:7>\xe0b6</fc></fn>\
+                     \<fn=4><fc=#98C379,#002b36:5>@volicon@</fc></fn>\
+                     \<fn=5><fc=#98C379,#002b36:5>@vol@</fc></fn>\
+                     \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn> "
                    ]
-                <> [ "<fn=2><fc=#212121,#212121:7>\xe0b6</fc></fn>\
-                     \<fn=4><fc=#61AFEF,#212121:5>@date@</fc></fn>\
-                     \<fn=2><fc=#212121,#212121:7>\xe0b4</fc></fn> "
+                <> [ "<fn=2><fc=#002b36,#002b36:7>\xe0b6</fc></fn>\
+                     \<fn=4><fc=#61AFEF,#002b36:5>\xf017 </fc></fn>\
+                     \<fn=5><fc=#61AFEF,#002b36:5>@date@</fc></fn>\
+                     \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn> "
                    ],
           commands = myCommands
         }
@@ -49,7 +54,8 @@ myCommands :: [Runnable]
 myCommands =
   [ Run UnsafeXMonadLog,
     Run $ Com (myHomeDir <> "/.config/xmonad/scripts/volume.sh") ["vol"] "vol" 100,
-    Run $ Date "\xf017 %-l:%M %p" "date" 600,
+    Run $ Com (myHomeDir <> "/.config/xmonad/scripts/volumeicon.sh") ["volicon"] "volicon" 100,
+    Run $ Date "%-l:%M %p" "date" 600,
     Run $ Cpu ["-t", "<fc=#8c7f80><total></fc>", "-f", ":", "-H", "75", "-L", "25", "-h", "#56B6C2", "-n", "#4797a1", "-l", "#3a7b83"] 100,
     Run $ Memory ["-t", "<fc=#8c7f80><usedratio></fc>", "-f", ":", "-H", "75", "-L", "25", "-h", "#c678dd", "-n", "#9f60b1", "-l", "#855094"] 100,
     -- , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/gputemp.sh") ["gpu"] "gpu" 5
@@ -62,16 +68,16 @@ myCommands =
 baseConfig :: Config
 baseConfig =
   defaultConfig
-    { font = "xft:UbuntuMono Nerd Font:pixelsize=12:antialias=true:hinting=true",
+    { font = "xft:Sugar Snow:pixelsize=14:antialias=true:hinting=true",
       additionalFonts =
-        [ "xft:UbuntuMono Nerd Font:pixelsize=10:antialias=true:hinting=true",
-          "xft:UbuntuMono Nerd Font:size=13:antialias=true:hinting=true",
-          "xft:UbuntuMono Nerd Font:size=11:antialias=true:hinting=true",
-          "xft:UbuntuMono Nerd Font:size=11:antialias=true:hinting=true",
-          "xft:UbuntuMono Nerd Font:pixelsize=13:antialias=true:hinting=true"
+        [ "xft:Sugar Snow:pixelsize=12:antialias=true:hinting=true",
+          "xft:Sugar Snow:size=15:antialias=true:hinting=true",
+          "xft:Sugar Snow:size=13:antialias=true:hinting=true",
+          "xft:JetBrainsMono Nerd Font:size=12:antialias=true:hinting=true",
+          "xft:Sugar Snow:pixelsize=14:antialias=true:hinting=true"
         ],
       textOffsets = [20, 22, 21, 21, 20],
-      bgColor = "#212121",
+      bgColor = "#002b36",
       fgColor = "#c8b6b8",
       borderColor = "#272727",
       border = FullB,
@@ -81,7 +87,7 @@ baseConfig =
       , position         = Static { xpos = 0, ypos = 1048, width = 1920, height = 32 } Bottom Flat
       , position         = Static { xpos = 0, ypos = 0, width = 1920, height = 32 } Top Flat
       -}
-      position = Static {xpos = 1920, ypos = 148, width = 1920, height = 30},
+      position = Static {xpos = 1940, ypos = 163, width = 1880, height = 34},
       alpha = 255,
       overrideRedirect = True,
       lowerOnStart = True,
