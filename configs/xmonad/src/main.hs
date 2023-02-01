@@ -363,7 +363,7 @@ myManageHook = manageRules
             className =?? "riot" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
             className =? "gamescope" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
             title =? "Wine System Tray" --> doHide, -- Prevents Wine System Trays from taking input focus.
-            className =?? "steam_app" --> doShift "gfx" <> hasBorder False
+            className =?? "steam_" --> doShift "gfx" <> hasBorder False
           ]
 
 {- May be useful one day
