@@ -47,7 +47,7 @@ myConfig =
                      \<fn=5><fc=#61AFEF,#002b36:5>@date@</fc></fn>\
                      \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn> "
                    ]
-                <> ["@trayer@"],
+                <> ["@_XMONAD_TRAYPAD@"],
           commands = myCommands
         }
 
@@ -60,7 +60,7 @@ myCommands =
     Run $ Cpu ["-t", "<fc=#8c7f80><total></fc>", "-f", ":", "-H", "75", "-L", "25", "-h", "#56B6C2", "-n", "#4797a1", "-l", "#3a7b83"] 100,
     Run $ Memory ["-t", "<fc=#8c7f80><usedratio></fc>", "-f", ":", "-H", "75", "-L", "25", "-h", "#c678dd", "-n", "#9f60b1", "-l", "#855094"] 100,
     -- , Run $ Com (myHomeDir <> "/.config/xmonad/scripts/gputemp.sh") ["gpu"] "gpu" 5
-    Run $ Com (myHomeDir <> "/.config/xmonad/scripts/trayer-padding.sh") ["trayer"] "trayer" 1000,
+    Run $ XPropertyLog "_XMONAD_TRAYPAD",
     Run $ Com (myHomeDir <> "/.config/xmonad/scripts/mpd.sh") ["music"] "music" 100
     -- , Run $ Com (myHomeDir <> "/.config/xmonad/src/trayer-padding.sh") ["trayer"] "trayer" 50
     -- , Run $ MPD ["-h", "127.0.0.1", "-p", "6600", "-t", "<composer> <title> <track>/<plength> <statei>", "--", "-P", ">>", "-Z", "|", "-S", "><"] 10
