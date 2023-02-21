@@ -21,6 +21,8 @@ executable xmobar
       base
     , xmobar
     , xmonad-contrib >=0.16
+    , cairo >=0.13
+    , pango >=0.13
   default-language: Haskell2010
 
 executable xmobar2
@@ -34,6 +36,8 @@ executable xmobar2
       base
     , xmobar
     , xmonad-contrib >=0.16
+    , cairo >=0.13
+    , pango >=0.13
   default-language: Haskell2010
 
 executable xmonad

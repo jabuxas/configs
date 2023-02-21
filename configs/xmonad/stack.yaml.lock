@@ -38,12 +38,33 @@ packages:
   original:
     url: https://github.com/xmonad/xmonad-contrib/archive/6fba80168df60d8a151515601f046a22cf9efbf5.tar.gz
 - completed:
-    hackage: xmobar-0.44.2@sha256:a2eed5f8833194babd60e45520023cd5698ccb8d40976d1f41a9b53b350297d0,14895
+    hackage: xmobar-0.46@sha256:65e8683aec86e5dc23041959dc2b0803f1be4a3cacab1ed29159c0732212c273,14911
     pantry-tree:
-      size: 9498
-      sha256: c7714be550d267369496c484ba727847f50e941d66009d2f8a8268629fe953f8
+      size: 9769
+      sha256: 0c97230f9b521b2af6237214a4ca14536a5df936835153b9768d7108ba5eb368
   original:
-    hackage: xmobar-0.44.2
+    hackage: xmobar-0.46
+- completed:
+    hackage: cairo-0.13.8.2@sha256:ef1709c3c4d2c6d68a9a51d9f220dccc0745f6468d2d0868c15a7ecdf8f325a1,4078
+    pantry-tree:
+      size: 2830
+      sha256: d6a9b3a15bc2e7b53fda331279cfdbc299fbf0c4be2ee8c1b6b79b924b6fdeb4
+  original:
+    hackage: cairo-0.13.8.2@sha256:ef1709c3c4d2c6d68a9a51d9f220dccc0745f6468d2d0868c15a7ecdf8f325a1,4078
+- completed:
+    hackage: pango-0.13.8.2@sha256:d4057ebddade4cde3e25d7755b5e030e7a7e56fe7365afd37916a7bba46d3fd9,3917
+    pantry-tree:
+      size: 1506
+      sha256: 10c335853e1d43e0b7426b33e8ddbdb90b3e318ebec4d58f0726a2f4cfb2e1c9
+  original:
+    hackage: pango-0.13.8.2@sha256:d4057ebddade4cde3e25d7755b5e030e7a7e56fe7365afd37916a7bba46d3fd9,3917
+- completed:
+    hackage: glib-0.13.8.2@sha256:f44b829e741b3c3244d523f60b058701dfc067ff64c2ba61d43be4cccfc2663d,3156
+    pantry-tree:
+      size: 1625
+      sha256: 2442a22152231a94e2f1ecfe7ddc0f4e5fb2d5ae116b371508a448bd3312ef06
+  original:
+    hackage: glib-0.13.8.2@sha256:f44b829e741b3c3244d523f60b058701dfc067ff64c2ba61d43be4cccfc2663d,3156
 snapshots:
 - completed:
     size: 619204

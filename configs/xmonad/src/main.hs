@@ -55,7 +55,6 @@ main =
       . fullscreenSupport
       . ewmh
       . Hacks.javaHack
-      -- . withEasySB xmobar2 toggleSB
       . withEasySB xmobar toggleSB
       . withSB xmobar2
     $ myConfig
@@ -75,12 +74,12 @@ myLauncher :: String
 myLauncher = myHomeDir ++ "/.config/rofi/launchers/type-6/launcher.sh"
 
 -- Default Launcher
-myWinSwitch :: String
-myWinSwitch = myHomeDir ++ "/.config/rofi/launchers/type-6/tab.sh"
+-- myWinSwitch :: String
+-- myWinSwitch = myHomeDir ++ "/.config/rofi/launchers/type-6/tab.sh"
 
 -- Default Launcher
 myFileManager :: String
-myFileManager = "thunar"
+myFileManager = "kitty -e ranger"
 
 -- Default Browser
 myBrowser :: String
@@ -158,7 +157,7 @@ myAdditionalKeys =
         ("M-<Space>", sendMessage NextLayout),
         ("M-n", refresh),
         ("M-S-q", io exitSuccess),
-        ("C-S-r", spawn "xmonad --recompile && pkill xmobar2 && pkill xmobar && xmonad --restart"),
+        ("C-S-r", spawn "xmonad --recompile && killall xmobar2 ; killall xmobar ; xmonad --restart"),
         ("C-S-q", spawn "pkill -KILL -u $USER")
       ]
     -- Window management keybinds.
@@ -192,7 +191,7 @@ myAdditionalKeys =
         ("C-<Print>", unGrab *> spawn screenShotApp),
         ("<Print>", spawn screenShotFullscreen),
         ("M-S-<Return>", spawn myLauncher),
-        ("M1-<Tab>", spawn myWinSwitch),
+        -- ("M1-<Tab>", spawn myWinSwitch),
         ("M-e", spawn myFileManager)
       ]
     -- Multimedia keybinds.
@@ -227,19 +226,19 @@ myStartupHook = do
       spawnOnce
       [ "sh ~/scripts/screenlayout.sh",
         "nitrogen --restore &",
+        -- "sh ~/scripts/wallpaper.sh",
         "touch ~/tmp/touchy && rm -rf ~/tmp/*",
-        myHomeDir ++ "/.local/bin/picom-jonaburg -b --experimental-backends &",
+        myHomeDir ++ "/.local/bin/picom-pijulius -b --experimental-backends &",
         "nm-applet &",
         -- "picom",
-        "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.1",
+        "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.5",
         "setxkbmap -option ctrl:nocaps br abnt2",
         "nm-applet",
-        "trayer-srg -l --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x002b36 --height 30 --distance 15 --margin 10 --alpha 0 --monitor 0 --transparent true",
-        "mpd &",
+        "trayer-srg --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x2F2F2F --height 25 --distance 0 --margin 0 --alpha 0 --monitor 0 --transparent true",
         "dunst &",
         "lxqt-policykit-agent &",
         "xrdb -load ~/.Xresources",
-        "redshift -t 5700:3600 -l -23.5475:-46.63611 -b 0.9:0.7"
+        "redshift -t 4500:2500 -l -23.5475:-46.63611 -b 0.9:0.6"
       ]
   setDefaultCursor xC_left_ptr
   setWMName "zmonad"
@@ -361,6 +360,7 @@ myManageHook = manageRules
             className =? "steam_app_1551360" <&&> title /=? "Forza Horizon 5" --> doHide, -- Prevents black screen when fullscreening.
             className =?? "league" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
             className =?? "riot" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
+            className =?? "csgo" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
             className =? "gamescope" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
             title =? "Wine System Tray" --> doHide, -- Prevents Wine System Trays from taking input focus.
             className =?? "steam_" --> doShift "gfx" <> hasBorder False
@@ -391,17 +391,18 @@ myXmobarPP =
   clickablePP $
     filterOutWsPP ["NSP"] $
       def
-        { ppCurrent = xmobarColor "#d5d5d5" "" . xmobarFont 5 . wrap "[" "]",
-          ppVisibleNoWindows = Just (xmobarColor "#71bec0" ""),
-          ppHidden = xmobarColor "#558c8e" "",
-          ppHiddenNoWindows = xmobarColor "#595959" "",
-          ppUrgent = xmobarColor "#F7768E" "" . wrap "!" "!",
-          ppTitle = xmobarColor "#d5d5d5" "" . shorten 49,
+        { ppCurrent = xmobarColor "#ece1d7" "" . xmobarBorder "Bottom" "#89b3b6" 2,
+          ppVisible = xmobarColor "#A0A0A0" "" . xmobarBorder "Bottom" "#78997a" 2,
+          ppVisibleNoWindows = Just (xmobarBorder "Bottom" "#78997a" 2 . xmobarColor "#A0A0A0" ""),
+          ppHidden = xmobarColor "#c1a78e" "" . xmobarBorder "Top" "#f0c674" 2,
+          ppHiddenNoWindows = xmobarColor "#c1a78e" "",
+          ppUrgent = xmobarColor "#D47786" "" . wrap "!" "!",
+          ppTitle = xmobarColor "#ece1d7" "" . shorten 40,
           ppSep = wrapSep " ",
           ppTitleSanitize = xmobarStrip,
-          ppWsSep = xmobarColor "" "#002b36" "  ",
+          ppWsSep = "  ",
           ppLayout =
-            xmobarColor "#002b36" ""
+            xmobarColor "#292522" ""
               . ( \case
                     "Spacing Tall" -> "<icon=tiled.xpm/>"
                     "Spacing Mirror Tall" -> "<icon=mirrortiled.xpm/>"
@@ -414,8 +415,8 @@ myXmobarPP =
     wrapSep :: String -> String
     wrapSep =
       wrap
-        (xmobarColor "#002b36" "#002b36:7" (xmobarFont 2 "\xe0b4"))
-        (xmobarColor "#002b36" "#002b36:7" (xmobarFont 2 "\xe0b6"))
+        (xmobarColor "#292522" "#292522" (xmobarFont 2 "\xe0b4"))
+        (xmobarColor "#292522" "#292522" (xmobarFont 2 "\xe0b6"))
 
 myXmobar :: String
 myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
