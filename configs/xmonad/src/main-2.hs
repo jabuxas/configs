@@ -26,18 +26,24 @@ import XMonad.Hooks.ManageDebug
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
 import qualified XMonad.StackSet as W
+import XMonad.Util.ClickableWorkspaces
 import XMonad.Util.Cursor
 import XMonad.Util.EZConfig
 import qualified XMonad.Util.Hacks as Hacks
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
+
+-- import qualified DBus                       as D
+-- import qualified DBus.Client                as D
 
 main :: IO ()
 main =
@@ -49,7 +55,11 @@ main =
       . fullscreenSupport
       . ewmh
       . Hacks.javaHack
+      -- . withEasySB xmobar toggleSB
+      -- . withSB xmobar2
     $ myConfig
+  -- where
+  --   toggleSB XConfig {modMask = modm} = (modm, xK_m)
 
 -- Windows key/Super key
 myModMask :: KeyMask
@@ -64,6 +74,10 @@ myLauncher :: String
 myLauncher = myHomeDir ++ "/.config/rofi/launchers/type-6/launcher.sh"
 
 -- Default Launcher
+-- myWinSwitch :: String
+-- myWinSwitch = myHomeDir ++ "/.config/rofi/launchers/type-6/tab.sh"
+
+-- Default Launcher
 myFileManager :: String
 myFileManager = "kitty -e ranger"
 
@@ -71,9 +85,14 @@ myFileManager = "kitty -e ranger"
 myBrowser :: String
 myBrowser = "brave-bin"
 
+myPowerMenu :: String
+myPowerMenu = myHomeDir ++ "/.config/rofi/powermenu/type-6/powermenu.sh"
+
 -- Workspaces
 myWorkspaces :: [String]
 myWorkspaces = ["dev", "web", "irc", "gfx", "vm", "msc", "eml", "stm"]
+
+-- myWorkspaces = map show [1 .. 9]
 
 -- Border Width
 myBorderWidth :: Dimension
@@ -163,6 +182,7 @@ myAdditionalKeys =
       [ ("M-<Return>", spawn myTerminal),
         ("M-S-m", namedScratchpadAction myScratchpads "ncmpcpp"),
         ("M-C-<Return>", namedScratchpadAction myScratchpads "terminal"),
+        ("M-S-<Escape>", spawn myPowerMenu),
         ("M-b", spawn myBrowser),
         ("M-v", spawn "code"),
         ("M-S-s", spawn "~/steam/steam.sh"),
@@ -171,6 +191,7 @@ myAdditionalKeys =
         ("C-<Print>", unGrab *> spawn screenShotApp),
         ("<Print>", spawn screenShotFullscreen),
         ("M-S-<Return>", spawn myLauncher),
+        -- ("M1-<Tab>", spawn myWinSwitch),
         ("M-e", spawn myFileManager)
       ]
     -- Multimedia keybinds.
@@ -205,12 +226,19 @@ myStartupHook = do
       spawnOnce
       [ "sh ~/scripts/screenlayout.sh",
         "nitrogen --restore &",
+        -- "sh ~/scripts/wallpaper.sh",
         "touch ~/tmp/touchy && rm -rf ~/tmp/*",
         myHomeDir ++ "/.local/bin/picom-ibhagwan -b --experimental-backends &",
+        "nm-applet &",
+        -- "picom",
         "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.5",
         "setxkbmap -option ctrl:nocaps br abnt2",
+        "nm-applet",
+        -- "trayer-srg --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x2F2F2F --height 25 --distance 0 --margin 0 --alpha 0 --monitor 0 --transparent true", -- normal bar
+        -- "trayer-srg --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x002b36 --height 30 --transparent false --distance 15 --margin 10 --alpha 0 --monitor 0 --transparent true", -- spaced bar
         "dunst &",
         "lxqt-policykit-agent &",
+        "xrdb -load ~/.Xresources",
         "redshift -t 4500:2500 -l -23.5475:-46.63611 -b 0.9:0.6"
       ]
   setDefaultCursor xC_left_ptr
@@ -359,6 +387,50 @@ myLayoutHook =
     delta = 3 / 100 -- Percent of screen increment by when resizing panes.
     w = 2 -- Width of pixel size between windows while tiled.
 
+myXmobarPP :: X PP
+myXmobarPP =
+  clickablePP $
+    filterOutWsPP ["NSP"] $
+      def
+        { ppCurrent = xmobarColor "#ece1d7" "" . xmobarBorder "Bottom" "#89b3b6" 2,
+          ppVisible = xmobarColor "#A0A0A0" "" . xmobarBorder "Bottom" "#78997a" 2,
+          ppVisibleNoWindows = Just (xmobarBorder "Bottom" "#78997a" 2 . xmobarColor "#A0A0A0" ""),
+          ppHidden = xmobarColor "#c1a78e" "" . xmobarBorder "Top" "#f0c674" 2,
+          ppHiddenNoWindows = xmobarColor "#c1a78e" "",
+          ppUrgent = xmobarColor "#D47786" "" . wrap "!" "!",
+          ppTitle = xmobarColor "#ece1d7" "" . shorten 40,
+          ppSep = wrapSep " ",
+          ppTitleSanitize = xmobarStrip,
+          ppWsSep = "  ",
+          ppLayout =
+            xmobarColor "#002B36" ""
+              . ( \case
+                    "Spacing Tall" -> "<icon=tiled.xpm/>"
+                    "Spacing Mirror Tall" -> "<icon=mirrortiled.xpm/>"
+                    "Spacing Full" -> "<icon=full.xpm/>"
+                    "Spacing Simple Float" -> "<icon=floating.xpm/>"
+                    "Simple Float" -> "<icon=floating.xpm/>"
+                )
+        }
+  where
+    wrapSep :: String -> String
+    wrapSep =
+      wrap
+        (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b4"))
+        (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b6"))
+
+myXmobar :: String
+myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
+
+xmobar :: StatusBarConfig
+xmobar = statusBarProp myXmobar myXmobarPP
+
+myXmobar2 :: String
+myXmobar2 = (myHomeDir ++ "/.local/bin/xmobar2 " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
+
+xmobar2 :: StatusBarConfig
+xmobar2 = statusBarProp myXmobar2 myXmobarPP
+
 myConfig =
   def
     { modMask = myModMask,
@@ -382,7 +454,8 @@ myConfig =
     `additionalKeysP` myAdditionalKeys
 
 myScratchpads =
-  [ NS "terminal" spawnTerm findTerm manageTerm
+  [ NS "terminal" spawnTerm findTerm manageTerm,
+    NS "ncmpcpp" spawnncmpcpp findncmpcpp managencmpcpp
   ]
   where
     spawnTerm = myTerminal ++ " --name scratchpad"
@@ -393,3 +466,62 @@ myScratchpads =
         w = 0.9
         t = 0.95 - h
         l = 0.95 - w
+    spawnncmpcpp = myTerminal ++ " --name ncmpcpp -e ncmpcpp"
+    findncmpcpp = resource =? "ncmpcpp"
+    managencmpcpp = customFloating $ W.RationalRect l t w h
+      where
+        h = 0.9
+        w = 0.9
+        t = 0.95 - h
+        l = 0.95 - w
+
+-- I GIVE UP ON DBUS.
+
+-- logTitle :: D.Client -> X ()
+-- logTitle ch = dynamicLogWithPP def
+--                                {ppCurrent         = unPango
+--                                ,ppVisible         = pangoInactive
+--                                ,ppHidden          = const ""
+--                                ,ppHiddenNoWindows = const ""
+--                                ,ppUrgent          = pangoBold
+--                                ,ppTitle           = unPango
+--                                ,ppLayout          = unPango
+--                                ,ppWsSep           = " "
+--                                ,ppSep             = "⋮"
+--                                ,ppOrder           = swapIcons
+--                                ,ppSort            = getSortByXineramaPhysicalRule horizontalScreenOrderer
+--                                ,ppOutput          = dbusOutput ch
+--                                }
+--   where swapIcons (ws:l:t:nsp:xs) = ws:l:nsp:t:xs
+--         -- @@@ so why do the first 4 invocations *only* not match?!
+--         swapIcons xs              = xs
+
+-- getWellKnownName :: D.Client -> IO ()
+-- getWellKnownName ch = do
+--   _ <- D.requestName ch
+--                      (D.busName_ "org.xmonad.Log")
+--                      [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
+--   return ()
+
+-- dbusOutput :: D.Client -> String -> IO ()
+-- dbusOutput ch s = do
+--   let sig = (D.signal "/org/xmonad/Log" "org.xmonad.Log" "Update")
+--             {D.signalBody = [D.toVariant s]}
+--   D.emit ch sig
+
+-- -- quick and dirty escaping of HTMLish Pango markup
+-- unPango :: String -> String
+-- unPango []       = []
+-- unPango ('<':xs) = "&lt;"  ++ unPango xs
+-- unPango ('&':xs) = "&amp;" ++ unPango xs
+-- unPango ('>':xs) = "&gt;"  ++ unPango xs
+-- unPango (x  :xs) = x:unPango xs
+
+-- -- show a string as inactive
+-- -- @@@ should use gtk theme somehow...
+-- pangoInactive :: String -> String
+-- pangoInactive s = "<span foreground=\"#8f8f8f\">" ++ unPango s ++ "</span>"
+
+-- -- show a string with highlight
+-- pangoBold :: String -> String
+-- pangoBold s = "<span weight=\"bold\" foreground=\"#ff2f2f\">" ++ unPango s ++ "</span>"
