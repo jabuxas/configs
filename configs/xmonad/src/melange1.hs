@@ -85,13 +85,14 @@ baseConfig =
       , position         = Static { xpos = 0, ypos = 1048, width = 1920, height = 32 } Bottom Flat
       , position         = Static { xpos = 0, ypos = 0, width = 1920, height = 32 } Top Flat
       -}
-      position = Static {xpos = 0, ypos = 0, width = 1920, height = 25},
+      -- position = Static {xpos = 0, ypos = 0, width = 1920, height = 25},
+      position = TopH 25,
       alpha = 255,
       overrideRedirect = True,
       lowerOnStart = True,
       hideOnStart = False,
-      allDesktops = True,
-      persistent = True,
+      allDesktops = False,
+      persistent = False,
       iconRoot = myHomeDir ++ "/.config/xmonad/icons",
       iconOffset = -1,
       sepChar = "@",

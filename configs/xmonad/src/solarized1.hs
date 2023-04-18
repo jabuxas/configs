@@ -21,7 +21,7 @@ myConfig =
                 \<fn=4><fc=#558c8e,#002b36:5>\xf30d </fc></fn>\
                 \<fn=2><fc=#002b36,#002b36:7>\xe0b4</fc></fn> "
               ]
-                <> ["<fn=5>@UnsafeXMonadLog@</fn>}"]
+                  <> ["<fn=2>@UnsafeXMonadLog@</fn>}"]
                    <> [ "<fn=2><fc=#002b36,#002b36:7>\xe0b6</fc></fn>\
                      \<fn=4><fc=#E06C75,#002b36:5>\xf001 </fc></fn>\
                      \<fn=5><fc=#E06C75,#002b36:5>@music@</fc></fn>\
@@ -69,15 +69,15 @@ myCommands =
 baseConfig :: Config
 baseConfig =
   defaultConfig
-    { font = "xft:Sugar Snow:pixelsize=14:antialias=true:hinting=true",
+    { font = "Sugar Snow 13",
       additionalFonts =
-        [ "xft:Sugar Snow:pixelsize=12:antialias=true:hinting=true",
-          "xft:Sugar Snow:size=15:antialias=true:hinting=true",
-          "xft:Sugar Snow:size=13:antialias=true:hinting=true",
-          "xft:JetBrainsMono Nerd Font:size=12:antialias=true:hinting=true",
-          "xft:Sugar Snow:pixelsize=14:antialias=true:hinting=true"
+        [ "Sugar Snow 11",
+          "Sugar Snow 13",
+          "Sugar Snow 12",
+          "JetBrainsMono Nerd Font 12",
+          "Sugar Snow 13"
         ],
-      textOffsets = [20, 22, 21, 21, 20],
+      -- textOffsets = [20, 22, 21, 21, 20],
       bgColor = "#002b36",
       fgColor = "#c8b6b8",
       borderColor = "#272727",
@@ -88,7 +88,7 @@ baseConfig =
       , position         = Static { xpos = 0, ypos = 1048, width = 1920, height = 32 } Bottom Flat
       , position         = Static { xpos = 0, ypos = 0, width = 1920, height = 32 } Top Flat
       -}
-      position = Static {xpos = 20, ypos = 15, width = 1880, height = 34},
+      position = Static {xpos = 0, ypos = 0, width = 1920, height = 34},
       alpha = 255,
       overrideRedirect = True,
       lowerOnStart = True,
