@@ -28,6 +28,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.UrgencyHook (doAskUrgent)
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
@@ -51,12 +52,13 @@ main =
     xmonad
     $ debugManageHookOn "M-S-d"
       . docks
+      . setEwmhActivateHook doAskUrgent
       . ewmhFullscreen
-      . fullscreenSupport
+      -- . fullscreenSupport
       . ewmh
       . Hacks.javaHack
-      . withEasySB xmobar toggleSB
-      . withSB xmobar2
+    . withEasySB xmobar toggleSB
+    . withSB xmobar2
     $ myConfig
   where
     toggleSB XConfig {modMask = modm} = (modm, xK_m)
@@ -79,7 +81,8 @@ myLauncher = myHomeDir ++ "/.config/rofi/launchers/type-6/launcher.sh"
 
 -- Default Launcher
 myFileManager :: String
-myFileManager = "kitty -e ranger"
+-- myFileManager = "kitty -e ranger"
+myFileManager = "thunar"
 
 -- Default Browser
 myBrowser :: String
@@ -90,13 +93,13 @@ myPowerMenu = myHomeDir ++ "/.config/rofi/powermenu/type-6/powermenu.sh"
 
 -- Workspaces
 myWorkspaces :: [String]
-myWorkspaces = ["dev", "web", "irc", "gfx", "vm", "msc", "eml", "stm"]
+myWorkspaces = ["term", "www", "comms", "games", "misc", "vm", "trash", "stm"]
 
 -- myWorkspaces = map show [1 .. 9]
 
 -- Border Width
 myBorderWidth :: Dimension
-myBorderWidth = 1
+myBorderWidth = 2
 
 -- Formal Unfocused Color
 myNormColor :: String
@@ -104,7 +107,7 @@ myNormColor = "#383830"
 
 -- Focused Color
 myFocusColor :: String
-myFocusColor = "#a2a2a2"
+myFocusColor = "#FF0000"
 
 -- Home Directory
 myHomeDir :: String
@@ -225,17 +228,16 @@ myStartupHook = do
     traverse
       spawnOnce
       [ "sh ~/scripts/screenlayout.sh",
-        "nitrogen --restore &",
+        -- "nitrogen --restore &",
+        "feh --bg-center ~/Pictures/wallpapers/felca.jpg",
         -- "sh ~/scripts/wallpaper.sh",
         "touch ~/tmp/touchy && rm -rf ~/tmp/*",
         myHomeDir ++ "/.local/bin/picom-ibhagwan -b --experimental-backends &",
         "nm-applet &",
-        -- "picom",
         "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.5",
         "setxkbmap -option ctrl:nocaps br abnt2",
-        "nm-applet",
-        -- "trayer-srg --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x2F2F2F --height 25 --distance 0 --margin 0 --alpha 0 --monitor 0 --transparent true", -- normal bar
-        "trayer-srg --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x002b36 --height 30 --transparent false --distance 1 --margin 6 --alpha 0 --monitor 0 --transparent true", -- spaced bar
+        "trayer-srg --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x2F2F2F --height 25 --distance 0 --margin 0 --alpha 0 --monitor 0 --transparent true", -- normal bar
+        -- "trayer-srg --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x002b36 --height 30 --transparent false --distance 1 --margin 6 --alpha 0 --monitor 0 --transparent true", -- spaced bar
         "dunst &",
         "lxqt-policykit-agent &",
         "xrdb -load ~/.Xresources",
@@ -328,29 +330,31 @@ myManageHook = manageRules
             className ^? "jetbrains-" <&&> title ^? "Welcome to " --> doCenterFloat,
             className ^? "jetbrains-" <&&> title =? "splash" --> doFloat,
             className ^? "Visual " <&&> isDialog --> doCenterFloat,
-            className =? "firefox-esr" --> doShift "web",
-            className =? "Chromium-browser-chromium" --> doShift "web",
-            className =? "Brave-browser" --> doShift "web",
+            className =? "firefox-esr" --> doShift "www",
+            className =? "Chromium-browser-chromium" --> doShift "www",
+            className =? "Brave-browser" --> doShift "www",
             className =? "Virt-manager" --> doShift "vm",
-            className =? "discord" --> doShift "irc",
-            className =? "discord-screenaudio" --> doShift "irc",
+            className =? "discord" --> doShift "comms",
+            className =? "discord-screenaudio" --> doShift "comms",
             className =? "Spotify" --> doShift "msc",
-            className =? "thunderbird" --> doShift "eml",
+            className =? "thunderbird" --> doShift "trash",
             className =? "Steam" --> doShift "stm",
             className =? "steam" --> doShift "stm",
-            className =? "obs" --> doShift "vm",
-            className =? "Lutris" --> doShift "vm" <> doFloat,
-            className =? "explorer.exe" --> doShift "gfx",
-            className =? "riotclientux.exe" --> doShift "gfx",
-            className =? "dauntless-win64-shipping.exe" --> doShift "gfx",
-            className =? "battle.net.exe" --> doShift "gfx" <> doFloat,
+            className =? "obs" --> doShift "misc",
+            className =? "Lutris" --> doShift "misc",
+            className =? "explorer.exe" --> doShift "games",
+            className =? "An Anime Game Launcher" --> doShift "misc" <> doCenterFloat <> hasBorder False,
+            className =? "heroic" --> doShift "misc" <> doCenterFloat <> hasBorder False,
+            className =? "riotclientux.exe" --> doShift "games",
+            className =?? "dauntless" --> doShift "games",
+            className =? "battle.net.exe" --> doShift "games" <> doFloat,
             className =? "Pcmanfm" --> doFloat,
             className =? "Thunar" --> doFloat,
             className =? "Pavucontrol" --> doFloat,
             className =? "Nitrogen" --> doFloat,
             className =? "Wrapper-2.0" --> doFloat,
-            className =? "TeamSpeak 3" --> doShift "irc",
-            className =? "easyeffects" --> doFloat <> doShift "vm",
+            className =? "TeamSpeak 3" --> doShift "comms",
+            className =? "easyeffects" --> doFloat <> doShift "misc",
             className =? "Arandr" --> doFloat,
             resource =? "desktop_window" --> doIgnore,
             resource =? "kdesktop" --> doIgnore,
@@ -359,12 +363,15 @@ myManageHook = manageRules
             "_NET_WM_WINDOW_TYPE" `isInProperty` "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doIgnore <> doRaise,
             -- Steam Game Fixes
             className =? "steam_app_1551360" <&&> title /=? "Forza Horizon 5" --> doHide, -- Prevents black screen when fullscreening.
-            className =?? "league" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
-            className =?? "riot" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
-            className =?? "csgo" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
-            className =? "gamescope" --> doShift "gfx" <> doCenterFloat <> hasBorder False,
+            className =? "Steam" <&&> title ~? "News" --> doHide,
+            className =?? "league" --> doShift "games" <> doCenterFloat <> hasBorder False,
+            className =?? "deceive" --> doShift "games" <> doCenterFloat <> hasBorder False,
+            className =?? "riot" --> doShift "games" <> doCenterFloat <> hasBorder False,
+            className =?? "Minecraft" --> doShift "games" <> doCenterFloat <> hasBorder False,
+            className =?? "csgo" --> doShift "games" <> doCenterFloat <> hasBorder False,
+            className =? "gamescope" --> doShift "games" <> doCenterFloat <> hasBorder False,
             title =? "Wine System Tray" --> doHide, -- Prevents Wine System Trays from taking input focus.
-            className =?? "steam_" --> doShift "gfx" <> hasBorder False
+            className =?? "steam_" --> doShift "games" <> hasBorder False <> doCenterFloat
           ]
 
 {- May be useful one day
@@ -374,6 +381,10 @@ doForceKill = ask >>= liftX . forceKillWindow >> mempty :: ManageHook
 
 myEventHook :: Event -> X All
 myEventHook _ = return (All True)
+
+-- myActivateHook :: ManageHook
+-- myActivateHook = composeAll
+--   [ className =? "steam_app_1284210" --> doAskUrgent ]
 
 myLayoutHook =
   avoidStruts $
@@ -392,21 +403,21 @@ myXmobarPP =
   clickablePP $
     filterOutWsPP ["NSP"] $
       def
-      -- { ppCurrent = xmobarColor "#ece1d7" "" . xmobarBorder "Bottom" "#89b3b6" 2,
-        -- ppVisible = xmobarColor "#A0A0A0" "" . xmobarBorder "Bottom" "#78997a" 2,
-        -- ppHidden = xmobarColor "#c1a78e" "" . xmobarBorder "Top" "#f0c674" 2,
-        -- ppHiddenNoWindows = xmobarColor "#c1a78e" "",
-        { ppVisible = xmobarColor "#dddddd" "" . const "\xf10c",
-          ppCurrent = xmobarColor "#dddddd" "" . const "\xf192",
-          ppHidden = xmobarColor "#777777" "" . const "\xf10c",
-          ppHiddenNoWindows = xmobarColor "#444444" "" . const "\xf10c",
-          -- ppVisibleNoWindows = Just (xmobarBorder "Bottom" "#78997a" 2 . xmobarColor "#A0A0A0" ""),
-          ppVisibleNoWindows = Just (xmobarColor "#dddddd" "" . const "\xf10c"),
+        { ppCurrent = xmobarColor "#ece1d7" "" . xmobarBorder "Bottom" "#89b3b6" 3,
+          ppVisible = xmobarColor "#ece1d7" "",
+          ppHidden = xmobarColor "#c1a78e" "" . xmobarBorder "Top" "#f0c674" 2,
+          ppHiddenNoWindows = xmobarColor "#c1a78e" "",
+          -- { ppVisible = xmobarColor "#dddddd" "" . const "\xf10c",
+          --   ppCurrent = xmobarColor "#dddddd" "" . const "\xf192",
+          --   ppHidden = xmobarColor "#777777" "" . const "\xf10c",
+          --   ppHiddenNoWindows = xmobarColor "#444444" "" . const "\xf10c",
+          ppVisibleNoWindows = Just (xmobarBorder "Bottom" "#78997a" 2 . xmobarColor "#A0A0A0" ""),
+          -- ppVisibleNoWindows = Just (xmobarColor "#dddddd" "" . const "\xf10c"),
           ppUrgent = xmobarColor "#D47786" "" . wrap "!" "!",
           ppTitle = xmobarColor "#ece1d7" "" . shorten 40,
           ppSep = wrapSep " ",
           ppTitleSanitize = xmobarStrip,
-          ppWsSep = "   ",
+          ppWsSep = " ",
           ppLayout =
             xmobarColor "#002B36" ""
               . ( \case
@@ -419,19 +430,21 @@ myXmobarPP =
         }
   where
     wrapSep :: String -> String
-    wrapSep = (++ xmobarColor "#002b36" "#002B36" (xmobarFont 2  "\xe0b4 "))
-      -- wrap
-      --   (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b4"))
-      --   (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b6"))
+    -- wrapSep = (++ xmobarColor "#002b36" "#002B36" (xmobarFont 2  "\xe0b4 "))
+    wrapSep = (++ xmobarColor "#292522" "#292522" (xmobarFont 2 "\xe0b4 "))
+
+-- wrap
+--   (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b4"))
+--   (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b6"))
 
 myXmobar :: String
-myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
+myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ "-x 0")
 
 xmobar :: StatusBarConfig
 xmobar = statusBarProp myXmobar myXmobarPP
 
 myXmobar2 :: String
-myXmobar2 = (myHomeDir ++ "/.local/bin/xmobar2 " ++ myHomeDir ++ "/.config/xmonad/src/xmobar.hs")
+myXmobar2 = (myHomeDir ++ "/.local/bin/xmobar2 " ++ "-x 1")
 
 xmobar2 :: StatusBarConfig
 xmobar2 = statusBarProp myXmobar2 myXmobarPP
@@ -449,8 +462,8 @@ myConfig =
       startupHook = myStartupHook,
       manageHook = myManageHook,
       handleEventHook =
-        Hacks.windowedFullscreenFixEventHook
-          <> swallowEventHook (className =? "Alacritty" <||> className =? "kitty" <||> className =? "XTerm") (return True)
+        -- Hacks.windowedFullscreenFixEventHook
+        swallowEventHook (className =? "Alacritty" <||> className =? "kitty" <||> className =? "XTerm") (return True)
           <> Hacks.trayerPaddingXmobarEventHook
           <> myEventHook,
       workspaces = myWorkspaces,
