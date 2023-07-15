@@ -3,4 +3,13 @@ if not status then
 	return
 end
 
-colorizer.setup()
+colorizer.setup{
+  css = {
+    rgb_fn = true;
+    rgb = true;
+    names = true;
+  };
+  html = {
+    names = true;
+  }
+}

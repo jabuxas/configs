@@ -9,6 +9,7 @@ saga.setup({
 		title = true,
 		-- Border type can be single, double, rounded, solid, shadow.
 		border = "rounded",
+    -- theme ="round",
 		winblend = 0,
 		expand = "",
 		collapse = "",
@@ -25,8 +26,8 @@ vim.keymap.set("n", "<C-z>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
 -- vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set("i", "<C-x>", "<Cmd>Lspsaga signature_help<CR>", opts)
-vim.keymap.set("n", "gp", "<Cmd>Lspsaga preview_definition<CR>", opts)
-vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
+vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", opts)
+vim.keymap.set("n", "<leader>gr", "<Cmd>Lspsaga rename<CR>", opts)
 
 -- code action
 local codeaction = require("lspsaga.codeaction")

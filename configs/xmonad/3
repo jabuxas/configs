@@ -84,7 +84,7 @@ myFileManager = "thunar"
 
 -- Default Browser
 myBrowser :: String
-myBrowser = "firefox-bin"
+myBrowser = "brave-bin"
 
 myPowerMenu :: String
 myPowerMenu = myHomeDir ++ "/.config/rofi/powermenu/type-6/powermenu.sh"
@@ -149,9 +149,6 @@ myAdditionalKeys =
     screenShotFullscreen = myHomeDir ++ "/.local/bin/print-fullscreen" :: String
     screenShotTmp = myHomeDir ++ "/.local/bin/print-tmp" :: String
     screenShotApp = myHomeDir ++ "/.local/bin/print-window.sh" :: String
-    myMainBrowser = myBrowser ++ " -p main" :: String
-    myDevBrowser = myBrowser ++ " -p dev" :: String
-    mySchoolBrowser = myBrowser ++ " -p school" :: String
     -- XMonad base keybinds.
     base =
       [ ("M-g", withFocused toggleBorder),
@@ -188,9 +185,7 @@ myAdditionalKeys =
         ("M-S-m", namedScratchpadAction myScratchpads "ncmpcpp"),
         ("M-C-<Return>", namedScratchpadAction myScratchpads "terminal"),
         ("M-S-<Escape>", spawn myPowerMenu),
-        ("M-b", spawn myMainBrowser),
-        ("M-S-b", spawn myDevBrowser),
-        ("M-C-b", spawn mySchoolBrowser),
+        ("M-b", spawn myBrowser),
         ("M-v", spawn "code"),
         ("M-S-s", spawn "flatpak run com.valvesoftware.Steam --noverifyfiles"),
         ("S-<Print>", unGrab *> spawn screenShotSelection),
@@ -200,8 +195,7 @@ myAdditionalKeys =
         ("M-S-<Return>", spawn myLauncher),
         -- ("M1-<Tab>", spawn myWinSwitch),
         ("M-e", spawn myFileManager),
-        ("C-S-m", spawn "~/scripts/macro.sh"),
-        ("M-C-x", spawn "GTK_THEME=Orchis-Dark xournalpp")
+        ("C-S-m", spawn "~/scripts/macro.sh")
       ]
     -- Multimedia keybinds.
     multimedia =
@@ -334,9 +328,13 @@ myManageHook = manageRules
             className ^? "jetbrains-" <&&> title =? "splash" --> doFloat,
             className ^? "Visual " <&&> isDialog --> doCenterFloat,
             className =? "firefox-esr" --> doShift "www",
+            className =? "Chromium-browser-chromium" --> doShift "www",
+            className =? "Brave-browser" --> doShift "www",
             className =? "Virt-manager" --> doShift "vm",
-            className =? "discord" --> doShift "misc",
-            className =? "discord-screenaudio" --> doShift "misc",
+            className =? "discord" --> doShift "comms",
+            className =? "discord-screenaudio" --> doShift "comms",
+            className =? "Spotify" --> doShift "msc",
+            className =? "thunderbird" --> doShift "trash",
             className =? "Steam" --> doShift "stm",
             className =? "steam" --> doShift "stm",
             className =? "steamwebhelper" --> doShift "stm",
@@ -346,19 +344,16 @@ myManageHook = manageRules
             className =? "explorer.exe" --> doShift "games",
             className =? "starrail.exe" --> doShift "games",
             className =? "An Anime Game Launcher" --> doShift "misc" <> doCenterFloat <> hasBorder False,
-            className =? "heroic" --> doShift "misc" <> hasBorder False,
-            className =? "parsecd" --> doShift "misc" <> hasBorder False,
+            className =? "heroic" --> doShift "misc" <> doCenterFloat <> hasBorder False,
             className =? "riotclientux.exe" --> doShift "games",
             className =?? "dauntless" --> doShift "games",
             className =? "battle.net.exe" --> doShift "games" <> doFloat,
             className =? "Pcmanfm" --> doFloat,
-            className =? "Mousepad" --> doFloat,
             className =? "Thunar" --> doFloat,
-            className =? "amberol" --> doFloat,
             className =? "Pavucontrol" --> doFloat,
             className =? "Nitrogen" --> doFloat,
             className =? "Wrapper-2.0" --> doFloat,
-            className =? "TeamSpeak 3" --> doShift "misc",
+            className =? "TeamSpeak 3" --> doShift "comms",
             className =? "easyeffects" --> doFloat <> doShift "misc",
             className =? "Arandr" --> doFloat,
             resource =? "desktop_window" --> doIgnore,
@@ -377,10 +372,8 @@ myManageHook = manageRules
             className =?? "csgo" --> doShift "games" <> doCenterFloat <> hasBorder False,
             className =? "gamescope" --> doShift "games" <> doCenterFloat <> hasBorder False,
             className =? "diablo iv.exe" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =? "Transformice" --> doShift "games",
-            className =? "obsidian" --> doShift "games",
-            className =? "Xournalpp" --> doShift "games",
-            className =?? "libreoffice" --> doShift "games",
+            className =? "obsidian" --> doShift "trash" <> hasBorder True,
+            className =? "libreoffice-writer" --> doShift "trash",
             title =? "Wine System Tray" --> doHide, -- Prevents Wine System Trays from taking input focus.
             className =?? "steam_" --> doShift "games" <> hasBorder False <> doCenterFloat
           ]

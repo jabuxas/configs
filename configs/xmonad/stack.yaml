@@ -15,7 +15,6 @@ extra-deps:
   - pango-0.13.8.2@sha256:d4057ebddade4cde3e25d7755b5e030e7a7e56fe7365afd37916a7bba46d3fd9,3917
   - glib-0.13.8.2@sha256:f44b829e741b3c3244d523f60b058701dfc067ff64c2ba61d43be4cccfc2663d,3156
 
-
 flags:
   xmobar:
     with_xpm: true

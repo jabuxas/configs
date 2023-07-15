@@ -13,6 +13,7 @@ local Group = cb.Group
 local groups = cb.groups
 local styles = cb.styles
 
+Color.new('white', '#ffffff')
 Color.new('black', '#000000')
 Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
 Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
@@ -32,10 +33,11 @@ Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.undercurl,
 Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
 Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
 Group.new("Macro", groups.PreProc, colors.none, styles.italic + styles.bold)
-Group.new("Function", groups.Function, colors.none, styles.italic)
+Group.link("Function", groups.Function, colors.none, styles.italic)
 Group.new("Conditional", groups.Statement, colors.none, styles.italic)
 Group.new("Boolean", groups.Constant, colors.none, styles.bold)
---
+Group.new("HoverBorder", colors.yellow, colors.none, styles.NONE)
+
 -- local success, solarized = pcall(require, 'solarized')
 --
 -- if not success then
@@ -51,3 +53,10 @@ Group.new("Boolean", groups.Constant, colors.none, styles.bold)
 -- solarized.setup(default_config)
 --
 -- vim.cmd 'colorscheme solarized'
+--
+-- local g = vim.g
+-- g.nord_contrast = true
+-- g.nord_borders = false
+-- g.nord_italic = true
+-- g.nord_bold = true
+-- require("nord").set()

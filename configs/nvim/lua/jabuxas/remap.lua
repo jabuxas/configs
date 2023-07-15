@@ -1,12 +1,10 @@
 local keymap = vim.keymap
-local nvim_tmux_nav = require('nvim-tmux-navigation')
-
+local nvim_tmux_nav = require("nvim-tmux-navigation")
 
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
-keymap.set("i", "jk", "<Esc>")
 
 vim.g.mapleader = " "
-keymap.set("n", "<leader>pv", vim.cmd.Ex)
+keymap.set("n", "sf", vim.cmd.Ex)
 -- keymap.set("n", "<leader>e", vim.cmd.NreeToggle)
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -45,11 +43,22 @@ keymap.set("n", "<leader>sx", ":close<CR>")
 keymap.set("n", "<leader>s=", "<C-w>+")
 keymap.set("n", "<leader>s-", "<C-w>-")
 
-keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-keymap.set('n', '<Leader>sm', "<Cmd>lua require('maximize').toggle()<CR>")
+keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+keymap.set("n", "<leader>sm", "<Cmd>lua require('maximize').toggle()<CR>")
+keymap.set("n", "<leader>d", "<cmd>DiffviewFileHistory %<CR>")
 
+keymap.set("n", "+", "<C-a>")
+keymap.set("n", "-", "<C-x>")
+keymap.set("n", "<left>", "<C-w><")
+keymap.set("n", "<right>", "<C-w>>")
+keymap.set("n", "<up>", "<C-w>+")
+keymap.set("n", "<down>", "<C-w>-")
+
+keymap.set("n", "<leader>e", function ()
+  vim.cmd(string.format("Emmet %s", vim.fn.input("Emmet: ")))
+end)
