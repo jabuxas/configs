@@ -43,7 +43,13 @@ vim.opt.termguicolors = true
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- vim.o.foldcolumn = 1
--- vim.o.foldlevel = 99
--- vim.o.foldlevelstart= 0
--- vim.o.foldenable = true
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+
+vim.g.user_emmet_leader_key = ","
+vim.g.user_emmet_install_global = 0
+
+local autocmd = vim.api.nvim_create_autocmd
+autocmd("FileType", {pattern = "html", command = [[EmmetInstall]]})
+autocmd("FileType", {pattern = "css", command = [[EmmetInstall]]})

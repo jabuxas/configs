@@ -9,7 +9,3 @@ if vim.g.neovide then
 	-- vim.cmd("hi Normal guibg=#78997a")
 end
 
-vim.g.solarized_italic_comments = true
-vim.g.solarized_italic_keywords = false
-vim.g.solarized_italic_functions = true
-vim.g.solarized_italic_variables = false

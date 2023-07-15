@@ -5,8 +5,6 @@ import Xmobar
 main :: IO ()
 main = xmobar =<< configFromArgs =<< myConfig
 
--- main = xmobar =<< myConfig
-
 myHomeDir :: String
 myHomeDir = unsafeDupablePerformIO (getEnv "HOME")
 

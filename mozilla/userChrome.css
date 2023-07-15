@@ -1,0 +1,93 @@
+/* hide tabs */
+#TabsToolbar {
+visibility: hidden;
+height: 0px;
+}
+/* hide titlebar (ff113) */
+#titlebar {
+  display: none;
+}
+
+/* smaller sideberry badge */
+#sidebar-switcher-target {
+transform: scale(0.6);
+position: relative;
+left: -24px;
+}
+#sidebar-header {
+  height: 24px;
+  background-color: black;
+}
+  
+/* navbar on the bottom (might break? inverts the layout of root) */
+/* TODO: fixme: show search results
+body {
+-moz-box-direction: reverse !important;
+  }
+*/
+#navigator-toolbox {
+  border: none !important;
+}
+
+/* urlbar not round, no border, spans the entire navbar height */
+#urlbar-container {
+padding: 0 !important;
+}
+#urlbar-background, #searchbar {
+  border: none !important;
+  border-radius: 0 !important;
+}
+#urlbar-background {
+  min-height: 50px;
+  top: -8px;
+}
+
+#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background, #searchbar:focus-within {
+outline: none !important;
+}
+
+/* remove sidebar splitter next to sideberry  */
+.sidebar-splitter {
+/* display: none !important; */
+width: 2px !important;
+}
+
+/* NOTE: forces pinned extentions into the extention menu? */
+/* hides back and forwards arrows if not active NOTE: disable rule if reordering taskbar 
+.toolbarbutton-1[disabled="true"] {
+  visibility: collapse;
+} */
+
+#sidebar-close {
+  display: none !important;
+}
+
+/* smaller bookmark items */
+
+.bookmark-item, [data-l10n-id="places-open-all-bookmarks"], [data-l10n-id="places-open-all-in-tabs"], [data-l10n-id="places-open-in-container-tab"], .openintabs-menuitem { /* useless/undesired selectors? */
+  font-size: 12px !important;
+}
+
+.bookmark-item image {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+#PlacesChevron { /* stretches toolbar if visible otherwise */
+  height: 18px !important;
+}
+
+menuitem.bookmark-item, .bookmark-item, image .openintabs-menuitem { /* NOTE: .bookmark-item targets wrapped folders */
+  margin: 2px !important;
+  padding: 2px !important;
+  padding-left: 6px !important; /* looks less wrong */
+  min-height: 12px !important;
+}
+
+/* self-described */
+.bookmarks-actions-menuseparator {
+  visibility: hidden !important;
+  height: 4px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}

@@ -36,7 +36,12 @@ return require("packer").startup(function(use)
 	})
 	use("norcalli/nvim-colorizer.lua")
 	use("ThePrimeagen/vim-be-good")
-	use("declancm/maximize.nvim")
+	use({
+		"declancm/maximize.nvim",
+		config = function()
+			require("maximize").setup()
+		end,
+	})
 	use("andweeb/presence.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use({
@@ -52,13 +57,10 @@ return require("packer").startup(function(use)
 		"hrsh7th/nvim-cmp",
 	})
 	use("nvim-telescope/telescope.nvim")
-	use("nvim-telescope/telescope-file-browser.nvim")
-	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 	use({
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 	})
-	use({ "romgrk/barbar.nvim", requires = "nvim-web-devicons" })
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		"jay-babu/mason-null-ls.nvim",
@@ -73,11 +75,45 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"xiyaowong/nvim-transparent",
-		config = function()
-			require("transparent").setup({ enable = true })
-			vim.g.transparent_percentage = 80
-		end,
+		-- config = function()
+		-- 	require("transparent").setup({ enable = true })
+		-- 	vim.g.transparent_percentage = 80
+		-- end,
 	})
 	use("folke/zen-mode.nvim")
 	use("folke/lsp-colors.nvim")
+	use("AlexvZyl/nordic.nvim")
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{
+				-- Optional
+				"williamboman/mason.nvim",
+				run = function()
+					pcall(vim.cmd, "MasonUpdate")
+				end,
+			},
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "jay-babu/mason-null-ls.nvim" },
+		},
+	})
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	use("shaunsingh/nord.nvim")
+	use("sindrets/diffview.nvim")
+	-- install without yarn or npm
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+	use("mattn/emmet-vim")
 end)

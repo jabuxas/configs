@@ -1,5 +1,8 @@
--- heavily copied from github.com/scherso, all rights to him
 cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
 
 name:           zmonad
 version:        0.1.0
@@ -19,10 +22,9 @@ executable xmobar
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -O2 -j -dynamic -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       base
+    , dbus
     , xmobar
     , xmonad-contrib >=0.16
-    , cairo >=0.13
-    , pango >=0.13
   default-language: Haskell2010
 
 executable xmobar2
@@ -34,10 +36,9 @@ executable xmobar2
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -O2 -j -dynamic -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       base
+    , dbus
     , xmobar
     , xmonad-contrib >=0.16
-    , cairo >=0.13
-    , pango >=0.13
   default-language: Haskell2010
 
 executable xmonad
@@ -51,6 +52,7 @@ executable xmonad
       X11 >=1.10
     , base
     , containers
+    , dbus
     , xmonad
     , xmonad-contrib >=0.16
   default-language: Haskell2010
