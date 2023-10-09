@@ -1,4 +1,13 @@
 #!/bin/bash
+name="$HOME/pics/screenshots/screenshot-$(date -Iseconds | cut -d '+' -f1).png" 
+if [[ $XDG_SESSION_TYPE == "x11" ]]; then
+  maim -u -s $name 
+  xclip -selection clipboard -t image/png $name
+fi
 
-jabuxa="$HOME/Pictures/screenshots/screenshot-$(date -Iseconds | cut -d '+' -f1).png" && maim -u -s -n -l -c 0.157,0.333,0.466,0.4 "$jabuxa" && xclip -selection clipboard -t image/png "$jabuxa"
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+  grim -g "$(slurp)" $name
+  xclip -selection clipboard -t image/png $name
+  wl-copy < $name
+fi
 
