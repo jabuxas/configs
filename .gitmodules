@@ -1,0 +1,6 @@
+[submodule "desktop/configs/awesome/awesome-sharedtags"]
+	path = desktop/configs/awesome/awesome-sharedtags
+	url = https://github.com/Drauthius/awesome-sharedtags
+[submodule "desktop/configs/awesome/awesome-wm-widgets"]
+	path = desktop/configs/awesome/awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets

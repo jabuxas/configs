@@ -1,16 +1,13 @@
-{-# LANGUAGE
-    MultiWayIf   -- Required for `toggleFull` in `myAdditionalKeys`
-    , LambdaCase -- Required for `(\case)` statement in `myXmobarPP`
-    , FlexibleContexts
-    , OverloadedStrings
-#-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE MultiWayIf #-}
+{-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -Wno-missing-signatures 
     -Wno-orphans #-}
 
 -- Data Imports
 
 import Data.Functor
-import Data.List (isInfixOf)
 import qualified Data.Map as M
 import Data.Monoid
 -- Used in io exitSuccess
@@ -27,26 +24,24 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDebug
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.OnPropertyChange (onXPropertyChange)
 import XMonad.Hooks.SetWMName
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.UrgencyHook (doAskUrgent)
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Layout.FocusTracking
-import XMonad.Layout.Fullscreen
+import XMonad.Layout.Mosaic
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
+import XMonad.Layout.Tabbed
+import XMonad.Layout.TwoPane
+import XMonad.Operations
 import qualified XMonad.StackSet as W
-import XMonad.Util.ClickableWorkspaces
 import XMonad.Util.Cursor
 import XMonad.Util.EZConfig
 import qualified XMonad.Util.Hacks as Hacks
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
-
--- import qualified DBus                       as D
--- import qualified DBus.Client                as D
 
 main :: IO ()
 main =
@@ -55,21 +50,17 @@ main =
     $ debugManageHookOn "M-S-d"
       . docks
       . setEwmhActivateHook doAskUrgent
-      -- . ewmhFullscreen -- breaks league of legends
+      . ewmhFullscreen -- breaks league of legends
       . toggleFullFloatEwmhFullscreen
       -- . fullscreenSupport -- breaks game launchers #450
       . ewmh -- modal dialogs #452
       . Hacks.javaHack
-      -- . withEasySB xmobar toggleSB
-      -- . withSB xmobar2
     $ myConfig
-  -- where
-  --   toggleSB XConfig {modMask = modm} = (modm, xK_m)
 
 myModMask :: KeyMask
 myModMask = mod4Mask
 
--- Default Terminal
+-- Default terminal
 myTerminal :: String
 myTerminal = "kitty"
 
@@ -91,7 +82,8 @@ myPowerMenu = myHomeDir ++ "/.config/rofi/powermenu/type-6/powermenu.sh"
 
 -- Workspaces
 myWorkspaces :: [String]
-myWorkspaces = ["term", "www", "comms", "games", "misc", "vm", "trash", "stm"]
+myWorkspaces = ["one", "two", "three", "four", "five", "six", "seven", "eight"]
+
 -- myWorkspaces = map show [1 .. 9]
 
 -- Border Width
@@ -177,6 +169,9 @@ myAdditionalKeys =
         ("M-S-l", windows W.swapUp),
         ("M-h", sendMessage Shrink),
         ("M-l", sendMessage Expand),
+        ("M-a", sendMessage Taller),
+        ("M-z", sendMessage Wider),
+        ("M-r", sendMessage Reset),
         ("M-t", withFocused $ windows . W.sink),
         ("M-f", withFocused toggleFull),
         ("M-C-S-6", withFocused $ \w -> spawn $ "xprop -id " ++ show w ++ " | ${XMONAD_XMESSAGE:-xmessage} -file -"),
@@ -185,32 +180,36 @@ myAdditionalKeys =
     -- Spawning applications.
     applications =
       [ ("M-<Return>", spawn myTerminal),
-        ("M-S-m", namedScratchpadAction myScratchpads "ncmpcpp"),
         ("M-C-<Return>", namedScratchpadAction myScratchpads "terminal"),
         ("M-S-<Escape>", spawn myPowerMenu),
         ("M-b", spawn myMainBrowser),
         ("M-S-b", spawn myDevBrowser),
         ("M-C-b", spawn mySchoolBrowser),
-        ("M-v", spawn "code"),
-        ("M-S-s", spawn "flatpak run com.valvesoftware.Steam --noverifyfiles"),
+        ("M-S-s", spawn "steam --noverifyfiles"),
         ("S-<Print>", unGrab *> spawn screenShotSelection),
         ("C-S-<Print>", unGrab *> spawn screenShotTmp),
         ("C-<Print>", unGrab *> spawn screenShotApp),
         ("<Print>", spawn screenShotFullscreen),
         ("M-S-<Return>", spawn myLauncher),
-        -- ("M1-<Tab>", spawn myWinSwitch),
         ("M-e", spawn myFileManager),
         ("C-S-m", spawn "~/scripts/macro.sh"),
+        ("M-C-o", spawn "VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_pro_icd64.json obs"),
+        ("M-C-d", spawn "discord"),
+        ("M-M1-x", spawn "XL_SECRET_PROVIDER=FILE xivlauncher"),
         ("M-C-x", spawn "GTK_THEME=Orchis-Dark xournalpp")
       ]
     -- Multimedia keybinds.
     multimedia =
-      [ ("<XF86AudioPlay>", spawn "playerctl play-pause"),
-        ("<XF86AudioPrev>", spawn "playerctl previous"),
-        ("<XF86AudioNext>", spawn "playerctl next"),
-        ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"),
-        ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -1.5%"),
-        ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +1.5%"),
+      [ ("<XF86AudioPlay>", spawn "~/volume_brightness.sh play_pause"),
+        ("<XF86AudioPrev>", spawn "~/volume_brightness.sh prev_track"),
+        ("<XF86AudioNext>", spawn "~/volume_brightness.sh next_track"),
+        ("<XF86AudioMute>", spawn "~/volume_brightness.sh volume_mute"),
+        ("<XF86AudioLowerVolume>", spawn "~/volume_brightness.sh volume_down"),
+        ("<XF86AudioRaiseVolume>", spawn "~/volume_brightness.sh volume_up"),
+        ("<XF86AudioPause>", spawn "~/volume_brightness.sh play_pause"),
+        ("<XF86AudioPlayPause>", spawn "~/volume_brightness.sh play_pause"),
+        ("<XF86MonBrightnessUp>", spawn "~/volume_brightness.sh brightness_up"),
+        ("<XF86MonBrightnessDown>", spawn "~/volume_brightness.sh brightness_down"),
         ("<Pause>", spawn "amixer sset Capture toggle"),
         ("M-<Escape>", spawn "mpc toggle"),
         ("M-<F1>", spawn "mpc prev"),
@@ -230,24 +229,12 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
 
 myStartupHook :: X ()
 myStartupHook = do
-  -- _ <-
-    -- traverse
-      -- spawnOnce
-      -- [ "sh ~/scripts/screenlayout.sh",
-      --   "feh --bg-center ~/Pictures/wallpapers/felca.jpg",
-      --   "touch ~/tmp/touchy && rm -rf ~/tmp/*",
-      --   myHomeDir ++ "/.local/bin/picom-ibhagwan -b --experimental-backends &",
-      --   "xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput --set-prop 'pointer:''Gaming Mouse' 'libinput Accel Speed' 0.5",
-      --   "setxkbmap -option ctrl:nocaps br abnt2",
-      --   "trayer-srg --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x2F2F2F --height 25 --distance 0 --margin 0 --alpha 0 --monitor 1 --transparent true", -- normal bar
-      --   -- "trayer-srg --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --tint 0x002b36 --height 30 --transparent false --distance 1 --margin 6 --alpha 0 --monitor 0 --transparent true", -- spaced bar
-      --   "dunst &",
-      --   "lxqt-policykit-agent &",
-      --   "xrdb -load ~/.Xresources",
-      --   -- "redshift -t 4500:2500 -l -23.5475:-46.63611"
-      -- ]
+  _ <-
+    traverse
+      spawnOnce
+      ["sh ~/init.sh"]
   setDefaultCursor xC_left_ptr
-  setWMName "xfce+xmonad"
+  setWMName "xmonad"
 
 isInstance (ClassApp c _) = className =? c
 isInstance (TitleApp t _) = title =? t
@@ -278,10 +265,6 @@ about = TitleApp "About Mozilla Firefox" "About Mozilla Firefox"
 message = ClassApp "Xmessage" "Xmessage"
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
-
--- Like '=?' but matches substrings.
-q =?? x = fmap (isInfixOf x) q
-
 myManageHook = manageRules
   where
     -- Hides windows without ignoring it, see doHideIgnore in XMonad contrib.
@@ -325,70 +308,84 @@ myManageHook = manageRules
         ]
         <> composeAll
           [ manageDocks <> namedScratchpadManageHook myScratchpads,
+            "_NET_WM_WINDOW_TYPE" `isInProperty` "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doIgnore <> doRaise,
+            className =? "An Anime Game Launcher" --> doShift "five" <> doCenterFloat <> hasBorder False,
+            className =? "Arandr" --> doFloat,
+            className =? "Anki" --> doShift "five",
+            className =? "Anki" <&&> title =? "Add" --> doFloat,
+            className =? "Conky" --> doIgnore,
+            className =? "Lutris" --> doShift "five",
+            className =? "Mousepad" --> doFloat,
+            className =? "Nitrogen" --> doFloat,
+            className =? "Pavucontrol" --> doFloat,
+            className =? "Pcmanfm" --> doFloat,
+            className =? "Pidgin" --> doShift "seven",
+            className =? "PrismLauncher" --> doShift "five",
+            className =? "Steam" --> doShift "eight",
+            className =? "TeamSpeak 3" --> doShift "three",
+            className =? "Thunar" --> doFloat,
+            className =? "Transformice" --> doShift "four",
+            className =? "Virt-manager" --> doShift "six",
+            className =? "Wrapper-2.0" --> doFloat,
+            className =? "Xfce4-panel" --> doCenterFloat <> hasBorder False,
+            className =? "XIVLauncher.Core" --> doShift "five" <> doCenterFloat,
+            className =? "Xournalpp" --> doShift "four",
+            className =? "amberol" --> doFloat,
+            className =? "battle.net.exe" --> doShift "four" <> doCenterFloat,
+            className =? "diablo iv.exe" --> doShift "four" <> doCenterFloat <> hasBorder False,
+            className =? "discord" --> doShift "three",
+            className =? "discord-screenaudio" --> doShift "three",
+            className =? "easyeffects" --> doFloat <> doShift "six",
+            className =? "explorer.exe" --> doShift "four",
+            className =? "ffxiv_dx11.exe" --> doShift "four" <> hasBorder False <> doFullFloat,
+            className =? "firefox" <&&> resource =? "Toolkit" --> doFloat,
             className =? "firefox" <&&> title =? "File Upload" --> doFloat,
+            className =? "firefox" <&&> title =? "Firefox — Sharing Indicator" --> doForceKill,
             className =? "firefox" <&&> title =? "Library" --> doCenterFloat,
             className =? "firefox" <&&> title ^? "Save" --> doFloat,
-            className =? "firefox" <&&> resource =? "Toolkit" --> doFloat,
             className =? "firefox" <&&> title ^? "Sign in" --> doFloat,
-            className ^? "jetbrains-" <&&> title ^? "Welcome to " --> doCenterFloat,
-            className ^? "jetbrains-" <&&> title =? "splash" --> doFloat,
+            className =? "gamescope" --> doShift "four" <> doFullFloat <> hasBorder False,
+            className =? "heroic" --> doShift "five",
+            className =? "obs" --> doShift "five",
+            className =? "obsidian" --> doShift "three",
+            className =? "parsecd" --> doShift "five",
+            className =? "starrail.exe" --> doShift "four",
+            className =? "steam" --> doShift "eight",
+            className =? "steam_app_1551360" <&&> title /=? "Forza Horizon 5" --> doHide, -- Prevents black screen when fullscreening.
+            className =? "steamwebhelper" --> doShift "eight",
+            className ~? "Minecraft" --> doShift "four" <> doCenterFloat <> hasBorder False,
+            className ~? "csgo" --> doShift "four" <> doCenterFloat <> hasBorder False,
+            className ~? "launcher.exe" --> doShift "four" <> doCenterFloat <> hasBorder False,
+            className ~? "Warframe" --> doShift "four" <> doFullFloat <> hasBorder False,
+            className ~? "dauntless" --> doShift "four",
+            className ~? "deceive" --> doShift "four" <> doCenterFloat <> hasBorder False,
+            className ~? "league" --> doShift "four" <> doCenterFloat <> hasBorder False,
+            className ~? "libreoffice" --> doShift "six",
+            className ~? "riot" --> doShift "four" <> doCenterFloat <> hasBorder False,
+            className ~? "steam_" --> doShift "four" <> hasBorder False <> doFullFloat,
             className ^? "Visual " <&&> isDialog --> doCenterFloat,
-            className =? "firefox-esr" --> doShift "www",
-            className =? "Virt-manager" --> doShift "vm",
-            className =? "discord" --> doShift "misc",
-            className =? "discord-screenaudio" --> doShift "misc",
-            className =? "Steam" --> doShift "stm",
-            className =? "steam" --> doShift "stm",
-            className =? "steamwebhelper" --> doShift "stm",
-            className =? "obs" --> doShift "misc",
-            className =? "Lutris" --> doShift "misc",
-            className =? "PrismLauncher" --> doShift "misc",
-            className =? "explorer.exe" --> doShift "games",
-            className =? "starrail.exe" --> doShift "games",
-            className =? "An Anime Game Launcher" --> doShift "misc" <> doCenterFloat <> hasBorder False,
-            className =? "heroic" --> doShift "misc" <> hasBorder False,
-            className =? "parsecd" --> doShift "misc" <> hasBorder False,
-            className =? "riotclientux.exe" --> doShift "games",
-            className =?? "dauntless" --> doShift "games",
-            className =? "battle.net.exe" --> doShift "games" <> doFloat,
-            className =? "Pcmanfm" --> doFloat,
-            className =? "Mousepad" --> doFloat,
-            className =? "Thunar" --> doFloat,
-            className =? "amberol" --> doFloat,
-            className =? "Pavucontrol" --> doFloat,
-            className =? "Nitrogen" --> doFloat,
-            className =? "Wrapper-2.0" --> doFloat,
-            className =? "TeamSpeak 3" --> doShift "misc",
-            className =? "easyeffects" --> doFloat <> doShift "misc",
-            className =? "Arandr" --> doFloat,
+            className ^? "jetbrains-" <&&> title =? "splash" --> doFloat,
+            className ^? "jetbrains-" <&&> title ^? "Welcome to " --> doCenterFloat,
+            isRole ^? "About" <||> isRole ^? "about" --> doFloat,
             resource =? "desktop_window" --> doIgnore,
             resource =? "kdesktop" --> doIgnore,
-            className =? "Conky" --> doIgnore,
-            isRole ^? "About" <||> isRole ^? "about" --> doFloat,
-            "_NET_WM_WINDOW_TYPE" `isInProperty` "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doIgnore <> doRaise,
-            -- Steam Game Fixes
-            className =? "steam_app_1551360" <&&> title /=? "Forza Horizon 5" --> doHide, -- Prevents black screen when fullscreening.
-            className =? "Steam" <&&> title ~? "News" --> doHide,
-            className =? "Xfce4-panel" --> doCenterFloat <> hasBorder False,
-            className =?? "league" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =?? "deceive" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =?? "riot" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =?? "Minecraft" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =?? "csgo" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =? "gamescope" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =? "diablo iv.exe" --> doShift "games" <> doCenterFloat <> hasBorder False,
-            className =? "Transformice" --> doShift "games",
-            className =? "obsidian" --> doShift "games",
-            className =? "Xournalpp" --> doShift "games",
-            className =?? "libreoffice" --> doShift "games",
-            title =? "Wine System Tray" --> doHide, -- Prevents Wine System Trays from taking input focus.
-            className =?? "steam_" --> doShift "games" <> hasBorder False <> doCenterFloat
+            title =? "Wine System Tray" --> doHide -- Prevents Wine System Trays from taking input focus.
           ]
 
-{- May be useful one day
+myDynamicManageHook :: ManageHook
+myDynamicManageHook =
+  composeAll
+    [ className ~? "steam_" --> doShift "four",
+      title =? "Warframe" --> doShift "four"
+    ]
+
 doClose = ask >>= liftX . killWindow >> mempty :: ManageHook
+
+forceKillWindow :: Window -> X ()
+forceKillWindow w = withDisplay $ \d ->
+  io $ void $ killClient d w
+
 doForceKill = ask >>= liftX . forceKillWindow >> mempty :: ManageHook
--}
 
 myEventHook :: Event -> X All
 myEventHook _ = return (All True)
@@ -397,64 +394,13 @@ myLayoutHook =
   avoidStruts $
     lessBorders OnlyScreenFloat $
       spacingRaw False (Border w w w w) True (Border w w w w) True $
-        focusTracking (tiled  ||| Full)
+        focusTracking (tiled ||| Full ||| mosaic 2 [3, 2])
   where
     tiled = Tall nmaster delta ratio
     nmaster = 1 -- Default number of windows in the master pane.
     ratio = 1 / 2 -- Default proportion of screen occupied by master panes.
     delta = 3 / 100 -- Percent of screen increment by when resizing panes.
-    w = 2 -- Width of pixel size between windows while tiled.
-
-myXmobarPP :: X PP
-myXmobarPP =
-  clickablePP $
-    filterOutWsPP ["NSP"] $
-      def
-        { ppCurrent = xmobarColor "#ece1d7" "" . xmobarBorder "Bottom" "#89b3b6" 3,
-          ppVisible = xmobarColor "#ece1d7" "",
-          ppHidden = xmobarColor "#c1a78e" "" . xmobarBorder "Top" "#f0c674" 2,
-          ppHiddenNoWindows = xmobarColor "#c1a78e" "",
-          -- { ppVisible = xmobarColor "#dddddd" "" . const "\xf10c",
-          --   ppCurrent = xmobarColor "#dddddd" "" . const "\xf192",
-          --   ppHidden = xmobarColor "#777777" "" . const "\xf10c",
-          --   ppHiddenNoWindows = xmobarColor "#444444" "" . const "\xf10c",
-          ppVisibleNoWindows = Just (xmobarBorder "Bottom" "#78997a" 2 . xmobarColor "#A0A0A0" ""),
-          -- ppVisibleNoWindows = Just (xmobarColor "#dddddd" "" . const "\xf10c"),
-          ppUrgent = xmobarColor "#D47786" "" . wrap "!" "!",
-          ppTitle = xmobarColor "#ece1d7" "" . shorten 40,
-          ppSep = wrapSep " ",
-          ppTitleSanitize = xmobarStrip,
-          ppWsSep = " ",
-          ppLayout =
-            xmobarColor "#002B36" ""
-              . ( \case
-                    "Spacing Tall" -> "<icon=tiled.xpm/>"
-                    -- "Spacing Mirror Tall" -> "<icon=mirrortiled.xpm/>"
-                    "Spacing Full" -> "<icon=full.xpm/>"
-                    -- "Spacing Simple Float" -> "<icon=floating.xpm/>"
-                    -- "Simple Float" -> "<icon=floating.xpm/>"
-                )
-        }
-  where
-    wrapSep :: String -> String
-    -- wrapSep = (++ xmobarColor "#002b36" "#002B36" (xmobarFont 2  "\xe0b4 "))
-    wrapSep = (++ xmobarColor "#292522" "#292522" (xmobarFont 2 "\xe0b4 "))
-
--- wrap
---   (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b4"))
---   (xmobarColor "#002B36" "#002B36" (xmobarFont 2 "\xe0b6"))
-
-myXmobar :: String
-myXmobar = (myHomeDir ++ "/.local/bin/xmobar " ++ "-x 1")
-
-xmobar :: StatusBarConfig
-xmobar = statusBarProp myXmobar myXmobarPP
-
-myXmobar2 :: String
-myXmobar2 = (myHomeDir ++ "/.local/bin/xmobar2 " ++ "-x 1")
-
-xmobar2 :: StatusBarConfig
-xmobar2 = statusBarProp myXmobar2 myXmobarPP
+    w = 1 -- Width of pixel size between windows while tiled.
 
 myConfig =
   def
@@ -469,10 +415,10 @@ myConfig =
       startupHook = myStartupHook,
       manageHook = myManageHook,
       handleEventHook =
-        swallowEventHook (className =? "Alacritty" <||> className =? "kitty" <||> className =? "XTerm") (return True)
+        swallowEventHook (className =? "kitty") (return True)
           -- <> Hacks.windowedFullscreenFixEventHook -- #450
-          <> Hacks.trayerPaddingXmobarEventHook
           -- <> debugEventsHook
+          -- <> onXPropertyChange "WM_NAME" myDynamicManageHook
           <> myEventHook,
       workspaces = myWorkspaces,
       keys = myKeys
@@ -480,74 +426,13 @@ myConfig =
     `additionalKeysP` myAdditionalKeys
 
 myScratchpads =
-  [ NS "terminal" spawnTerm findTerm manageTerm,
-    NS "ncmpcpp" spawnncmpcpp findncmpcpp managencmpcpp
-  ]
+  [NS "terminal" spawnTerminal findTerminal manageTerminal]
   where
-    spawnTerm = myTerminal ++ " --name scratchpad"
-    findTerm = resource =? "scratchpad"
-    manageTerm = customFloating $ W.RationalRect l t w h
+    spawnTerminal = "feh --class scratchpad ~/pics/363032073_179911381762816_6317942459227566936_n.jpg"
+    findTerminal = className =? "scratchpad"
+    manageTerminal = customFloating $ W.RationalRect l t w h
       where
         h = 0.9
         w = 0.9
         t = 0.95 - h
         l = 0.95 - w
-    spawnncmpcpp = myTerminal ++ " --name ncmpcpp -e ncmpcpp"
-    findncmpcpp = resource =? "ncmpcpp"
-    managencmpcpp = customFloating $ W.RationalRect l t w h
-      where
-        h = 0.9
-        w = 0.9
-        t = 0.95 - h
-        l = 0.95 - w
-
--- I GIVE UP ON DBUS.
-
--- logTitle :: D.Client -> X ()
--- logTitle ch = dynamicLogWithPP def
---                                {ppCurrent         = unPango
---                                ,ppVisible         = pangoInactive
---                                ,ppHidden          = const ""
---                                ,ppHiddenNoWindows = const ""
---                                ,ppUrgent          = pangoBold
---                                ,ppTitle           = unPango
---                                ,ppLayout          = unPango
---                                ,ppWsSep           = " "
---                                ,ppSep             = "⋮"
---                                ,ppOrder           = swapIcons
---                                ,ppSort            = getSortByXineramaPhysicalRule horizontalScreenOrderer
---                                ,ppOutput          = dbusOutput ch
---                                }
---   where swapIcons (ws:l:t:nsp:xs) = ws:l:nsp:t:xs
---         -- @@@ so why do the first 4 invocations *only* not match?!
---         swapIcons xs              = xs
-
--- getWellKnownName :: D.Client -> IO ()
--- getWellKnownName ch = do
---   _ <- D.requestName ch
---                      (D.busName_ "org.xmonad.Log")
---                      [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
---   return ()
-
--- dbusOutput :: D.Client -> String -> IO ()
--- dbusOutput ch s = do
---   let sig = (D.signal "/org/xmonad/Log" "org.xmonad.Log" "Update")
---             {D.signalBody = [D.toVariant s]}
---   D.emit ch sig
-
--- -- quick and dirty escaping of HTMLish Pango markup
--- unPango :: String -> String
--- unPango []       = []
--- unPango ('<':xs) = "&lt;"  ++ unPango xs
--- unPango ('&':xs) = "&amp;" ++ unPango xs
--- unPango ('>':xs) = "&gt;"  ++ unPango xs
--- unPango (x  :xs) = x:unPango xs
-
--- -- show a string as inactive
--- -- @@@ should use gtk theme somehow...
--- pangoInactive :: String -> String
--- pangoInactive s = "<span foreground=\"#8f8f8f\">" ++ unPango s ++ "</span>"
-
--- -- show a string with highlight
--- pangoBold :: String -> String
--- pangoBold s = "<span weight=\"bold\" foreground=\"#ff2f2f\">" ++ unPango s ++ "</span>"

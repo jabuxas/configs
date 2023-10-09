@@ -18,25 +18,25 @@ packages:
 - completed:
     name: xmonad
     pantry-tree:
-      sha256: f3572e8c9661656858c838e53fab3e020f77638978a5e1fa253337595d7455a6
+      sha256: 680d494bc2fbcce4c3039c60fb2524be81fd6df864554ee16082aca7a2807219
       size: 3832
-    sha256: 2c1e17e2e983ca60563d72ee3558b526ff66311b416a605372e5affe54c268a9
-    size: 107366
-    url: https://github.com/xmonad/xmonad/archive/eeac754ac76dabf115deecb545e52a55f9dbbd02.tar.gz
+    sha256: 2c5165575b175ec5a908eab03ce84aab9d1a26e842555852a40a187fa829b1c7
+    size: 107943
+    url: https://github.com/xmonad/xmonad/archive/5c2ba069026666998a8932832bc8f3fce24f42e9.tar.gz
     version: 0.17.2.9
   original:
-    url: https://github.com/xmonad/xmonad/archive/eeac754ac76dabf115deecb545e52a55f9dbbd02.tar.gz
+    url: https://github.com/xmonad/xmonad/archive/5c2ba069026666998a8932832bc8f3fce24f42e9.tar.gz
 - completed:
     name: xmonad-contrib
     pantry-tree:
-      sha256: b14556491c46cc1a804ed0b9cf5ebe09be21f5f51735cebf56f7028e962abba3
-      size: 24430
-    sha256: 6dc9716a4e2b6238e65f5897e1146d6a98c19bd6f88d3cf5b2afb5212860d86e
-    size: 676773
-    url: https://github.com/xmonad/xmonad-contrib/archive/673de11ca876a4a58cae3a4d52e36260f66aa6cc.tar.gz
+      sha256: 82fe85b481383d43fe34473dc55109b8c5eba8baa691c0b377a0c412d66c134e
+      size: 24503
+    sha256: a85a279e3bb79170623e782b76a22e3b54658e0f9e378309938a989de76f5140
+    size: 679792
+    url: https://github.com/xmonad/xmonad-contrib/archive/2df26cf9f8d93d3b3fc2b1ac853d31280e9fa916.tar.gz
     version: 0.17.1.9
   original:
-    url: https://github.com/xmonad/xmonad-contrib/archive/673de11ca876a4a58cae3a4d52e36260f66aa6cc.tar.gz
+    url: https://github.com/xmonad/xmonad-contrib/archive/2df26cf9f8d93d3b3fc2b1ac853d31280e9fa916.tar.gz
 - completed:
     hackage: xmobar-0.46@sha256:65e8683aec86e5dc23041959dc2b0803f1be4a3cacab1ed29159c0732212c273,14911
     pantry-tree:
