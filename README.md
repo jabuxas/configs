@@ -1,2 +1,0 @@
-# config-notes
-some dotfiles
