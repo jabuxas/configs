@@ -1,0 +1,108 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar0 {
+  background-color: #181818;
+  color: #fff;
+  font-family: "RobotoMono Nerd Font";
+  font-size: 16px;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.sidestuff slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.sidestuff {
+  font-size: 16px;
+  font-family: "RobotoMono Nerd Font";
+  font-weight: bold;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #259185;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #259185;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.metric label {
+  font-size: 20px;
+}
+
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 60px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.label-ram {
+  font-size: 19px;
+}
+.time {
+  margin-right: 20px;
+}
+.workspaces {
+  margin-left: 0px;
+}
+.workspaces button {
+  font-size: 24px;
+  padding: 6px 10px;
+  font-weight: 600;
+}
+.workspaces button:hover {
+  color: #259185;
+}
+.ws-button-mine {
+  color: #fcf4dc;
+  background-color: #434343;
+}
+.ws-button-visible {
+  color: #fcf4dc;
+  background-color: #434343;
+}
+.ws-button-urgent {
+  color: #ffd5ca;
+  background-color: #259185;
+}
+.ws-button-busy {
+  color: #259185;
+}
+.ws-button {
+  color: #b0b4bc;
+}
+
+.music {
+  font-family: "Cartograph CF Bold";
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.spotify {
+  font-size: 20px;
+  margin-bottom: 2px;
+}

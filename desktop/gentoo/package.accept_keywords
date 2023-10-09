@@ -1,0 +1,33 @@
+# main
+sys-apps/eza
+games-util/heroic-bin
+
+# steam / lutris / wine
+games-util/lutris
+app-emulation/wine-staging
+app-emulation/wine-gecko
+app-emulation/wine-mono
+*/*::steam-overlay
+dev-python/pypresence
+dev-python/moddb
+dev-python/pyrate-limiter
+sys-libs/libudev-compat
+games-util/game-device-udev-rules
+games-util/gamemode
+
+# flatpak ditching
+app-misc/anki
+
+# guru any% speedrun
+*/*::guru
+
+# citra
+#games-emulation/citra **
+#dev-libs/teakra
+
+# xivlauncher and otd
+dev-dotnet/dotnet-sdk-bin
+app-eselect/eselect-dotnet
+dev-dotnet/dotnet-runtime-nugets
+dev-dotnet/csharp-gentoodotnetinfo
+virtual/dotnet-sdk
