@@ -1,12 +1,3 @@
-//  _        ___                                      ___ _
-// | |      / __)_                                   / __|_)
-// | | ____| |__| |_ _ _ _ ____      ____ ___  ____ | |__ _  ____    ____ ___  ____
-// | |/ _  )  __)  _) | | |    \    / ___) _ \|  _ \|  __) |/ _  |  / ___) _ \|  _ \
-// | ( (/ /| |  | |_| | | | | | |  ( (__| |_| | | | | |  | ( ( | |_| |  | |_| | | | |
-// |_|\____)_|   \___)____|_|_|_|   \____)___/|_| |_|_|  |_|\_|| (_)_|   \___/|_| |_|
-// A WindowManager for Adventurers                         (____/
-// For info about configuration please visit https://github.com/leftwm/leftwm/wiki
-
 #![enable(implicit_some)]
 (
     modkey: "Mod4",
@@ -60,12 +51,16 @@
         (window_class: "QOwnNotes", window_title:".*QownNotes.*", spawn_on_tag: 3),
         (window_class: "QOwnNotes", window_title: "Settings", spawn_floating: true),
         (window_class: "Virt-manager", spawn_on_tag: 10),
-        (window_class: "XIVLauncher.Core", spawn_on_tag: 7, spawn_floating: true),
+        (window_class: "Spotify", spawn_on_tag: 10),
+        (window_class: "thunderbird", spawn_on_tag: 10),
+        (window_class: "XIVLauncher.Core", spawn_on_tag: 7),
+        (window_class: "The Honkers Railway Launcher", spawn_on_tag: 7),
         (window_class: "Xournalpp", spawn_on_tag: 4),
         (window_class: "amberol", spawn_floating: true),
         (window_class: ".*.exe$", spawn_on_tag: 9, spawn_floating: true),
         (window_class: "^discord.*", window_title:".*Discord$", spawn_on_tag: 6),
-        (window_class: "^discord.*", window_title:"", spawn_floating: true),
+        (window_class: "WebCord", spawn_on_tag: 6),
+        (window_class: "^discord.*", window_title:".*discord-screenaudio.*", spawn_on_tag: 6, spawn_floating: false),
         (window_title: "File Upload", spawn_floating: true),
         (window_title: "Library", spawn_floating: true),
         (window_title: ".*Save.*", spawn_floating: true),
@@ -81,13 +76,14 @@
         (window_class: ".*wine.*", spawn_floating: true),
         (window_class: "Warframe*", spawn_on_tag: 9, spawn_floating: true),
         (window_class: ".*league.*", spawn_on_tag: 9, spawn_floating: true),
-        (window_class: "leagueclient.exe", spawn_on_tag: 9, spawn_as_type: Dialog),
+        (window_class: "leagueclient.exe", spawn_on_tag: 9, spawn_as_type: Splash),
         (window_class: ".*riot.*", spawn_on_tag: 9, spawn_floating: true),
         (window_class: ".*steam_.*", spawn_on_tag: 9, spawn_floating: true),
         (window_title: ".*Properties.*", spawn_floating: true),
         (window_title: "steam_app_1476970", spawn_fullscreen: true),
         // (window_title: ".*LibreOffice.*", spawn_on_tag: 11),
         (window_class: "Signal", spawn_on_tag: 11),
+        (window_class: "SFP_UI", spawn_on_tag: 11),
         (window_class: "Pidgin", spawn_on_tag: 11),
     ],
     disable_current_tag_swap: false,
@@ -99,7 +95,7 @@
     sloppy_mouse_follows_focus: false,
     auto_derive_workspaces: true,
     keybind: [
-        (command: Execute, value: "~/.config/rofi/launchers/type-6/launcher.sh", modifier: ["modkey", "Shift"], key: "Return"),
+        (command: Execute, value: "~/.config/rofi/launchers/type-1/launcher.sh", modifier: ["modkey", "Shift"], key: "Return"),
         (command: Execute, value: "kitty", modifier: ["modkey"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "c"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
@@ -161,14 +157,16 @@
         (command: Execute, value: "~/.local/bin/print-select", modifier: ["Shift"], key: "Print"),
         (command: Execute, value: "~/.local/bin/print-tmp", modifier: ["Control", "Shift"], key: "Print"),
         (command: Execute, value: "~/.local/bin/print-window.sh", modifier: ["Control"], key: "Print"),
-        (command: Execute, value: "firefox-bin", modifier: ["modkey"], key: "b"),
-        (command: Execute, value: "steam --noverifyfiles", modifier: ["modkey", "Shift"], key: "s"),
+        (command: Execute, value: "firefox", modifier: ["modkey"], key: "b"),
+        (command: Execute, value: "steam --noverifyfiles -cef-enable-debugging", modifier: ["modkey", "Shift"], key: "s"),
+        (command: Execute, value: "~/sfp.sh", modifier: ["modkey", "Control"], key: "s"),
         (command: Execute, value: "thunar", modifier: ["modkey"], key: "e"),
         (command: Execute, value: "~/scripts/macro.sh", modifier: ["Control", "Shift"], key: "m"),
         // (command: Execute, value: "VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_pro_icd64.json obs", modifier: ["Control", "Shift"], key: "m"),
-        (command: Execute, value: "discord", modifier: ["modkey", "Control"], key: "d"),
+        (command: Execute, value: "flatpak run de.shorsh.discord-screenaudio", modifier: ["modkey", "Control"], key: "d"),
         (command: Execute, value: "XL_SECRET_PROVIDER=file xivlauncher", modifier: ["modkey", "Alt"], key: "x"),
         (command: Execute, value: "xournalpp", modifier: ["modkey", "Control"], key: "x"),
+        (command: Execute, value: "i3lock", modifier: ["modkey", "Shift"], key: "l"),
         // (command: Execute, value: "xdotool type ？\n", modifier: ["Shift"], key:"question"),
         // (command: Execute, value: "xdotool type ！\n", modifier: ["Shift"], key:"exclam")
 
