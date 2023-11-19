@@ -11,10 +11,12 @@ ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
 
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
-
+WALLPAPER_PATH=~/pics/wallpapers
 # feh --bg-fill ~/pics/wallpapers/simon2.jpg --bg-fill ~/pics/wallpapers/simon3.jpg --bg-fill ~/pics/wallpapers/simon1.jpg # solarized
 # feh --bg-fill ~/pics/wallpapers/1155989-rainbow-polygons.jpg  --bg-fill ~/pics/wallpapers/media_Ff_g2i3UYAAEL54.jpg --bg-fill ~/pics/wallpapers/media_FZC3t4FUsAAPfOg.jpg # anime girls
-feh --bg-fill ~/pics/wallpapers/1155989-rainbow-polygons.jpg  --bg-fill ~/pics/wallpapers/a-solitary-drive-1920x1080-v0-rwitfbbmnpnb1.png --bg-fill ~/pics/wallpapers/yuan-zhang-1.jpg
+feh  --bg-fill ~/pics/wallpapers/a-solitary-drive-1920x1080-v0-rwitfbbmnpnb1.png --bg-fill ~/pics/wallpapers/1155989-rainbow-polygons.jpg --bg-fill ~/pics/wallpapers/yuan-zhang-1.jpg
+feh --bg-fill $WALLPAPER_PATH/B48w8xB.jpeg --bg-fill $WALLPAPER_PATH/998105.png
+# feh --bg-fill ~/pics/wallpapers/late-summer-evening-in-kotor-1920-x-1080-v0-twtwvfb4nsba1.png --bg-fill ~/pics/wallpapers/outrun-elevation-neon-nights-and-soaring-shapes-4k-wallpaper-v0-l3oe6q9neftb1.jpg
 bash ~/.config/polybar/launch.sh
 # eww daemon &
 # eww open bar0
