@@ -1,6 +1,24 @@
 # main
+media-video/obs-studio
 sys-apps/eza
+app-backup/mkstage4
 games-util/heroic-bin
+app-office/onlyoffice-bin
+dev-go/golangci-lint
+gui-wm/*
+
+# amdgpu-pro
+media-video/amdgpu-pro-amf
+media-libs/amf-headers
+media-libs/amdgpu-pro-vulkan
+
+gui-libs/gtk
+
+# hyprland (test)
+dev-cpp/sdbus-c++
+dev-libs/hyprland-protocols
+dev-libs/libliftoff
+media-libs/libdisplay-info
 
 # steam / lutris / wine
 games-util/lutris
@@ -20,10 +38,7 @@ app-misc/anki
 
 # guru any% speedrun
 */*::guru
-
-# citra
-#games-emulation/citra **
-#dev-libs/teakra
+*/*::the-anime-team
 
 # xivlauncher and otd
 dev-dotnet/dotnet-sdk-bin
@@ -31,3 +46,7 @@ app-eselect/eselect-dotnet
 dev-dotnet/dotnet-runtime-nugets
 dev-dotnet/csharp-gentoodotnetinfo
 virtual/dotnet-sdk
+
+# gamescope
+media-libs/vkroots
+gui-wm/gamescope

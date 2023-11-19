@@ -7,6 +7,14 @@ sys-firmware/intel-microcode hostonly initramfs
 sys-libs/glibc hash-sysv-compat
 app-admin/sudo offensive
 
+# obs-studio
+media-video/obs-studio browser speex websocket
+media-video/ffmpeg opus x265 vdpau amf amr chromium
+
+# zfs
+sys-fs/zfs dist-kernel
+sys-fs/zfs-kmod dist-kernel
+
 # unar
 sys-devel/gcc objc
 gnustep-base/gnustep-make native-exceptions
@@ -25,9 +33,8 @@ www-client/chromium gtk4 lto widevine
 net-libs/nodejs inspector
 
 # firefox omega
-www-client/firefox system-png wifi lto pgo hwaccel -clang l10n_pt-BR l10n_zh-CN
+www-client/firefox wifi lto pgo hwaccel -clang l10n_pt-BR l10n_zh-CN
 x11-base/xorg-server xvfb
-media-libs/libpng apng
 media-libs/libvpx postproc
 
 # citra
@@ -58,7 +65,7 @@ x11-libs/libXcomposite abi_x86_32
 x11-libs/libXinerama abi_x86_32
 net-print/cups abi_x86_32
 media-libs/fontconfig abi_x86_32
-media-libs/libsdl2 haptic abi_x86_32
+media-libs/libsdl2 haptic gles2 abi_x86_32
 net-libs/gnutls abi_x86_32
 media-libs/freetype abi_x86_32
 sys-apps/dbus abi_x86_32
@@ -168,3 +175,21 @@ sys-libs/ncurses abi_x86_32
 dev-libs/libffi abi_x86_32
 sys-libs/gpm abi_x86_32
 media-libs/fdk-aac abi_x86_32
+dev-libs/wayland abi_x86_32
+x11-libs/libxkbcommon abi_x86_32
+x11-libs/extest abi_x86_32
+dev-libs/libevdev abi_x86_32
+x11-libs/libvdpau abi_x86_32
+media-libs/x265 abi_x86_32
+media-libs/opencore-amr abi_x86_32
+
+# honkers
+dev-util/xdelta lzma
+
+# onlyoffice
+dev-qt/qtgui eglfs
+
+# hyprland
+gui-apps/hyprland-plugins csgo-vulkan-fix
+gui-apps/rofi-wayland drun windowmode
+gui-apps/waybar experimental evdev mpd network tray upower
