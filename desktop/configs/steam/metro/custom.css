@@ -1,0 +1,210 @@
+/* Just an example. Modify as needed. */
+
+html:root {
+	--decal: url(https://rosetheflower.github.io/MetroSteam/decals/6.png);
+	--decalXY: right 41px;
+	--focus: 128, 160, 255;
+	--gameimageBG: transparent;
+	--clientBG: 0, 0, 0;
+	--frameBorder: 64, 64, 64;
+	--header_dark: 12, 12, 12;
+	--bgGameList: var(--header_dark);
+	--white05onbgGameList: 24, 24, 24;
+	--textentry: var(--header_dark);
+	--whatsnew: none;
+	--avatarframes: none;
+	--gamehoverinfo: none;
+	--notificationsiconactive: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtSKVDnYQEYlQneyiIo6likWwUNoKrTqYXPohNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APE1cVJ0UVK/F9SaBHjwXE/3t173L0DhEaFqWZXDFA1y0gn4mIuvyIGXtGDEASMYFRipp7MLGThOb7u4ePrXZRneZ/7c/QrBZMBPpE4xnTDIl4nntm0dM77xGFWlhTic+IJgy5I/Mh12eU3ziWHBZ4ZNrLpOeIwsVjqYLmDWdlQiaeJI4qqUb6Qc1nhvMVZrdRY6578hcGCtpzhOs1hJLCIJFIQIaOGDVRgIUqrRoqJNO3HPfxDjj9FLplcG2DkmEcVKiTHD/4Hv7s1i1OTblIwDnS/2PbHGBDYBZp12/4+tu3mCeB/Bq60tr/aAGY/Sa+3tcgRENoGLq7bmrwHXO4Ag0+6ZEiO5KcpFIvA+xl9Ux4YuAX6Vt3eWvs4fQCy1NXSDXBwCIyXKHvN4929nb39e6bV3w+SAXKzL6wiVgAAAAZiS0dEAJkAAADnGzuJxQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHNJREFUKM/VkcsJw0AMRJ9C2nAFuqWFLSQdpBlX4x7i49bzfAgh6w857MkeIZCGGQahQKQDNzrRbby3ixj/xEH4mztvPFlim7BPv8wfA3m2RJKvSn1suLlSx5VTXTUypDnjp9J8I8NetyG+5mKZimU6Mqks+MZfZSU7urkAAAAASUVORK5CYII=);
+	font-family: "Cartograph CF";
+	--basefont: "Cartograph CF";
+}
+
+body,
+* {
+	font-family: "Cartograph CF" !important;
+	--basefont: "Cartograph CF" !important;
+}
+
+/* The preferred option lines from below should be put inside the curly brackets above to make them active */
+/* Don't forget to save the changes and restart Steam after the fact */
+
+/* Option to disable custom avatar frames
+--avatarframes: none;
+*/
+
+/* Option to remove the What's New / Library updates section
+--whatsnew: none;
+*/
+
+/* Option to remove the popups that appear on hovering over a game cover
+--gamehoverinfo: none;
+*/
+
+/* Removes the background behind the game header/image, revealing the decal of choice
+--gameimageBG: transparent;
+*/
+
+/* Accent color ideas (from the original Metro)
+--focus: 220, 79, 173;
+--focus: 172, 25, 61;
+--focus: 210, 71, 38;
+--focus: 255, 143, 50;
+--focus: 130, 186, 0;
+--focus: 0, 138, 23;
+--focus: 3, 179, 178;
+--focus: 0, 130, 152;
+--focus: 93, 178, 255;
+--focus: 0, 114, 198;
+--focus: 70, 23, 180;
+--focus: 140, 0, 149;
+*/
+
+/* Decal options (use both lines):
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/1.png);
+--decalXY: right top;
+
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/2.png);
+--decalXY: right bottom;
+
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/3.png);
+--decalXY: right bottom;
+
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/4.png);
+--decalXY: calc(100% - 1px) 3px;
+
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/5_top.png);
+--decalXY: calc(100% - 2px) top;
+
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/5_bot_sm.png);
+--decalXY: right bottom;
+
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/6.png);
+--decalXY: right 41px;
+
+--decal: url(https://rosetheflower.github.io/MetroSteam/decals/decal_steam_btmr.png);
+--decalXY: calc(100% - 174px) calc(100% - 79px);
+*/
+
+/* Green notification icon
+--notificationsiconactive: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtSKVDnYQEYlQneyiIo6likWwUNoKrTqYXPohNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APE1cVJ0UVK/F9SaBHjwXE/3t173L0DhEaFqWZXDFA1y0gn4mIuvyIGXtGDEASMYFRipp7MLGThOb7u4ePrXZRneZ/7c/QrBZMBPpE4xnTDIl4nntm0dM77xGFWlhTic+IJgy5I/Mh12eU3ziWHBZ4ZNrLpOeIwsVjqYLmDWdlQiaeJI4qqUb6Qc1nhvMVZrdRY6578hcGCtpzhOs1hJLCIJFIQIaOGDVRgIUqrRoqJNO3HPfxDjj9FLplcG2DkmEcVKiTHD/4Hv7s1i1OTblIwDnS/2PbHGBDYBZp12/4+tu3mCeB/Bq60tr/aAGY/Sa+3tcgRENoGLq7bmrwHXO4Ag0+6ZEiO5KcpFIvA+xl9Ux4YuAX6Vt3eWvs4fQCy1NXSDXBwCIyXKHvN4929nb39e6bV3w+SAXKzL6wiVgAAAAZiS0dEAJkAAADnGzuJxQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHNJREFUKM/VkcsJw0AMRJ9C2nAFuqWFLSQdpBlX4x7i49bzfAgh6w857MkeIZCGGQahQKQDNzrRbby3ixj/xEH4mztvPFlim7BPv8wfA3m2RJKvSn1suLlSx5VTXTUypDnjp9J8I8NetyG+5mKZimU6Mqks+MZfZSU7urkAAAAASUVORK5CYII=);
+*/
+
+/* Metro Dark, from the original theme colors by goodone:
+
+--clientBG: 0, 0, 0;
+--frameBorder: 64, 64, 64;
+--header_dark: 12, 12, 12;
+--bgGameList: var(--header_dark);
+--white05onbgGameList: 24, 24, 24;
+--textentry: var(--header_dark);
+
+*/
+
+/* Metro Midnight:
+
+--frameBorder: 23, 19, 102;
+--header_dark: 0, 22, 45;
+--textentry: 0, 14, 45;
+
+*/
+
+/* Experimental Metro White theme color values:
+
+--white03: 0, 0, 0, 0.03;
+--white05: 0, 0, 0, 0.05;
+--white08: 0, 0, 0, 0.08;
+--white10: 0, 0, 0, 0.10;
+--white12: 0, 0, 0, 0.12;
+--white15: 0, 0, 0, 0.15;
+--white20: 0, 0, 0, 0.20;
+--white24: 0, 0, 0, 0.24;
+--white25: 0, 0, 0, 0.25;
+--white35: 0, 0, 0, 0.35;
+--white45: 0, 0, 0, 0.45;
+--white50: 0, 0, 0, 0.50;
+--white75: 0, 0, 0, 0.75;
+--white: 0, 0, 0;
+
+--black03: 255, 255, 255, 0.03;
+--black08: 255, 255, 255, 0.08;
+--black05: 255, 255, 255, 0.05;
+--black10: 255, 255, 255, 0.10;
+--black12: 255, 255, 255, 0.12;
+--black15: 255, 255, 255, 0.15;
+--black20: 255, 255, 255, 0.20;
+--black24: 255, 255, 255, 0.24;
+--black35: 255, 255, 255, 0.35;
+--black25: 255, 255, 255, 0.25;
+--black45: 255, 255, 255, 0.45;
+--black75: 255, 255, 255, 0.75;
+--black: 255, 255, 255;
+
+--clientBG: 230, 230, 230;
+--textentrybuttons: 35, 50, 50;
+--ingame: 94, 150, 15;
+--online: 66, 104, 255;
+--offline: var(--white45);
+--frameBorder: 160, 160, 160;
+--header_dark: 255, 255, 255;
+--textentry: 207, 207, 207;
+--bgGameList: 217, 217, 217;
+--white05onbgGameList: 206, 206, 206;
+
+--arrow_up: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtVIqDnYQcchQnSyIijiWKhbBQmkrtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APE1cVJ0UVK/F9SaBHjwXE/3t173L0DhGaVqWZPDFA1y0gn4mIuvyoGXhFECH0IYFJipp7MLGbhOb7u4ePrXZRneZ/7cwwoBZMBPpE4xnTDIt4gnt20dM77xGFWlhTic+IJgy5I/Mh12eU3ziWHBZ4ZNrLpeeIwsVjqYrmLWdlQiWeII4qqUb6Qc1nhvMVZrdZZ+578haGCtpLhOs1RJLCEJFIQIaOOCqqwEKVVI8VEmvbjHv4Rx58il0yuChg5FlCDCsnxg//B727N4vSUmxSKA70vtv0xBgR2gVbDtr+Pbbt1AvifgSut4681gblP0hsdLXIEDG4DF9cdTd4DLneA4SddMiRH8tMUikXg/Yy+KQ8M3QLBNbe39j5OH4AsdbV8AxwcAuMlyl73eHd/d2//nmn39wOKenKwI3uqbwAAAAZiS0dEACcAJwAnEqqtZQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAH1JREFUGNO1kcsNg0AMRN9EaYLdDgihEegiEnSaCpIm0sTkYhCfFSKH+Obx89iyZZuzceGH2MGSsqSHpHwIB9ABH6CTlFa0bWLvBIxAHXkdeZ6ZBTgAzVQIvQk9TYeowuG2BDcNI1BdgR542n6XLmD7JUnB0ZYcCxPu+ttTvvv7XYScThKFAAAAAElFTkSuQmCC');
+--arrow_down: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtVIqDnYQcchQnSyIijiWKhbBQmkrtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APE1cVJ0UVK/F9SaBHjwXE/3t173L0DhGaVqWZPDFA1y0gn4mIuvyoGXhFECH0IYFJipp7MLGbhOb7u4ePrXZRneZ/7cwwoBZMBPpE4xnTDIt4gnt20dM77xGFWlhTic+IJgy5I/Mh12eU3ziWHBZ4ZNrLpeeIwsVjqYrmLWdlQiWeII4qqUb6Qc1nhvMVZrdZZ+578haGCtpLhOs1RJLCEJFIQIaOOCqqwEKVVI8VEmvbjHv4Rx58il0yuChg5FlCDCsnxg//B727N4vSUmxSKA70vtv0xBgR2gVbDtr+Pbbt1AvifgSut4681gblP0hsdLXIEDG4DF9cdTd4DLneA4SddMiRH8tMUikXg/Yy+KQ8M3QLBNbe39j5OH4AsdbV8AxwcAuMlyl73eHd/d2//nmn39wOKenKwI3uqbwAAAAZiS0dEACcAJwAnEqqtZQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHpJREFUGNOtkcsJw0AMRN9sF97twL9r0kPKCDgNuia7jPFFDktYiAMR6DDSYxgk2eZqJX6oJGm+AkqaEnCTNH0DgTtAB7yAwTafDYyx785BBhZgbIALkG1TL3I49KH70OVkVJ9OUgEewB7xVtvbG2hkLMCzdmw6//UpBySDWY1+cY3AAAAAAElFTkSuQmCC');
+--forwardicon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9btSIVwXYQcchQnSyIFnEsVSyChdJWaNXB5NIvaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIq4uToouU+L+k0CLGg+N+vLv3uHsHeJtVphg9MUBRTT2diAu5/Krgf0UfhhFEFFMiM7RkZjEL1/F1Dw9f7yI8y/3cn2NQLhgM8AjEMabpJvEG8eymqXHeJw6xsigTnxNP6nRB4keuSw6/cS7Z7OWZIT2bnicOEQulLpa6mJV1hThKHJYVlfK9OYdlzluclWqdte/JXxgoqCsZrtMcQwJLSCIFARLqqKAKExFaVVIMpGk/7uIftf0pcknkqoCRYwE1KBBtP/gf/O7WKM5MO0mBOND7Ylkf44B/F2g1LOv72LJaJ4DvGbhSO/5aE5j7JL3R0cJHwNA2cHHd0aQ94HIHGHnSRF20JR9Nb7EIvJ/RN+WB4C0wsOb01t7H6QOQpa6Wb4CDQ2CiRNnrLu/u7+7t3zPt/n4AIGdy7EGromUAAAAGYktHRACmAKYApuRk9kYAAAAJcEhZcwAACxMAAAsTAQCanBgAAABZSURBVCjPxdC7DYAwDEXRE1ET1oM52BEK2AmaROIjIBSI29iW3pVsc0+PKdUd1YM4IqJDneYicSu3aDCUilI4yxFjqXhaO6TjMwHLps8sh8xrLr/8iTT/K61sQhRDs82RqwAAAABJRU5ErkJggg==');
+--notificationicon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9btSIVwXYQcchQnSyIFnEsVSyChdJWaNXB5NIvaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIq4uToouU+L+k0CLGg+N+vLv3uHsHeJtVphg9MUBRTT2diAu5/Krgf0UfhhFEFFMiM7RkZjEL1/F1Dw9f7yI8y/3cn2NQLhgM8AjEMabpJvEG8eymqXHeJw6xsigTnxNP6nRB4keuSw6/cS7Z7OWZIT2bnicOEQulLpa6mJV1hThKHJYVlfK9OYdlzluclWqdte/JXxgoqCsZrtMcQwJLSCIFARLqqKAKExFaVVIMpGk/7uIftf0pcknkqoCRYwE1KBBtP/gf/O7WKM5MO0mBOND7Ylkf44B/F2g1LOv72LJaJ4DvGbhSO/5aE5j7JL3R0cJHwNA2cHHd0aQ94HIHGHnSRF20JR9Nb7EIvJ/RN+WB4C0wsOb01t7H6QOQpa6Wb4CDQ2CiRNnrLu/u7+7t3zPt/n4AIGdy7EGromUAAAAGYktHRACmAKYApuRk9kYAAAAJcEhZcwAACxMAAAsTAQCanBgAAABlSURBVCjP1ZLRCoAgDEXPDT82+6D63NtLwlom5FsDQeY5m0wFmIkoALb1RZLkhckoudIIjjcrbwc/6zgqNN1x+jm4fk5e1Ta2AdYu04AAbk0OUn1wOZHkrmT7PpwwpF1S2x895gS75m5HM9xjCAAAAABJRU5ErkJggg==');
+--notificationsiconactive: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9btSIVwXYQcchQnSyIFnEsVSyChdJWaNXB5NIvaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIq4uToouU+L+k0CLGg+N+vLv3uHsHeJtVphg9MUBRTT2diAu5/Krgf0UfhhFEFFMiM7RkZjEL1/F1Dw9f7yI8y/3cn2NQLhgM8AjEMabpJvEG8eymqXHeJw6xsigTnxNP6nRB4keuSw6/cS7Z7OWZIT2bnicOEQulLpa6mJV1hThKHJYVlfK9OYdlzluclWqdte/JXxgoqCsZrtMcQwJLSCIFARLqqKAKExFaVVIMpGk/7uIftf0pcknkqoCRYwE1KBBtP/gf/O7WKM5MO0mBOND7Ylkf44B/F2g1LOv72LJaJ4DvGbhSO/5aE5j7JL3R0cJHwNA2cHHd0aQ94HIHGHnSRF20JR9Nb7EIvJ/RN+WB4C0wsOb01t7H6QOQpa6Wb4CDQ2CiRNnrLu/u7+7t3zPt/n4AIGdy7EGromUAAAAGYktHRABmACQA4p5xVPoAAAAJcEhZcwAACxMAAAsTAQCanBgAAABWSURBVCjP1ZFBDoBACAM7Zj+7PkifWy9q0EUPnJSkCZCStgFJVqEmFat82OJgmzcycMaimvFjilFhUP/PH2X7Aknzbj+iD7z7IjnuGac9uFiAo18zzgZmqlStgoYtqgAAAABJRU5ErkJggg==');
+--searchicon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' x='0px' y='0px' viewBox='0 0 100 100'%3E%3Cg transform='translate(0,-952.36218)'%3E%3Cpath class='ColorSelector' d='m 40.99855,964.36216 c -15.9798,0 -28.9986,13.01864 -28.9986,28.99862 0,15.97992 13.0188,28.99862 28.9986,28.99862 6.9189,0 13.2881,-2.4349 18.2803,-6.4997 l 23.5927,23.6239 c 1.1714,1.1714 3.0784,1.1715 4.2498,0 1.1716,-1.1715 1.1716,-3.0783 0,-4.2498 l -23.6239,-23.5926 c 4.0649,-4.9923 6.4997,-11.3615 6.4997,-18.28042 0,-15.97998 -13.0187,-28.99862 -28.9986,-28.99862 z m 0,5.99972 c 12.7374,0 22.9989,10.26145 22.9989,22.9989 0,12.73732 -10.2615,22.99892 -22.9989,22.99892 -12.7374,0 -22.9989,-10.2616 -22.9989,-22.99892 0,-12.73745 10.2615,-22.9989 22.9989,-22.9989 z' fill='%23000000' fill-opacity='1' stroke='none' visibility='visible' display='inline' overflow='visible'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+
+*/
+
+/* Experimental Metro Blue theme color values:
+
+--white03: 0, 0, 0, 0.03;
+--white05: 0, 0, 0, 0.05;
+--white08: 0, 0, 0, 0.08;
+--white10: 0, 0, 0, 0.10;
+--white12: 0, 0, 0, 0.12;
+--white15: 0, 0, 0, 0.15;
+--white20: 0, 0, 0, 0.20;
+--white24: 0, 0, 0, 0.24;
+--white25: 0, 0, 0, 0.25;
+--white35: 0, 0, 0, 0.35;
+--white45: 0, 0, 0, 0.45;
+--white50: 0, 0, 0, 0.50;
+--white75: 0, 0, 0, 0.75;
+--white: 0, 0, 0;
+
+--black03: 255, 255, 255, 0.03;
+--black08: 255, 255, 255, 0.08;
+--black05: 255, 255, 255, 0.05;
+--black10: 255, 255, 255, 0.10;
+--black12: 255, 255, 255, 0.12;
+--black15: 255, 255, 255, 0.15;
+--black20: 255, 255, 255, 0.20;
+--black24: 255, 255, 255, 0.24;
+--black35: 255, 255, 255, 0.35;
+--black25: 255, 255, 255, 0.25;
+--black45: 255, 255, 255, 0.45;
+--black75: 255, 255, 255, 0.75;
+--black: 255, 255, 255;
+
+--clientBG: 230, 230, 230;
+--header_dark: 0, 160, 240;
+--frameBorder: 40, 120, 160;
+--online: 66, 104, 255;
+--ingame: 94, 150, 15;
+--offline: var(--white45);
+--textentry: 51, 153, 204;
+--bgGameList: 229, 229, 229;
+--white05onbgGameList: 217, 217, 217;
+
+--arrow_up: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtVIqDnYQcchQnSyIijiWKhbBQmkrtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APE1cVJ0UVK/F9SaBHjwXE/3t173L0DhGaVqWZPDFA1y0gn4mIuvyoGXhFECH0IYFJipp7MLGbhOb7u4ePrXZRneZ/7cwwoBZMBPpE4xnTDIt4gnt20dM77xGFWlhTic+IJgy5I/Mh12eU3ziWHBZ4ZNrLpeeIwsVjqYrmLWdlQiWeII4qqUb6Qc1nhvMVZrdZZ+578haGCtpLhOs1RJLCEJFIQIaOOCqqwEKVVI8VEmvbjHv4Rx58il0yuChg5FlCDCsnxg//B727N4vSUmxSKA70vtv0xBgR2gVbDtr+Pbbt1AvifgSut4681gblP0hsdLXIEDG4DF9cdTd4DLneA4SddMiRH8tMUikXg/Yy+KQ8M3QLBNbe39j5OH4AsdbV8AxwcAuMlyl73eHd/d2//nmn39wOKenKwI3uqbwAAAAZiS0dEACcAJwAnEqqtZQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAH1JREFUGNO1kcsNg0AMRN9EaYLdDgihEegiEnSaCpIm0sTkYhCfFSKH+Obx89iyZZuzceGH2MGSsqSHpHwIB9ABH6CTlFa0bWLvBIxAHXkdeZ6ZBTgAzVQIvQk9TYeowuG2BDcNI1BdgR542n6XLmD7JUnB0ZYcCxPu+ttTvvv7XYScThKFAAAAAElFTkSuQmCC');
+--arrow_down: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtVIqDnYQcchQnSyIijiWKhbBQmkrtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APE1cVJ0UVK/F9SaBHjwXE/3t173L0DhGaVqWZPDFA1y0gn4mIuvyoGXhFECH0IYFJipp7MLGbhOb7u4ePrXZRneZ/7cwwoBZMBPpE4xnTDIt4gnt20dM77xGFWlhTic+IJgy5I/Mh12eU3ziWHBZ4ZNrLpeeIwsVjqYrmLWdlQiWeII4qqUb6Qc1nhvMVZrdZZ+578haGCtpLhOs1RJLCEJFIQIaOOCqqwEKVVI8VEmvbjHv4Rx58il0yuChg5FlCDCsnxg//B727N4vSUmxSKA70vtv0xBgR2gVbDtr+Pbbt1AvifgSut4681gblP0hsdLXIEDG4DF9cdTd4DLneA4SddMiRH8tMUikXg/Yy+KQ8M3QLBNbe39j5OH4AsdbV8AxwcAuMlyl73eHd/d2//nmn39wOKenKwI3uqbwAAAAZiS0dEACcAJwAnEqqtZQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHpJREFUGNOtkcsJw0AMRN9sF97twL9r0kPKCDgNuia7jPFFDktYiAMR6DDSYxgk2eZqJX6oJGm+AkqaEnCTNH0DgTtAB7yAwTafDYyx785BBhZgbIALkG1TL3I49KH70OVkVJ9OUgEewB7xVtvbG2hkLMCzdmw6//UpBySDWY1+cY3AAAAAAElFTkSuQmCC');
+--forwardicon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9btSIVwXYQcchQnSyIFnEsVSyChdJWaNXB5NIvaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIq4uToouU+L+k0CLGg+N+vLv3uHsHeJtVphg9MUBRTT2diAu5/Krgf0UfhhFEFFMiM7RkZjEL1/F1Dw9f7yI8y/3cn2NQLhgM8AjEMabpJvEG8eymqXHeJw6xsigTnxNP6nRB4keuSw6/cS7Z7OWZIT2bnicOEQulLpa6mJV1hThKHJYVlfK9OYdlzluclWqdte/JXxgoqCsZrtMcQwJLSCIFARLqqKAKExFaVVIMpGk/7uIftf0pcknkqoCRYwE1KBBtP/gf/O7WKM5MO0mBOND7Ylkf44B/F2g1LOv72LJaJ4DvGbhSO/5aE5j7JL3R0cJHwNA2cHHd0aQ94HIHGHnSRF20JR9Nb7EIvJ/RN+WB4C0wsOb01t7H6QOQpa6Wb4CDQ2CiRNnrLu/u7+7t3zPt/n4AIGdy7EGromUAAAAGYktHRACmAKYApuRk9kYAAAAJcEhZcwAACxMAAAsTAQCanBgAAABZSURBVCjPxdC7DYAwDEXRE1ET1oM52BEK2AmaROIjIBSI29iW3pVsc0+PKdUd1YM4IqJDneYicSu3aDCUilI4yxFjqXhaO6TjMwHLps8sh8xrLr/8iTT/K61sQhRDs82RqwAAAABJRU5ErkJggg==');
+--notificationicon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9btSIVwXYQcchQnSyIFnEsVSyChdJWaNXB5NIvaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIq4uToouU+L+k0CLGg+N+vLv3uHsHeJtVphg9MUBRTT2diAu5/Krgf0UfhhFEFFMiM7RkZjEL1/F1Dw9f7yI8y/3cn2NQLhgM8AjEMabpJvEG8eymqXHeJw6xsigTnxNP6nRB4keuSw6/cS7Z7OWZIT2bnicOEQulLpa6mJV1hThKHJYVlfK9OYdlzluclWqdte/JXxgoqCsZrtMcQwJLSCIFARLqqKAKExFaVVIMpGk/7uIftf0pcknkqoCRYwE1KBBtP/gf/O7WKM5MO0mBOND7Ylkf44B/F2g1LOv72LJaJ4DvGbhSO/5aE5j7JL3R0cJHwNA2cHHd0aQ94HIHGHnSRF20JR9Nb7EIvJ/RN+WB4C0wsOb01t7H6QOQpa6Wb4CDQ2CiRNnrLu/u7+7t3zPt/n4AIGdy7EGromUAAAAGYktHRACmAKYApuRk9kYAAAAJcEhZcwAACxMAAAsTAQCanBgAAABlSURBVCjP1ZLRCoAgDEXPDT82+6D63NtLwlom5FsDQeY5m0wFmIkoALb1RZLkhckoudIIjjcrbwc/6zgqNN1x+jm4fk5e1Ta2AdYu04AAbk0OUn1wOZHkrmT7PpwwpF1S2x895gS75m5HM9xjCAAAAABJRU5ErkJggg==');
+--notificationsiconactive: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9btSIVwXYQcchQnSyIFnEsVSyChdJWaNXB5NIvaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIq4uToouU+L+k0CLGg+N+vLv3uHsHeJtVphg9MUBRTT2diAu5/Krgf0UfhhFEFFMiM7RkZjEL1/F1Dw9f7yI8y/3cn2NQLhgM8AjEMabpJvEG8eymqXHeJw6xsigTnxNP6nRB4keuSw6/cS7Z7OWZIT2bnicOEQulLpa6mJV1hThKHJYVlfK9OYdlzluclWqdte/JXxgoqCsZrtMcQwJLSCIFARLqqKAKExFaVVIMpGk/7uIftf0pcknkqoCRYwE1KBBtP/gf/O7WKM5MO0mBOND7Ylkf44B/F2g1LOv72LJaJ4DvGbhSO/5aE5j7JL3R0cJHwNA2cHHd0aQ94HIHGHnSRF20JR9Nb7EIvJ/RN+WB4C0wsOb01t7H6QOQpa6Wb4CDQ2CiRNnrLu/u7+7t3zPt/n4AIGdy7EGromUAAAAGYktHRABmACQA4p5xVPoAAAAJcEhZcwAACxMAAAsTAQCanBgAAABWSURBVCjP1ZFBDoBACAM7Zj+7PkifWy9q0EUPnJSkCZCStgFJVqEmFat82OJgmzcycMaimvFjilFhUP/PH2X7Aknzbj+iD7z7IjnuGac9uFiAo18zzgZmqlStgoYtqgAAAABJRU5ErkJggg==');
+--searchicon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' x='0px' y='0px' viewBox='0 0 100 100'%3E%3Cg transform='translate(0,-952.36218)'%3E%3Cpath class='ColorSelector' d='m 40.99855,964.36216 c -15.9798,0 -28.9986,13.01864 -28.9986,28.99862 0,15.97992 13.0188,28.99862 28.9986,28.99862 6.9189,0 13.2881,-2.4349 18.2803,-6.4997 l 23.5927,23.6239 c 1.1714,1.1714 3.0784,1.1715 4.2498,0 1.1716,-1.1715 1.1716,-3.0783 0,-4.2498 l -23.6239,-23.5926 c 4.0649,-4.9923 6.4997,-11.3615 6.4997,-18.28042 0,-15.97998 -13.0187,-28.99862 -28.9986,-28.99862 z m 0,5.99972 c 12.7374,0 22.9989,10.26145 22.9989,22.9989 0,12.73732 -10.2615,22.99892 -22.9989,22.99892 -12.7374,0 -22.9989,-10.2616 -22.9989,-22.99892 0,-12.73745 10.2615,-22.9989 22.9989,-22.9989 z' fill='%23000000' fill-opacity='1' stroke='none' visibility='visible' display='inline' overflow='visible'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+
+*/
