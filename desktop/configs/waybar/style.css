@@ -59,7 +59,9 @@ tooltip {
 #tray,
 #language,
 #backlight {
-  background: /*#F6821E*/ #444444;
+  background:
+    /*#F6821E*/
+    #444444;
   padding: 0px 5px;
   margin: 0px;
   font-weight: 100;
@@ -110,6 +112,7 @@ tooltip {
   margin-left: 0px;
   border-right: 0px;
   padding: 0px 10px;
+  border-radius: 0px 10px 10px 0px;
 }
 
 #pulseaudio {

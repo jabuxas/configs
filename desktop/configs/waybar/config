@@ -6,6 +6,7 @@
     "passtrough": false,
     "gtk-layer-shell": true,
     "height": 0,
+    "output": "HDMI-A-1",
 
     "modules-left": [
         "hyprland/workspaces",
@@ -41,7 +42,10 @@
 	    "7": "七",
 	    "8": "八",
 	    "9": "九",
-	    "10": "十"
+	    "10": "十",
+        "11": "十一",
+        "12": "十二",
+        "13": "十三"
 	    }
     },
 
