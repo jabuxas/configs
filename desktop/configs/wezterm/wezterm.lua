@@ -103,5 +103,7 @@ return {
     window_frame = { active_titlebar_bg = "#45475a", font = font_with_fallback(font_name, { bold = true }) },
 
     -- color_scheme_dirs = { "~/.config/wezterm/colors" },
-    color_scheme = "Fahrenheit",
+
+    -- color_scheme = "Solarized Light (Gogh)",
+    color_scheme = "Solarized Light (Gogh)",
 }
