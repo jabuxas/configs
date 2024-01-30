@@ -7,8 +7,8 @@
 }
 
 window#waybar {
-    background: #292828;
-    color: #ffffff;
+    background: #fff;
+    color: #292828;
 }
 
 #custom-logo {
@@ -23,13 +23,13 @@ window#waybar {
 #workspaces button {
     margin-left: 2px;
     margin-right: 10px;
-    color: #ffffff;
+    color: #292828;
 }
 
 #workspaces button:hover,
 #workspaces button:active {
-    background-color: #292828;
-    color: #ffffff;
+    background-color: #fff;
+    color: #292828;
 }
 
 #workspaces button.focused {
