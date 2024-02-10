@@ -1,0 +1,88 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passtrough": false,
+    "gtk-layer-shell": true,
+    "height": 0,
+
+    "modules-left": [
+        "hyprland/workspaces",
+    ],
+
+    "modules-center": [
+	    "hyprland/window"
+    ],
+
+    "modules-right": [
+	"network",
+	"battery",
+        "pulseaudio",
+	    "clock",
+        "tray",
+    ],
+
+    "hyprland/window": {
+        "format": "{}"
+    },
+
+    "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+	    "1": "1",
+	    "2": "2",
+	    "3": "3",
+	    "4": "4",
+	    "5": "5",
+	    "6": "6",
+	    "7": "7",
+	    "8": "8",
+	    "9": "9",
+	    "10": "10",
+        "11": "11",
+        "12": "12",
+        "13": "13"
+	    }
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "tooltip": false,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "{:%a %b %d, %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "pulseaudio": {
+        "format": "   {volume}% ",
+        "tooltip": false,
+        "format-muted": "  N/A",
+        "on-click": "pavucontrol &",
+        "scroll-step": 5
+    },
+
+    "network": {
+	"format-wifi": "   {essid} {signalStrength}% ",
+	"format-ethernet": "   {signalStrength}% ",
+	"format-disconnected": "   N/A "
+    },
+
+    "battery": {
+    	"states": {
+		"warning": 20,
+		"critical": 15
+	},
+	"format": "󰁹 {capacity}% ",
+	"format-charging": "󰂄 {capacity}% ",
+	"format-plugged": "󰂄 {capacity}% "
+    }
+}
+
