@@ -9,8 +9,7 @@ RED_NORMAL_WPP=~/pics/wallpapers/bm3.png
 
 if [[ $CURRENT_THEME == *tmux-white.conf ]]; then
     # change wallpaper
-    swww img -o HDMI-A-1 $RED_WIDE_WPP
-    swww img -o DP-3 $RED_NORMAL_WPP
+    ~/scripts/swww.sh $RED_WIDE_WPP $RED_NORMAL_WPP
 
 
     # change tmux theme and reload
@@ -32,8 +31,7 @@ if [[ $CURRENT_THEME == *tmux-white.conf ]]; then
     killall waybar; waybar > /dev/null &
 else
     # change wpp
-    swww img -o HDMI-A-1 $WHITE_WIDE_WPP
-    swww img -o DP-3 $WHITE_NORMAL_WPP
+    ~/scripts/swww.sh $WHITE_WIDE_WPP $WHITE_NORMAL_WPP
 
     # change tmux theme and reload
     ln -sf ~/.config/tmux/tmux-white.conf ~/.config/tmux/theme.conf

@@ -19,8 +19,9 @@ else
     # sleep 0.3
     # xdotool click 2
     # sleep 0.2
-    xdotool click 1
-    sleep 1
+    # xdotool click 1
+    # sleep 1
+    ydotool click --next-delay 1000 0xC0
 
 done &
 echo "$!" >"$running"
