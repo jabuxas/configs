@@ -1,16 +1,27 @@
-#!/bin/sh
-SWWW_TRANSITION_STEP=1
-SWWW_TRANSITION_FPS=60
-SWWW_TRANSITION="grow"
-
-swww-daemon &
+#!/bin/bash
+export SWWW_TRANSITION_STEP=90
+export SWWW_TRANSITION_FPS=60
+export SWWW_TRANSITION=wipe
+export SWWW_TRANSITION_ANGLE=30
+export SWWW_TRANSITION_POS=center
 
 current_theme=$(readlink ~/.config/tmux/theme.conf)
-
-if [[ $current_theme == *tmux-white.conf ]]; then
-    swww img -o DP-3 ~/pics/wallpapers/HOLY.png
-    swww img -o HDMI-A-1 ~/pics/wallpapers/okw\ tf.jpg
-else 
-    swww img -o DP-3 ~/pics/wallpapers/a\ carnival.jpg
-    swww img -o HDMI-A-1 ~/pics/wallpapers/the\ true\ old\ god.jpg
+    if [[ -z "$1" ]]; then
+        if [[ $current_theme == *tmux-white.conf ]]; then
+        FIRST=~/pics/wallpapers/sl3.jpg
+        SECOND=~/pics/wallpapers/sl2.png
+    else
+        FIRST=~/pics/wallpapers/bm5.jpg
+        SECOND=~/pics/wallpapers/bm3.png
+    fi
+else
+    FIRST=$1
+    SECOND=$2
 fi
+
+
+swww init &
+sleep 0.3
+
+swww img -o HDMI-A-1 $FIRST
+swww img -o DP-3 $SECOND
