@@ -1,10 +1,12 @@
 # welcome to my home (quite literally)
 
-here you will find configs for my desktop and eventually my laptop.
+here you will find configs for my desktop and my laptop.
 
-i use nvim with tmux sessionizer as the daily tools for studying
+i primarily use [neovim](https://github.com/jabuxas/nvim.config), tmux ([sessionizer](https://github.com/jrmoulton/tmux-sessionizer)) and hyprland
 
-i might separate different colorschemes in different files or i might not im not surer yet
+themes are completely interchangeable as long as you setup the structure of files the same as this repo, or edit to your liking
+
+pr's are welcome for optimizations and useful refactors
 
 ## Images
 
