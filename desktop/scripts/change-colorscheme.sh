@@ -11,6 +11,7 @@ CHOICE=$(tofi <$HOME/scripts/choices)
 
 case "$CHOICE" in
     melange)
+
     ln -sf ~/.config/tmux/tmux-melange.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
@@ -19,13 +20,18 @@ case "$CHOICE" in
 
     # change wezterm theme
     sed -i 's/color_scheme = .*/color_scheme = "Gruvbox light, medium (base16)"/g' ~/.config/wezterm/wezterm.lua
+
+    # change waybar theme
+    killall waybar; waybar -s ~/.config/waybar/style-melange.css > /dev/null &
+
     ;;
     white)
+
     ln -sf ~/.config/tmux/tmux-white.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     # change wezterm theme
-    sed -i 's/Fahrenheit/Solarized Light (Gogh)/g' ~/.config/wezterm/wezterm.lua
+    sed -i 's/color_scheme = .*/color_scheme = "Solarized Light (Gogh)"/g' ~/.config/wezterm/wezterm.lua
     
     # neofetch
     sed -i 's/red.jpg/rh.jpg/g' ~/.config/neofetch/config.conf
@@ -33,14 +39,16 @@ case "$CHOICE" in
 
     # waybar white css
     killall waybar; waybar -s ~/.config/waybar/style-solarized.css > /dev/null &
+
     ;;
     red)
+
     # change tmux theme and reload
     ln -sf ~/.config/tmux/tmux-red.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     # change wezterm theme
-    sed -i 's/Solarized Light (Gogh)/Fahrenheit/g' ~/.config/wezterm/wezterm.lua
+    sed -i 's/color_scheme = .*/color_scheme = "Fahrenheit"/g' ~/.config/wezterm/wezterm.lua
 
     # change neofetch pic (yes lmao)
     sed -i 's/rh.jpg/red.jpg/g' ~/.config/neofetch/config.conf
