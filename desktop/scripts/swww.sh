@@ -5,15 +5,20 @@ export SWWW_TRANSITION=wipe
 export SWWW_TRANSITION_ANGLE=30
 export SWWW_TRANSITION_POS=center
 
-current_theme=$(readlink ~/.config/tmux/theme.conf)
-    if [[ -z "$1" ]]; then
-        if [[ $current_theme == *tmux-white.conf ]]; then
-        FIRST=~/pics/wallpapers/sl3.jpg
-        SECOND=~/pics/wallpapers/sl2.png
-    else
-        FIRST=~/pics/wallpapers/bm5.jpg
-        SECOND=~/pics/wallpapers/bm3.png
-    fi
+CURRENT_THEME=$(cat ~/colorscheme)
+if [[ -z "$1" ]]; then
+    case "$CURRENT_THEME" in
+        red)
+            FIRST=~/pics/wallpapers/bm5.jpg
+            SECOND=~/pics/wallpapers/bm3.png
+        ;;
+        melange) #todo
+        ;;
+        white) # todo
+            FIRST=~/pics/wallpapers/sl3.jpg
+            SECOND=~/pics/wallpapers/sl2.png
+        ;;
+    esac
 else
     FIRST=$1
     SECOND=$2
