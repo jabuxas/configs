@@ -5,7 +5,10 @@ local function font_with_fallback(name, params)
     return wezterm.font_with_fallback(names, params)
 end
 
-local font_name = "Cartograph CF Nerd Font"
+local font_name = {
+    family = "Cartograph CF Nerd Font",
+    harfbuzz_features = { 'calt = 0', 'clig = 0', 'liga=0' }
+}
 
 return {
     -- OpenGL for GPU acceleration, Software for CPU
@@ -45,7 +48,7 @@ return {
     -- Font config
     font = font_with_fallback(font_name),
     warn_about_missing_glyphs = false,
-    font_size = 17,
+    font_size = 15,
     line_height = 1.0,
     dpi = 96.0,
 
@@ -53,7 +56,7 @@ return {
     default_cursor_style = "BlinkingUnderline",
 
     -- X11
-    enable_wayland = false,
+    enable_wayland = true,
 
     -- Keybinds
     disable_default_key_bindings = true,
@@ -98,12 +101,12 @@ return {
     -- General
     automatically_reload_config = true,
     inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
-    window_background_opacity = 0.75,
+    window_background_opacity = 0.80,
     window_close_confirmation = "NeverPrompt",
     window_frame = { active_titlebar_bg = "#45475a", font = font_with_fallback(font_name, { bold = true }) },
+    check_for_updates = false,
 
     -- color_scheme_dirs = { "~/.config/wezterm/colors" },
 
-    -- color_scheme = "Solarized Light (Gogh)",
-    color_scheme = "Solarized Light (Gogh)",
+    color_scheme = "Gruvbox light, medium (base16)"
 }
