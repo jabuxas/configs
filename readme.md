@@ -15,6 +15,11 @@ i might separate different colorschemes in different files or i might not im not
 ![image](https://github.com/jabuxas/configs/assets/94939040/8382c15b-3942-4a30-97b4-e1e0d25be403)
 ![image](https://github.com/jabuxas/configs/assets/94939040/815cd88c-6769-4f7b-9542-ce4881898bd3)
 
+#### melange
+
+![screenshot-2024-02-14T09:42:05-03:00](https://github.com/jabuxas/configs/assets/94939040/ce43ed68-3e1b-4864-ba20-8e414d35b011)
+![screenshot-2024-02-14T09:43:40-03:00](https://github.com/jabuxas/configs/assets/94939040/bbaf83b2-1dc3-4d28-a134-ddcaf5758ddd)
+
 #### _white_
 
 ![screenshot-2024-01-16T12:59:52-03:00](https://github.com/jabuxas/configs/assets/94939040/9312d74f-bbcf-457d-9d2c-c253ba71039f)
