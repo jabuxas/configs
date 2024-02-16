@@ -36,6 +36,8 @@ case "$CHOICE" in
     # neofetch
     sed -i 's/image_source=.*/image_source="$HOME\/pics\/neofetch\/melangium.jpg"/g' ~/.config/neofetch/config.conf
 
+    # change tofi theme
+    ln -sf ~/.config/tofi/melange.conf ~/.config/tofi/theme.conf
 
     ;;
     white)
@@ -52,6 +54,9 @@ case "$CHOICE" in
 
     # waybar white css
     killall waybar; waybar -s ~/.config/waybar/style-solarized.css > /dev/null &
+
+    # change tofi theme
+    ln -sf ~/.config/tofi/white.conf ~/.config/tofi/theme.conf
 
     ;;
     red)
@@ -72,8 +77,13 @@ case "$CHOICE" in
 
     # waybar black css
     killall waybar; waybar > /dev/null &
+
+    # change tofi theme
+    ln -sf ~/.config/tofi/red.conf ~/.config/tofi/theme.conf
+
     ;;
     *)
+
     exit 0
     ;;
 esac
