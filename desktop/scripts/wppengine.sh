@@ -9,7 +9,7 @@ if [[ -z "$1" ]]; then
         ;;
         melange)
             FIRST=2980001176
-            SECOND=3033188884
+            SECOND=1607915797
         ;;
         white) # todo
         ;;

@@ -17,9 +17,9 @@
     ],
 
     "modules-right": [
-        "pulseaudio",
+      "pulseaudio",
 	    "clock",
-        "tray",
+      "tray",
     ],
 
     "hyprland/window": {
