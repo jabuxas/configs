@@ -12,7 +12,9 @@ if [[ -z "$1" ]]; then
             FIRST=~/pics/wallpapers/bm5.jpg
             SECOND=~/pics/wallpapers/bm3.png
         ;;
-        melange) #todo
+        melange)
+            FIRST=~/pics/wallpapers/melange1.png
+            SECOND=~/pics/wallpapers/melange1.jpg
         ;;
         white) # todo
             FIRST=~/pics/wallpapers/sl3.jpg
