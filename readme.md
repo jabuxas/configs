@@ -12,6 +12,11 @@ pr's are welcome for optimizations and useful refactors
 
 ### desktop
 
+#### solarized
+
+![screenshot-2024-03-03T22:02:37-03:00](https://github.com/jabuxas/configs/assets/94939040/38926b19-d50e-4da0-90ee-05095cd9a964)
+![screenshot-2024-03-04T09:40:44-03:00](https://github.com/jabuxas/configs/assets/94939040/b685cb38-77b8-4038-8319-1c60e6736ee5)
+
 #### _red_
 
 ![image](https://github.com/jabuxas/configs/assets/94939040/8382c15b-3942-4a30-97b4-e1e0d25be403)
