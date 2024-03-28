@@ -4,6 +4,11 @@
 CURRENT_THEME=$(cat ~/colorscheme)
 
 case "$CURRENT_THEME" in
+    monochrome)
+        killall waybar; waybar -c ~/.config/waybar/dwm.jsonc \
+            -s ~/.config/waybar/dwm.css > /dev/null &
+        # hyprctl keyword general:col.active_border  todo
+    ;;
     solarized)
         killall waybar; waybar -s ~/.config/waybar/style-solarized.css > /dev/null &
         # hyprctl keyword general:col.active_border  todo

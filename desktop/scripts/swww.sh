@@ -13,13 +13,16 @@ if [[ -z "$1" ]]; then
             SECOND=~/pics/wallpapers/bm3.png
         ;;
         melange)
-            FIRST=~/pics/wallpapers/melange1.png
+            FIRST=~/pics/wallpapers/melange2.png
             SECOND=~/pics/wallpapers/melange1.jpg
         ;;
         white) # todo
             FIRST=~/pics/wallpapers/sl3.jpg
             SECOND=~/pics/wallpapers/sl2.png
         ;;
+    solarized)
+        FIRST=~/pics/wallpapers/solarized5.jpg
+        SECOND=~/pics/wallpapers/solarized4.png
     esac
 else
     FIRST=$1
