@@ -12,6 +12,11 @@ pr's are welcome for optimizations and useful refactors
 
 ### desktop
 
+#### monochrome
+
+![screenshot-2024-03-28T11:14:41-03:00](https://github.com/jabuxas/configs/assets/94939040/7915aa32-5e7f-41ea-9cea-6f1231244d2d)
+![screenshot-2024-03-28T11:12:29-03:00](https://github.com/jabuxas/configs/assets/94939040/a4d0b289-9946-4679-96d4-6da5e965f264)
+
 #### solarized
 
 ![screenshot-2024-03-03T22:02:37-03:00](https://github.com/jabuxas/configs/assets/94939040/38926b19-d50e-4da0-90ee-05095cd9a964)
