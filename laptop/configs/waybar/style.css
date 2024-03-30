@@ -1,50 +1,76 @@
+@define-color accent #383838;
+@define-color text #f8f8f8;
+@define-color invText #f8f8f8;
+/* text when background is accent */
+@define-color bg #181818;
+
+/* @import "./wal.css";
+@define-color accent @color5;
+@define-color bg @background;
+@define-color text @foreground; */
+
+@import "./base16/base16-default-dark.css";
+
+@define-color accent @base01;
+@define-color text @base07;
+@define-color invText @base07;
+/* text when background is accent */
+@define-color bg @base00;
+
 * {
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-    font-size: 11px;
+	font-family: CartographCF Nerd Font;
+	font-size: 13px;
+	border-radius: 0px;
+	/* :[ */
+	min-height: 0px;
 }
 
 window#waybar {
-    background: #292828;
-    color: #ffffff;
+	background-color: @accent;
+	color: @text;
+	opacity: 1;
 }
 
-#custom-logo {
-    font-size: 18px;
-    margin: 0;
-    margin-left: 7px;
-    margin-right: 12px;
-    padding: 0;
-    font-family: NotoSans Nerd Font Mono;
+#workspaces {
+	background-color: transparent;
 }
 
 #workspaces button {
-    margin-left: 2px;
-    margin-right: 8px;
-    color: #ffffff;
+	padding: 0 5px;
+	color: @text;
 }
 
-#workspaces button:hover,
-#workspaces button:active {
-    background-color: #292828;
-    color: #ffffff;
+#workspaces button.active {
+	background-color: @accent;
+	color: @invText;
+	/* color: @background; */
 }
 
-#workspaces button.focused {
-    background-color: #383737;
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#tray,
+#custom-icon {
+	background-color: transparent;
+	color: @text;
+	margin: 0px;
 }
 
-#language {
-    margin-right: 7px;
+.modules-left {
+	background-color: @bg;
+	padding: 0px 0px 0px 0px;
 }
 
-#battery {
-    margin-left: 7px;
-    margin-right: 4px;
+#window {
+	color: @invText;
+	background-color: @accent;
+	padding-left: 4px;
 }
 
-#clock {
-    margin: 0px 6px;
+.modules-right {
+	background-color: @bg;
+	padding: 0px 0px 0px 0px;
 }

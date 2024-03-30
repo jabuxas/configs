@@ -1,0 +1,21 @@
+[colors]
+# The default text color
+foreground = "#868690"
+# The default background color
+background = "#0F1014"
+# Overrides the cell background color when the current cell is occupied by the
+# cursor and the cursor style is set to Block
+cursor_bg = "#ccb901"
+# Overrides the text color when the current cell is occupied by the cursor
+cursor_fg = "#868690"
+# Specifies the border color of the cursor when the cursor style is set to Block,
+# or the color of the vertical or horizontal bar when the cursor style is set to
+# Bar or Underline.
+cursor_border = "#ccb901"
+# the foreground color of selected text
+selection_fg = "#93939c"
+# the background color of selected text
+selection_bg = "#22222a"
+
+ansi = ["#131317", "#999EB2", "#ccc04c", "#D3D5DE", "#ccb901", "#E2E4ED", "#B6BAC8", "#868690"]
+brights = ["#575861", "#999EB2", "#ccc04c", "#D3D5DE", "#ccb901", "#E2E4ED", "#B6BAC8", "#868690"]
