@@ -5,42 +5,45 @@ local function font_with_fallback(name, params)
     return wezterm.font_with_fallback(names, params)
 end
 
-local font_name = "Cartograph CF Nerd Font"
+local font_name = {
+    family = "Cartograph CF Nerd Font",
+    harfbuzz_features = { 'calt = 0', 'clig = 0', 'liga=0' }
+}
 
 return {
     -- OpenGL for GPU acceleration, Software for CPU
     front_end = "OpenGL",
 
-     colors = {
-         foreground = "#bdbdbd",
-         background = "#080808",
-         cursor_bg = "#9e9e9e",
-         cursor_fg = "#080808",
-         selection_fg = "#080808",
-         selection_bg = "#b2ceee",
-    
-         ansi = {
-             "#323437",
-             "#ff5454",
-             "#8cc85f",
-             "#e3c78a",
-             "#80a0ff",
-             "#cf87e8",
-             "#79dac8",
-             "#c6c6c6",
-         },
-    
-         brights = {
-             "#949494",
-             "#ff5189",
-             "#36c692",
-             "#c2c292",
-             "#74b2ff",
-             "#ae81ff",
-             "#85dc85",
-             "#e4e4e4",
-         },
-     },
+    -- colors = {
+    --     foreground = "#bdbdbd",
+    --     background = "#080808",
+    --     cursor_bg = "#9e9e9e",
+    --     cursor_fg = "#080808",
+    --     selection_fg = "#080808",
+    --     selection_bg = "#b2ceee",
+    --
+    --     ansi = {
+    --         "#323437",
+    --         "#ff5454",
+    --         "#8cc85f",
+    --         "#e3c78a",
+    --         "#80a0ff",
+    --         "#cf87e8",
+    --         "#79dac8",
+    --         "#c6c6c6",
+    --     },
+    --
+    --     brights = {
+    --         "#949494",
+    --         "#ff5189",
+    --         "#36c692",
+    --         "#c2c292",
+    --         "#74b2ff",
+    --         "#ae81ff",
+    --         "#85dc85",
+    --         "#e4e4e4",
+    --     },
+    -- },
 
     -- Font config
     font = font_with_fallback(font_name),
@@ -98,7 +101,12 @@ return {
     -- General
     automatically_reload_config = true,
     inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
-    window_background_opacity = 0.75,
+    window_background_opacity = 0.95,
     window_close_confirmation = "NeverPrompt",
     window_frame = { active_titlebar_bg = "#45475a", font = font_with_fallback(font_name, { bold = true }) },
+    check_for_updates = false,
+
+    color_scheme_dirs = { "~/.config/wezterm/colors" },
+
+    color_scheme = "monochrome_glorb"
 }
