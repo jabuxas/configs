@@ -82,6 +82,13 @@
   :config
   (evil-mode 1))
 
+(use-package evil-collection
+  :ensure t
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-collection-init))
+
 (use-package org
   :ensure t)
 
