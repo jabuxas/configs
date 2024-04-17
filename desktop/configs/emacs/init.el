@@ -7,6 +7,9 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
 (require 'use-package)
 
 (setq-default
@@ -81,6 +84,7 @@
   :ensure t
   :init
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump nil)
   :config
   (evil-mode 1))
 
@@ -102,58 +106,104 @@
 (use-package company
   :ensure t
   :init
-    (setq company-require-match nil            ; Don't require match, so you can still move your cursor as expected.
+  (setq company-require-match nil            ; Don't require match, so you can still move your cursor as expected.
         company-tooltip-align-annotations t  ; Align annotation to the right side.
         company-eclim-auto-save nil          ; Stop eclim auto save.
-        company-dabbrev-downcase nil)        ; No downcase when completion.
-    )
+        company-dabbrev-downcase nil
+        company-idle-delay 0.2)        ; No downcase when completion.
+  :config
+  (global-company-mode t))
 
 (use-package which-key
   :config
-    (setq which-key-idle-delay 0.3)
-    (setq which-key-popup-type 'frame)
-    (which-key-mode)
-    (which-key-setup-minibuffer)
-    (set-face-attribute 'which-key-local-map-description-face nil
-       :weight 'bold)
+  (setq which-key-idle-delay 0.3)
+  (setq which-key-popup-type 'frame)
+  (which-key-mode)
+  (which-key-setup-minibuffer)
+  (set-face-attribute 'which-key-local-map-description-face nil
+                      :weight 'bold)
   :ensure t)
 
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
 
-(use-package eglot
-  :ensure t)
+(use-package paredit
+  :ensure t
+  :init
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+  (add-hook 'cider-repl-mode-hook #'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+  (add-hook 'scheme-mode-hook #'enable-paredit-mode)
+  :config
+  (show-paren-mode t)
+  :bind (("M-[" . paredit-wrap-square)
+         ("M-{" . paredit-wrap-curly))
+  :diminish nil)
 
 (use-package yasnippet
   :ensure t
   :config
   (yas-global-mode 1))
 
-;; setup go
-(require 'project)
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(defun project-find-go-module (dir)
-  (when-let ((root (locate-dominating-file dir "go.mod")))
-    (cons 'go-module root)))
+;; setup lsp
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (go-mode . lsp)
+         (vue-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
 
-(cl-defmethod project-root ((project (head go-module)))
-  (cdr project))
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp))))
 
-(add-hook 'project-find-functions #'project-find-go-module)
+;; Go - lsp-mode
+;; Set up before-save hooks to format buffer and add/delete imports.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
-(require 'go-mode)
-(require 'eglot)
-(add-hook 'go-mode-hook 'eglot-ensure)
+(lsp-register-custom-settings
+ '(("gopls.completeUnimported" t t)
+   ("gopls.staticcheck" t t)))
 
-;; Optional: install eglot-format-buffer as a save hook.
-;; The depth of -10 places this before eglot's willSave notification,
-;; so that that notification reports the actual contents that will be saved.
- (defun eglot-format-buffer-on-save ()
-  (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
-(add-hook 'go-mode-hook #'eglot-format-buffer-on-save)
+;; Start LSP Mode and YASnippet mode
+(add-hook 'go-mode-hook #'lsp-deferred)
+(add-hook 'go-mode-hook #'yas-minor-mode)
 
-(add-hook 'before-save-hook
-    (lambda ()
-        (call-interactively 'eglot-code-action-organize-imports))
-    nil t)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode
+  :ensure t
+  :config
+  (lsp-ui-peek-enable 1))
+;; if you are helm user
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+
+;; optionally if you want to use debugger
+(use-package dap-mode
+  :ensure t)
+
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :ensure t)
 
 (use-package company-fuzzy
   :hook (company-mode . company-fuzzy-mode)
@@ -166,9 +216,9 @@
 
 (global-hl-line-mode t) ;; This highlights the current line in the buffer
 (use-package beacon ;; This applies a beacon effect to the highlighted line
-   :ensure t
-   :config
-   (beacon-mode 1))
+  :ensure t
+  :config
+  (beacon-mode 1))
 
 (use-package doom-themes
   :ensure t
@@ -229,7 +279,3 @@
   (global-set-key (kbd "C-h a") 'helm-apropos)
   (setq helm-split-window-in-side-p t
 	helm-move-to-line-cycle-in-source t))
-
-
-(message "%s" company-backends)         ; '(company-fuzzy-all-other-backends)
-(message "%s" company-fuzzy--backends)  ; .. backends has been handed over to `company-fuzzy`
