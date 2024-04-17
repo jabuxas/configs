@@ -1,7 +1,8 @@
-(setq inhibit-startup-message t)
-(menu-bar-mode -1)
+(setq default-frame-alist '((font . "CartographCF Nerd Font DemiBold 14")))
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+(menu-bar-mode -1)
+(setq inhibit-startup-message t)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -33,6 +34,7 @@
 
  ;; Do not autosave.
  auto-save-default nil
+
 
  ;; Allow commands to be run on minibuffers.
  enable-recursive-minibuffers t)
@@ -84,8 +86,6 @@
 
 (use-package evil-collection
   :ensure t
-  :init
-  (setq evil-want-keybinding nil)
   :config
   (evil-collection-init))
 
@@ -100,7 +100,13 @@
 (define-key evil-ex-map "W" 'save-buffer)
 
 (use-package company
-  :ensure t)
+  :ensure t
+  :init
+    (setq company-require-match nil            ; Don't require match, so you can still move your cursor as expected.
+        company-tooltip-align-annotations t  ; Align annotation to the right side.
+        company-eclim-auto-save nil          ; Stop eclim auto save.
+        company-dabbrev-downcase nil)        ; No downcase when completion.
+    )
 
 (use-package which-key
   :config
@@ -112,12 +118,6 @@
        :weight 'bold)
   :ensure t)
 
-(use-package company-fuzzy
-  :hook (company-mode . company-fuzzy-mode)
-  :init
-  (setq company-fuzzy-sorting-backend 'flx
-        company-fuzzy-prefix-on-top nil
-        company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
 
 (use-package eglot
   :ensure t)
@@ -155,6 +155,13 @@
         (call-interactively 'eglot-code-action-organize-imports))
     nil t)
 
+(use-package company-fuzzy
+  :hook (company-mode . company-fuzzy-mode)
+  :init
+  (setq company-fuzzy-sorting-backend 'flx
+        company-fuzzy-prefix-on-top nil
+        company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
+
 ;; other configs
 
 (global-hl-line-mode t) ;; This highlights the current line in the buffer
@@ -169,7 +176,7 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-homage-black t)
+  (load-theme 'doom-sourcerer t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -184,6 +191,15 @@
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map))
+  :config
+  (setq projectile-project-search-path '("~/repos/" "~/work/" )))
+
 ;; keybindings
 
 (global-set-key (kbd "M-<") 'previous-buffer)
@@ -191,9 +207,10 @@
 (evil-set-leader nil (kbd "SPC"))
 (evil-define-key 'normal 'global (kbd "<leader>pv")
   (lambda () (interactive) (dired default-directory)))
+(evil-define-key 'visual 'global (kbd "J") 'evil-collection-unimpaired-move-text-down)
+(evil-define-key 'visual 'global (kbd "K") 'evil-collection-unimpaired-move-text-up)
 
 
-(set-frame-font "CartographCF Nerd Font DemiBold 14" nil t)
 
 
 ;; helm
@@ -212,3 +229,7 @@
   (global-set-key (kbd "C-h a") 'helm-apropos)
   (setq helm-split-window-in-side-p t
 	helm-move-to-line-cycle-in-source t))
+
+
+(message "%s" company-backends)         ; '(company-fuzzy-all-other-backends)
+(message "%s" company-fuzzy--backends)  ; .. backends has been handed over to `company-fuzzy`
