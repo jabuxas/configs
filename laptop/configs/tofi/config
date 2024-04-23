@@ -11,8 +11,7 @@ padding-left = 35%
 padding-top = 35%
 result-spacing = 25
 num-results = 5
-background-color = #080808BB
-text-color = #c6c6c6
-selection-color = #74b2ff
 fuzzy-match = true
 drun-launch = true
+
+include = theme.conf

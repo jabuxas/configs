@@ -56,7 +56,7 @@ return {
     default_cursor_style = "BlinkingUnderline",
 
     -- X11
-    enable_wayland = true,
+    enable_wayland = false,
 
     -- Keybinds
     disable_default_key_bindings = true,
@@ -101,12 +101,12 @@ return {
     -- General
     automatically_reload_config = true,
     inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
-    window_background_opacity = 0.95,
+    window_background_opacity = 0.85,
     window_close_confirmation = "NeverPrompt",
     window_frame = { active_titlebar_bg = "#45475a", font = font_with_fallback(font_name, { bold = true }) },
     check_for_updates = false,
 
     color_scheme_dirs = { "~/.config/wezterm/colors" },
 
-    color_scheme = "monochrome_glorb"
+    color_scheme = "catppuccin-latte"
 }
