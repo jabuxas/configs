@@ -1,4 +1,4 @@
-(setq default-frame-alist '((font . "CartographCF Nerd Font DemiBold 14")))
+(setq default-frame-alist '((font . "CartographCF Nerd Font DemiBold 15")))
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -84,7 +84,6 @@
   :ensure t
   :init
   (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
   :config
   (evil-mode 1))
 
@@ -95,6 +94,51 @@
 
 (use-package org
   :ensure t)
+
+(use-package org-roam
+  :ensure t)
+
+(use-package org-modern
+  :config
+(add-hook 'org-mode-hook #'org-modern-mode)
+(add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+:ensure t)
+
+(modify-all-frames-parameters
+ '((right-divider-width . 40)
+   (internal-border-width . 40)))
+(dolist (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
+
+(setq
+ ;; Edit settings
+ org-auto-align-tags nil
+ org-tags-column 0
+ org-catch-invisible-edits 'show-and-error
+ org-special-ctrl-a/e t
+ org-insert-heading-respect-content t
+
+ ;; Org styling, hide markup etc.
+ org-hide-emphasis-markers t
+ org-pretty-entities t
+ org-ellipsis "…"
+
+ ;; Agenda styling
+ org-agenda-tags-column 0
+ org-agenda-block-separator ?─
+ org-agenda-time-grid
+ '((daily today require-timed)
+   (800 1000 1200 1400 1600 1800 2000)
+   " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+ org-agenda-current-time-string
+ "◀── now ─────────────────────────────────────────────────")
+
+(global-org-modern-mode)
+
 
 (use-package powerline-evil
   :ensure t)
@@ -150,56 +194,6 @@
   :config
   (yas-global-mode 1))
 
-(use-package flycheck
-  :ensure t
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
-
-;; setup lsp
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (go-mode . lsp)
-         (vue-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp))))
-
-;; Go - lsp-mode
-;; Set up before-save hooks to format buffer and add/delete imports.
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
-(lsp-register-custom-settings
- '(("gopls.completeUnimported" t t)
-   ("gopls.staticcheck" t t)))
-
-;; Start LSP Mode and YASnippet mode
-(add-hook 'go-mode-hook #'lsp-deferred)
-(add-hook 'go-mode-hook #'yas-minor-mode)
-
-
-;; optionally
-(use-package lsp-ui :commands lsp-ui-mode
-  :ensure t
-  :config
-  (lsp-ui-peek-enable 1))
-;; if you are helm user
-(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-
-;; optionally if you want to use debugger
-(use-package dap-mode
-  :ensure t)
 
 (use-package all-the-icons
   :if (display-graphic-p)
