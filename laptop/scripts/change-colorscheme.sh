@@ -1,55 +1,50 @@
 #!/bin/bash
-CURRENT_THEME=$(readlink ~/.config/tmux/theme.conf)
 
-WHITE_WIDE_WPP=~/pics/wallpapers/sl3.jpg
-WHITE_NORMAL_WPP=~/pics/wallpapers/sl2.png
+WHITE_NORMAL_WPP=~/pics/min.png
+MONOCHROME_NORMAL_WPP=~/pics/monochrome-1.png
 
-RED_WIDE_WPP=~/pics/wallpapers/bm5.jpg
-RED_NORMAL_WPP=~/pics/wallpapers/bm3.png
-
-if [[ $CURRENT_THEME == *tmux-white.conf ]]; then
-    # change wallpaper
-    swww img -o HDMI-A-1 $RED_WIDE_WPP
-    swww img -o DP-3 $RED_NORMAL_WPP
+CHOICE=$(tofi <$HOME/scripts/choices)
 
 
-    # change tmux theme and reload
-    ln -sf ~/.config/tmux/tmux-red.conf ~/.config/tmux/theme.conf
+case "$CHOICE" in
+    monochrome)
+    ~/scripts/swww.sh $MONOCHROME_NORMAL_WPP
+
+
+    ln -sf ~/.config/tmux/tmux-monochrome.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
-    # change wezterm theme
-    sed -i 's/Solarized Light (Gogh)/Fahrenheit/g' ~/.config/wezterm/wezterm.lua
+    sed -i 's/color_scheme = .*/color_scheme = "monochrome_glorb"/g' ~/.config/wezterm/wezterm.lua
 
-    # change nvim theme
-    sed -i 's/zed = true/zed = false/g' ~/.config/nvim/lua/custom/plugins/colorscheme.lua
-    sed -i 's/-- h/h/g' ~/.config/nvim/lua/custom/plugins/bufferline.lua
+    sed -i 's/image_source=.*/image_source="$HOME\/pics\/mono.jpg"/g' ~/.config/neofetch/config.conf
 
-    # change neofetch pic (yes lmao)
-    sed -i 's/rh.jpg/red.jpg/g' ~/.config/neofetch/config.conf
-    sed -i '0,/cl11/{s/cl11/cl3/}' ~/.config/neofetch/config.conf
+    ln -sf ~/.config/tofi/monochrome.conf ~/.config/tofi/theme.conf
 
-    # waybar black css
-    killall waybar; waybar > /dev/null &
-else
-    # change wpp
-    swww img -o HDMI-A-1 $WHITE_WIDE_WPP
-    swww img -o DP-3 $WHITE_NORMAL_WPP
+    ;;
 
-    # change tmux theme and reload
+    fan)
+    ~/scripts/swww.sh $WHITE_NORMAL_WPP
+
+    #change tmux theme
     ln -sf ~/.config/tmux/tmux-white.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     # change wezterm theme
-    sed -i 's/Fahrenheit/Solarized Light (Gogh)/g' ~/.config/wezterm/wezterm.lua
+    sed -i 's/color_scheme = .*/color_scheme = "catppuccin-latte"/g' ~/.config/wezterm/wezterm.lua
 
-    # change nvim theme
-    sed -i 's/zed = false/zed = true/g' ~/.config/nvim/lua/custom/plugins/colorscheme.lua
-    sed -i 's/highlights/-- highlights/g' ~/.config/nvim/lua/custom/plugins/bufferline.lua
-    
     # neofetch
-    sed -i 's/red.jpg/rh.jpg/g' ~/.config/neofetch/config.conf
-    sed -i '0,/cl3/{s/cl3/cl11/}' ~/.config/neofetch/config.conf
+    sed -i 's/image_source=.*/image_source="$HOME\/pics\/neofetch\/sol\/light.jpg"/g' ~/.config/neofetch/config.conf
+    # sed -i 's/{cl11}/{cl3}/' ~/.config/neofetch/config.conf
 
-    # waybar white css
-    killall waybar; waybar -s ~/.config/waybar/style-solarized.css > /dev/null &
-fi
+    # change tofi theme
+    ln -sf ~/.config/tofi/white.conf ~/.config/tofi/theme.conf
+    
+    ;;
+    *)
+
+    exit 0
+    ;;
+esac
+
+echo $CHOICE > ~/colorscheme
+hyprctl reload

@@ -6,7 +6,7 @@ dot=0
 # Show human readable file sizes by default
 hru=1
 # Show file sizes in decimal (1KB=1000 bytes) as opposed to binary units (1KiB=1024 bytes)
-meb=0
+meb=1
 # Don't show group column
 fgp=0
 # Don't show hardlinks column
@@ -109,4 +109,4 @@ shift "$((OPTIND - 1))"
 (( git == 1 )) && \
   [[ $(git -C "${*:-.}" rev-parse --is-inside-work-tree) == true ]] 2>/dev/null && exa_opts+=(--git)
 
-eza --color-scale all "${exa_opts[@]}" "$@"
+eza "${exa_opts[@]}" "$@"
