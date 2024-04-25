@@ -1,4 +1,4 @@
-(setq default-frame-alist '((font . "CartographCF Nerd Font DemiBold 15")))
+(setq default-frame-alist '((font . "CartographCF Nerd Font DemiBold 16") (foreground-color . "#FFF")))
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -85,12 +85,11 @@
   :init
   (setq evil-want-C-u-scroll t)
   :config
-  (evil-mode 1))
-
-(use-package evil-collection
-  :ensure t
-  :config
-  (evil-collection-init))
+  (evil-mode 1)
+  (with-eval-after-load 'evil-maps
+  (define-key evil-motion-state-map (kbd "SPC") nil)
+  (define-key evil-motion-state-map (kbd "RET") nil)
+  (define-key evil-motion-state-map (kbd "TAB") nil)))
 
 (use-package org
   :ensure t)
@@ -101,9 +100,14 @@
   (setq org-roam-v2-ack t)
   :custom
   (org-roam-directory "~/org-roam")
+  (org-roam-completion-everywhere t)
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert))
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-id-get-create)
+         ("C-c n n" . org-roam-alias-add)
+         :map org-mode-map
+         ("C-M-i" . completion-at-point))
   :config
   (org-roam-setup))
 
@@ -146,30 +150,32 @@
 ;; Wrap the lines in org mode so that things are easier to read
 (add-hook 'org-mode-hook 'visual-line-mode)
 
-(let* ((variable-tuple
-       (cond ((x-list-fonts "CartographCF Nerd Font")         '(:font "CartographCF Nerd Font"))
-             ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-             ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-             ((x-list-fonts "Verdana")         '(:font "Verdana"))
-             ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-             (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-      (base-font-color     (face-foreground 'default nil 'default))
-      (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+(when window-system
+  (let* ((variable-tuple
+          (cond ((x-list-fonts "CartographCF Nerd Font")         '(:font "CartographCF Nerd Font" :foreground "#FFF"))
+                ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+                ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+                ((x-list-fonts "Verdana")         '(:font "Verdana"))
+                ((x-list-fonts "Sans Serif")    '(:family "Sans Serif"))
+                (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+         (base-font-color     (face-foreground 'default nil 'default))
+         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+    (custom-theme-set-faces
+     'user
+     `(org-level-8 ((t (,@headline ,@variable-tuple))))
+     `(org-level-7 ((t (,@headline ,@variable-tuple))))
+     `(org-level-6 ((t (,@headline ,@variable-tuple))))
+     `(org-level-5 ((t (,@headline ,@variable-tuple))))
+     `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.2))))
+     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.3))))
+     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.4))))
+     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
+     `(org-document-title ((t (,@headline ,@variable-tuple :height 1.7 :underline nil))))))
+)
 
- (custom-theme-set-faces
-  'user
-  `(org-level-8 ((t (,@headline ,@variable-tuple))))
-  `(org-level-7 ((t (,@headline ,@variable-tuple))))
-  `(org-level-6 ((t (,@headline ,@variable-tuple))))
-  `(org-level-5 ((t (,@headline ,@variable-tuple))))
-  `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.2))))
-  `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.3))))
-  `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.4))))
-  `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.6))))
-  `(org-document-title ((t (,@headline ,@variable-tuple :height 1.7 :underline nil))))))
 
-(use-package org-super-agenda
- :ensure t)
+  (use-package org-super-agenda
+    :ensure t)
 
 (use-package comment-tags
  :ensure t)
@@ -316,37 +322,42 @@
  (lambda () (interactive) (dired default-directory)))
 (evil-define-key 'visual 'global (kbd "J") 'evil-collection-unimpaired-move-text-down)
 (evil-define-key 'visual 'global (kbd "K") 'evil-collection-unimpaired-move-text-up)
-
-
-
-
-;; helm
-(use-package helm
- :ensure t
- :config
- (helm-mode 1)
- (global-set-key (kbd "C-x b") 'helm-buffers-list)
- (global-set-key (kbd "C-x r b") 'helm-boormarks)
- (global-set-key (kbd "C-x C-f") 'helm-find-files)
- (global-set-key (kbd "M-c") 'helm-calcul-expression)
- (global-set-key (kbd "C-x b") 'helm-buffers-list)
- (global-set-key (kbd "C-s") 'helm-occur)
- (global-set-key (kbd "M-x") 'helm-M-x)
- (global-set-key (kbd "M-y") 'helm-show-kill-ring)
- (global-set-key (kbd "C-h a") 'helm-apropos)
- (setq helm-split-window-in-side-p t
-       helm-move-to-line-cycle-in-source t))
-
-(defun my-switch-to-fzf (arg)
- (interactive "p")
- (let ((helm-current-dir (file-name-directory (helm-get-selection))))
-         (run-at-time nil nil
-                  (lambda (dir)
-                    (fzf/start dir)) helm-current-dir)
-     (helm-keyboard-quit)))
+ ;; helm
+ (use-package helm
+   :ensure t
+   :config
+   (helm-mode 1)
+   (global-set-key (kbd "C-x b") 'helm-buffers-list)
+   (global-set-key (kbd "C-x r b") 'helm-boormarks)
+   (global-set-key (kbd "C-x C-f") 'helm-find-files)
+   (global-set-key (kbd "M-c") 'helm-calcul-expression)
+   (global-set-key (kbd "C-x b") 'helm-buffers-list)
+   (global-set-key (kbd "C-s") 'helm-occur)
+   (global-set-key (kbd "M-x") 'helm-M-x)
+   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+   (global-set-key (kbd "C-h a") 'helm-apropos)
+   (setq helm-split-window-in-side-p t
+         helm-move-to-line-cycle-in-source t))
 
 (use-package helm-projectile
   :ensure t)
 
 (evil-define-key 'normal 'global (kbd "<leader>sf")
   (lambda () (interactive) (helm-projectile)))
+(evil-define-key 'normal 'global (kbd "<leader>mc")
+  (lambda () (interactive) (find-file user-init-file)))
+
+(electric-pair-mode 1)
+
+(use-package eaf
+  :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
+  :custom
+  ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+  (eaf-browser-continue-where-left-off t)
+  (eaf-browser-enable-adblocker t)
+  (browse-url-browser-function 'eaf-open-browser)
+  :config
+  (defalias 'browse-web #'eaf-open-browser))
+
+(require 'eaf-browser)
+(require 'eaf-pdf-viewer)
