@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(helm-rg helm-projectile yasnippet-snippets which-key vue-mode projectile powerline-evil paredit org-super-agenda org-roam org-modern magit lsp-ui lsp-pyright kaolin-themes helm-xref golint flycheck flx evil-collection doom-themes dap-mode corfu company-go company-fuzzy comment-tags beacon all-the-icons)))
+   '(autopair yasnippet-snippets which-key vue-mode powerline-evil paredit org-super-agenda org-roam org-modern magit lsp-ui lsp-pyright kaolin-themes helm-xref helm-rg helm-projectile golint flycheck flx evil-collection doom-themes dap-mode corfu company-go company-fuzzy comment-tags beacon all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
