@@ -50,13 +50,13 @@ return {
     warn_about_missing_glyphs = false,
     font_size = 15,
     line_height = 1.0,
-    dpi = 96.0,
+    -- dpi = 96.0,
 
     -- Cursor style
     default_cursor_style = "BlinkingUnderline",
 
     -- X11
-    enable_wayland = true,
+    enable_wayland = false,
 
     -- Keybinds
     disable_default_key_bindings = true,
