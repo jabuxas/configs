@@ -44,7 +44,7 @@ fi
 
 if [ -n "$failsafe" ]; then
     export XDG_SESSION_TYPE="x11"
-    exec dbus-launch --exit-with-session leftwm | tee ~/leftwm.log
+    exec dbus-launch --exit-with-session leftwm > ~/leftwm.log
 else
     exec $command
 fi
