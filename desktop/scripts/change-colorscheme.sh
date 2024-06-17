@@ -19,15 +19,34 @@ SOLARIZED_NORMAL_WPP=~/pics/wallpapers/solarized4.png
 MONOCHROME_WIDE_WPP=~/pics/wallpapers/monochrome-1.png
 MONOCHROME_NORMAL_WPP=~/pics/wallpapers/monochrome-1.jpg
 
+EVERFOREST_WIDE_WPP=~/pics/wallpapers/ef1.jpg
+EVERFOREST_NORMAL_WPP=~/pics/wallpapers/ef2.jpg
 CHOICE=$(tofi <$HOME/scripts/choices)
 
 
 case "$CHOICE" in
+    forest)
+    ~/scripts/swww.sh $EVERFOREST_WIDE_WPP $EVERFOREST_NORMAL_WPP
+
+    gsettings set org.gnome.desktop.interface gtk-theme Everforest-Dark-BL
+    gsettings set org.gnome.desktop.interface icon-theme Everforest-Dark
+
+    ln -sf ~/.config/tmux/themes/tmux-everforest.conf ~/.config/tmux/theme.conf
+    tmux source-file ~/.config/tmux/tmux.conf
+
+    sed -i 's/color_scheme = .*/color_scheme = "Everforest Dark Hard (Gogh)"/g' ~/.config/wezterm/wezterm.lua
+
+    sed -i 's/image_source=.*/image_source="$HOME\/pics\/the pitiful2.jpg"/g' ~/.config/neofetch/config.conf
+
+    ln -sf ~/.config/tofi/everforest.conf ~/.config/tofi/theme.conf
+
+    ;;
+
     monochrome)
     ~/scripts/swww.sh $MONOCHROME_WIDE_WPP $MONOCHROME_NORMAL_WPP
 
 
-    ln -sf ~/.config/tmux/tmux-monochrome.conf ~/.config/tmux/theme.conf
+    ln -sf ~/.config/tmux/themes/tmux-monochrome.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     sed -i 's/color_scheme = .*/color_scheme = "monochrome_glorb"/g' ~/.config/wezterm/wezterm.lua
@@ -42,7 +61,7 @@ case "$CHOICE" in
     ~/scripts/swww.sh $SOLARIZED_WIDE_WPP $SOLARIZED_NORMAL_WPP
 
     #change tmux theme
-    ln -sf ~/.config/tmux/tmux-solarized.conf ~/.config/tmux/theme.conf
+    ln -sf ~/.config/tmux/themes/tmux-solarized.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     # change wezterm theme
@@ -62,7 +81,7 @@ case "$CHOICE" in
     ~/scripts/swww.sh $MELANGE_WIDE_WPP $MELANGE_NORMAL_WPP
 
     #change tmux theme
-    ln -sf ~/.config/tmux/tmux-melange.conf ~/.config/tmux/theme.conf
+    ln -sf ~/.config/tmux/themes/tmux-melange.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     # change wezterm theme
@@ -77,7 +96,7 @@ case "$CHOICE" in
     ;;
     white)
 
-    ln -sf ~/.config/tmux/tmux-white.conf ~/.config/tmux/theme.conf
+    ln -sf ~/.config/tmux/themes/tmux-white.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     # change wezterm theme
@@ -97,7 +116,7 @@ case "$CHOICE" in
     ~/scripts/swww.sh $RED_WIDE_WPP $RED_NORMAL_WPP
 
     # change tmux theme and reload
-    ln -sf ~/.config/tmux/tmux-red.conf ~/.config/tmux/theme.conf
+    ln -sf ~/.config/tmux/themes/tmux-red.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
 
     # change wezterm theme

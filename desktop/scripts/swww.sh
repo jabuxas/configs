@@ -23,6 +23,14 @@ if [[ -z "$1" ]]; then
     solarized)
         FIRST=~/pics/wallpapers/solarized5.jpg
         SECOND=~/pics/wallpapers/solarized4.png
+    ;;
+    monochrome)
+        FIRST=~/pics/wallpapers/monochrome-1.png
+        SECOND=~/pics/wallpapers/monochrome-1.jpg
+    ;;
+forest)
+    FIRST=~/pics/wallpapers/ef1.jpg
+    SECOND=~/pics/wallpapers/ef2.jpg
     esac
 else
     FIRST=$1
@@ -30,8 +38,9 @@ else
 fi
 
 
-swww init &
+swww-daemon &
 sleep 0.3
 
 swww img -o HDMI-A-1 $FIRST
-swww img -o DP-3 $SECOND
+swww img -o DP-2 $SECOND
+swww img -o DP-3 ~/pics/wallpapers/cottage.jpg

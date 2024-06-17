@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## Change following to '0' for output to be like ls and '1' for exa features
 # Don't list implied . and .. by default with -a
@@ -109,4 +109,4 @@ shift "$((OPTIND - 1))"
 (( git == 1 )) && \
   [[ $(git -C "${*:-.}" rev-parse --is-inside-work-tree) == true ]] 2>/dev/null && exa_opts+=(--git)
 
-eza --color-scale all "${exa_opts[@]}" "$@"
+eza "${exa_opts[@]}" "$@"
