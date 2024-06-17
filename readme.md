@@ -2,15 +2,22 @@
 
 here you will find configs for my desktop and my laptop.
 
-i primarily use [neovim](https://github.com/jabuxas/nvim.config), tmux ([sessionizer](https://github.com/jrmoulton/tmux-sessionizer)) and hyprland
+i primarily use [neovim](https://github.com/jabuxas/nvim.config), tmux ([sessionizer](https://github.com/jrmoulton/tmux-sessionizer)) and ~~hyprland~~ leftwm
 
-themes are completely interchangeable as long as you setup the structure of files the same as this repo, or edit to your liking
+themes are completely interchangeable as long as you setup the structure of files the same as this repo\*, or edit to your liking
+
+\*: the script to change themes only works on hyprland - i havent and probably will not translate it to leftwm, unless i go on a theme changing spree again
 
 pr's are welcome for optimizations and useful refactors
 
-## Images
+## images
 
 ### desktop
+
+#### forest
+
+![screenshot-2024-06-17T20-08-32-0300](https://github.com/jabuxas/configs/assets/94939040/9541ade6-cb36-40a4-8629-85b125847f65)
+![screenshot-2024-06-17T20-10-38-0300](https://github.com/jabuxas/configs/assets/94939040/91b09dff-89c7-48a3-aa10-88611b510f5b)
 
 #### monochrome
 
