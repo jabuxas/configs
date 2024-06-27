@@ -48,3 +48,4 @@ luac.out
 node_modules/
 xmonad.log
 .stack-work/
+plugins/

@@ -56,7 +56,7 @@ return {
     default_cursor_style = "BlinkingUnderline",
 
     -- X11
-    enable_wayland = false,
+    enable_wayland = true,
 
     -- Keybinds
     disable_default_key_bindings = true,
@@ -108,5 +108,5 @@ return {
 
     color_scheme_dirs = { "~/.config/wezterm/colors" },
 
-    color_scheme = "catppuccin-latte"
+    color_scheme = "monochrome_glorb"
 }

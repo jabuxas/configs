@@ -93,8 +93,7 @@ tooltip label {
 	/* color: #f7f7f9; */
 	font-weight: bold;
 	/* color: rgba(128, 142, 194, 0.8); */
-	/* color: #53586c; */
-	color: #ececf1;
+	color: #53586c;
 	background: transparent;
 }
 
@@ -111,10 +110,6 @@ tooltip label {
 	padding: 0px 12px 0 5px;
 	border-radius: 0%;
 	margin-right: 0px;
-}
-
-#battery.warning {
-	color: #ffffff;
 }
 
 #battery.critical {
