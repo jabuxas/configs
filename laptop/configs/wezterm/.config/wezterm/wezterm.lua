@@ -48,7 +48,7 @@ return {
     -- Font config
     font = font_with_fallback(font_name),
     warn_about_missing_glyphs = false,
-    font_size = 13,
+    font_size = 12,
     line_height = 1.0,
     dpi = 96.0,
 
@@ -56,7 +56,7 @@ return {
     default_cursor_style = "BlinkingUnderline",
 
     -- X11
-    enable_wayland = true,
+    enable_wayland = false,
 
     -- Keybinds
     disable_default_key_bindings = true,
@@ -101,7 +101,7 @@ return {
     -- General
     automatically_reload_config = true,
     inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
-    window_background_opacity = 0.85,
+    window_background_opacity = 0.95,
     window_close_confirmation = "NeverPrompt",
     window_frame = { active_titlebar_bg = "#45475a", font = font_with_fallback(font_name, { bold = true }) },
     check_for_updates = false,
