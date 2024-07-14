@@ -48,7 +48,7 @@ return {
     -- Font config
     font = font_with_fallback(font_name),
     warn_about_missing_glyphs = false,
-    font_size = 15,
+    font_size = 13,
     line_height = 1.0,
     -- dpi = 96.0,
 
@@ -105,8 +105,9 @@ return {
     window_close_confirmation = "NeverPrompt",
     window_frame = { active_titlebar_bg = "#45475a", font = font_with_fallback(font_name, { bold = true }) },
     check_for_updates = false,
+    adjust_window_size_when_changing_font_size = false,
 
     color_scheme_dirs = { "~/.config/wezterm/colors" },
 
-    color_scheme = "Everforest Dark Hard (Gogh)"
+    color_scheme = "solarized_jbx"
 }
