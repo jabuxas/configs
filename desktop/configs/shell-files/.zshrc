@@ -41,14 +41,18 @@ alias icat="kitty +kitten icat"
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 alias hr="date +'%Hh:%M, %d-%m-%Y'"
 alias neofetch="fastfetch"
+alias kvm="sh ~/scripts/kvm.sh"
+alias windows="sudo grub-set-default 0; sudo grub-reboot 'Microsoft Windows UEFI/GPT'; loginctl reboot"
 
 export BAT_THEME="Solarized (light)"
 export FPATH="/hdd/docs/eza/completions/zsh:$FPATH"
 export EDITOR=nvim
 export PATH=$PATH:/yang/.spicetify
 
+eval `dircolors /yang/docs/dircolors.256dark`
+
 [ -f "/yang/.ghcup/env" ] && source "/yang/.ghcup/env" # ghcup-env
 
-# if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#     dbus-run-session Hyprland
-# fi
+if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    dbus-run-session Hyprland
+fi
