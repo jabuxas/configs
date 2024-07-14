@@ -2,7 +2,10 @@
 (
     modkey: "Mod4",
     mousekey: "Mod4",
-    workspaces: [],
+    workspaces: [
+    // ( output: "HDMI-A-0", relative: true, y: 0, x: 0, height: 1080, width: -1280 ),
+    // ( output: "HDMI-A-0", relative: true, y: 0, x: 1280, height: 1080, width: -1280 ),
+    ],
     tags: [
         "I",
         "II",
@@ -69,8 +72,9 @@
         (window_class: "gamescope", spawn_on_tag: 9),
         (window_class: "heroic", spawn_on_tag: 7),
         (window_class: "obs", spawn_on_tag: 5),
+        (window_class: "krita", spawn_on_tag: 5),
         (window_class: "obsidian", spawn_on_tag: 3),
-        (window_class: "parsecd", spawn_on_tag: 5),
+        (window_class: "parsecd", spawn_on_tag: 5, spawn_fullscreen: true),
         (window_class: "Dbeaver", spawn_on_tag: 3),
         (window_class: "Chromium-browser", spawn_on_tag: 10),
         (window_class: "steam", spawn_on_tag: 8),
@@ -92,6 +96,7 @@
         (window_title: "Wuthering Waves  ", window_class: "^client.*.exe$", spawn_on_tag: 9),
         (window_class: "steam_app_1267910", spawn_on_tag: 10),
         (window_class: "Melvor Idle", spawn_on_tag: 10),
+        (window_class: "net-runelite-launcher-Launcher", spawn_on_tag: 10),
         (window_class: "^(Blish Hud)$", spawn_floating: true, spawn_on_tag: 9),
     ],
     disable_current_tag_swap: false,
