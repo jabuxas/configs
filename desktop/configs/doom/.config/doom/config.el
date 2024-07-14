@@ -75,9 +75,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(add-to-list 'custom-theme-load-path "~/docs/everforest-theme")
-(load-theme 'everforest-hard-dark t)
-
 ;; https://superuser.com/questions/271023/can-i-disable-continuation-of-comments-to-the-next-line-in-vim
 (setq +evil-want-o/O-to-continue-comments nil)
 
