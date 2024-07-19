@@ -2,17 +2,20 @@
 
 here you will find configs for my desktop and my laptop.
 
-i primarily use [neovim](https://github.com/jabuxas/nvim.config), tmux ([sessionizer](https://github.com/jrmoulton/tmux-sessionizer)) and ~~hyprland~~ leftwm
+i primarily use [neovim](https://github.com/jabuxas/nvim.config), tmux ([sessionizer](https://github.com/jrmoulton/tmux-sessionizer)) and hyprland
 
 themes are completely interchangeable as long as you setup the structure of files the same as this repo\*, or edit to your liking
-
-\*: the script to change themes only works on hyprland - i havent and probably will not translate it to leftwm, unless i go on a theme changing spree again
 
 pr's are welcome for optimizations and useful refactors
 
 ## images
 
 ### desktop
+
+#### solarized
+
+![screenshot-2024-03-03T22:02:37-03:00](https://github.com/jabuxas/configs/assets/94939040/38926b19-d50e-4da0-90ee-05095cd9a964)
+![screenshot-2024-03-04T09:40:44-03:00](https://github.com/jabuxas/configs/assets/94939040/b685cb38-77b8-4038-8319-1c60e6736ee5)
 
 #### forest
 
@@ -23,11 +26,6 @@ pr's are welcome for optimizations and useful refactors
 
 ![screenshot-2024-03-28T11:14:41-03:00](https://github.com/jabuxas/configs/assets/94939040/7915aa32-5e7f-41ea-9cea-6f1231244d2d)
 ![screenshot-2024-03-28T11:12:29-03:00](https://github.com/jabuxas/configs/assets/94939040/a4d0b289-9946-4679-96d4-6da5e965f264)
-
-#### solarized
-
-![screenshot-2024-03-03T22:02:37-03:00](https://github.com/jabuxas/configs/assets/94939040/38926b19-d50e-4da0-90ee-05095cd9a964)
-![screenshot-2024-03-04T09:40:44-03:00](https://github.com/jabuxas/configs/assets/94939040/b685cb38-77b8-4038-8319-1c60e6736ee5)
 
 #### _red_
 
