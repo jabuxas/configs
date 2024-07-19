@@ -1,52 +1,29 @@
-# main
-media-video/obs-studio
-sys-apps/eza
-app-backup/mkstage4
-games-util/heroic-bin
-app-office/onlyoffice-bin
-dev-go/golangci-lint
-gui-wm/*
+# system
+*/*::guru
+gui-apps/ags
+gui-wm/gamescope
+app-office/qownnotes
+x11-themes/kvantum
 
-# amdgpu-pro
-media-video/amdgpu-pro-amf
-media-libs/amf-headers
-media-libs/amdgpu-pro-vulkan
-
-gui-libs/gtk
-
-# hyprland (test)
-dev-cpp/sdbus-c++
-dev-libs/hyprland-protocols
-dev-libs/libliftoff
-media-libs/libdisplay-info
-
-# steam / lutris / wine
-games-util/lutris
-app-emulation/wine-staging
-app-emulation/wine-gecko
-app-emulation/wine-mono
-*/*::steam-overlay
-dev-python/pypresence
-dev-python/moddb
-dev-python/pyrate-limiter
-sys-libs/libudev-compat
-games-util/game-device-udev-rules
+app-eselect/eselect-zig
+dev-lang/zig-bin
+x11-terms/wezterm
 games-util/gamemode
 
-# flatpak ditching
-app-misc/anki
+# hyprland
+dev-cpp/sdbus-c++
 
-# guru any% speedrun
-*/*::guru
-*/*::the-anime-team
+# mangohud
+dev-libs/spdlog
+dev-libs/libfmt
+media-libs/glfw
 
-# xivlauncher and otd
-dev-dotnet/dotnet-sdk-bin
-app-eselect/eselect-dotnet
-dev-dotnet/dotnet-runtime-nugets
-dev-dotnet/csharp-gentoodotnetinfo
-virtual/dotnet-sdk
+# steam
+*/*::steam-overlay
+games-util/game-device-udev-rules
+sys-libs/libudev-compat
 
-# gamescope
-media-libs/vkroots
-gui-wm/gamescope
+
+# pcmanfm
+x11-misc/pcmanfm
+x11-libs/libfm
