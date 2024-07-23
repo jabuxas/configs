@@ -108,5 +108,5 @@ return {
 
     color_scheme_dirs = { "~/.config/wezterm/colors" },
 
-    color_scheme = "monochrome_glorb"
+    color_scheme = "solarized_jbx"
 }
