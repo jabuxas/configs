@@ -55,5 +55,5 @@ eval `dircolors /yang/docs/dircolors.256dark`
 [ -f "/yang/.ghcup/env" ] && source "/yang/.ghcup/env" # ghcup-env
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    dbus-run-session Hyprland
+    dbus-run-session sway
 fi

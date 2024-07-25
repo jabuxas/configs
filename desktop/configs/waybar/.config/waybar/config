@@ -1,19 +1,19 @@
 {
     "layer": "top",
-    "position": "top",
+    "position": "bottom",
     "mod": "dock",
     "exclusive": true,
     "passtrough": false,
     "gtk-layer-shell": true,
-    "height": 0,
+    "height": 30,
     /* "output": "DP-3", */
 
     "modules-left": [
-	"hyprland/workspaces",
+	"sway/workspaces",
     ],
 
     "modules-center": [
-	"hyprland/window"
+	"sway/window"
     ],
 
     "modules-right": [
@@ -22,13 +22,11 @@
 	"tray",
     ],
 
-    "hyprland/window": {
+    "sway/window": {
 	"format": "{}"
     },
 
-    "hyprland/workspaces": {
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
+    "sway/workspaces": {
 	"all-outputs": true,
 	"on-click": "activate",
 	"format": "{icon}",
@@ -56,14 +54,14 @@
     },
 
     "clock": {
-	"format": "{:%a %b %d, %H:%M}",
+	"format": "{:%a %b %d, %H:%M} //",
 	"tooltip-format": "<big>{:%Y %B}</big>\n\n<tt><small>{calendar}</small></tt>"
     },
 
     "pulseaudio": {
-	"format": "  {volume}%",
+	"format": "  {volume}% //",
 	"tooltip": false,
-	"format-muted": "  N/A",
+	"format-muted": "  N/A //",
 	"on-click": "pavucontrol &",
 	"scroll-step": 5
     },

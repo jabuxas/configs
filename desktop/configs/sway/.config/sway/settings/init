@@ -1,0 +1,20 @@
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    # gsettings set $gnome-schema gtk-theme 'Gruvbox-Dark-BL-LB'
+    # gsettings set $gnome-schema icon-theme 'Nordzy-green-dark'
+    # gsettings set $gnome-schema cursor-theme 'oreo_white_cursors'
+    gsettings set $gnome-schema font-name 'CartographCF Nerd Font 13'
+}
+
+exec {
+    xrandr --output HDMI-A-1 --primary
+    waybar &
+    lxqt-policykit &
+    autotiling
+    gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.6 &
+    dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+    rm -rf ~/tmp/*
+    ~/scripts/swww.sh
+} 
+
+# vim: ts=2 sts=2 sw=2 ft=swayconfig
