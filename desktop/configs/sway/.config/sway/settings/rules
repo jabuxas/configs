@@ -19,7 +19,9 @@ for_window [class="XIVLauncher.Core"] move to workspace 9, floating enable
 for_window [class=".*csgo.*"] move to workspace 9, floating enable
 assign [class="gamescope"] 9
 for_window [class="gamescope"] floating enable
+for_window [class="cs2"] move to workspace 9, fullscreen enable
 for_window [class=".*steam_.*"] move to workspace 9, floating enable
+for_window [class="Melvor Idle"] move to workspace 10
 
 # firefox tweaks
 for_window [title = "Firefox - Sharing Indicator"] kill
