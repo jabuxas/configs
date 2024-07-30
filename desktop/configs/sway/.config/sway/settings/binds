@@ -84,7 +84,7 @@ bindsym $mod+e exec pcmanfm
 bindsym Print exec ~/.local/bin/way-print.sh p
 bindsym Shift+Print exec ~/.local/bin/way-print.sh s
 bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh t
-bindsym Control+Print exec ~/.local/bin/way-print.sh m
+bindsym Control+Print exec ~/.local/bin/print-window.sh
 
 # audio
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
