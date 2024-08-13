@@ -1,62 +1,86 @@
 {
-  "spacing": 4,
-  // try to keep it 4px across the config
-  "height": 25,
-  "modules-left": ["hyprland/workspaces", "custom/icon", "hyprland/window"],
-  "modules-right": [
-    "tray",
-    "battery",
-    "pulseaudio",
-    "cpu",
-    "memory",
-    "temperature",
-    "clock",
-  ],
+    "layer": "top",
+    "position": "bottom",
+    "mod": "dock",
+    "exclusive": true,
+    "passtrough": false,
+    "gtk-layer-shell": true,
+    "height": 15,
+    /* "output": "DP-3", */
 
-  /*
-    MODULES
-  */
-  "custom/icon": {
-    "exec": "~/.config/waybar/state",
-    "interval": 5,
-  },
-  "tray": {
-    "spacing": 10,
-  },
+    "modules-left": [
+	"sway/workspaces",
+    ],
 
-  "hyprland/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "all-outputs": true,
-    "on-click": "activate",
-  },
-  "clock": {
-    // "timezone": "America/New_York",
-    "tooltip-format": "<big>[{:%Y %B}]</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "[{:%H:%M}]",
-    "format-alt": "[{:%Y-%m-%d}]",
-  },
-  "cpu": {
-    "format": "[CPU:{usage}%]",
-    "tooltip": false,
-  },
-  "memory": {
-    "format": "[MEM:{percentage}%]",
-  },
-  "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    "format-critical": "[!!{temperatureC}°C!!]",
-    "format": "[{temperatureC}°C]",
-  },
-  "battery": {
-    "format": "[BAT::{capacity}%]",
-  },
-  "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "[VOL:{volume}%]",
-    "format-muted": "[VOL: M]",
-    "on-click": "pavucontrol",
-  },
+    "modules-center": [
+	"sway/window"
+    ],
+
+    "modules-right": [
+	"pulseaudio",
+	"clock",
+	"battery",
+	"tray",
+    ],
+
+    "sway/window": {
+	"format": "{}"
+    },
+
+    "sway/workspaces": {
+	"all-outputs": true,
+	"on-click": "activate",
+	"format": "{icon}",
+	"format-icons": {
+	    "1": "1",
+	    "2": "2",
+	    "3": "3",
+	    "4": "4",
+	    "5": "5",
+	    "6": "6",
+	    "7": "7",
+	    "8": "8",
+	    "9": "9",
+	    "10": "10",
+	    "11": "11",
+	    "12": "12",
+	    "13": "13"
+	}
+    },
+
+    "tray": {
+	"icon-size": 20,
+	"tooltip": false,
+	"spacing": 10
+    },
+
+    "clock": {
+	"format": "{:%a %b %d, %H:%M} //",
+	"tooltip-format": "<big>{:%Y %B}</big>\n\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "pulseaudio": {
+	"format": "  {volume}% //",
+	"tooltip": false,
+	"format-muted": "  N/A //",
+	"on-click": "pavucontrol &",
+	"scroll-step": 5
+    },
+
+    "network": {
+	"format-wifi": "   {essid} {signalStrength}%",
+	"format-ethernet": "   {signalStrength}%",
+	"format-disconnected": "   N/A"
+    },
+
+    "battery": {
+	"states": {
+	    "warning": 20,
+	    "critical": 15
+	},
+	"format": "󰁹 {capacity}% //",
+	"format-charging": "󰂄 {capacity}% //",
+	"format-plugged": "󰂄 {capacity}% //"
+    }
 }
+

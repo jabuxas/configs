@@ -1,33 +1,39 @@
 * {
 	border: none;
 	border-radius: 0;
-	/* padding: 0; */
-	/* margin: 0; */
-	font-size: 15px;
-	font-family: FiraCode Nerd Font;
-	font-style: italic;
+	padding: 0;
+	margin: 0;
+	font-size: 11px;
 }
 
 window#waybar {
 	background: #002b36;
-	color: #ffffff;
-	margin: 10px;
+	color: #839496;
+}
+
+#custom-logo {
+	font-size: 18px;
+	margin: 0;
+	margin-left: 7px;
+	margin-right: 12px;
+	padding: 0;
+	font-family: NotoSans Nerd Font Mono;
 }
 
 #workspaces button {
 	margin-left: 2px;
-	padding: 2px 8px;
+	margin-right: 10px;
 	color: #839496;
 }
 
 #workspaces button:hover,
 #workspaces button:active {
-	background-color: #004d61;
+	background-color: #002b36;
 	color: #839496;
 }
 
 #workspaces button.focused {
-	background-color: #004d61;
+	background-color: #383737;
 }
 
 #language {

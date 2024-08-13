@@ -1,0 +1,47 @@
+for_window [class="Anki" title="Add"] floating enable
+for_window [shell=".*"] inhibit_idle fullscreen
+for_window [app_id=".*office.*"] move to workspace 5
+for_window [app_id="Firefox"] move to workspace 2
+for_window [app_id="WebCord"] move to workspace 6
+for_window [class="Steam"] move to workspace 8
+for_window [class="Spotify"] move to workspace 4
+for_window [class="steam"] move to workspace 8
+for_window [class=".*jetbrains.*"] move to workspace 5
+for_window [app_id="lutris"] move to workspace 7
+for_window [class="heroic"] move to workspace 7
+for_window [class="explorer.exe"] move to workspace 9
+for_window [class="osu!"] move to workspace 9
+for_window [title="Wine System Tray"] kill
+for_window [app_id="org.prismlauncher.PrismLauncher"] move to workspace 7
+for_window [class="ffxiv_dx11.exe"] move to workspace 9, floating enable
+for_window [class="battle.net.exe"] move to workspace 9, floating enable
+for_window [class="diablo iv.exe"] move to workspace 9, floating enable
+for_window [class=".*Minecraft.*"] move to workspace 9, floating enable
+for_window [class="XIVLauncher.Core"] move to workspace 9, floating enable
+for_window [class=".*csgo.*"] move to workspace 9, floating enable
+assign [class="gamescope"] 9
+for_window [class="gamescope"] floating enable
+for_window [class="cs2"] move to workspace 9, fullscreen enable
+for_window [class=".*steam_.*"] move to workspace 9, floating enable
+for_window [class="Melvor Idle"] move to workspace 10
+
+# firefox tweaks
+for_window [title = "Firefox - Sharing Indicator"] kill
+for_window [title = "About Mozilla Firefox"] floating enable
+for_window [window_role = "About"] floating enable
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
+for_window [title = "Firefox — Sharing Indicator"] kill
+
+# steam tweaks
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+
+# vim: ts=2 sts=2 sw=2 ft=swayconfig

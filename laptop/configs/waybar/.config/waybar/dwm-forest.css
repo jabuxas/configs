@@ -1,0 +1,73 @@
+@define-color accent #3c4841;
+@define-color text #d3c6aa;
+@define-color invText #d3c6aa;
+/* text when background is accent */
+@define-color bg #1e2326;
+
+/* @import "./wal.css";
+@define-color accent @color5;
+@define-color bg @background;
+@define-color text @foreground; */
+
+* {
+	font-family: CartographCF Nerd Font;
+	font-size: 15px;
+	border-radius: 0px;
+	/* :[ */
+	min-height: 0px;
+}
+
+window#waybar {
+	background-color: @accent;
+	color: @text;
+	opacity: 1;
+}
+
+#workspaces {
+	background-color: transparent;
+	padding: 5px 3px;
+}
+
+#workspaces button {
+	padding: 0 5px;
+	color: @text;
+}
+
+#workspaces button.active {
+	background-color: @accent;
+	color: @invText;
+	/* color: @background; */
+}
+
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#tray,
+#custom-icon {
+	background-color: transparent;
+	color: @text;
+	margin: 1px;
+}
+
+#tray {
+	padding: 4px;
+}
+
+.modules-left {
+	background-color: @bg;
+	padding: 0px 0px 0px 0px;
+}
+
+#window {
+	color: @invText;
+	background-color: @accent;
+	padding-left: 4px;
+}
+
+.modules-right {
+	background-color: @bg;
+	padding: 0px 0px 0px 0px;
+}

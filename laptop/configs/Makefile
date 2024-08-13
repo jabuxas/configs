@@ -1,5 +1,5 @@
 all:
-	stow --verbose --target=$$HOME --restow */
+	xstow --verbose --target=$$HOME --restow */
 
 delete:
-	stow --verbose --target=$$HOME --delete */
+	xstow --verbose --target=$$HOME --delete */
