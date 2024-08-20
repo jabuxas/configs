@@ -1,4 +1,12 @@
 #!/bin/bash
+swpy_dir="${XDG_CONFIG_HOME:-$HOME/.config}/swappy"
+save_dir="$HOME/pics/screenshots"
+save_file="screenshot-$(date -Iseconds | cut -d '+' -f1).png"
+temp_screenshot="/tmp/screenshot.png"
+
+mkdir -p $save_dir
+mkdir -p $swpy_dir
+echo -e "[Default]\nsave_dir=$save_dir\nsave_filename_format=$save_file" > $swpy_dir/config
 if [[ $XDG_SESSION_TYPE == "x11" ]]; then
     maim -i $(xdotool getactivewindow) | xclip -sel clip -t image/png
 fi
@@ -14,8 +22,9 @@ if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
     fi
 
     if [[ $XDG_CURRENT_DESKTOP == "sway" ]]; then
-    grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" ~/tmp/jabuxas.png
-    xclip -sel clip ~/tmp/jabuxas.png
+    rm $temp_screenshot
+    grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" $temp_screenshot
     wl-copy < ~/tmp/jabuxas.png
+    swappy -f $temp_screenshot
     fi
 fi

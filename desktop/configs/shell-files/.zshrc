@@ -45,6 +45,8 @@ alias kvm="sh ~/scripts/kvm.sh"
 alias windows="sudo grub-set-default 0; sudo grub-reboot 'Microsoft Windows UEFI/GPT'; systemctl reboot"
 alias ff="fastfetch"
 alias feh="imv"
+alias cop="wl-copy"
+alias lg="lazygit"
 
 export BAT_THEME="Solarized (light)"
 export FPATH="/hdd/docs/eza/completions/zsh:$FPATH"
@@ -59,3 +61,29 @@ if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     export XDG_CURRENT_DESKTOP="sway"
     dbus-run-session sway
 fi
+
+paste() {
+  local file
+  if [[ -p /dev/stdin ]]; then
+    file=$(mktemp)
+    cat > "$file"
+  elif [[ -n $1 ]]; then
+    file="$1"
+  else
+    echo "Usage: paste [file]"
+    return 1
+  fi
+  
+  curl -F "file=@$file" -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.xyz/upload
+  
+  if [[ -p /dev/stdin ]]; then
+    rm "$file"
+  fi
+}
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/yang/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/yang/tmp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/yang/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/yang/tmp/google-cloud-sdk/completion.zsh.inc'; fi

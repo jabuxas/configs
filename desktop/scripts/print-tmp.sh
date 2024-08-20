@@ -7,5 +7,5 @@ fi
 
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
   grim -g "$(slurp)" $tmp
-  curl -F'file=@'"${tmp}" -Fsecret= -Fexpires=24 https://0x0.st | wl-copy
+  curl -F'file=@'"${tmp}" -H 'X-Auth: '$(cat ~/.key) https://paste.jabuxas.xyz/upload | wl-copy
 fi
