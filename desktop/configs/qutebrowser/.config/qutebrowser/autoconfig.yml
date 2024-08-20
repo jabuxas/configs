@@ -17,4 +17,4 @@ settings:
   tabs.favicons.scale:
     global: 1.3
   tabs.show:
-    global: always
+    global: never

@@ -82,6 +82,7 @@ bindsym $mod+Control+s scratchpad show
 bindsym $mod+Shift+s exec steam --noverifyfiles
 bindsym $mod+e exec pcmanfm
 bindsym Print exec ~/.local/bin/way-print.sh p
+bindsym $mod+Print exec ~/.local/bin/print-tmp.sh
 bindsym Shift+Print exec ~/.local/bin/way-print.sh s
 bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh t
 bindsym Control+Print exec ~/.local/bin/print-window.sh
