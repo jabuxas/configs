@@ -24,7 +24,8 @@
     ],
 
     "sway/window": {
-	"format": "{}"
+	"format": "{}",
+	"max-length": 30
     },
 
     "sway/workspaces": {
