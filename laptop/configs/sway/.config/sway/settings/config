@@ -1,4 +1,5 @@
 output {
+  LVDS-1 pos 0 0
 } 
 
 default_border pixel 2 
@@ -11,11 +12,10 @@ no_focus [window_role="pop-up"]
 gaps inner 10
 mouse_warping none
 
-input "2362:9523:Gaming_Mouse" {
-      accel_profile flat
+input "2:14:ETPS/2_Elantech_Touchpad" {
+      accel_profile adaptive
       dwt enabled
       middle_emulation enabled
-      pointer_accel 0.5
 }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -24,8 +24,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
       xkb_options ctrl:nocaps
 }
 
-input "1356:2508:Wireless_Controller_Touchpad" {
-      map_to_output DISABLED
+input "1241:6185:LogoTech_Gaming_Keyboard" {
+      xkb_layout br
+      xkb_variant abnt2
+      xkb_options ctrl:nocaps
 }
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

@@ -7,6 +7,7 @@ for_window [class="Steam"] move to workspace 8
 for_window [class="Spotify"] move to workspace 4
 for_window [class="steam"] move to workspace 8
 for_window [class=".*jetbrains.*"] move to workspace 5
+for_window [class="jetbrains-idea"] move to workspace 5
 for_window [app_id="lutris"] move to workspace 7
 for_window [class="heroic"] move to workspace 7
 for_window [class="explorer.exe"] move to workspace 9
