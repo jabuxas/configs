@@ -86,6 +86,7 @@ bindsym $mod+Print exec ~/.local/bin/print-tmp.sh
 bindsym Shift+Print exec ~/.local/bin/way-print.sh s
 bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh t
 bindsym Control+Print exec ~/.local/bin/print-window.sh
+bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE flatpak run --parent-expose-pids --parent-share-pids --parent-pid=1 --branch=stable --arch=x86_64 --command=xivlauncher dev.goats.xivlauncher
 
 # audio
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+

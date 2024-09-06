@@ -19,7 +19,6 @@ mouse_warping none
 input "2362:9523:Gaming_Mouse" {
       accel_profile flat
       dwt enabled
-      middle_emulation enabled
       pointer_accel 0.5
 }
 

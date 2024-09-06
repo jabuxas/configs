@@ -1,4 +1,5 @@
 for_window [class="Anki" title="Add"] floating enable
+for_window [class="vrising.exe"] move to workspace 9
 for_window [shell=".*"] inhibit_idle fullscreen
 for_window [app_id=".*office.*"] move to workspace 5
 for_window [app_id="WebCord"] move to workspace 6
