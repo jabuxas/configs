@@ -64,7 +64,7 @@ pst() {
     return 1
   fi
   
-  curl -F "file=@$file" -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.xyz/upload
+  curl -F "file=@$file" -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.xyz
   
   if [[ -p /dev/stdin ]]; then
     rm "$file"
