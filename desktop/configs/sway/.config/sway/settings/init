@@ -3,7 +3,7 @@ exec_always {
     gsettings set $gnome-schema gtk-theme 'NumixSolarizedDarkCyan'
     gsettings set $gnome-schema icon-theme 'Numix-Circle'
     gsettings set $gnome-schema cursor-theme 'Simp1e'
-    gsettings set $gnome-schema font-name 'UbuntuMono Nerd Font Mono 14'
+    gsettings set $gnome-schema font-name 'UbuntuMono Nerd Font Mono 16'
 }
 
 exec {
@@ -17,7 +17,9 @@ exec {
     ~/scripts/swww.sh
     otd-daemon
     ~/scripts/weechat.sh
+    cp ~/main.kbdx ~/docs/next_cloud/
     dunst &
+    nextcloud --background
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
