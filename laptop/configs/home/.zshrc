@@ -33,7 +33,7 @@ alias eix="apk search"
 
 export BAT_THEME="Solarized (dark)"
 export EDITOR=nvim
-export LS_COLORS="$(~/.local/bin/vivid generate solarized-dark)"
+export LS_COLORS="$(vivid generate solarized-dark)"
 export TERMINAL=alacritty
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 
