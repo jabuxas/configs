@@ -61,3 +61,13 @@ white= '#fcf4dc'    # bright white
 [colors.cursor]
 text = "#002b36"
 cursor = "#9cc2c3"
+
+[[hints.enabled]]
+binding = { key = "O", mods = "Control|Shift" }
+command = "xdg-open"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Control"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
