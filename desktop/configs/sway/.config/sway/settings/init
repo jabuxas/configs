@@ -9,15 +9,13 @@ exec_always {
 exec {
     xrandr --output HDMI-A-1 --primary
     waybar &
-    lxqt-policykit &
-    autotiling
+    autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.6 &
-    dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+    dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/tmp/*
     ~/scripts/swww.sh
-    otd-daemon
+    # otd-daemon
     ~/scripts/weechat.sh
-    cp ~/main.kbdx ~/docs/next_cloud/
     dunst &
     nextcloud --background
 } 

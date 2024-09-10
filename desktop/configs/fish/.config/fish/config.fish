@@ -3,6 +3,7 @@ if status --is-login
 
     set -gx BAT_THEME "Solarized (light)"
     set -gx EDITOR "nvim"
+    set -gx DOCKER_HOST unix://$XDG_RUNTIME_DIR/podman/podman.sock
 
     if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
@@ -12,14 +13,15 @@ end
 if status is-interactive
     alias ls="bash ~/scripts/elash.sh"
     alias v="nvim"
-    alias reboot="systemctl reboot"
+    alias reboot="loginctl reboot"
     alias hr="date +'%Hh:%M, %d-%m-%Y'"
+    alias hi="loginctl hibernate"
     alias ff="fastfetch"
     alias feh="imv"
     alias lg="lazygit"
     alias cpr="cd ~/repos/cports-docker && docker compose run --build --rm cports"
     alias cop="wl-copy"
-    alias poweroff="systemctl poweroff"
+    alias poweroff="loginctl poweroff"
     alias cat="bat"
 end
 

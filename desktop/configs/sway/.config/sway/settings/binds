@@ -3,7 +3,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term wezterm
+set $term alacritty
 set $menu fuzzel
 
 mode "resize" {
@@ -79,13 +79,13 @@ bindsym $mod+Control+Return move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+Control+s scratchpad show
 
-bindsym $mod+Shift+s exec steam --noverifyfiles
+bindsym $mod+Shift+s exec flatpak run com.valvesoftware.Steam --noverifyfiles
 bindsym $mod+e exec pcmanfm
-bindsym Print exec ~/.local/bin/way-print.sh p
-bindsym $mod+Print exec ~/.local/bin/print-tmp.sh
+bindsym Print exec ~/.local/bin/way-print p
 bindsym Shift+Print exec ~/.local/bin/way-print.sh s
-bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh t
-bindsym Control+Print exec ~/.local/bin/print-window.sh
+bindsym $mod+Print exec ~/.local/bin/way-print.sh t
+bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh m
+bindsym Control+Print exec ~/.local/bin/way-print.sh cw
 bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE flatpak run --parent-expose-pids --parent-share-pids --parent-pid=1 --branch=stable --arch=x86_64 --command=xivlauncher dev.goats.xivlauncher
 
 # audio

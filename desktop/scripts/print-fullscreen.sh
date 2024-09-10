@@ -5,9 +5,8 @@ if [[ $XDG_SESSION_TYPE == "x11" ]]; then
   xclip -selection clipboard -t image/png $name
 fi
 
-
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
   grim $name
-  wl-copy < $name
+  $name
 fi
 
