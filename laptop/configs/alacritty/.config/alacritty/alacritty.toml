@@ -35,32 +35,32 @@ bold_italic.style = "ExtraBold Italic"
 
 
 [colors.primary]
-background = "#001e27"
-foreground = "#9cc2c3"
+background = "#002b36"
+foreground = "#839496"
 
 [colors.normal]
-black = '#002831'    # Black (Host)
-red = '#d11c24'    # red (syntax string)
-green = '#6cbe6c'    # green (command)
-yellow = '#a57706'    # yellow (command second)
-blue = '#2176c7'    # blue (path)
-magenta = '#c61c6f'    # magenta (syntax var)
-cyan = '#259286'    # cyan (prompt)
-white= '#eae3cb'    # white
+black = '#073642'    # Black (Host)
+red = '#dc322f'    # red (syntax string)
+green = '#859900'    # green (command)
+yellow = '#b58900'    # yellow (command second)
+blue = '#268bd2'    # blue (path)
+magenta = '#d33682'    # magenta (syntax var)
+cyan = '#2aa198'    # cyan (prompt)
+white= '#eee8d5'    # white
 
 [colors.bright]
-black= '#006488'    # Bright Black
-red = '#f5163b'    # bright red (command error)
-green = '#51ef84'    # bright green (exec)
-yellow= '#b27e28'    # bright yellow
-blue = '#178ec8'    # bright blue (folder)
-magenta= '#e24d8e'    # bright magenta
-cyan= '#00b39e'    # bright cyan
-white= '#fcf4dc'    # bright white
+black= '#002b36'    # Bright Black
+red = '#cb4b16'    # bright red (command error)
+green = '#586e75'    # bright green (exec)
+yellow= '#657b83'    # bright yellow
+blue = '#839496'    # bright blue (folder)
+magenta= '#6c71c4'    # bright magenta
+cyan= '#93a1a1'    # bright cyan
+white= '#fdf6e3'    # bright white
 
 [colors.cursor]
 text = "#002b36"
-cursor = "#9cc2c3"
+cursor = "#839496"
 
 [[hints.enabled]]
 binding = { key = "O", mods = "Control|Shift" }
