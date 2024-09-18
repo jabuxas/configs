@@ -28,7 +28,7 @@ input "1241:6185:LogoTech_Gaming_Keyboard" {
       xkb_options ctrl:nocaps
 }
 
-input "1356:2508:Wireless_Controller_Touchpad" {
+input "1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad" {
       map_to_output DISABLED
 }
 

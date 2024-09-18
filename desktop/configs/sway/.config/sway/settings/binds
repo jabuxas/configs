@@ -16,7 +16,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+b exec firefox-bin
+bindsym $mod+b exec firefox
 bindsym $mod+Shift+b exec qutebrowser
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term
