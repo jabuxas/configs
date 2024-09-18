@@ -1,5 +1,6 @@
 if status --is-login
     fish_add_path ~/.local/bin
+    fish_add_path "$HOME/.cargo/bin"
 
     set -gx BAT_THEME "Solarized (light)"
     set -gx EDITOR "nvim"
@@ -11,7 +12,10 @@ if status --is-login
     end
 end
 if status is-interactive
+    alias cb="~/repos/cports/cbuild"
+    alias g="git"
     alias ls="bash ~/scripts/elash.sh"
+    alias l="ls -lah"
     alias v="nvim"
     alias reboot="loginctl reboot"
     alias hr="date +'%Hh:%M, %d-%m-%Y'"
@@ -34,7 +38,7 @@ function pst
     end
 
     if command test -p /dev/stdin
-        set file (mktemp)
+        set file "/tmp/tmp.txt"
         if test $use_ansifilter = true
             ansifilter > $file
         else
@@ -50,3 +54,13 @@ function pst
         rm "$file"
     end
 end
+
+function last_history_item
+    echo $history[1]
+end
+function last_history_arguments
+    set -l args (string split ' ' $history[1])
+    echo $args[-1]
+end
+abbr -a '!*' --position anywhere --function last_history_arguments
+abbr -a !! --position anywhere --function last_history_item
