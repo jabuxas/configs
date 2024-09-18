@@ -13,6 +13,7 @@ if status --is-login
     end
 end
 if status is-interactive
+    alias cb="~/repos/cports/cbuild"
     alias g="git"
     alias ls="~/scripts/elash.sh"
     alias l="ls -lah"
