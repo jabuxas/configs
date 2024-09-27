@@ -3,13 +3,12 @@ if status --is-login
 
     set -gx BAT_THEME "Solarized (dark)"
     set -gx EDITOR "nvim"
-    set -gx DOCKER_HOST unix://$XDG_RUNTIME_DIR/podman/podman.sock
     set -gx LS_COLORS "$(vivid generate solarized-dark)"
     set -gx TERMINAL alacritty
 
     if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
-    sway
+    dbus-run-session sway
     end
 end
 if status is-interactive
@@ -39,7 +38,7 @@ function pst
     end
 
     if command test -p /dev/stdin
-        set file (mktemp)
+        set file (mktemp).log
         if test $use_ansifilter = true
             ansifilter > $file
         else

@@ -7,13 +7,15 @@ exec_always {
 }
 
 exec {
+    pipewire &
+    pipewire-pulse &
     waybar &
     autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 &
     dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/tmp/*
     ~/scripts/swww.sh
-    otd-daemon
+    # otd-daemon
     ~/scripts/weechat.sh
     dunst &
     nextcloud --background &
