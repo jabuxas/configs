@@ -16,7 +16,8 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+b exec firefox
+bindsym $mod+b exec firefox-bin
+bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
 bindsym $mod+Shift+b exec qutebrowser
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term
@@ -79,7 +80,7 @@ bindsym $mod+Control+Return move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+Control+s scratchpad show
 
-bindsym $mod+Shift+s exec flatpak run com.valvesoftware.Steam --noverifyfiles
+bindsym $mod+Shift+s exec steam
 bindsym $mod+e exec pcmanfm
 bindsym Print exec ~/.local/bin/way-print p
 bindsym Shift+Print exec ~/.local/bin/way-print.sh s

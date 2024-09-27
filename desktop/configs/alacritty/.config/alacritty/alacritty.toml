@@ -12,13 +12,13 @@
 # I put the file alacritty.toml in $HOME/.config/alacritty. However it can be kept anywhere among the places mentioned in
 # https://github.com/alacritty/alacritty/tree/master#configuration
 
+import = ["~/.config/alacritty/white.toml"]
+
 [window]
 
 # opacity = 0.9
-
 padding.x = 10
 # padding.y = 10
-
 decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
@@ -33,34 +33,6 @@ italic.style = "Italic"
 bold_italic.family = "CartographCF Nerd Font"
 bold_italic.style = "ExtraBold Italic"
 
-
-[colors.primary]
-background = "#002b36"
-foreground = "#839496"
-
-[colors.normal]
-black = '#073642'    # Black (Host)
-red = '#dc322f'    # red (syntax string)
-green = '#859900'    # green (command)
-yellow = '#b58900'    # yellow (command second)
-blue = '#268bd2'    # blue (path)
-magenta = '#d33682'    # magenta (syntax var)
-cyan = '#2aa198'    # cyan (prompt)
-white= '#eee8d5'    # white
-
-[colors.bright]
-black= '#002b36'    # Bright Black
-red = '#cb4b16'    # bright red (command error)
-green = '#586e75'    # bright green (exec)
-yellow= '#657b83'    # bright yellow
-blue = '#839496'    # bright blue (folder)
-magenta= '#6c71c4'    # bright magenta
-cyan= '#93a1a1'    # bright cyan
-white= '#fdf6e3'    # bright white
-
-[colors.cursor]
-text = "#002b36"
-cursor = "#839496"
 
 [[hints.enabled]]
 binding = { key = "O", mods = "Control|Shift" }

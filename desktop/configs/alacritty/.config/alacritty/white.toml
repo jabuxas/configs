@@ -1,0 +1,27 @@
+[colors.normal]
+black = '#EEE8D5'    # Black (Host)
+red = '#DC322F'    # Red (Syntax string)
+green = '#859900'    # Green (Command)
+yellow = '#b58900'    # yellow (command second)
+blue = '#268bd2'    # blue (path)
+magenta = '#d33682'    # magenta (syntax var)
+cyan = '#2aa198'    # cyan (prompt)
+white= '#002b36'    # white
+
+[colors.bright]
+black= '#657b83'    # Bright Black
+red = '#cb4b16'    # bright red (command error)
+green = '#859900'    # bright green (exec)
+yellow= '#b58900'    # bright yellow
+blue = '#6c71c4'    # bright blue (folder)
+magenta= '#d33682'    # bright magenta
+cyan= '#2aa198'    # bright cyan
+white= '#073642'    # bright white
+
+[colors.primary]
+background= '#FDF6E3'  # Background
+foreground= '#657B83'  # Foreground (Text)
+
+[colors.cursor]
+cursor= '#657b83'      # cursor
+text= '#FDF6E3'  # Background

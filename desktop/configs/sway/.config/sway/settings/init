@@ -10,7 +10,7 @@ exec {
     xrandr --output HDMI-A-1 --primary
     waybar &
     autotiling &
-    gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.6 &
+    gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.7 &
     dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/tmp/*
     ~/scripts/swww.sh
