@@ -3,6 +3,7 @@ if status --is-login
     fish_add_path "$HOME/.cargo/bin"
 
     set -gx BAT_THEME "Solarized (light)"
+    set -gx SOLARIZED true
     set -gx EDITOR "nvim"
 
     if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
