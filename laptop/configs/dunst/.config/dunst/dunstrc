@@ -1,18 +1,18 @@
 [global]
-    font = "Ubuntu Nerd Font, Cartograph CF Regular 13"
+    font = "CartographCF Nerd Font 13"
     allow_markup = yes
     markup = yes
-    format = "<span foreground='#5bb1b4'><b>%s</b></span>\n%b"
+    format = "<span foreground='#a7c080'><b>%s</b></span>\n%b"
     sort = yes
     indicate_hidden = yes
     bounce_freq = 0
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = false
-    origin = bottom-center
+    origin = top-right
     transparency = 5
     idle_threshold = 120
-    monitor = 0
+    monitor = 1
     follow = mouse
     sticky_history = yes
     line_height = 0
@@ -45,20 +45,20 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#131519"
-    foreground = "#ffffff"
-    highlight = "#5bb1b4"
-    timeout = 5
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    highlight = "#a7c080"
+    timeout = 3
 
 [urgency_normal]
-    background = "#131519"
-    foreground = "#ffffff"
-    highlight = "#5bb1b4"
-    timeout = 20
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    highlight = "#a7c080"
+    timeout = 5
 
 [urgency_critical]
-    background = "#131519"
-    foreground = "#ffffff"
-    highlight = "#5bb1b4"
-    timeout = 0
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    highlight = "#a7c080"
+    timeout = 3
 
