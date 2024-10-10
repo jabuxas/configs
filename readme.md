@@ -4,9 +4,9 @@ here you will find configs for my desktop and my laptop.
 
 i primarily use [neovim](https://github.com/jabuxas/nvim.config), tmux ([sessionizer](https://github.com/jrmoulton/tmux-sessionizer)) and sway
 
-themes are completely interchangeable as long as you setup the structure of files the same as this repo\*, or edit to your liking
+themes ~~are~~ were completely interchangeable as long as you setup the structure of files the same as this repo, they aren't really anymore because most screenshots are from when I used hyprland and they might not work anymore, idk.
 
-pr's are welcome for optimizations and useful refactors
+on sway I do have now switch between dark/light solarized, and that's all i'll add, i had way too many themes before.
 
 ## images
 
