@@ -40,4 +40,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/jbx/\x2elocal/bin\x1e/yang/\x2elocal/bin
+SETUVAR fish_user_paths:/jbx/repos/configs\x1e/jbx\x1e/jbx/uni/phaser\x2dgame\x1e/jbx/\x2econfig/nvim\x1e/jbx/repos/spire\x1e/jbx/repos/abyss\x1e/jbx/repos/poo\x1e/jbx/uni/aula\x2d01\x1e/jbx/uni/aula\x2d02\x1e/jbx/\x2elocal/bin\x1e/yang/\x2elocal/bin

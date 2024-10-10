@@ -1,5 +1,6 @@
 if status --is-login
     fish_add_path ~/.local/bin
+    fish_add_path .
 
     set -gx BAT_THEME "Solarized (dark)"
     set -gx EDITOR "nvim"
