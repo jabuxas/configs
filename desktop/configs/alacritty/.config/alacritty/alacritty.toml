@@ -16,7 +16,7 @@ import = ["~/.config/alacritty/white.toml"]
 
 [window]
 
-# opacity = 0.9
+opacity = 1
 padding.x = 10
 # padding.y = 10
 decorations = "Full"
@@ -43,3 +43,8 @@ mouse.mods = "Control"
 post_processing = true
 persist = false
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+[keyboard]
+bindings = [
+    { key = "T", mods = "Control|Shift", command = { program = "fish", args = ["/yang/scripts/toggle_opacity_alacritty.fish"] } }
+]
