@@ -4,13 +4,13 @@
 	/* padding: 0; */
 	/* margin: 0; */
 	font-size: 18px;
-	font-family: UbuntuMono Nerd Font Mono;
+	font-family: CozetteVector;
 	font-style: italic;
 }
 
 window#waybar {
-	background: #002b36;
-	color: #ffffff;
+	background: #0a0c10;
+	color: #f0f3f6;
 	margin: 10px;
 }
 
@@ -21,12 +21,13 @@ window#waybar {
 
 #workspaces button:hover,
 #workspaces button:active {
-	background-color: #004d61;
-	color: #839496;
+	background-color: #424242;
+	color: #f0f3f6;
 }
 
 #workspaces button.focused {
-	background-color: #004d61;
+	background-color: #424242;
+	color: #f0f3f6;
 }
 
 #language {

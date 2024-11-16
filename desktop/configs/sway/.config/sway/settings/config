@@ -1,13 +1,13 @@
 output {
     # HDMI-A-1 pos 0 0 mode --custom 2560x1080@75Hz
     HDMI-A-1 pos 0 0 
-    DP-3 disable pos 0 -1080
+    DP-3 pos 0 -1080
     DP-2 pos 2560 0 
 } 
 
 default_border pixel 2 
-client.focused #268bd2 #268bd2 #002b36
-client.focused_inactive #268bd2 #002b36 #839496
+client.focused #16aec9 #16aec9 #222221
+client.focused_inactive #16aec9 #222221 #c1c1c1
 focus_on_window_activation none
 popup_during_fullscreen smart
 no_focus [window_role="pop-up"]

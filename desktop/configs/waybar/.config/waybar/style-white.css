@@ -4,30 +4,30 @@
 	/* padding: 0; */
 	/* margin: 0; */
 	font-size: 18px;
-	font-family: UbuntuMono Nerd Font Mono;
+	font-family: CozetteVector;
 	font-style: italic;
 }
 
 window#waybar {
-	background: #fdf6e3;
-	color: #000;
+	background: #eaeaea;
+	color: #222221;
 	margin: 10px;
 }
 
 #workspaces button {
 	margin-left: 2px;
 	padding: 2px 8px;
-	color: #000;
+	color: #222221;
 }
 
 #workspaces button:hover,
 #workspaces button:active {
 	background-color: #004d61;
-	color: #000;
+	color: #222221;
 }
 
 #workspaces button.focused {
-	background-color: #eee8d5;
+	background-color: #c1c1c1;
 }
 
 #language {

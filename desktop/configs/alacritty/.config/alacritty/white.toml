@@ -1,27 +1,31 @@
 [colors.normal]
-black = '#EEE8D5'    # Black (Host)
-red = '#DC322F'    # Red (Syntax string)
-green = '#859900'    # Green (Command)
-yellow = '#b58900'    # yellow (command second)
-blue = '#268bd2'    # blue (path)
-magenta = '#d33682'    # magenta (syntax var)
-cyan = '#2aa198'    # cyan (prompt)
-white= '#002b36'    # white
+black = '#212121'    # Black (Host)
+red = '#b7141e'      # Red (Syntax string)
+green = '#457b23'    # Green (Command)
+yellow = '#f5971d'   # Yellow (Command second)
+blue = '#134eb2'     # Blue (Path)
+magenta = '#550087'  # Magenta (Syntax var)
+cyan = '#0e707c'     # Cyan (Prompt)
+white = '#eeeeee'    # White
 
 [colors.bright]
-black= '#657b83'    # Bright Black
-red = '#cb4b16'    # bright red (command error)
-green = '#859900'    # bright green (exec)
-yellow= '#b58900'    # bright yellow
-blue = '#6c71c4'    # bright blue (folder)
-magenta= '#d33682'    # bright magenta
-cyan= '#2aa198'    # bright cyan
-white= '#073642'    # bright white
+black = '#424242'    # Bright Black
+red = '#e83a3f'      # Bright Red (Command error)
+green = '#7aba39'    # Bright Green (Exec)
+yellow = '#fee92e'   # Bright Yellow
+blue = '#53a4f3'     # Bright Blue (Folder)
+magenta = '#a94dbb'  # Bright Magenta
+cyan = '#26bad1'     # Bright Cyan
+white = '#d8d8d8'    # Bright White
 
 [colors.primary]
-background= '#FDF6E3'  # Background
-foreground= '#657B83'  # Foreground (Text)
+background = '#eaeaea'  # Background
+foreground = '#222221'  # Foreground (Text)
 
 [colors.cursor]
-cursor= '#657b83'      # cursor
-text= '#FDF6E3'  # Background
+cursor = '#16aec9'       # Cursor
+text = '#eaeaea'         # Cursor Text
+
+[colors.selection]
+background = '#c1c1c1'   # Selection Background
+foreground = '#eaeaea'   # Selection Foreground

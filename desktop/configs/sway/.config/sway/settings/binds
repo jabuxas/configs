@@ -16,9 +16,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+b exec firefox-bin
+bindsym $mod+Shift+b exec firefox-bin
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
-bindsym $mod+Shift+b exec qutebrowser
+bindsym $mod+b exec FUSERMOUNT_PROG=/bin/fusermount ./.local/share/AppImage/ZenBrowser.AppImage
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+c kill
