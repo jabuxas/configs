@@ -6,23 +6,28 @@ i primarily use [neovim](https://github.com/jabuxas/nvim.config), tmux ([session
 
 themes ~~are~~ were completely interchangeable as long as you setup the structure of files the same as this repo, they aren't really anymore because most screenshots are from when I used hyprland and they might not work anymore, idk.
 
-on sway I do have now switch between dark/light solarized, and that's all i'll add, i had way too many themes before.
+on sway I do have now switch between dark/light, and that's all i'll add, i had way too many themes before.
 
 ## images
 
 ### desktop
 
-#### solarized
+#### _black & white_
+
+![screenshot-2024-11-16T13:18:29-03:00](https://github.com/user-attachments/assets/0ab6e8f7-7f56-4269-a71d-4fe657800ffc)
+![screenshot-2024-11-16T13:17:55-03:00](https://github.com/user-attachments/assets/558dc038-2802-4b1a-9159-c040754dbad5)
+
+#### _solarized_
 
 ![screenshot-2024-03-03T22:02:37-03:00](https://github.com/jabuxas/configs/assets/94939040/38926b19-d50e-4da0-90ee-05095cd9a964)
 ![screenshot-2024-03-04T09:40:44-03:00](https://github.com/jabuxas/configs/assets/94939040/b685cb38-77b8-4038-8319-1c60e6736ee5)
 
-#### forest
+#### _forest_
 
 ![screenshot-2024-06-17T20-08-32-0300](https://github.com/jabuxas/configs/assets/94939040/9541ade6-cb36-40a4-8629-85b125847f65)
 ![screenshot-2024-06-17T20-10-38-0300](https://github.com/jabuxas/configs/assets/94939040/91b09dff-89c7-48a3-aa10-88611b510f5b)
 
-#### monochrome
+#### _monochrome_
 
 ![screenshot-2024-03-28T11:14:41-03:00](https://github.com/jabuxas/configs/assets/94939040/7915aa32-5e7f-41ea-9cea-6f1231244d2d)
 ![screenshot-2024-03-28T11:12:29-03:00](https://github.com/jabuxas/configs/assets/94939040/a4d0b289-9946-4679-96d4-6da5e965f264)
@@ -32,12 +37,12 @@ on sway I do have now switch between dark/light solarized, and that's all i'll a
 ![image](https://github.com/jabuxas/configs/assets/94939040/8382c15b-3942-4a30-97b4-e1e0d25be403)
 ![image](https://github.com/jabuxas/configs/assets/94939040/815cd88c-6769-4f7b-9542-ce4881898bd3)
 
-#### melange
+#### _melange_
 
 ![screenshot-2024-02-14T09:42:05-03:00](https://github.com/jabuxas/configs/assets/94939040/ce43ed68-3e1b-4864-ba20-8e414d35b011)
 ![screenshot-2024-02-14T09:43:40-03:00](https://github.com/jabuxas/configs/assets/94939040/bbaf83b2-1dc3-4d28-a134-ddcaf5758ddd)
 
-#### _white_
+#### _solarized white_
 
 ![screenshot-2024-01-16T12:59:52-03:00](https://github.com/jabuxas/configs/assets/94939040/9312d74f-bbcf-457d-9d2c-c253ba71039f)
 ![screenshot-2024-01-16T13:00:39-03:00](https://github.com/jabuxas/configs/assets/94939040/a80c8b26-020d-4040-94d1-824b11a3ab5f)
