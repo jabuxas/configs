@@ -29,7 +29,7 @@ case "$CHOICE" in
     ~/scripts/swww.sh $EVERFOREST_WIDE_WPP $EVERFOREST_NORMAL_WPP
 
     gsettings set org.gnome.desktop.interface gtk-theme Everforest-Dark-BL
-    gsettings set org.gnome.desktop.interface icon-theme Everforest-Dark
+    gsettings set org.gnome.desktop.interface icon-theme 
 
     ln -sf ~/.config/tmux/themes/tmux-everforest.conf ~/.config/tmux/theme.conf
     tmux source-file ~/.config/tmux/tmux.conf
