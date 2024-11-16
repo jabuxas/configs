@@ -20,13 +20,18 @@ if status is-interactive
     alias reboot="systemctl reboot"
     alias hr="date +'%Hh:%M, %d-%m-%Y'"
     alias hi="systemctl hibernate"
-    alias ff="fastfetch"
+    alias ff="fastfetch --config examples/19"
     alias feh="imv"
     alias lg="lazygit"
     alias cpr="cd ~/repos/cports-docker && docker compose run --build --rm cports"
     alias cop="wl-copy"
     alias poweroff="systemctl poweroff"
     alias cat="bat"
+
+    alias protontricks='flatpak run com.github.Matoking.protontricks'
+    alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
+
+    alias generate_token="curl -u jabuxas https://paste.jabuxas.xyz | wl-copy"
 end
 
 function pst
@@ -49,6 +54,32 @@ function pst
     end
 
     curl -F "file=@$file" -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.xyz
+
+    if command test -p /dev/stdin
+        rm "$file"
+    end
+end
+
+function pstf
+    set -l file
+    set -l use_ansifilter false
+
+    if command -v ansifilter > /dev/null
+        set use_ansifilter true
+    end
+
+    if command test -p /dev/stdin
+        set file "/tmp/tmp.txt"
+        if test $use_ansifilter = true
+            ansifilter > $file
+        else
+            cat > $file
+        end
+    else if test -n "$argv[1]"
+        set file "$argv[1]"
+    end
+
+    curl -F "file=@$file" -Fsecret= -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.xyz
 
     if command test -p /dev/stdin
         rm "$file"

@@ -65,20 +65,10 @@ fi
 
 pst() {
   local file
-  local use_ansifilter=false
-
-  # Check if ansifilter exists
-  if command -v ansifilter >/dev/null 2>&1; then
-    use_ansifilter=true
-  fi
 
   if [[ -p /dev/stdin ]]; then
     file=$(mktemp)
-    if $use_ansifilter; then
-      ansifilter > "$file"
-    else
-      cat > "$file"
-    fi
+    cat > "$file"
   elif [[ -n $1 ]]; then
     file="$1"
   else
