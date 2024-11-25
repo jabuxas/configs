@@ -1,0 +1,20 @@
+set $gnome-schema org.gnome.desktop.interface
+exec {
+    gsettings set $gnome-schema gtk-theme "Sunrise-Dark"
+    gsettings set $gnome-schema icon-theme "Reversal-black-dark"
+    gsettings set $gnome-schema cursor-theme 'Simp1e-Adw'
+    gsettings set $gnome-schema font-name 'CozetteVector 12'
+    xrandr --output HDMI-A-1 --primary
+    waybar &
+    autotiling &
+    gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.7 &
+    dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
+    rm -rf ~/tmp/*
+    ~/scripts/swww.sh
+    # otd-daemon
+    ~/scripts/weechat.sh
+    dunst &
+    nextcloud --background
+} 
+
+# vim: ts=2 sts=2 sw=2 ft=swayconfig

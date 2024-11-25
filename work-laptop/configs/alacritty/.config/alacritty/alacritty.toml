@@ -1,0 +1,50 @@
+# There are the specification here: https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
+# It is not obvious how it translates to TOML. But it is extremely straightforward.
+
+# example: WINDOW, COLORS, etc. are tables, and should be represented as [window], [colors], respectively.
+# specifics of variables go under them. e.g.- look under "dynamic_padding" under-
+# https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#window
+# write `dynamic_padding = true` (without backticks -`) under the table [window]
+# for variables with multiple values, use "dotted keys". Like setting `padding.x = 5` under [window].
+# This is simple. If not clear, do several trials and errors.
+
+# Below is my initial set-up. The TOML homepage (https://toml.io/en/v1.0.0) was very helpful in figuring this out. 
+# I put the file alacritty.toml in $HOME/.config/alacritty. However it can be kept anywhere among the places mentioned in
+# https://github.com/alacritty/alacritty/tree/master#configuration
+
+import = ["~/.config/alacritty/white.toml"]
+
+[window]
+
+opacity = 0.93
+padding.x = 10
+# padding.y = 10
+decorations = "Full"
+decorations_theme_variant = "Light" # "Dark"
+
+[font]
+size = 11.5
+# normal.family = "CartographCF Nerd Font"
+# normal.style = "Regular"
+# bold.family = "CartographCF Nerd Font"
+# bold.style = "DemiBold"
+# italic.family = "CartographCF Nerd Font"
+# italic.style = "Italic"
+# bold_italic.family = "CartographCF Nerd Font"
+# bold_italic.style = "ExtraBold Italic"
+
+
+[[hints.enabled]]
+binding = { key = "O", mods = "Control|Shift" }
+command = "xdg-open"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Control"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+[keyboard]
+bindings = [
+    { key = "T", mods = "Control|Shift", command = { program = "fish", args = ["/home/lucas/scripts/toggle_opacity_alacritty.fish"] } }
+]

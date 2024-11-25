@@ -1,0 +1,128 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Cartograph CF Nerd Font";
+  font-weight: bold;
+  font-size: 16px;
+  min-height: 0;
+  margin: 1px;
+}
+
+window#waybar {
+  background: rgba(75, 75, 75, 0);
+  color: #f1f1f1;
+}
+
+tooltip {
+  background: #595959;
+  border-radius: 0px;
+}
+
+#workspaces button {
+  padding: 5px;
+  color: #f1f1f1;
+}
+
+#workspaces button.active {
+  background-color: #e16b53;
+  border-radius: 10px;
+}
+
+#workspaces button.focused {
+  color: #f1f1f1;
+  background: #595959;
+  border-radius: 10px;
+}
+
+#workspaces button.urgent {
+  color: #f1f1f1;
+  background: #595959;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background: #f1f1f1;
+  color: #595959;
+  border-radius: 10px;
+}
+
+#custom-language,
+#custom-updates,
+#custom-caffeine,
+#custom-weather,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#language,
+#backlight {
+  background:
+    /*#F6821E*/
+    #444444;
+  padding: 0px 5px;
+  margin: 0px;
+  font-weight: 100;
+}
+
+#tray {
+  margin-right: 0px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#workspaces {
+  color: #f1f1f1;
+  margin-left: 0px;
+  padding-right: 0px;
+  padding-left: 5px;
+  border-radius: 10px;
+}
+
+#custom-caffeine {
+  color: #f1f1f1;
+  border-right: 0px;
+  margin-left: 10px;
+}
+
+#custom-language {
+  color: #f1f1f1;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#custom-updates {
+  color: #f1f1f1;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#window {
+  color: #f1f1f1;
+  background-color: #595959;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-left: 0px;
+  margin-right: 60px;
+}
+
+#clock {
+  color: #f1f1f1;
+  margin-left: 0px;
+  border-right: 0px;
+  padding: 0px 10px;
+}
+
+#pulseaudio {
+  color: #f1f1f1;
+  border-left: 0px;
+  border-right: 0px;
+  padding-left: 10px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+#pulseaudio.microphone {
+  color: #f1f1f1;
+  margin-right: 5px;
+}

@@ -1,0 +1,50 @@
+output {
+# HDMI-A-1 pos 0 0 mode --custom 2560x1080@75Hz
+# HDMI-A-1 pos 0 0 
+# DP-3 pos 0 -1080
+# DP-2 pos 2560 0 
+}
+
+default_border pixel 2
+client.focused #16aec9 #16aec9 #222221
+client.focused_inactive #16aec9 #222221 #c1c1c1
+focus_on_window_activation none
+popup_during_fullscreen smart
+no_focus [window_role="pop-up"]
+focus_wrapping workspace
+
+gaps inner 10
+mouse_warping none
+
+input "2362:9523:Gaming_Mouse" {
+  accel_profile flat
+    dwt enabled
+    pointer_accel 0.5
+}
+
+input "1267:12721:ELAN050A:00_04F3:31B1_Touchpad" {
+  dwt enabled
+    tap enabled
+}
+
+input "1241:6185:LogoTech_Gaming_Keyboard" {
+  xkb_layout br
+    xkb_variant abnt2
+    xkb_options ctrl:nocaps
+}
+input "1:1:AT_Translated_Set_2_keyboard" {
+  xkb_layout br
+    xkb_variant abnt2
+    xkb_options ctrl:nocaps
+}
+input "6700:11555:USB_USB_Keyboard" {
+  xkb_layout br
+    xkb_variant abnt2
+    xkb_options ctrl:nocaps
+}
+
+input "1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad" {
+  map_to_output DISABLED
+}
+
+# vim: ts=2 sts=2 sw=2 ft=swayconfig

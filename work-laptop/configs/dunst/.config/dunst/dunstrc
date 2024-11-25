@@ -1,0 +1,64 @@
+[global]
+    font = "CartographCF Nerd Font 13"
+    allow_markup = yes
+    markup = yes
+    format = "<span foreground='#a7c080'><b>%s</b></span>\n%b"
+    sort = yes
+    indicate_hidden = yes
+    bounce_freq = 0
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = false
+    origin = top-right
+    transparency = 5
+    idle_threshold = 120
+    monitor = 1
+    follow = mouse
+    sticky_history = yes
+    line_height = 0
+    separator_height = 2
+    padding = 12
+    horizontal_padding = 12
+    separator_color = "#3c4549"
+    separator_width = 1
+    startup_notification = false
+    corner_radius = 15
+    frame_color = "#3c4549"
+    frame_width = 1
+    width = 400
+    progress_bar_max_width = 400
+    progress_bar_min_width = 400
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_corner_radius = 5
+    scale = 1
+    min_icon_size = 64
+    max_icon_size = 64
+    alignment = center
+    vertical_alignment = center
+    #offset = 12x67
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    highlight = "#a7c080"
+    timeout = 3
+
+[urgency_normal]
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    highlight = "#a7c080"
+    timeout = 5
+
+[urgency_critical]
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    highlight = "#a7c080"
+    timeout = 3
+

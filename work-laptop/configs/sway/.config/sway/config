@@ -1,0 +1,15 @@
+include ~/.config/sway/settings/*
+
+blur enable
+blur_passes 2
+blur_radius 2
+blur_noise 0.2
+
+shadow_on_csd enable
+shadow_color #424242
+shadow_offset 12 12
+shadow_blur_radius 10
+
+seat seat0 xcursor_theme Simp1e-Adw
+
+# vim: ts=2 sts=2 sw=2 ft=swayconfig
