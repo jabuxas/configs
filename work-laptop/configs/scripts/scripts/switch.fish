@@ -24,8 +24,8 @@ switch $CURRENT_THEME
         swaymsg shadows enable
     case white
         echo changing to black...
-        gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Blueberry-LA"
-        gsettings set org.gnome.desktop.interface icon-theme "We10X-black-dark"
+        gsettings set org.gnome.desktop.interface gtk-theme "Sunrise-Dark"
+        gsettings set org.gnome.desktop.interface icon-theme "Reversal-black-dark"
         swaymsg client.focused "#ffffff #ffffff #c1c1c1"
         swaymsg client.focused_inactive "#c1c1c1 #212121 #cecece"
         sed -i 's|white.toml|black.toml|' ~/.config/alacritty/alacritty.toml
