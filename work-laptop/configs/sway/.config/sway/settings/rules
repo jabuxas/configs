@@ -51,5 +51,7 @@ for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="Mattermost"] move to workspace 7
 for_window [class="teams-for-linux"] move to workspace 8
 for_window [class="Bitwarden"] move to workspace 9
+for_window [class="outlook-for-linux"] move to workspace 10
+for_window [class="Lacuna.WebPkiCore"] floating enable
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
