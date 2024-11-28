@@ -11,32 +11,33 @@ echo -e "[Default]\nsave_dir=$save_dir\nsave_filename_format=$save_file" > $swpy
 
 upload ()
 {
-  curl -F'file=@'"${save_dir}/${save_file}" -Fsecret= https://paste.jabuxas.xyz | wl-copy
+    curl -F'file=@'"${save_dir}/${save_file}" -Fsecret= -H 'X-Auth: '$(cat ~/.key) https://paste.jabuxas.xyz | wl-copy
 }
 
 function print_error
 {
 cat << "EOF"
-    ./screenshot.sh <action>
+    ./way-print.sh <action>
     ...valid actions are...
         p : print all screens
         s : snip current screen
-        sf : snip current screen (frozen)
         m : print focused monitor
+        t : tmp print
+        cw: current window
 EOF
 }
 
 case $1 in
 p)  # print all outputs
-    ~/.local/bin/grimblast copysave screen $temp_screenshot && swappy -f $temp_screenshot ;;
+    grim $temp_screenshot && wl-copy < $temp_screenshot && swappy -f $temp_screenshot ;;
 s)  # drag to manually snip an area / click on a window to print it
-    ~/.local/bin/grimblast copysave area $temp_screenshot && swappy -f $temp_screenshot ;;
-sf)  # frozen screen, drag to manually snip an area / click on a window to print it
-    ~/.local/bin/grimblast --freeze copysave area $temp_screenshot && swappy -f $temp_screenshot ;;
+    grim -g "$(slurp)" $temp_screenshot && wl-copy < $temp_screenshot && swappy -f $temp_screenshot ;;
 m)  # print focused monitor
-    ~/.local/bin/grimblast copysave output $temp_screenshot && swappy -f $temp_screenshot ;;
-t)  #upload to 0x0.st temporarily
-    ~/.local/bin/grimblast copysave area $temp_screenshot && swappy -f $temp_screenshot && upload ;;
+    grim -o $(swaymsg -t get_workspaces | jq -r '.[] | select(.focused==true).output') $temp_screenshot && wl-copy < $temp_screenshot && swappy -f $temp_screenshot ;;
+t)  #upload to paste
+    grim -g "$(slurp)" $temp_screenshot && wl-copy < $temp_screenshot && swappy -f $temp_screenshot && upload ;;
+cw) #current window
+    ~/scripts/print-window.sh ;;
 *)  # invalid option
     print_error ;;
 esac
