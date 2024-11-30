@@ -82,11 +82,11 @@ bindsym $mod+Control+s scratchpad show
 
 bindsym $mod+Shift+s exec steam
 bindsym $mod+e exec pcmanfm
-bindsym Print exec ~/.local/bin/way-print p
-bindsym Shift+Print exec ~/.local/bin/way-print.sh s
-bindsym $mod+Print exec ~/.local/bin/way-print.sh t
-bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh m
-bindsym Control+Print exec ~/.local/bin/way-print.sh cw
+bindsym Print exec ~/scripts/way-print p
+bindsym Shift+Print exec ~/scripts/way-print.sh s
+bindsym $mod+Print exec ~/scripts/way-print.sh t
+bindsym Control+Shift+Print exec ~/scripts/way-print.sh m
+bindsym Control+Print exec ~/scripts/way-print.sh cw
 bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE flatpak run --parent-expose-pids --parent-share-pids --parent-pid=1 --branch=stable --arch=x86_64 --command=xivlauncher dev.goats.xivlauncher
 
 # audio

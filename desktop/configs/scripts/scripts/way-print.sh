@@ -37,7 +37,7 @@ m)  # print focused monitor
 t)  #upload to paste
     grim -g "$(slurp)" $temp_screenshot && wl-copy < $temp_screenshot && swappy -f $temp_screenshot && upload ;;
 cw) #current window
-    ~/.local/bin/print-window.sh ;;
+    ~/scripts/print-window.sh ;;
 *)  # invalid option
     print_error ;;
 esac
