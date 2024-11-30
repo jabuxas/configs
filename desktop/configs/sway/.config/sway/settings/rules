@@ -24,6 +24,7 @@ assign [class="gamescope"] 9
 for_window [class="gamescope"] floating enable
 for_window [class="cs2"] move to workspace 9, fullscreen enable
 for_window [class=".*steam_.*"] move to workspace 9, floating enable
+for_window [class=".*.exe"] move to workspace 9, floating enable
 for_window [class="client-win64-shipping.exe"] move to workspace 10, floating enable
 for_window [title="Wuthering Waves  "] move to workspace 9, fullscreen enable
 for_window [instance="CoreKeeper"] move to workspace 9, fullscreen enable
