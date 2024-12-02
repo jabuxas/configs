@@ -13,8 +13,8 @@ swaymsg reload
 switch $CURRENT_THEME
     case black
         echo changing to white ...
-        gsettings set org.gnome.desktop.interface gtk-theme "Windows-95"
-        gsettings set org.gnome.desktop.interface icon-theme "nineicons-redux-v0.6"
+        # gsettings set org.gnome.desktop.interface gtk-theme "Windows-95"
+        # gsettings set org.gnome.desktop.interface icon-theme "nineicons-redux-v0.6"
         sed -i 's|black.toml|white.toml|' ~/.config/alacritty/alacritty.toml
         ln -sf ~/.config/tmux/themes/tmux-white.conf ~/.config/tmux/theme.conf
         tmux source ~/.config/tmux/tmux.conf

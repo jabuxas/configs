@@ -3,7 +3,7 @@ exec {
     gsettings set $gnome-schema gtk-theme "Sunrise-Dark"
     gsettings set $gnome-schema icon-theme "Reversal-black-dark"
     gsettings set $gnome-schema cursor-theme 'Simp1e-Adw'
-    gsettings set $gnome-schema font-name 'CozetteVector 12'
+    gsettings set $gnome-schema font-name 'Cartograph CF 12'
     waybar &
     autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.7 &
@@ -17,10 +17,10 @@ exec {
          timeout 300 'swaylock -f --image ~/pics/white.jpg' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f --image ~/pics/white.jpg'
-    teams-for-linux &
     flatpak run com.mattermost.Desktop
+    flatpak run org.gnome.Evolution
     bitwarden-desktop-bin
-    flatpak run io.github.mahmoudbahaa.outlook_for_linux
+    # flatpak run io.github.mahmoudbahaa.outlook_for_linux
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
