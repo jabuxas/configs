@@ -42,5 +42,5 @@ swww-daemon &
 sleep 0.3
 
 swww img -o HDMI-A-1 $FIRST
-swww img -o DP-2 $SECOND
-swww img -o DP-3 ~/pics/wallpapers/sl4.jpg
+swww img -o DP-3 $SECOND
+swww img -o DP-2 ~/pics/wallpapers/sl4.jpg

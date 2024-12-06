@@ -5,8 +5,8 @@ echo $CURRENT_THEME
 set wpp1_white ~/pics/wallpapers/wh1.png
 set wpp2_white ~/pics/wallpapers/wh2.jpg
 
-set wpp1_solarized ~/pics/wallpapers/b1.png
-set wpp2_solarized ~/pics/wallpapers/b2.png
+set wpp1_black ~/pics/wallpapers/b3.png
+set wpp2_black ~/pics/wallpapers/b4.png
 
 swaymsg reload
 
@@ -32,7 +32,7 @@ switch $CURRENT_THEME
         ln -sf ~/.config/tmux/themes/tmux-monochrome.conf ~/.config/tmux/theme.conf
         tmux source ~/.config/tmux/tmux.conf
         pkill waybar; waybar &> /dev/null & disown
-        ~/scripts/swww.sh $wpp1_solarized $wpp2_solarized
+        ~/scripts/swww.sh $wpp1_black $wpp2_black
         echo black > ~/colorscheme
         swaymsg shadows disable
     case '*'

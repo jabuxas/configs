@@ -1,6 +1,6 @@
 output {
     HDMI-A-1 pos 0 0 mode --custom 2560x1080@75Hz adaptive_sync on
-    DP-3 pos 2560 0 mode 1920x1080
+    DP-3 pos 2560 0 mode --custom 2560x1080@75Hz adaptive_sync on 
 
     # old setup
     # # HDMI-A-1 pos 0 0 
@@ -22,6 +22,7 @@ mouse_warping none
 input "2362:9523:Gaming_Mouse" {
       accel_profile flat
       dwt enabled
+      middle_emulation enabled
       pointer_accel 0.5
 }
 
