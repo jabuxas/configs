@@ -82,7 +82,7 @@ bindsym $mod+Control+s scratchpad show
 
 bindsym $mod+Shift+s exec steam
 bindsym $mod+e exec pcmanfm
-bindsym Print exec ~/scripts/way-print p
+bindsym Print exec ~/scripts/way-print.sh p
 bindsym Shift+Print exec ~/scripts/way-print.sh s
 bindsym $mod+Print exec ~/scripts/way-print.sh t
 bindsym Control+Shift+Print exec ~/scripts/way-print.sh m
