@@ -6,7 +6,6 @@ exec {
     gsettings set $gnome-schema font-name 'Cartograph CF 12'
     waybar &
     autotiling &
-    gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.7 &
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/tmp/*
     ~/scripts/swww.sh

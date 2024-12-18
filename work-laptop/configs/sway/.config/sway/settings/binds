@@ -97,4 +97,5 @@ bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym $mod+F9 exec brightnessctl set 5%-
 bindsym $mod+F10 exec brightnessctl set 5%+
 
+
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

@@ -5,7 +5,6 @@ if status --is-login
     set -gx BAT_THEME "Solarized (light)"
     set -gx SOLARIZED true
     set -gx EDITOR "nvim"
-
     if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
     sway
@@ -107,3 +106,4 @@ function switch_git_work
 end
 
 fish_add_path /home/lucas/.spicetify
+source ~/.config/fish/env.fish

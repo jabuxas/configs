@@ -49,3 +49,4 @@ node_modules/
 xmonad.log
 .stack-work/
 plugins/
+env.fish

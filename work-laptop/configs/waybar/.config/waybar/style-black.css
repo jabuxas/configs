@@ -1,0 +1,44 @@
+* {
+	border: none;
+	border-radius: 0;
+	/* padding: 0; */
+	/* margin: 0; */
+	font-size: 18px;
+	font-family: CartographCF Nerd Font;
+	font-style: italic;
+}
+
+window#waybar {
+	background: #0a0c10;
+	color: #f0f3f6;
+	margin: 10px;
+}
+
+#workspaces button {
+	margin-left: 2px;
+	padding: 2px 8px;
+}
+
+#workspaces button:hover,
+#workspaces button:active {
+	background-color: #424242;
+	color: #f0f3f6;
+}
+
+#workspaces button.focused {
+	background-color: #424242;
+	color: #f0f3f6;
+}
+
+#language {
+	margin-right: 7px;
+}
+
+#battery {
+	margin-left: 7px;
+	margin-right: 3px;
+}
+
+#clock {
+	margin: 0px 6px;
+}

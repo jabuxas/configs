@@ -5,8 +5,8 @@ echo $CURRENT_THEME
 set wpp1_white ~/pics/white2.jpg
 set wpp2_white ~/pics/white.jpg
 
-set wpp1_solarized ~/pics/black.jpg
-set wpp2_solarized ~/pics/black2.jpg
+set wpp1_solarized ~/pics/shyfox.jpg
+set wpp2_solarized ~/pics/flower.jpg
 
 swaymsg reload
 
@@ -26,12 +26,12 @@ switch $CURRENT_THEME
         echo changing to black...
         gsettings set org.gnome.desktop.interface gtk-theme "Sunrise-Dark"
         gsettings set org.gnome.desktop.interface icon-theme "Reversal-black-dark"
-        swaymsg client.focused "#ffffff #ffffff #c1c1c1"
-        swaymsg client.focused_inactive "#c1c1c1 #212121 #cecece"
+        swaymsg client.focused "#242b2e #e57474 #dadada #e57474"
+        swaymsg client.focused_inactive "#242b2e #242b2e #242b2e"
         sed -i 's|white.toml|black.toml|' ~/.config/alacritty/alacritty.toml
         ln -sf ~/.config/tmux/themes/tmux-monochrome.conf ~/.config/tmux/theme.conf
         tmux source ~/.config/tmux/tmux.conf
-        pkill waybar; waybar &> /dev/null & disown
+        pkill waybar; waybar -c ~/.config/waybar/config.jsonc &> /dev/null & disown
         ~/scripts/swww.sh $wpp1_solarized $wpp2_solarized
         echo black > ~/colorscheme
         swaymsg shadows disable

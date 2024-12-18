@@ -1,44 +1,126 @@
+@import "color.css";
+
 * {
-	border: none;
-	border-radius: 0;
-	/* padding: 0; */
-	/* margin: 0; */
-	font-size: 18px;
-	font-family: CartographCF Nerd Font;
-	font-style: italic;
+    border: none;
+    border-radius: 0;
+    font-family: "CartographCF Nerd Font";
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 window#waybar {
-	background: #0a0c10;
-	color: #f0f3f6;
-	margin: 10px;
+    border-radius: 0px;
+    background: @bg;
+    color: @fg;
+}
+
+tooltip {
+    background: @bg;
+    border-radius: 0px;
 }
 
 #workspaces button {
-	margin-left: 2px;
-	padding: 2px 8px;
+    padding: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-bottom: 1px solid @bg;
 }
 
-#workspaces button:hover,
-#workspaces button:active {
-	background-color: #424242;
-	color: #f0f3f6;
+#workspaces button:nth-child(1) {
+    color: @red;
+}
+
+#workspaces button:nth-child(2) {
+    color: @green;
+}
+
+#workspaces button:nth-child(3) {
+    color: @yellow;
+}
+
+#workspaces button:nth-child(4) {
+    color: @blue;
+}
+
+#workspaces button:nth-child(5) {
+    color: @magenta;
+}
+
+#workspaces button:nth-child(6) {
+    color: @cyan;
+}
+
+#workspaces button:nth-child(7) {
+    color: @red;
+}
+
+#workspaces button:nth-child(8) {
+    color: @green;
+}
+
+#workspaces button:nth-child(9) {
+    color: @yellow;
+}
+
+#workspaces button:nth-child(10) {
+    color: @blue;
+}
+
+#workspaces button.active {
+    color: @fg;
+}
+
+#workspaces button.empty {
+    color: @bg2;
 }
 
 #workspaces button.focused {
-	background-color: #424242;
-	color: #f0f3f6;
+    background: transparent;
+    border-bottom: 1px solid @fg;
 }
 
-#language {
-	margin-right: 7px;
+#workspaces button.urgent {
+    color: @red;
+    background: @bg;
+}
+
+#workspaces button:hover {
+    background: @bg;
+    color: @gray;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#backlight {
+    padding: 5px 5px;
+}
+
+#pulseaudio {
+    color: @blue;
 }
 
 #battery {
-	margin-left: 7px;
-	margin-right: 3px;
+    color: @green;
 }
 
-#clock {
-	margin: 0px 6px;
+#mpd {
+    color: @cyan;
+}
+
+#backlight {
+    color: @magenta;
+}
+
+#power-profiles-daemon {
+    color: @cyan;
 }
