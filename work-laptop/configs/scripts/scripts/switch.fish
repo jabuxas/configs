@@ -23,7 +23,7 @@ switch $CURRENT_THEME
         echo white > ~/colorscheme
         swaymsg shadows enable
     case white
-        echo changing to black...
+        echo changing to rose... 
         gsettings set org.gnome.desktop.interface gtk-theme "Sunrise-Dark"
         gsettings set org.gnome.desktop.interface icon-theme "Reversal-black-dark"
         swaymsg client.focused "#242b2e #e57474 #dadada #e57474"
@@ -33,7 +33,7 @@ switch $CURRENT_THEME
         tmux source ~/.config/tmux/tmux.conf
         pkill waybar; waybar -c ~/.config/waybar/config.jsonc &> /dev/null & disown
         ~/scripts/swww.sh $wpp1_solarized $wpp2_solarized
-        echo black > ~/colorscheme
+        echo rose > ~/colorscheme
         swaymsg shadows disable
     case '*'
         echo mmmm what?
