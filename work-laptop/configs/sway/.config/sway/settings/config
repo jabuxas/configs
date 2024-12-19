@@ -4,8 +4,8 @@ output {
 }
 
 default_border pixel 2
-client.focused #16aec9 #16aec9 #222221
-client.focused_inactive #16aec9 #222221 #c1c1c1
+client.focused "#242b2e" "#e57474" "#dadada" "#e57474"
+client.focused_inactive "#242b2e" "#242b2e" "#242b2e"
 focus_on_window_activation none
 popup_during_fullscreen smart
 no_focus [window_role="pop-up"]

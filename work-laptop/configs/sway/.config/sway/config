@@ -2,6 +2,7 @@ include ~/.config/sway/settings/*
 
 blur enable
 blur_passes 4
+corner_radius 10
 blur_radius 2
 blur_noise 0.2
 
