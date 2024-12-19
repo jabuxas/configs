@@ -10,6 +10,13 @@ on sway I do have now switch between dark/light, and that's all i'll add, i had 
 
 ## images
 
+### laptop work
+
+#### rose
+
+![screenshot-2024-12-18T09:48:05-03:00](https://github.com/user-attachments/assets/a3483487-025e-4cd3-8c74-8bdea52eb46f)
+![screenshot-2024-12-18T15:30:58-03:00](https://github.com/user-attachments/assets/60e8b127-be2c-408c-a2d3-e248c883f9a2)
+
 ### desktop
 
 #### _black & white_
