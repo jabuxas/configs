@@ -11,11 +11,10 @@
     "bindings": {}
   },
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
       "space s f": "file_finder::Toggle",
       "space c a": "editor::ToggleCodeActions",
-      "space o t": "terminal_panel::ToggleFocus",
       "space o l": "assistant::ToggleFocus",
       "space o p": "projects::OpenRecent",
       "alt-.": "pane::ActivateNextItem",
@@ -24,22 +23,87 @@
       "alt-1": "project_panel::ToggleFocus",
       "alt-2": "outline_panel::ToggleFocus",
       "alt-3": "collab_panel::ToggleFocus",
+      "space o t": "terminal_panel::ToggleFocus",
       "alt-4": "editor::ToggleTabBar",
       "ctrl-d": ["vim::ScrollDown", "editor::ScrollCursorCenter"],
-      "ctrl-u": ["vim::ScrollUp", "editor::ScrollCursorCenter"]
+      "ctrl-u": ["vim::ScrollUp", "editor::ScrollCursorCenter"],
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "space a c": "assistant::ToggleFocus",
+      "space r r": "editor::Rename",
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
+      "s s": "outline::Toggle",
+      "s S": "project_symbols::Toggle"
     }
   },
   {
-    "context": "vim_mode == visual",
+    "context": "(vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
       "shift-j": "editor::MoveLineDown",
       "shift-k": "editor::MoveLineUp"
     }
   },
   {
+    "context": "Workspace && !vim_mode == insert",
+    "bindings": {}
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "shift-j": "menu::SelectNext",
+      "shift-k": "menu::SelectPrev"
+    }
+  },
+  {
     "context": "Terminal",
     "bindings": {
-      "ctrl-w": null
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      // Close project panel as project file panel on the right
+      "q": "workspace::ToggleRightDock",
+      "space e": "workspace::ToggleRightDock",
+      // Navigate between panel
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
     }
   }
 ]

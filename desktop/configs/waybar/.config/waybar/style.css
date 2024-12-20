@@ -4,18 +4,19 @@
 	/* padding: 0; */
 	/* margin: 0; */
 	font-size: 18px;
-	font-family: CozetteVector;
+	font-family: CartographCF Nerd Font;
 	font-style: italic;
 }
 
 window#waybar {
 	background: #0a0c10;
 	color: #f0f3f6;
-	margin: 20px;
+	margin: 10px;
 }
 
 #workspaces button {
-	padding: 0;
+	margin-left: 2px;
+	padding: 2px 8px;
 }
 
 #workspaces button:hover,
