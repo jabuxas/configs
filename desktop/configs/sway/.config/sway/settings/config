@@ -5,8 +5,8 @@ output {
 } 
 
 default_border pixel 2 
-client.focused #16aec9 #16aec9 #222221
-client.focused_inactive #16aec9 #222221 #c1c1c1
+client.focused "#242b2e" "#e57474" "#dadada" "#e57474"
+client.focused_inactive "#242b2e" "#242b2e" "#242b2e"
 focus_on_window_activation none
 popup_during_fullscreen smart
 no_focus [window_role="pop-up"]
@@ -15,11 +15,17 @@ focus_wrapping workspace
 gaps inner 10
 mouse_warping none
 
-input "2362:9523:Gaming_Mouse" {
+input "1137:50504:Logitech_USB_Receiver_Mouse" {
       accel_profile flat
       dwt enabled
       middle_emulation enabled
       pointer_accel 0.5
+}
+
+input "1133:50504:Logitech_USB_Receiver" {
+      xkb_layout us
+      xkb_variant intl 
+      xkb_options ctrl:nocaps
 }
 
 input "1241:6185:LogoTech_Gaming_Keyboard" {
@@ -30,6 +36,10 @@ input "1241:6185:LogoTech_Gaming_Keyboard" {
 
 input "1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad" {
       map_to_output DISABLED
+}
+
+input "1356:3302:Sony_Interactive_Entertainment_DualSense_Wireless_Controller_Touchpad" {
+    map_to_output DISABLED
 }
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

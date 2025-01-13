@@ -16,22 +16,22 @@ import = ["~/.config/alacritty/black.toml"]
 
 [window]
 
-opacity = 0.93
+opacity = 1
 padding.x = 10
 # padding.y = 10
 decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
 [font]
-size = 11.5
-normal.family = "CartographCF Nerd Font"
+size = 14
+normal.family = "DaddyTimeMono Nerd Font"
 normal.style = "Regular"
-bold.family = "CartographCF Nerd Font"
-bold.style = "DemiBold"
-italic.family = "CartographCF Nerd Font"
+bold.family = "DaddyTimeMono Nerd Font"
+bold.style = "Bold"
+italic.family = "DaddyTimeMono Nerd Font"
 italic.style = "Italic"
-bold_italic.family = "CartographCF Nerd Font"
-bold_italic.style = "ExtraBold Italic"
+bold_italic.family = "DaddyTimeMono Nerd Font"
+bold_italic.style = "Bold Italic"
 
 
 [[hints.enabled]]

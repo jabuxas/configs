@@ -8,8 +8,10 @@ if status --is-login
 
     if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
-    sway
+    WLR_NO_HARDWARE_CURSORS=1 sway
     end
+
+    bass source /etc/profile
 end
 if status is-interactive
     alias cb="~/repos/cports/cbuild"
@@ -20,7 +22,7 @@ if status is-interactive
     alias reboot="systemctl reboot"
     alias hr="date +'%Hh:%M, %d-%m-%Y'"
     alias hi="systemctl hibernate"
-    alias ff="fastfetch --config examples/19"
+    alias ff="fastfetch"
     alias feh="imv"
     alias lg="lazygit"
     alias cpr="cd ~/repos/cports-docker && docker compose run --build --rm cports"
@@ -60,6 +62,15 @@ function pst
     end
 end
 
+function ytb
+    set -l file
+    if test -n "$argv[1]"
+        set file "$argv[1]"
+    end
+
+    cd ~/vids/youtube && yt-dlp -f 303+251 $file
+end
+
 function pstf
     set -l file
     set -l use_ansifilter false
@@ -95,3 +106,15 @@ function last_history_arguments
 end
 abbr -a '!*' --position anywhere --function last_history_arguments
 abbr -a !! --position anywhere --function last_history_item
+
+function switch_git_personal
+    git config user.name "jabuxas"
+    git config user.email "jabuxas@proton.me"
+end
+
+function switch_git_work
+    git config user.name "lucas barbieri catarina"
+    git config user.email "lucas.catarina@consorciociga.gov.br"
+end
+
+fish_add_path /yang/.millennium/ext/bin

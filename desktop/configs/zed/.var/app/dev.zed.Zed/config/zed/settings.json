@@ -44,9 +44,6 @@
     "enabled": true
   },
   "languages": {
-    "Go": {
-      "language_servers": ["gopls", "golangci-lint"]
-    },
     "TypeScript": {
       // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
       "inlay_hints": {
@@ -63,20 +60,6 @@
     }
   },
   "lsp": {
-    "golangci-lint": {
-      "initialization_options": {
-        "command": [
-          "golangci-lint",
-          "run",
-          "--enable-all",
-          "--disable",
-          "lll",
-          "--out-format",
-          "json",
-          "--issues-exit-code=1"
-        ]
-      }
-    },
     "pyright": {
       "settings": {
         "python.analysis": {
@@ -125,7 +108,7 @@
   "ui_font_size": 16,
   "buffer_font_size": 18,
   "buffer_font_family": "CartographCF Nerd Font",
-  "theme": "Le Blackque orange italic",
+  "theme": "Mono Dark",
   "terminal": {
     "dock": "bottom",
     "detect_venv": {

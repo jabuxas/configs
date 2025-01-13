@@ -42,4 +42,5 @@ cw) #current window
     print_error ;;
 esac
 
+cp "$temp_screenshot" "${save_dir}/${save_file}"
 rm "$temp_screenshot"

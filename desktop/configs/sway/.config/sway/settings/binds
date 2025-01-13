@@ -18,7 +18,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+b exec firefox-bin
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
-bindsym $mod+b exec FUSERMOUNT_PROG=/bin/fusermount ./.local/share/AppImage/ZenBrowser.AppImage
+bindsym $mod+b exec ~/.local/share/AppImage/ZenBrowser.AppImage
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+c kill
@@ -80,13 +80,13 @@ bindsym $mod+Control+Return move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+Control+s scratchpad show
 
-bindsym $mod+Shift+s exec steam
+bindsym $mod+Shift+s exec ~/.millennium/start.sh
 bindsym $mod+e exec pcmanfm
-bindsym Print exec ~/scripts/way-print p
-bindsym Shift+Print exec ~/scripts/way-print.sh s
-bindsym $mod+Print exec ~/scripts/way-print.sh t
-bindsym Control+Shift+Print exec ~/scripts/way-print.sh m
-bindsym Control+Print exec ~/scripts/way-print.sh cw
+bindsym Menu exec ~/scripts/way-print.sh p
+bindsym Shift+Menu exec ~/scripts/way-print.sh s
+bindsym $mod+Menu exec ~/scripts/way-print.sh t
+bindsym Control+Shift+Menu exec ~/scripts/way-print.sh m
+bindsym Control+Menu exec ~/scripts/way-print.sh cw
 bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE flatpak run --parent-expose-pids --parent-share-pids --parent-pid=1 --branch=stable --arch=x86_64 --command=xivlauncher dev.goats.xivlauncher
 
 # audio
