@@ -117,4 +117,16 @@ function switch_git_work
     git config user.email "lucas.catarina@consorciociga.gov.br"
 end
 
+function fish_write
+    set_color $argv[1]
+    echo -en $argv[2]
+    set_color normal
+end
+
+function fish_prompt
+    fish_write normal "\n "
+    fish_write magenta (prompt_pwd --full-length-dirs=99999)
+    fish_write normal "\n := "
+end
+
 fish_add_path /yang/.millennium/ext/bin
