@@ -11,7 +11,7 @@ set wpp2_solarized ~/pics/flower.jpg
 swaymsg reload
 
 switch $CURRENT_THEME
-    case black
+    case rose 
         echo changing to white ...
         # gsettings set org.gnome.desktop.interface gtk-theme "Windows-95"
         # gsettings set org.gnome.desktop.interface icon-theme "nineicons-redux-v0.6"

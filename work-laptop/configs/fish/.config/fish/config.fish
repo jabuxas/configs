@@ -5,6 +5,8 @@ if status --is-login
     set -gx BAT_THEME "Solarized (light)"
     set -gx SOLARIZED true
     set -gx EDITOR "nvim"
+    set -x FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
+    fzf --fish | source
     if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
     sway
@@ -103,6 +105,17 @@ end
 function switch_git_work
     git config user.name "lucas barbieri catarina"
     git config user.email "lucas.catarina@consorciociga.gov.br"
+end
+
+function fish_write
+    set_color $argv[1]
+    echo -en $argv[2]
+    set_color normal
+end
+function fish_prompt
+    fish_write normal "\n "
+    fish_write magenta (prompt_pwd --full-length-dirs=99999)
+    fish_write normal "\n := "
 end
 
 fish_add_path /home/lucas/.spicetify

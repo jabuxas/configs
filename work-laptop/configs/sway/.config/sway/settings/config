@@ -32,24 +32,32 @@ input "1267:12721:ELAN050A:00_04F3:31B1_Mouse" {
 }
 
 input "1241:6185:LogoTech_Gaming_Keyboard" {
-  xkb_layout br
-  xkb_variant abnt2
+  xkb_variant intl
+  xkb_layout us
+  # xkb_layout br
+  # xkb_variant abnt2
   xkb_options ctrl:nocaps
 }
 input "1:1:AT_Translated_Set_2_keyboard" {
-  xkb_layout br
-  xkb_variant abnt2
+  # xkb_layout br
+  # xkb_variant abnt2
+  xkb_variant intl
+  xkb_layout us
   xkb_options ctrl:nocaps
 }
 input "6700:11555:USB_USB_Keyboard" {
-  xkb_layout br
-  xkb_variant abnt2
+  # xkb_layout br
+  # xkb_variant abnt2
+  xkb_variant intl
+  xkb_layout us
   xkb_options ctrl:nocaps
 }
 
 input "10874:27160:CASUE_CASUE_USB_Keyboard" {
-  xkb_layout br
-  xkb_variant abnt2
+  # xkb_layout br
+  # xkb_variant abnt2
+  xkb_variant intl
+  xkb_layout us
   xkb_options ctrl:nocaps
 }
 
