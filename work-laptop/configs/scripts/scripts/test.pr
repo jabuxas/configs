@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+foreach (qx(xdotool getmouselocation --shell)) {
+  m/^([^=]+)=(.*)$/;
+  $M{$1} = $2;
+};
+
+foreach (qx(xrandr)) {
+  next unless m/connected/;
+  ($d, $w, $h, $xo, $yo) = m/^([^\s]+) .* (\d+)x(\d+)\+(\d+)\+(\d+)/;
+
+  if ($M{X} >= $xo && $M{X} <= $w + $xo &&
+      $M{Y} >= $yo && $M{Y} <= $h + $yo) {
+    print "$d\n";
+    last;
+  }
+}

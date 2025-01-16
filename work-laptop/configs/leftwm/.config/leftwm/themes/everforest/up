@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+#down the last running theme
+if [ -f "/tmp/leftwm-theme-down" ]; then
+    /tmp/leftwm-theme-down
+    rm /tmp/leftwm-theme-down
+fi
+ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
+leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
+
+WALLPAPER_PATH=~/pics/wallpapers
+feh --bg-scale ~/pics/wallpapers/ef1.png --bg-scale ~/pics/wallpapers/ef2.jpg --bg-scale ~/pics/wallpapers/cottage.jpg
+bash ~/.config/polybar/launch.sh
+~/.local/bin/picom-ibhagwan -b --experimental-backends &

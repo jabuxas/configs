@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+#down the last running theme
+if [ -f "/tmp/leftwm-theme-down" ]; then
+    /tmp/leftwm-theme-down
+    rm /tmp/leftwm-theme-down
+fi
+ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
+leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
+
+WALLPAPER_PATH=~/pics/wallpapers
+sh ~/scripts/screenlayout.sh
+setxkbmap us intl ctrl:nocaps
+gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Adw'
+gsettings set org.gnome.desktop.interface font-name 'Terminess Nerd Font 12'
+gsettings set org.gnome.desktop.interface gtk-theme "Sunrise-Dark"
+gsettings set org.gnome.desktop.interface icon-theme "Reversal-black-dark"
+echo rose > ~/colorscheme
+pkill nitrogen; nitrogen --restore &
+bash ~/.config/polybar/launch.sh
+~/.local/bin/picom-ibhagwan -b --experimental-backends &
