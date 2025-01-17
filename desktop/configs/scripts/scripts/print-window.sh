@@ -21,10 +21,8 @@ if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
     wl-copy < ~/tmp/jabuxas.png
     fi
 
-    if [[ $XDG_CURRENT_DESKTOP == "sway" ]]; then
     rm $temp_screenshot
     grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" $temp_screenshot
     wl-copy < ~/tmp/jabuxas.png
     swappy -f $temp_screenshot
-    fi
 fi
