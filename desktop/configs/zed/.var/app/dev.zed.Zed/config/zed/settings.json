@@ -44,6 +44,9 @@
     "enabled": true
   },
   "languages": {
+    "HTML": {
+      "format_on_save": "off"
+    },
     "TypeScript": {
       // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
       "inlay_hints": {
