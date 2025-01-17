@@ -1,12 +1,16 @@
 if status --is-login
+    bass source /etc/profile
     fish_add_path ~/.local/bin
     fish_add_path "$HOME/.cargo/bin"
     source "$HOME/.cargo/env.fish"
-    bass source /etc/profile
 
-    set -gx BAT_THEME "Solarized (light)"
-    set -gx SOLARIZED true
     set -gx EDITOR "nvim"
+    # set -gx BAT_THEME "Solarized (light)"
+    # set -gx SOLARIZED true
+    if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
+    set -gx XDG_CURRENT_DESKTOP "sway"
+    sway
+    end
 end
 
 if status is-interactive
@@ -22,7 +26,7 @@ if status is-interactive
     alias feh="imv"
     alias lg="lazygit"
     alias cpr="cd ~/repos/cports-docker && docker compose run --build --rm cports"
-    alias cop="xclip -sel clip"
+    alias cop="wl-copy"
     alias poweroff="systemctl poweroff"
     alias cat="bat"
 
