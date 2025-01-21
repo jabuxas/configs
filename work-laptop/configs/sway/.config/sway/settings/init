@@ -4,7 +4,7 @@ exec {
     gsettings set $gnome-schema icon-theme "Reversal-black-dark"
     gsettings set $gnome-schema cursor-theme 'Simp1e-Adw'
     gsettings set $gnome-schema font-name 'Cartograph CF 12'
-    waybar &
+    waybar -c ~/.config/waybar/config.jsonc &
     autotiling &
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/tmp/*

@@ -53,6 +53,9 @@
         "show_type_hints": true
       }
     },
+    "HTML": {
+      "format_on_save": "off"
+    },
     "Python": {
       "format_on_save": { "language_server": { "name": "ruff" } },
       "formatter": { "language_server": { "name": "ruff" } },

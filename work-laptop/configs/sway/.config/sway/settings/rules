@@ -3,6 +3,7 @@ for_window [class="vrising.exe"] move to workspace 9
 for_window [shell=".*"] inhibit_idle fullscreen
 for_window [app_id=".*office.*"] move to workspace 5
 for_window [app_id="WebCord"] move to workspace 6
+for_window [app_id="discord"] move to workspace 6
 for_window [class="WebCord"] move to workspace 6
 for_window [class="Spotify"] move to workspace 4
 for_window [class="Steam"] move to workspace 8

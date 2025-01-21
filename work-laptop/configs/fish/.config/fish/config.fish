@@ -7,6 +7,10 @@ if status --is-login
     set -gx EDITOR "nvim"
     set -x FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
     fzf --fish | source
+    if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
+    set -gx XDG_CURRENT_DESKTOP "sway"
+    sway
+    end
 end
 if status is-interactive
     alias cb="~/repos/cports/cbuild"
