@@ -1,16 +1,14 @@
-if status --is-login
-    bass source /etc/profile
-    fish_add_path ~/.local/bin
-    fish_add_path "$HOME/.cargo/bin"
-    source "$HOME/.cargo/env.fish"
+bass source /etc/profile
+fish_add_path "$HOME/.local/bin"
+fish_add_path "$HOME/.cargo/bin"
+source "$HOME/.cargo/env.fish"
 
-    set -gx EDITOR "nvim"
-    # set -gx BAT_THEME "Solarized (light)"
-    # set -gx SOLARIZED true
-    if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
-    set -gx XDG_CURRENT_DESKTOP "sway"
-    sway
-    end
+set -gx EDITOR "nvim"
+# set -gx BAT_THEME "Solarized (light)"
+# set -gx SOLARIZED true
+if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
+set -gx XDG_CURRENT_DESKTOP "sway"
+sway
 end
 
 if status is-interactive

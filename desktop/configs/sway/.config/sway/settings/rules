@@ -73,6 +73,10 @@ for_window [window_role = "pop-up"] floating enable
 for_window [window_role = "task_dialog"] floating enable
 for_window [window_type = "dialog"] floating enable
 for_window [window_type = "menu"] floating enable
+for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
+  floating enable
+  sticky enable
+}
 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
