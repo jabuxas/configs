@@ -27,6 +27,7 @@ if status is-interactive
     alias cop="wl-copy"
     alias poweroff="systemctl poweroff"
     alias cat="bat"
+    alias dockdom="docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
 
     alias protontricks='flatpak run com.github.Matoking.protontricks'
     alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
