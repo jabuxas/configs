@@ -82,3 +82,22 @@
 
 (global-set-key (kbd "M-<") 'previous-buffer)
 (global-set-key (kbd "M->") 'next-buffer)
+
+;; Custom function to handle double comma
+(defvar my-last-comma-time nil
+  "Timestamp of the last `,' press.")
+
+(defun my-insert-comma-or-emmet ()
+  (interactive)
+  (let ((now (current-time)))
+    (if (and my-last-comma-time
+             (< (float-time (time-subtract now my-last-comma-time)) 0.2)) ; 0.3s threshold
+        (progn
+          (delete-char -1) ; Delete the first comma
+          (emmet-expand-line nil)) ; Trigger Emmet
+      (insert ",") ; Insert a single comma
+      (setq my-last-comma-time now)))) ; Update timestamp
+
+;; Bind to comma in Evil insert mode
+(after! evil
+  (define-key evil-insert-state-map (kbd ",") #'my-insert-comma-or-emmet))
