@@ -28,6 +28,7 @@ if status is-interactive
     alias poweroff="systemctl poweroff"
     alias cat="bat"
     alias dockdom="docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
+    alias emackie="emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
 
     alias protontricks='flatpak run com.github.Matoking.protontricks'
     alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
