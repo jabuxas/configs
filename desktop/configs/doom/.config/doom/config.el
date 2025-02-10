@@ -166,3 +166,6 @@
                                   (delete-frame frame))))))))
 
 (map! :leader :n "g g" #'+lazygit-in-project)
+(map! :leader
+      :desc "Search by grep"  ; This description shows in which-key popups
+      "r g" #'consult-ripgrep)
