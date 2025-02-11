@@ -16,7 +16,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+b exec firefox
+bindsym $mod+b exec ~/down/zen-x86_64.AppImage
 bindsym $mod+Shift+b exec qutebrowser
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
 bindsym $mod+Return exec $term
@@ -81,19 +81,19 @@ bindsym $mod+Control+s scratchpad show
 
 bindsym $mod+Shift+s exec flatpak run com.valvesoftware.Steam
 bindsym $mod+e exec pcmanfm
-bindsym Home exec ~/.local/bin/way-print.sh p
-bindsym $mod+Home exec ~/.local/bin/print-tmp.sh
-bindsym Shift+Home exec ~/.local/bin/way-print.sh s
-bindsym Control+Shift+Home exec ~/.local/bin/way-print.sh t
-bindsym Control+Home exec ~/.local/bin/print-window.sh
+bindsym Print exec ~/.local/bin/way-print.sh p
+bindsym $mod+Print exec ~/.local/bin/print-tmp.sh
+bindsym Shift+Print exec ~/.local/bin/way-print.sh s
+bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh t
+bindsym Control+Print exec ~/.local/bin/print-window.sh
 
 # audio
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec wpctl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec sudo brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec sudo brightnessctl set 5%+
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
