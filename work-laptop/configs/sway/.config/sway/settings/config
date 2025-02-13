@@ -1,7 +1,7 @@
-output {
-  HDMI-A-1 pos 0 0 
-  eDP-1 pos 2560 0 
-}
+# output {
+#   HDMI-A-1 pos 0 0 
+#   eDP-1 pos 2560 0 
+# }
 
 default_border pixel 2
 client.focused "#242b2e" "#e57474" "#dadada" "#e57474"
@@ -63,6 +63,19 @@ input "10874:27160:CASUE_CASUE_USB_Keyboard" {
 
 input "1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad" {
   map_to_output DISABLED
+}
+
+input "1137:50504:Logitech_USB_Receiver_Mouse" {
+      accel_profile flat
+      dwt enabled
+      middle_emulation enabled
+      pointer_accel 0.5
+}
+
+input "1133:50504:Logitech_USB_Receiver" {
+      xkb_layout us
+      xkb_variant intl 
+      xkb_options ctrl:nocaps
 }
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

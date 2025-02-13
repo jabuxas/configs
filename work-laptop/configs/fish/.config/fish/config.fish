@@ -14,6 +14,7 @@ if status --is-login
 end
 if status is-interactive
     alias cb="~/repos/cports/cbuild"
+    alias dockdom="docker compose -p 'ciga-diario' -f CIGA-DIARIO-DEV-LOCALHOST.yml"
     alias g="git"
     alias ls="bash ~/scripts/elash.sh"
     alias l="ls -lah"
@@ -32,7 +33,7 @@ if status is-interactive
     alias protontricks='flatpak run com.github.Matoking.protontricks'
     alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
 
-    alias generate_token="curl -u jabuxas https://paste.jabuxas.xyz | wl-copy"
+    alias generate_token="curl -u jabuxas https://paste.jabuxas.com | wl-copy"
 end
 
 function pst
@@ -54,7 +55,7 @@ function pst
         set file "$argv[1]"
     end
 
-    curl -F "file=@$file" -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.xyz
+    curl -F "file=@$file" -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.com
 
     if command test -p /dev/stdin
         rm "$file"
@@ -80,7 +81,7 @@ function pstf
         set file "$argv[1]"
     end
 
-    curl -F "file=@$file" -Fsecret= -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.xyz
+    curl -F "file=@$file" -Fsecret= -H "X-Auth: $(cat ~/.key)" https://paste.jabuxas.com
 
     if command test -p /dev/stdin
         rm "$file"
