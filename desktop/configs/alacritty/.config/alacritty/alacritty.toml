@@ -16,7 +16,7 @@ import = ["~/.config/alacritty/black.toml"]
 
 [window]
 
-opacity = 1
+opacity = 0.93
 padding.x = 10
 # padding.y = 10
 decorations = "Full"

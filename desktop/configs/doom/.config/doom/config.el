@@ -197,3 +197,5 @@
 
   ;; Bind the custom function to <tab> in Evil's insert state
   (evil-define-key 'insert 'global (kbd "<tab>") 'my/copilot-tab-or-default))
+
+;; (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))

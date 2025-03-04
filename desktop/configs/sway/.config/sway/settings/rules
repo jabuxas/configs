@@ -9,6 +9,7 @@ for_window [app_id="org.gnome.Evolution"] move to workspace 10
 for_window [app_id="org.prismlauncher.PrismLauncher"] move to workspace 7
 for_window [app_id="teams-for-linux"] move to workspace 8
 for_window [app_id="WebCord"] move to workspace 6
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [instance="CoreKeeper"] move to workspace 9, fullscreen enable
 
 # xwayland

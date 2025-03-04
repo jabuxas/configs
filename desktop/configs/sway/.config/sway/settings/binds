@@ -22,6 +22,7 @@ bindsym $mod+b exec ~/.local/share/AppImage/ZenBrowser.AppImage
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term
 bindsym $mod+Control+e exec $term -e emacsclient --socket-name=/run/user/1000/emacs/server -nw
+bindsym $mod+o exec fish -c 'heaven'
 bindsym $mod+Shift+c kill
 bindsym $mod+Shift+Return exec $menu
 floating_modifier $mod normal

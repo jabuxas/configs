@@ -28,13 +28,17 @@ if status is-interactive
     alias cop="wl-copy"
     alias poweroff="systemctl poweroff"
     alias cat="bat"
-    alias dockdom="docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
+    alias dom="docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
     alias emackie="emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
 
     alias protontricks='flatpak run com.github.Matoking.protontricks'
     alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
 
     alias generate_token="curl -u jabuxas https://paste.jabuxas.com | wl-copy"
+end
+
+function heaven
+   AUTH_KEY=(cat ~/.key) AUTH_PARAM='X-Auth' PASTEBIN_URL='https://paste.jabuxas.com' revelation
 end
 
 function pst

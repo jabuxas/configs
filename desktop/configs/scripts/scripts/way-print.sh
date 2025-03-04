@@ -11,7 +11,7 @@ echo -e "[Default]\nsave_dir=$save_dir\nsave_filename_format=$save_file" > $swpy
 
 upload ()
 {
-    curl -F'file=@'"${save_dir}/${save_file}" -Fsecret= -H 'X-Auth: '$(cat ~/.key) https://paste.jabuxas.xyz | wl-copy
+    curl -F'file=@'"${save_dir}/${save_file}" -Fsecret= -H 'X-Auth: '$(cat ~/.key) https://paste.jabuxas.com | wl-copy
 }
 
 function print_error
