@@ -8,8 +8,8 @@ set -gx EDITOR "nvim"
 # set -gx BAT_THEME "Solarized (light)"
 # set -gx SOLARIZED true
 if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
-set -gx XDG_CURRENT_DESKTOP "sway"
-sway
+    set -gx XDG_CURRENT_DESKTOP "sway"
+    sway
 end
 
 if status is-interactive

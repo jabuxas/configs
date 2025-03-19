@@ -82,7 +82,7 @@ bindsym $mod+Control+Return move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+Control+s scratchpad show
 
-bindsym $mod+Shift+s exec ~/.millennium/start.sh
+bindsym $mod+Shift+s exec steam
 bindsym $mod+e exec pcmanfm
 bindsym Menu exec ~/scripts/way-print.sh p
 bindsym Shift+Menu exec ~/scripts/way-print.sh s

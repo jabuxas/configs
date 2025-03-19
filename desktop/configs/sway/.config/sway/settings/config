@@ -1,7 +1,7 @@
 output {
     HDMI-A-1 pos 0 0 mode --custom 2560x1080@75Hz adaptive_sync on
-    DP-1 pos 2560 0 
-    DP-3 disable pos 0 -1080
+    DP-1 pos 2560 0
+    # DP-3 disable pos 3640 0
 } 
 
 default_border pixel 2 

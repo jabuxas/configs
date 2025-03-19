@@ -5,8 +5,8 @@ echo $CURRENT_THEME
 set wpp1_white ~/pics/white2.jpg
 set wpp2_white ~/pics/white.jpg
 
-set wpp1_solarized ~/pics/flower.jpg
-set wpp2_solarized ~/pics/wallpapers/mmm.png
+set wpp2_solarized ~/pics/flower.jpg
+set wpp1_solarized ~/pics/wallpapers/rose1.jpg
 swaymsg reload
 
 switch $CURRENT_THEME

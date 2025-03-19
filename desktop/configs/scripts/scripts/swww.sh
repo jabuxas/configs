@@ -12,6 +12,10 @@ if [[ -z "$1" ]]; then
             FIRST=~/pics/wallpapers/bm5.jpg
             SECOND=~/pics/wallpapers/bm3.png
             ;;
+        rose)
+            FIRST=~/pics/flower.jpg
+            SECOND=~/pics/wallpapers/rose1.jpg
+            ;;
         melange)
             FIRST=~/pics/wallpapers/melange2.png
             SECOND=~/pics/wallpapers/melange1.jpg
@@ -43,4 +47,4 @@ sleep 0.3
 
 swww img -o HDMI-A-1 $FIRST
 swww img -o DP-1 $SECOND
-swww img -o DP-3 ~/pics/wallpapers/sl4.jpg
+# swww img -o DP-3 ~/pics/wallpapers/sl4.jpg
