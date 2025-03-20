@@ -201,3 +201,23 @@
   (evil-define-key 'insert 'global (kbd "<tab>") 'my/copilot-tab-or-default))
 
 ;; (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+
+(defun kb/toggle-window-transparency (arg)
+  "Toggle the value of `alpha-background'.
+
+Toggles between 100 and 78 by default.
+If called with ARG (via C-u or numeric input), asks the user which value to set."
+  (interactive "P")
+  (let ((transparency
+         (cond
+          ((numberp arg) arg)
+          (arg (read-number "Change the transparency to which value (0-100)? "))
+          (t (pcase (frame-parameter nil 'alpha-background)
+               (78 100)
+               (100 78)
+               (_ 78))))))
+    (set-frame-parameter nil 'alpha-background transparency)
+    (message "Transparency set to %s" transparency)))
+
+;; Bind to M-S-t (which is written as M-T in Emacs)
+(global-set-key (kbd "M-T") #'kb/toggle-window-transparency)

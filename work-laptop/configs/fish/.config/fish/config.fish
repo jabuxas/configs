@@ -14,7 +14,7 @@ if status --is-login
 end
 if status is-interactive
     alias cb="~/repos/cports/cbuild"
-    alias dockdom="docker compose -p 'ciga-diario' -f CIGA-DIARIO-DEV-LOCALHOST.yml"
+    alias dom="docker compose -p 'ciga-diario' -f CIGA-DIARIO-DEV-LOCALHOST.yml"
     alias g="git"
     alias ls="bash ~/scripts/elash.sh"
     alias l="ls -lah"
