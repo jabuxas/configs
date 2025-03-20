@@ -1,0 +1,59 @@
+* welcome to my home (quite literally)
+
+- here you will find configs for my desktop and my laptop.
+
+- i primarily use [[https://github.com/jabuxas/nvim.config][neovim]], tmux ([[https://github.com/jrmoulton/tmux-sessionizer][sessionizer]]) and sway
+
+- themes +are+ were completely interchangeable as long as you setup the structure of files the same as this repo, they aren't really anymore because most screenshots are from when I used hyprland and they might not work anymore, idk.
+
+- on sway I do have now switch between dark/light, and that's all i'll add, i had way too many themes before.
+
+** images
+
+*** desktop
+
+**** _rose_
+
+[[file:images/20250320-141054.png]]
+[[file:images/20250320-141126.png]]
+
+**** _black & white_
+
+[[file:images/20250320-144052.png]]
+[[file:images/20250320-144134.png]]
+**** _solarized_
+
+[[file:images/20250320-141326.png]]
+[[file:images/20250320-144224.png]]
+
+**** _forest_
+
+[[file:images/20250320-144316.png]]
+[[file:images/20250320-144345.png]]
+
+**** _monochrome_
+
+[[file:images/20250320-141548.png]]
+[[file:images/20250320-144413.png]]
+
+**** _red_
+
+[[file:images/20250320-141604.png]]
+[[file:images/20250320-141617.png]]
+
+**** _melange_
+
+[[file:images/20250320-141626.png]]
+[[file:images/20250320-144438.png]]
+
+**** _solarized white_
+
+[[file:images/20250320-141647.png]]
+[[file:images/20250320-141652.png]]
+
+*** laptop
+
+**** _blue_
+
+[[file:images/20250320-141656.png]]
+[[file:images/20250320-141701.png]]
