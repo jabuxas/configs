@@ -221,3 +221,51 @@ If called with ARG (via C-u or numeric input), asks the user which value to set.
 
 ;; Bind to M-S-t (which is written as M-T in Emacs)
 (global-set-key (kbd "M-T") #'kb/toggle-window-transparency)
+
+;; set default org img inline
+(setq org-startup-with-inline-images t)
+
+(defun my/org-download-image-smart ()
+  "Download image to ./images/ and insert as Org link.
+Priority:
+1. URL under point (on a link)
+2. Last yanked URL (from kill-ring)
+3. Prompt user for URL"
+  (interactive)
+  (let* ((img-dir "images")  ;; Path relative to your Org file
+         (url
+          (or
+           ;; Case 1: URL under point if it's a link
+           (when-let ((context (org-element-context)))
+             (when (eq (car context) 'link)
+               (org-element-property :raw-link context)))
+           ;; Case 2: Check if kill-ring has a URL
+           (cl-find-if (lambda (s) (string-match-p "^https?://" s)) kill-ring)
+           ;; Case 3: Prompt the user
+           (read-string "Image URL: ")))
+         ;; Extract extension (fallback to png)
+         (ext (or (file-name-extension url) "png"))
+         (filename (concat (format-time-string "%Y%m%d-%H%M%S") "." ext))
+         ;; Calculate relative filepath from current Org file's directory
+         (filepath (expand-file-name filename img-dir))
+         (relative-path (file-relative-name filepath (file-name-directory (buffer-file-name)))))
+    (unless (file-exists-p img-dir)
+      (make-directory img-dir))
+    (url-copy-file url filepath t)
+    (insert (format "[[file:%s]]" relative-path))
+    (org-display-inline-images)))
+
+
+(map! :leader
+      :desc "Download image to repo"
+      "m i d" #'my/org-download-image-smart)
+
+
+;; LATEX
+;; Set Tectonic as the default LaTeX engine
+(setq TeX-engine 'tectonic)
+
+(setq org-latex-compiler "tectonic")
+
+(setq org-latex-pdf-process
+      '("tectonic %f"))
