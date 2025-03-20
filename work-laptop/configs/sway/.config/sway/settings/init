@@ -13,12 +13,12 @@ exec {
     # ~/scripts/weechat.sh
     dunst &
     swayidle -w \
-         timeout 300 'swaylock -f --image ~/pics/white.jpg' \
+         timeout 300 'swaylock -f --image ~/pics/flower.jpg' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f --image ~/pics/white.jpg'
+         before-sleep 'swaylock -f --image ~/pics/flower.jpg'
     flatpak run com.mattermost.Desktop
-    flatpak run org.gnome.Evolution
     bitwarden-desktop-bin
+    # flatpak run org.gnome.Evolution
     # flatpak run io.github.mahmoudbahaa.outlook_for_linux
 } 
 
