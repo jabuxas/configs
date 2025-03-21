@@ -23,7 +23,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font "CartographCF Nerd Font-15")
+(setq doom-font "DaddyTimeMono Nerd Font-15")
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -201,3 +201,109 @@
   (evil-define-key 'insert 'global (kbd "<tab>") 'my/copilot-tab-or-default))
 
 ;; (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+
+(defun kb/toggle-window-transparency (arg)
+  "Toggle the value of `alpha-background'.
+
+Toggles between 100 and 78 by default.
+If called with ARG (via C-u or numeric input), asks the user which value to set."
+  (interactive "P")
+  (let ((transparency
+         (cond
+          ((numberp arg) arg)
+          (arg (read-number "Change the transparency to which value (0-100)? "))
+          (t (pcase (frame-parameter nil 'alpha-background)
+               (78 100)
+               (100 78)
+               (_ 78))))))
+    (set-frame-parameter nil 'alpha-background transparency)
+    (message "Transparency set to %s" transparency)))
+
+;; Bind to M-S-t (which is written as M-T in Emacs)
+(global-set-key (kbd "M-T") #'kb/toggle-window-transparency)
+
+;; set default org img inline
+(setq org-startup-with-inline-images t)
+
+(defun my/org-download-image-smart ()
+  "Download image to ./images/ and insert as Org link.
+Priority:
+1. URL under point (on a link)
+2. Last yanked URL (from kill-ring)
+3. Prompt user for URL"
+  (interactive)
+  (let* ((img-dir "images")  ;; Path relative to your Org file
+         (url
+          (or
+           ;; Case 1: URL under point if it's a link
+           (when-let ((context (org-element-context)))
+             (when (eq (car context) 'link)
+               (org-element-property :raw-link context)))
+           ;; Case 2: Check if kill-ring has a URL
+           (cl-find-if (lambda (s) (string-match-p "^https?://" s)) kill-ring)
+           ;; Case 3: Prompt the user
+           (read-string "Image URL: ")))
+         ;; Extract extension (fallback to png)
+         (ext (or (file-name-extension url) "png"))
+         (filename (concat (format-time-string "%Y%m%d-%H%M%S") "." ext))
+         ;; Calculate relative filepath from current Org file's directory
+         (filepath (expand-file-name filename img-dir))
+         (relative-path (file-relative-name filepath (file-name-directory (buffer-file-name)))))
+    (unless (file-exists-p img-dir)
+      (make-directory img-dir))
+    (url-copy-file url filepath t)
+    (insert (format "[[file:%s]]" relative-path))
+    (org-display-inline-images)))
+
+
+(map! :leader
+      :desc "Download image to repo"
+      "m i d" #'my/org-download-image-smart)
+
+
+;;;;;; LATEX
+
+;; latex-mode
+(setq tex-command "tectonic -X compile")
+
+(defun tex-compile-and-open-with-zathura ()
+  "Compile the current TeX file using tectonic and open the PDF with Zathura."
+  (interactive)
+  (save-buffer)
+  (let* ((tex-file (buffer-file-name))
+         (pdf-file (concat (file-name-sans-extension tex-file) ".pdf"))
+         (exit-code (call-process "tectonic" nil "*Tectonic Output*" t tex-file)))
+    (if (eq exit-code 0)
+        (progn
+          (message "Compilation successful, opening PDF...")
+          (start-process "zathura" nil "zathura" pdf-file))
+      (progn
+        (switch-to-buffer "*Tectonic Output*")
+        (message "Compilation failed. See *Tectonic Output* for details.")))))
+
+
+(add-hook 'tex-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c C-c") #'tex-compile-and-open-with-zathura)))
+
+;; auctex
+(setq auto-mode-alist
+      (append '(("\\.tex\\'" . LaTeX-mode)) auto-mode-alist))
+
+;; this works
+(require 'tex)
+(setq TeX-save-query nil
+      TeX-show-compilation t)
+
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (add-to-list 'TeX-command-list
+                         '("Tectonic" "tectonic %t && zathura %s.pdf" TeX-run-command t t :help "Run Tectonic"))
+            (setq TeX-command-default "Tectonic")
+            (setq TeX-view-program-selection '((output-pdf "Zathura")))
+            (setq TeX-view-program-list '(("Zathura" "zathura %o")))))
+
+(after! tex
+  (add-hook 'TeX-after-compilation-finished-functions
+            (lambda (_)
+              (TeX-view))))

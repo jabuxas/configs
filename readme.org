@@ -2,7 +2,7 @@
 
 - here you will find configs for my desktop and my laptop.
 
-- i primarily +use [[https://github.com/jabuxas/nvim.config][neovim]]+ emacs, tmux ([[https://github.com/jrmoulton/tmux-sessionizer][sessionizer]]) and sway
+- i primarily use +[[https://github.com/jabuxas/nvim.config][neovim]]+ emacs, tmux ([[https://github.com/jrmoulton/tmux-sessionizer][sessionizer]]) and sway
 
 - themes +are+ were completely interchangeable as long as you setup the structure of files the same as this repo, they aren't really anymore because most screenshots are from when I used hyprland and they might not work anymore, idk.
 
