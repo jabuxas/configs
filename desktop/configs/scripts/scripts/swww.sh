@@ -13,8 +13,8 @@ if [[ -z "$1" ]]; then
             SECOND=~/pics/wallpapers/bm3.png
             ;;
         rose)
-            FIRST=~/pics/flower.jpg
-            SECOND=~/pics/wallpapers/rose1.jpg
+            SECOND=~/pics/flower.jpg
+            FIRST=~/pics/wallpapers/rose1.jpg
             ;;
         melange)
             FIRST=~/pics/wallpapers/melange2.png

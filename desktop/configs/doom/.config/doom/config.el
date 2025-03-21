@@ -307,3 +307,22 @@ Priority:
   (add-hook 'TeX-after-compilation-finished-functions
             (lambda (_)
               (TeX-view))))
+
+
+;; org latex
+
+;; Configure Org mode to use Tectonic for LaTeX export
+(after! ox-latex
+  (setq org-latex-compiler "tectonic")
+  (setq org-latex-pdf-process
+        '("tectonic -Z shell-escape %f")))
+
+;; Set Zathura as the default PDF viewer
+(setq org-file-apps
+      '((auto-mode . emacs)
+        ("\\.pdf\\'" . "zathura %s")
+        ("\\.x?html?\\'" . default)))
+
+(setq org-export-default-language "pt-br")
+(add-to-list 'org-latex-packages-alist
+             '("AUTO" "babel" t ("pdflatex" "xelatex" "lualatex")))
