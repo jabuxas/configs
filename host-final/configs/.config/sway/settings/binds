@@ -16,12 +16,12 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+Shift+b exec firefox-bin
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
 bindsym $mod+b exec ~/.local/share/AppImage/ZenBrowser.AppImage
+bindsym $mod+Shift+b exec firefox-bin "https://centraldofuncionario.com.br/17779/incluir-ponto"
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term
-bindsym $mod+Control+e exec $term -e emacsclient --socket-name=/run/user/1000/emacs/server -nw
+bindsym $mod+Control+e exec $term -e emacsclient --socket-name=/run/user/1000/emacs/server -r -nw
 bindsym $mod+o exec fish -c 'heaven'
 bindsym $mod+Shift+c kill
 bindsym $mod+Shift+Return exec $menu
