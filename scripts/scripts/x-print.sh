@@ -37,7 +37,7 @@ case $1 in
         ;;
         
     m)  # screenshot focused monitor
-        focused_monitor=$(xrandr --query | grep " connected primary" | cut -d" " -f1)
+        focused_monitor=$(fish /home/lucas/scripts/current_monitor.fish)
         maim -g "$(xrandr --query | grep "$focused_monitor" | grep -oP '\d+x\d+\+\d+\+\d+')" "$temp_screenshot" && \
         xclip -selection clipboard -t image/png < "$temp_screenshot"
         ;;
