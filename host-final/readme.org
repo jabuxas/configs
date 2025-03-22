@@ -1,0 +1,18 @@
+* final
+** main desktop
+*** hw
+- Intel(R) Core(TM) i5-10400F
+- AMD Radeon RX 5500 XT
+- 1tb nvme btrfs
+- 1tb ssd f2fs
+- 2tb hdd btrfs
+- 24gb ram
+- 2x 2560x1080 monitors
+*** sw
+- sway
+- zen browser
+- tmux
+- alacritty
+- emacs
+- fish
+- 10.11.10.100/24 🔥
