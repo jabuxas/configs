@@ -1,6 +1,7 @@
 all:
-	mkdir $$HOME/scripts
-	xstow --verbose --target=$$HOME/scripts --restow scripts/
+	xstow --target=$$HOME --restow scripts/
+	xstow --target=$$HOME --restow shared/
 
 delete:
-	xstow --verbose --target=$$HOME/scripts --delete scripts/
+	xstow --target=$$HOME --delete scripts/
+	xstow --target=$$HOME --delete shared/
