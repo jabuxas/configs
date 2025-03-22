@@ -120,4 +120,4 @@ function fish_prompt
 end
 
 fish_add_path /home/lucas/.spicetify
-source ~/.config/fish/env.fish
+# source ~/.config/fish/env.fish
