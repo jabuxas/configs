@@ -1,1 +1,0 @@
-sway + zen browser ftw
