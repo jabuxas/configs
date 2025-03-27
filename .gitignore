@@ -50,3 +50,6 @@ xmonad.log
 .stack-work/
 plugins/
 env.fish
+
+host-final/configs/.var/app
+!host-final/configs/.var/app/dev.zed.Zed

@@ -340,8 +340,8 @@ if not vim.g.vscode then
             vim.diagnostic.config({ float = { border = "single" } })
         end
         local mason_registry = require('mason-registry')
-        local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-        '/node_modules/@vue/language-server'
+        -- local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+        -- '/node_modules/@vue/language-server'
         local servers = {
             ocamllsp = {},
 
@@ -442,6 +442,7 @@ if not vim.g.vscode then
                     'prettierd',
                     'gofumpt',
                     'goimports-reviser',
+                    'vue-language-server',
                     'golines',
                     'golangci-lint',
                     'ruff',
