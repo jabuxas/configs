@@ -205,7 +205,7 @@
 (defun kb/toggle-window-transparency (arg)
   "Toggle the value of `alpha-background'.
 
-Toggles between 100 and 78 by default.
+Toggles between 100 and 85 by default.
 If called with ARG (via C-u or numeric input), asks the user which value to set."
   (interactive "P")
   (let ((transparency
@@ -213,14 +213,18 @@ If called with ARG (via C-u or numeric input), asks the user which value to set.
           ((numberp arg) arg)
           (arg (read-number "Change the transparency to which value (0-100)? "))
           (t (pcase (frame-parameter nil 'alpha-background)
-               (78 100)
-               (100 78)
-               (_ 78))))))
+               (90 100)
+               (100 90)
+               (_ 90))))))
     (set-frame-parameter nil 'alpha-background transparency)
     (message "Transparency set to %s" transparency)))
 
 ;; Bind to M-S-t (which is written as M-T in Emacs)
 (global-set-key (kbd "M-T") #'kb/toggle-window-transparency)
+
+;; also set it defaultly
+(set-frame-parameter nil 'alpha-background 90)
+
 
 ;; set default org img inline
 (setq org-startup-with-inline-images t)
@@ -323,6 +327,8 @@ Priority:
         ("\\.pdf\\'" . "zathura %s")
         ("\\.x?html?\\'" . default)))
 
-(setq org-export-default-language "pt-br")
-(add-to-list 'org-latex-packages-alist
-             '("AUTO" "babel" t ("pdflatex" "xelatex" "lualatex")))
+;; pt br
+(after! ox-latex
+  (setq org-export-default-language "pt-br")
+  (add-to-list 'org-latex-packages-alist
+               '("AUTO" "babel" t ("pdflatex" "xelatex" "lualatex"))))
