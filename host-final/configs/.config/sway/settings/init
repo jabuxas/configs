@@ -1,7 +1,8 @@
+seat seat0 xcursor_theme Simp1e 24
 set $gnome-schema org.gnome.desktop.interface
 exec {
     gsettings set $gnome-schema gtk-theme "Material-Black-Blueberry-LA"
-    gsettings set $gnome-schema icon-theme "We10X-black-dark"
+    gsettings set $gnome-schema icon-theme "Black-BigSur"
     gsettings set $gnome-schema cursor-theme 'Simp1e'
     gsettings set $gnome-schema font-name 'CartographCF Nerd Font 12'
     xrandr --output HDMI-A-1 --primary
@@ -9,7 +10,7 @@ exec {
     autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8 &
     dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
-    rm -rf ~/tmp/*
+    rm -rf ~/temp/*
     ~/scripts/swww.sh
     otd-daemon &
     # ~/scripts/weechat.sh
