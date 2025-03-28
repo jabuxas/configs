@@ -1,3 +1,0 @@
-## Dependencies
-
-depends on grimblast

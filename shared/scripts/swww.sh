@@ -41,8 +41,11 @@ else
     SECOND=$2
 fi
 
+if [ $(hostname -s) == gu ]; then
+    SWWW_ARGS="--format xrgb"
+fi
 
-swww-daemon &
+swww-daemon $SWWW_ARGS &
 sleep 0.3
 
 swww img -o HDMI-A-1 $FIRST
