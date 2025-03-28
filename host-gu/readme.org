@@ -1,0 +1,17 @@
+* gu
+** uni laptop
+*** hw
+- Intel(R) Core(TM) i5-3230M
+- Intel 3rd Gen Core processor Graphics Controller
+- 120gb ssd luks+btrfs
+- 16gb ram
+- 1366x768 builtin monitor
+*** sw
+- sway
+- firefox
+- tmux
+- alacritty
+- emacs
+- fish
+- gentoo
+- 191.36.10.169/23 :alien:
