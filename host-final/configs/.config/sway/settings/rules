@@ -52,7 +52,7 @@ for_window [class="teams-for-linux"] move to workspace 8
 for_window [class="vrising.exe"] move to workspace 9
 for_window [class="WebCord"] move to workspace 6
 for_window [class="XIVLauncher.Core"] move to workspace 9, floating enable
-for_window [class="Youtube Music"] move to workspace 10
+for_window [class="YouTube Music"] move to workspace 4
 
 # fullscreen inhibit
 for_window [shell=".*"] inhibit_idle fullscreen

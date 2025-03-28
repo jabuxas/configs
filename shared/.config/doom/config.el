@@ -23,7 +23,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font "DaddyTimeMono Nerd Font-15")
+(setq doom-font "BlexMono Nerd Font-15")
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -35,7 +35,43 @@
 ;; `load-theme' function. This is the default:
 
 ;; (setq doom-theme 'doom-horizon)
-(setq doom-theme 'doom-rouge)
+;; (setq doom-theme 'doom-rouge)
+(setq doom-theme 'kaolin-dark)
+
+;; pywal!!
+
+;; (use-package! ewal
+;;   :init
+;;   (setq ewal-use-built-in-always-p nil
+;;         ewal-use-built-in-on-failure-p t
+;;         ewal-built-in-palette "sexy-material"))
+
+;; (use-package! ewal-spacemacs-themes
+;;   :init
+;;   (setq spacemacs-theme-underline-parens t
+;;         my:rice:font (font-spec :family "DaddyTimeMono Nerd Font"
+;;                                 :weight 'semi-bold
+;;                                 :size 15.0))
+;;   (show-paren-mode 1)
+;;   (global-hl-line-mode 1)
+;;   (set-frame-font my:rice:font nil t)
+;;   (add-to-list 'default-frame-alist `(font . ,(font-xlfd-name my:rice:font)))
+;;   :config
+;;   (load-theme 'ewal-spacemacs-modern t)
+;;   (enable-theme 'ewal-spacemacs-modern))
+
+;; (use-package! ewal-evil-cursors
+;;   :after ewal-spacemacs-themes
+;;   :config
+;;   (ewal-evil-cursors-get-colors :apply t :spaceline t))
+
+;; (use-package! spaceline
+;;   :after (ewal-evil-cursors winum)
+;;   :init
+;;   (setq powerline-default-separator nil)
+;;   :config
+;;   (spaceline-spacemacs-theme))
+
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
