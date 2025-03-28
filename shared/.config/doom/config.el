@@ -368,3 +368,6 @@ Priority:
   (setq org-export-default-language "pt-br")
   (add-to-list 'org-latex-packages-alist
                '("AUTO" "babel" t ("pdflatex" "xelatex" "lualatex"))))
+
+;; set default project path
+(setq projectile-project-search-path '(("~/proprietary/" . 2)))
