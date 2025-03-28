@@ -15,6 +15,7 @@ mouse_warping none
 input "2:14:ETPS/2_Elantech_Touchpad" {
       accel_profile adaptive
       dwt enabled
+      tap enabled
       middle_emulation enabled
 }
 
