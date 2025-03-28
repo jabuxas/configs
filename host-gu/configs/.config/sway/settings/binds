@@ -19,7 +19,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+b exec firefox-bin
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
 bindsym $mod+Return exec $term
-bindsym $mod+Control+e exec $term -e emacs -nw
+bindsym $mod+Control+e exec emacs &
 bindsym $mod+Shift+c kill
 bindsym $mod+Shift+Return exec $menu
 floating_modifier $mod normal

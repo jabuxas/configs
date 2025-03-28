@@ -1,7 +1,7 @@
 
 [window]
 
-# opacity = 110.9
+opacity = 0.93
 padding.x = 10
 # padding.y = 10
 decorations = "Full"
@@ -28,6 +28,11 @@ mouse.mods = "Control"
 post_processing = true
 persist = false
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+[keyboard]
+bindings = [
+    { key = "T", mods = "Control|Shift", command = { program = "fish", args = ["/home/lucas/scripts/toggle_opacity_alacritty.fish"] } }
+]
 
 [general]
 # There are the specification here: https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
