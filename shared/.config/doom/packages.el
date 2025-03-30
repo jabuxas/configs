@@ -58,3 +58,4 @@
 ;; (package! spaceline)
 ;; (package! tao-theme)
 (package! kaolin-themes)
+(package! znc)

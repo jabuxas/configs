@@ -228,13 +228,13 @@
   (defun my/copilot-tab-or-default ()
     (interactive)
     (if (and (bound-and-true-p copilot-mode)
-             ;; Add any other conditions to check for active copilot suggestions if necessary
-             )
+             (not (eq major-mode 'erc-mode))) ; Exclude ERC mode
         (copilot-accept-completion)
-      (evil-insert 1))) ; Default action to insert a tab. Adjust as needed.
+      (call-interactively (key-binding (kbd "TAB")))))
 
   ;; Bind the custom function to <tab> in Evil's insert state
   (evil-define-key 'insert 'global (kbd "<tab>") 'my/copilot-tab-or-default))
+
 
 ;; (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
@@ -249,9 +249,9 @@ If called with ARG (via C-u or numeric input), asks the user which value to set.
           ((numberp arg) arg)
           (arg (read-number "Change the transparency to which value (0-100)? "))
           (t (pcase (frame-parameter nil 'alpha-background)
-               (90 100)
-               (100 90)
-               (_ 90))))))
+               (95 100)
+               (100 95)
+               (_ 95))))))
     (set-frame-parameter nil 'alpha-background transparency)
     (message "Transparency set to %s" transparency)))
 
@@ -371,3 +371,24 @@ Priority:
 
 ;; set default project path
 (setq projectile-project-search-path '(("~/proprietary/" . 2)))
+
+;; erc znc
+(require 'znc)
+
+(setq znc-servers
+      `(("irc.jabuxas.com" 6697 t
+         ((libera
+           "jabuxas/libera"
+           ,(auth-source-pick-first-password :host "irc.jabuxas.com" :user "jabuxas/libera"))
+          (oftc
+           "jabuxas/oftc"
+           ,(auth-source-pick-first-password :host "irc.jabuxas.com" :user "jabuxas/oftc"))
+          (mam
+           "jabuxas/mam"
+           ,(auth-source-pick-first-password :host "irc.jabuxas.com" :user "jabuxas/mam"))))))
+
+(after! erc
+  (define-key erc-mode-map (kbd "C-c C-s") #'erc-track-switch-buffer))
+
+;; osd erc
+(load! "modules/doom-erc-notifications")
