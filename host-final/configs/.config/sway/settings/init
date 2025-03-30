@@ -14,7 +14,7 @@ exec {
     ~/scripts/swww.sh
     otd-daemon &
     # ~/scripts/weechat.sh
-    dunst &
+    swaync &
     nextcloud --background
     lxqt-policykit-agent &
 } 
