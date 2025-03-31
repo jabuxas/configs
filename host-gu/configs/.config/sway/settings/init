@@ -14,10 +14,7 @@ exec {
     dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/tmp/*
     ~/scripts/swww.sh
-    # otd-daemon
-    ~/scripts/weechat.sh
     dunst &
-    nextcloud --background &
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
