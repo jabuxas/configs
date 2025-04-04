@@ -392,3 +392,53 @@ Priority:
 
 ;; osd erc
 (load! "modules/doom-erc-notifications")
+
+(after! hydra
+  (defun get-project-compile-commands ()
+    "Get compile commands from .dir-locals.el"
+    (when-let ((commands (cdr (assoc 'project-compile-commands (or dir-local-variables-alist
+                                                                   (hack-dir-local-variables-apply))))))
+      commands))
+
+  (defun run-project-command-async (command name)
+    "Run a compile command asynchronously from the project root in a unique buffer"
+    (interactive)
+    (let ((default-directory (projectile-project-root))
+          (compilation-buffer-name-function
+           (lambda (_) (format "*compilation-%s*" name))))
+      (compile command t)))
+
+  (defhydra hydra-project-compile (:color blue :hint nil)
+    "
+        Project Compile Commands
+        -----------------------
+    "
+    ("q" nil "quit")
+    ;; Dynamic heads will be added below
+    )
+
+  (defun call-hydra-project-compile ()
+    "Create and call a hydra with project compile commands"
+    (interactive)
+    (let ((commands (get-project-compile-commands)))
+      (if (not commands)
+          (message "No project compile commands found in .dir-locals.el")
+        ;; Create a new hydra definition with the commands
+        (eval
+         `(defhydra hydra-project-compile (:color blue :hint nil)
+            "
+Project Compile Commands
+-----------------------
+"
+            ,@(mapcar (lambda (cmd-pair)
+                        (let ((name (car cmd-pair))
+                              (cmd (cdr cmd-pair)))
+                          `(,(substring name 0 1) (run-project-command-async ,cmd ,name) ,name)))
+                      commands)
+            ("q" nil "quit")))
+        (hydra-project-compile/body))))
+
+  ;; Bind the hydra to a key
+  (map! :leader
+        :desc "Project compile commands" "c p" #'call-hydra-project-compile)
+  (setq enable-local-variables :safe))
