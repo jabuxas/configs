@@ -7,6 +7,7 @@ source "$HOME/.cargo/env.fish"
 set -gx EDITOR "nvim"
 # set -gx BAT_THEME "Solarized (light)"
 # set -gx SOLARIZED true
+set -gx FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
 if test -z "$XDG_VTNR"; set XDG_VTNR 0; end
 if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
