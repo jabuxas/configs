@@ -442,3 +442,9 @@ Project Compile Commands
   (map! :leader
         :desc "Project compile commands" "c p" #'call-hydra-project-compile)
   (setq enable-local-variables :safe))
+
+
+(after! drag-stuff
+  (drag-stuff-global-mode t)
+  (define-key evil-visual-state-map (kbd "K") 'drag-stuff-up)
+  (define-key evil-visual-state-map (kbd "J") 'drag-stuff-down))

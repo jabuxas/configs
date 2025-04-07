@@ -57,5 +57,7 @@
 ;; (package! ewal-evil-cursors)
 ;; (package! spaceline)
 ;; (package! tao-theme)
+
 (package! kaolin-themes)
 (package! znc)
+(package! drag-stuff)
