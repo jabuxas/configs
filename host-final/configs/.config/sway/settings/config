@@ -12,7 +12,7 @@ popup_during_fullscreen smart
 no_focus [window_role="pop-up"]
 focus_wrapping workspace
 
-gaps inner 10
+# gaps inner 10
 mouse_warping none
 
 input "1137:50504:Logitech_USB_Receiver_Mouse" {
