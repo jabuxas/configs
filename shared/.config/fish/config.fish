@@ -33,6 +33,7 @@ if status is-interactive
     alias dom="docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
     alias emackie="emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
     alias calc="bc"
+    alias please="sudo"
 
     alias protontricks='flatpak run com.github.Matoking.protontricks'
     alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
