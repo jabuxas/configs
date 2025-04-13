@@ -34,6 +34,7 @@ bindsym $mod+$up focus up
 bindsym $mod+$down focus down
 bindsym $mod+$left focus left
 bindsym $mod+$right focus right
+bindsym $mod+z exec hyprmag --radius 150 --scale 2.5
 
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$down move down

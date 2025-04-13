@@ -292,8 +292,7 @@ Priority:
     (unless (file-exists-p img-dir)
       (make-directory img-dir))
     (url-copy-file url filepath t)
-    (insert (format "[[file:%s]]" relative-path))
-    (org-display-inline-images)))
+    (insert (format "[[file:%s]]" relative-path))))
 
 
 (map! :leader
@@ -448,3 +447,5 @@ Project Compile Commands
   (drag-stuff-global-mode t)
   (define-key evil-visual-state-map (kbd "K") 'drag-stuff-up)
   (define-key evil-visual-state-map (kbd "J") 'drag-stuff-down))
+
+(setq org-startup-with-inline-images nil)
