@@ -6,7 +6,7 @@ exec {
     gsettings set $gnome-schema cursor-theme 'Simp1e'
     gsettings set $gnome-schema font-name 'CartographCF Nerd Font 12'
     xrandr --output HDMI-A-1 --primary
-    waybar -c ~/.config/waybar/config.jsonc &
+    # waybar -c ~/.config/waybar/config.jsonc &
     autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8 &
     dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY

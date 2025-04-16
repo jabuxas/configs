@@ -12,3 +12,27 @@ include ~/.config/sway/settings/*
 # shadow_blur_radius 10
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
+
+bar {
+    position bottom
+
+    status_command i3status-rs
+
+    # tray_output primary
+
+    workspace_buttons yes
+
+    colors {
+        background #222222
+        statusline #eeeeee
+        separator  #666666
+
+        focused_workspace  #285577 #285577 #ffffff
+
+        active_workspace   #5f676a #5f676a #ffffff
+
+        inactive_workspace #222222 #222222 #888888
+
+        urgent_workspace   #2f343a #2f343a #ffffff
+    }
+}
