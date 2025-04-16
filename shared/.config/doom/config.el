@@ -449,3 +449,8 @@ Project Compile Commands
   (define-key evil-visual-state-map (kbd "J") 'drag-stuff-down))
 
 (setq org-startup-with-inline-images nil)
+
+(setq history-length 100)
+(put 'minibuffer-history 'history-length 50)
+(put 'evil-ex-history 'history-length 50)
+(put 'kill-ring 'history-length 25)
