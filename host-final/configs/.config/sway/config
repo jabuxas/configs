@@ -21,18 +21,18 @@ bar {
     # tray_output primary
 
     workspace_buttons yes
-
+    
     colors {
-        background #222222
-        statusline #eeeeee
-        separator  #666666
+        background         #242b2e
+        statusline         #e57474
+        separator          #3a4043
 
-        focused_workspace  #285577 #285577 #ffffff
+        focused_workspace  #e57474 #e57474 #242b2e
 
-        active_workspace   #5f676a #5f676a #ffffff
+        active_workspace   #3a4043 #3a4043 #e5a4a4
 
-        inactive_workspace #222222 #222222 #888888
+        inactive_workspace #242b2e #242b2e #7a8589
 
-        urgent_workspace   #2f343a #2f343a #ffffff
+        urgent_workspace   #b85c5c #b85c5c #ffffff
     }
 }
