@@ -5,18 +5,25 @@ exec {
     gsettings set $gnome-schema icon-theme "Black-BigSur"
     gsettings set $gnome-schema cursor-theme 'Simp1e'
     gsettings set $gnome-schema font-name 'CartographCF Nerd Font 12'
+
     xrandr --output HDMI-A-1 --primary
-    # waybar -c ~/.config/waybar/config.jsonc &
     autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8 &
     dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/temp/*
     ~/scripts/swww.sh
-    otd-daemon &
+
+    # waybar -c ~/.config/waybar/config.jsonc &
+    # otd-daemon &
     # ~/scripts/weechat.sh
     swaync &
-    nextcloud --background
     lxqt-policykit-agent &
+
+    pipewire &
+    wireplumber &
+    pipewire-pulse &
+
+    emacs --daemon &
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

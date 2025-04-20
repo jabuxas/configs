@@ -11,7 +11,7 @@ set -gx FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat 
 if test -z "$XDG_VTNR"; set XDG_VTNR 0; end
 if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
-    sway
+    dbus-run-session sway
 end
 
 if status is-interactive
@@ -20,18 +20,16 @@ if status is-interactive
     alias ls="bash ~/scripts/elash.sh"
     alias l="ls -lah"
     alias v="nvim"
-    alias reboot="systemctl reboot"
     alias hr="date +'%Hh:%M, %d-%m-%Y'"
-    alias hi="systemctl hibernate"
     alias ff="fastfetch"
     alias feh="imv"
     alias lg="lazygit"
     alias cpr="cd ~/repos/cports-docker && docker compose run --build --rm cports"
     alias cop="wl-copy"
-    alias poweroff="systemctl poweroff"
     alias cat="bat"
     alias dom="docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
     alias emackie="emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
+
     alias calc="bc"
     alias please="sudo"
 
@@ -40,6 +38,23 @@ if status is-interactive
 
     alias generate_token="curl -u jabuxas https://paste.jabuxas.com | wl-copy"
 end
+
+
+function set-power-aliases
+    if type -q systemctl
+        alias poweroff "systemctl poweroff"
+        alias reboot "systemctl reboot"
+        alias hi "systemctl hibernate"
+    else if type -q loginctl
+        alias poweroff "loginctl poweroff"
+        alias reboot "loginctl reboot"
+        alias hi "loginctl hibernate"
+    else
+        echo "Neither systemctl nor loginctl found."
+    end
+end
+
+set-power-aliases
 
 function heaven
    AUTH_KEY=(cat ~/.key) AUTH_PARAM='X-Auth' PASTEBIN_URL='https://paste.jabuxas.com' revelation
@@ -137,5 +152,3 @@ function fish_prompt
     fish_write magenta (prompt_pwd --full-length-dirs=99999)
     fish_write normal "\n := "
 end
-
-fish_add_path /yang/.millennium/ext/bin

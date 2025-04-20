@@ -444,9 +444,9 @@ Project Compile Commands
 
 
 (after! drag-stuff
-  (drag-stuff-global-mode t)
-  (define-key evil-visual-state-map (kbd "K") 'drag-stuff-up)
-  (define-key evil-visual-state-map (kbd "J") 'drag-stuff-down))
+  (drag-stuff-global-mode 1)
+  (define-key evil-visual-state-map (kbd "K") #'drag-stuff-up)
+  (define-key evil-visual-state-map (kbd "J") #'drag-stuff-down))
 
 (setq org-startup-with-inline-images nil)
 
