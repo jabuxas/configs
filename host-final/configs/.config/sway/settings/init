@@ -24,6 +24,7 @@ exec {
     pipewire-pulse &
 
     emacs --daemon &
+    syncthing --no-browser &
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
