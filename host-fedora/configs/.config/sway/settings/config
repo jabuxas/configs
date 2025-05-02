@@ -1,7 +1,3 @@
-output {
-  LVDS-1 pos 0 0
-} 
-
 default_border pixel 2 
 client.focused #268bd2 #268bd2 #002b36
 client.focused_inactive #268bd2 #002b36 #839496

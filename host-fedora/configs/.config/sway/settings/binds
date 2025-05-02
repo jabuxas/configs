@@ -16,10 +16,10 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+b exec firefox-bin
+bindsym $mod+b exec firefox
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
 bindsym $mod+Return exec $term
-bindsym $mod+Control+e exec emacs &
+bindsym $mod+Control+e exec emacsclient -c &
 bindsym $mod+Shift+c kill
 bindsym $mod+Shift+Return exec $menu
 floating_modifier $mod normal
@@ -63,11 +63,13 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+Shift+e layout toggle split
 bindsym $mod+f fullscreen
+bindsym $mod+Shift+f exec "swaymsg focus parent, fullscreen enable, focus child"
 bindsym $mod+t floating toggle
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
+bindsym $mod+c focus child
 
 bindsym $mod+comma focus output left
 bindsym $mod+period focus output right
@@ -80,12 +82,12 @@ bindsym $mod+Control+Return move scratchpad
 bindsym $mod+Control+s scratchpad show
 
 bindsym $mod+Shift+s exec flatpak run com.valvesoftware.Steam
-bindsym $mod+e exec pcmanfm
-bindsym Print exec ~/.local/bin/way-print.sh p
-bindsym $mod+Print exec ~/.local/bin/print-tmp.sh
-bindsym Shift+Print exec ~/.local/bin/way-print.sh s
-bindsym Control+Shift+Print exec ~/.local/bin/way-print.sh t
-bindsym Control+Print exec ~/.local/bin/print-window.sh
+bindsym $mod+e exec thunar
+bindsym Print exec ~/scripts/way-print.sh p
+bindsym $mod+Print exec ~/scripts/print-tmp.sh
+bindsym Shift+Print exec ~/scripts/way-print.sh s
+bindsym Control+Shift+Print exec ~/scripts/way-print.sh t
+bindsym Control+Print exec ~/scripts/print-window.sh
 
 # audio
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+

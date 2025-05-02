@@ -1,0 +1,6 @@
+include ~/.config/sway/settings/*
+
+output LVDS-1 background ~/pics/hi.jpg fill
+output HDMI-A-1 background ~/pics/uw.png fill
+
+# vim: ts=2 sts=2 sw=2 ft=swayconfig
