@@ -8,18 +8,15 @@ exec {
     autotiling &
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/tmp/*
-    ~/scripts/swww.sh
     blueman-applet &
-    # ~/scripts/weechat.sh
-    dunst &
     swayidle -w \
          timeout 300 'swaylock -f --image ~/pics/flower.jpg' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f --image ~/pics/flower.jpg'
     flatpak run com.mattermost.Desktop
-    bitwarden-desktop-bin
-    # flatpak run org.gnome.Evolution
-    # flatpak run io.github.mahmoudbahaa.outlook_for_linux
+    flatpak run com.bitwarden.desktop
+
+    gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8 &
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

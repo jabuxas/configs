@@ -12,7 +12,7 @@ set opacity (awk '$1 == "opacity" && $2 == "=" {print $3; exit}' ~/.config/alacr
 # Assign toggle opacity value
 switch $opacity
     case 1
-        set toggle_opacity 0.90
+        set toggle_opacity 0.95
     case '*'
         set toggle_opacity 1
 end

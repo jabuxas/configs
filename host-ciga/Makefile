@@ -1,5 +1,5 @@
 all:
-	xstow --verbose --target=$$HOME --restow configs/
+	stow --verbose --target=$$HOME --restow configs/
 
 delete:
-	xstow --verbose --target=$$HOME --delete configs/
+	stow --verbose --target=$$HOME --delete configs/
