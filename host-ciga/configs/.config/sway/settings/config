@@ -1,11 +1,11 @@
-# output {
-#   HDMI-A-1 pos 0 0 
-#   eDP-1 pos 2560 0 
-# }
+output {
+  eDP-1 pos 0 0 
+  HDMI-A-1 pos 1920 0 mode --custom 2560x1080@75Hz adaptive_sync on
+}
 
-default_border pixel 2
-client.focused "#242b2e" "#e57474" "#dadada" "#e57474"
-client.focused_inactive "#242b2e" "#242b2e" "#242b2e"
+default_border pixel 3
+client.focused  "#a7c080" "#272e33" "#a7c080" "#d699b6" 
+client.focused_inactive "#272e33" "#272e33" "#a7c080"
 focus_on_window_activation none
 popup_during_fullscreen smart
 no_focus [window_role="pop-up"]

@@ -10,9 +10,9 @@ exec {
     rm -rf ~/tmp/*
     blueman-applet &
     swayidle -w \
-         timeout 300 'swaylock -f --image ~/pics/flower.jpg' \
+         timeout 300 'swaylock -f --image ~/pics/wpp/main.jpg' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f --image ~/pics/flower.jpg'
+         before-sleep 'swaylock -f --image ~/pics/wpp/main.jpg'
     flatpak run com.mattermost.Desktop
     flatpak run com.bitwarden.desktop
 
