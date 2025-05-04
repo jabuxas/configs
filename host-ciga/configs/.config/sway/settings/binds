@@ -17,9 +17,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
-bindsym $mod+b exec firefox
+bindsym $mod+Shift+b exec firefox
 bindsym $mod+o exec fish -c 'heaven'
-bindsym $mod+Shift+b exec firefox -P personal
+bindsym $mod+b exec firefox -P personal
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term
 bindsym $mod+Control+e exec emacsclient -s /run/user/1000/emacs/server -c &

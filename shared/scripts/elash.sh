@@ -55,6 +55,7 @@ help() {
    -n  ignore .gitignore files *
    -b  file sizes in binary/decimal (--si in ls)
    -@  extended attributes and sizes *
+   -Z  show security context (SELinux) *
 
     * not used in ls
 EOF
@@ -65,7 +66,7 @@ EOF
 
 exa_opts=()
 
-while getopts ':aAbtuUSI:rkhnsXL:MNg1lFGRdDioTx@' arg; do
+while getopts ':aAbtuUSI:rkhnsXL:MNg1lFGRdZDioTx@' arg; do
   case $arg in
     a) (( dot == 1 )) && exa_opts+=(-a) || exa_opts+=(-a -a) ;;
     A) exa_opts+=(-a) ;;
@@ -74,6 +75,7 @@ while getopts ':aAbtuUSI:rkhnsXL:MNg1lFGRdDioTx@' arg; do
     U) exa_opts+=(-Us created); ((++rev)) ;;
     S) exa_opts+=(-s size); ((++rev)) ;;
     I) exa_opts+=(--ignore-glob="${OPTARG}") ;;
+    Z) exa_opts+=(--context) ;;
     r) ((++rev)) ;;
     k) ((--hru)) ;;
     h) ((++hru)) ;;
