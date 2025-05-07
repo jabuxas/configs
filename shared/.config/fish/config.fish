@@ -38,6 +38,8 @@ if status is-interactive
     alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
 
     alias generate_token="curl -u jabuxas https://paste.jabuxas.com | wl-copy"
+
+    alias deck="pkill steam; sleep 3; gamescope --mangoapp -e -- steam -tenfoot -steamos3"
 end
 
 

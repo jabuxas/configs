@@ -3,7 +3,7 @@
   // "layer": "top", // Waybar at top layer
   "position": "bottom", // Waybar position (top|bottom|left|right)
   "height": 42, // Waybar height (to be removed for auto height)
-  "output": "DP-1",
+  // "output": "DP-1",
   // "width": 1280, // Waybar width
   "spacing": 3, // Gaps between modules (4px)
   // Choose the order of the modules

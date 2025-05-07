@@ -13,7 +13,7 @@ exec {
     rm -rf ~/temp/*
     ~/scripts/swww.sh
 
-    # waybar -c ~/.config/waybar/config.jsonc &
+    waybar -c ~/.config/waybar/config.jsonc &
     # otd-daemon &
     # ~/scripts/weechat.sh
     swaync &

@@ -13,26 +13,26 @@ include ~/.config/sway/settings/*
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
 
-bar {
-    position bottom
-
-    status_command i3status-rs
-
-    # tray_output primary
-
-    workspace_buttons yes
-    
-    colors {
-        background         #242b2e
-        statusline         #e57474
-        separator          #3a4043
-
-        focused_workspace  #e57474 #e57474 #242b2e
-
-        active_workspace   #3a4043 #3a4043 #e5a4a4
-
-        inactive_workspace #242b2e #242b2e #7a8589
-
-        urgent_workspace   #b85c5c #b85c5c #ffffff
-    }
-}
+# bar {
+#     position bottom
+#
+#     status_command i3status-rs
+#
+#     # tray_output primary
+#
+#     workspace_buttons yes
+#     
+#     colors {
+#         background         #242b2e
+#         statusline         #e57474
+#         separator          #3a4043
+#
+#         focused_workspace  #e57474 #e57474 #242b2e
+#
+#         active_workspace   #3a4043 #3a4043 #e5a4a4
+#
+#         inactive_workspace #242b2e #242b2e #7a8589
+#
+#         urgent_workspace   #b85c5c #b85c5c #ffffff
+#     }
+# }

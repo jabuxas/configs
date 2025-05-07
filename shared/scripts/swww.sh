@@ -49,5 +49,5 @@ swww-daemon $SWWW_ARGS &
 sleep 0.3
 
 swww img -o HDMI-A-1 $FIRST
-swww img -o DP-1 $SECOND
+swww img -o DP-3 $SECOND
 # swww img -o DP-3 ~/pics/wallpapers/sl4.jpg
