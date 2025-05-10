@@ -34,6 +34,10 @@ bindings = [
     { key = "T", mods = "Control|Shift", command = { program = "fish", args = ["/yang/scripts/toggle_opacity_alacritty.fish"] } }
 ]
 
+[terminal.shell]
+program = "/usr/bin/fish"
+args = ["-c", "tmux new-session -A -s default"]
+
 [general]
 # There are the specification here: https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
 # It is not obvious how it translates to TOML. But it is extremely straightforward.
@@ -50,3 +54,5 @@ bindings = [
 # https://github.com/alacritty/alacritty/tree/master#configuration
 
 import = ["./rose.toml"]
+
+[terminal]
