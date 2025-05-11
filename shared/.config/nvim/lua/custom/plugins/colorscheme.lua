@@ -142,6 +142,16 @@ elseif fileContent == "solarized" then
       vim.cmd.colorscheme 'solarized'
     end,
   }
+
+elseif fileContent == "wal" then
+  colorscheme = {
+    'uZer/pywal16.nvim',
+    -- for local dev replace with:
+    -- dir = '~/your/path/pywal16.nvim',
+    config = function()
+      vim.cmd.colorscheme("pywal16")
+    end,
+  }
 else
   colorscheme = {
     'marko-cerovac/material.nvim',

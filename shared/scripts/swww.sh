@@ -35,6 +35,10 @@ if [[ -z "$1" ]]; then
         forest)
             FIRST=~/pics/wallpapers/ef1.jpg
             SECOND=~/pics/wallpapers/ef2.jpg
+        wal)
+            FIRST=$(<~/.cache/wal/wal)
+            SECOND=$(<~/.cache/wal/wal)
+            ;;
     esac
 else
     FIRST=$1

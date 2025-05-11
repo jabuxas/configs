@@ -1,97 +1,85 @@
-@import "color.css";
+@import url("file:///p/.cache/wal/colors-waybar.css");
 
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "CartographCF Nerd Font";
-    font-size: 14px;
-    font-weight: bold;
-    min-height: 0;
-    margin-left: 4px;
-    margin-right: 4px;
+	border: none;
+	border-radius: 0;
+	font-family: "CartographCF Nerd Font";
+	font-size: 14px;
+	font-weight: bold;
+	min-height: 0;
+	margin-left: 4px;
+	margin-right: 4px;
 }
 
 window#waybar {
-    border-radius: 0px;
-    background: @bg;
-    color: @fg;
+	border-radius: 0px;
+	background: @background;
+	color: @foreground;
 }
 
 tooltip {
-    background: @bg;
-    border-radius: 0px;
+	background: @background;
+	border-radius: 0px;
 }
 
 #workspaces button {
-    padding: 3px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-bottom: 1px solid @bg;
+	padding: 3px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border-bottom: 1px solid @background;
 }
 
-#workspaces button:nth-child(1) {
-    color: @red;
+#workspaces button:nth-child(1),
+#workspaces button:nth-child(7) {
+	color: @color1;
 }
 
-#workspaces button:nth-child(2) {
-    color: @green;
+#workspaces button:nth-child(2),
+#workspaces button:nth-child(8) {
+	color: @color2;
 }
 
-#workspaces button:nth-child(3) {
-    color: @yellow;
+#workspaces button:nth-child(3),
+#workspaces button:nth-child(9) {
+	color: @color3;
 }
 
-#workspaces button:nth-child(4) {
-    color: @blue;
+#workspaces button:nth-child(4),
+#workspaces button:nth-child(10) {
+	color: @color4;
 }
 
 #workspaces button:nth-child(5) {
-    color: @magenta;
+	color: @color5;
 }
 
 #workspaces button:nth-child(6) {
-    color: @cyan;
-}
-
-#workspaces button:nth-child(7) {
-    color: @red;
-}
-
-#workspaces button:nth-child(8) {
-    color: @green;
-}
-
-#workspaces button:nth-child(9) {
-    color: @yellow;
-}
-
-#workspaces button:nth-child(10) {
-    color: @blue;
+	color: @color6;
 }
 
 #workspaces button.active {
-    color: @fg;
+	color: @foreground;
 }
 
 #workspaces button.empty {
-    color: @bg2;
+	color: @background;
 }
 
 #workspaces button.focused {
-    background: transparent;
-    border-bottom: 1px solid @fg;
+	background: transparent;
+	border-bottom: 1px solid @foreground;
 }
 
 #workspaces button.urgent {
-    color: @red;
-    background: @bg;
+	color: @color1;
+	background: @background;
 }
 
 #workspaces button:hover {
-    background: @bg;
-    color: @gray;
-    box-shadow: inherit;
-    text-shadow: inherit;
+	background: @background;
+	color: @color8;
+	box-shadow: inherit;
+	text-shadow: inherit;
 }
 
 #window,
@@ -102,25 +90,25 @@ tooltip {
 #workspaces,
 #tray,
 #backlight {
-    padding: 5px 5px;
+	padding: 5px 5px;
 }
 
 #pulseaudio {
-    color: @blue;
+	color: @color4;
 }
 
 #battery {
-    color: @green;
+	color: @color2;
 }
 
 #mpd {
-    color: @cyan;
+	color: @color6;
 }
 
 #backlight {
-    color: @magenta;
+	color: @color5;
 }
 
 #power-profiles-daemon {
-    color: @cyan;
+	color: @color6;
 }
