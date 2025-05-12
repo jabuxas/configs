@@ -1,0 +1,317 @@
+{{
+    "colors": {{
+        "ACCENT_CARD": [
+            "Card mode",
+            "{color4}",
+            "{color12}",
+            "--accent-card"
+        ],
+        "ACCENT_DANGER": [
+            "Danger",
+            "{color1}",
+            "{color9}",
+            "--accent-danger"
+        ],
+        "ACCENT_NOTE": [
+            "Note mode",
+            "{color2}",
+            "{color10}",
+            "--accent-note"
+        ],
+        "BORDER": [
+            "Border",
+            "{color7}",
+            "{color0}",
+            "--border"
+        ],
+        "BORDER_FOCUS": [
+            "Border (focused input)",
+            "{color4}",
+            "{color4}",
+            "--border-focus"
+        ],
+        "BORDER_STRONG": [
+            "Border (strong)",
+            "{color8}",
+            "{color0}",
+            "--border-strong"
+        ],
+        "BORDER_SUBTLE": [
+            "Border (subtle)",
+            "{color7}",
+            "{color0}",
+            "--border-subtle"
+        ],
+        "BUTTON_BG": [
+            "Button background",
+            "{background}",
+            "{color0}",
+            "--button-bg"
+        ],
+        "BUTTON_DISABLED": [
+            "Button background (disabled)",
+            "{color7}80",
+            "{color8}80",
+            "--button-disabled"
+        ],
+        "BUTTON_HOVER": [
+            "Button background (hover)",
+            "{color7}",
+            "{color0}",
+            [
+                "--button-gradient-start",
+                "--button-gradient-end"
+            ]
+        ],
+        "BUTTON_HOVER_BORDER": [
+            "Button border (hover)",
+            "{color8}",
+            "{color0}",
+            "--button-hover-border"
+        ],
+        "BUTTON_PRIMARY_BG": [
+            "Button Primary Bg",
+            "{color4}",
+            "{color4}",
+            "--button-primary-bg"
+        ],
+        "BUTTON_PRIMARY_DISABLED": [
+            "Button Primary Disabled",
+            "{color12}",
+            "{color4}",
+            "--button-primary-disabled"
+        ],
+        "BUTTON_PRIMARY_GRADIENT_END": [
+            "Button Primary Gradient End",
+            "{color4}",
+            "{color4}",
+            "--button-primary-gradient-end"
+        ],
+        "BUTTON_PRIMARY_GRADIENT_START": [
+            "Button Primary Gradient Start",
+            "{color4}",
+            "{color4}",
+            "--button-primary-gradient-start"
+        ],
+        "CANVAS": [
+            "Background",
+            "{background}",
+            "{color0}",
+            [
+                "--canvas",
+                "--bs-body-bg"
+            ]
+        ],
+        "CANVAS_CODE": [
+            "Code editor background",
+            "{background}",
+            "{color0}",
+            "--canvas-code"
+        ],
+        "CANVAS_ELEVATED": [
+            "Background (elevated)",
+            "{background}",
+            "{color0}",
+            "--canvas-elevated"
+        ],
+        "CANVAS_GLASS": [
+            "Background (transparent text surface)",
+            "{background}66",
+            "{color0}66",
+            "--canvas-glass"
+        ],
+        "CANVAS_INSET": [
+            "Background (inset)",
+            "{color7}",
+            "{color0}",
+            "--canvas-inset"
+        ],
+        "CANVAS_OVERLAY": [
+            "Background (menu & tooltip)",
+            "{background}",
+            "{color0}",
+            "--canvas-overlay"
+        ],
+        "FG": [
+            "Text",
+            "{foreground}",
+            "{foreground}",
+            [
+                "--fg",
+                "--bs-body-color"
+            ]
+        ],
+        "FG_DISABLED": [
+            "Text (disabled)",
+            "{color8}",
+            "{color8}",
+            "--fg-disabled"
+        ],
+        "FG_FAINT": [
+            "Text (faint)",
+            "{color7}",
+            "{color8}",
+            "--fg-faint"
+        ],
+        "FG_LINK": [
+            "Text (link)",
+            "{color4}",
+            "{color12}",
+            "--fg-link"
+        ],
+        "FG_SUBTLE": [
+            "Text (subtle)",
+            "{color8}",
+            "{color7}",
+            "--fg-subtle"
+        ],
+        "FLAG_1": [
+            "Flag 1",
+            "{color1}",
+            "{color9}",
+            "--flag-1"
+        ],
+        "FLAG_2": [
+            "Flag 2",
+            "{color3}",
+            "{color11}",
+            "--flag-2"
+        ],
+        "FLAG_3": [
+            "Flag 3",
+            "{color2}",
+            "{color10}",
+            "--flag-3"
+        ],
+        "FLAG_4": [
+            "Flag 4",
+            "{color4}",
+            "{color12}",
+            "--flag-4"
+        ],
+        "FLAG_5": [
+            "Flag 5",
+            "{color5}",
+            "{color13}",
+            "--flag-5"
+        ],
+        "FLAG_6": [
+            "Flag 6",
+            "{color6}",
+            "{color14}",
+            "--flag-6"
+        ],
+        "FLAG_7": [
+            "Flag 7",
+            "{color5}",
+            "{color13}",
+            "--flag-7"
+        ],
+        "HIGHLIGHT_BG": [
+            "Highlight background",
+            "{color4}80",
+            "{color12}",
+            "--highlight-bg"
+        ],
+        "HIGHLIGHT_FG": [
+            "Highlight text",
+            "{background}",
+            "{foreground}",
+            "--highlight-fg"
+        ],
+        "SCROLLBAR_BG": [
+            "Scrollbar background",
+            "{color7}",
+            "{color8}",
+            "--scrollbar-bg"
+        ],
+        "SCROLLBAR_BG_ACTIVE": [
+            "Scrollbar background (active)",
+            "{color7}",
+            "{color8}",
+            "--scrollbar-bg-active"
+        ],
+        "SCROLLBAR_BG_HOVER": [
+            "Scrollbar background (hover)",
+            "{color7}",
+            "{color8}",
+            "--scrollbar-bg-hover"
+        ],
+        "SELECTED_BG": [
+            "Selected Bg",
+            "{color7}80",
+            "{color12}80",
+            "--selected-bg"
+        ],
+        "SELECTED_FG": [
+            "Selected Fg",
+            "{background}",
+            "{foreground}",
+            "--selected-fg"
+        ],
+        "SHADOW": [
+            "Shadow",
+            "{color7}",
+            "{color0}",
+            "--shadow"
+        ],
+        "SHADOW_FOCUS": [
+            "Shadow (focused input)",
+            "{color5}",
+            "{color5}",
+            "--shadow-focus"
+        ],
+        "SHADOW_INSET": [
+            "Shadow (inset)",
+            "{color8}",
+            "{color0}",
+            "--shadow-inset"
+        ],
+        "SHADOW_SUBTLE": [
+            "Shadow (subtle)",
+            "{color8}",
+            "{color8}",
+            "--shadow-subtle"
+        ],
+        "STATE_BURIED": [
+            "Buried",
+            "{color3}",
+            "{color11}",
+            "--state-buried"
+        ],
+        "STATE_LEARN": [
+            "Learn",
+            "{color1}",
+            "{color9}",
+            "--state-learn"
+        ],
+        "STATE_MARKED": [
+            "Marked",
+            "{color5}",
+            "{color13}",
+            "--state-marked"
+        ],
+        "STATE_NEW": [
+            "New",
+            "{color4}",
+            "{color12}",
+            "--state-new"
+        ],
+        "STATE_REVIEW": [
+            "Review",
+            "{color2}",
+            "{color10}",
+            "--state-review"
+        ],
+        "STATE_SUSPENDED": [
+            "Suspended",
+            "{color3}",
+            "{color11}",
+            "--state-suspended"
+        ]
+    }},
+    "version": {{
+        "major": 3,
+        "minor": 0
+    }}
+}}
