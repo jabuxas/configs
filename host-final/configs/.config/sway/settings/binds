@@ -17,6 +17,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+F1 exec ~/scripts/wallpapermenu.sh &
+bindsym $mod+Shift+F2 exec ~/scripts/wallpapermenu.sh light &
 bindsym $mod+Control+s exec swaync-client -t
 bindsym $mod+b exec firefox-bin
 bindsym $mod+Shift+b exec firefox-bin -P work

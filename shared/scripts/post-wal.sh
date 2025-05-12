@@ -16,3 +16,5 @@ tmux source ~/.config/tmux/tmux.conf &
 ~/.local/bin/pywalfox update &
 
 pkill waybar; waybar -c ~/.config/waybar/config.jsonc 2>/dev/null & disown
+
+cp ~/.cache/wal/colors-anki.json ~/.var/app/net.ankiweb.Anki/data/Anki2/addons21/688199788/themes/Pywal.json
