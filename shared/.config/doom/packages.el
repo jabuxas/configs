@@ -52,10 +52,11 @@
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
-;; (package! ewal)
-;; (package! ewal-spacemacs-themes)
-;; (package! ewal-evil-cursors)
-;; (package! spaceline)
+(package! ewal)
+(package! ewal-spacemacs-themes)
+(package! ewal-evil-cursors)
+(package! spaceline)
+
 ;; (package! tao-theme)
 
 (package! kaolin-themes)

@@ -14,6 +14,7 @@ for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [instance="CoreKeeper"] move to workspace 9, fullscreen enable
 
 # xwayland
+for_window [class="Nsxiv"] floating enable
 for_window [class="Anki" title="Add"] floating enable
 for_window [class="battle.net.exe"] move to workspace 9, floating enable
 for_window [class="Bitwarden"] move to workspace 9

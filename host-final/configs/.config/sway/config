@@ -1,8 +1,8 @@
 include "$HOME/.cache/wal/colors-sway"
 include ~/.config/sway/settings/*
 
-output HDMI-A-1 background $wallpaper fill
-client.focused $color0 $background $foreground $color7 $background
+client.unfocused $color0 $background $foreground $color7 $background
+client.focused  $background $color3 $foreground $color7 $background
 # blur enable
 # blur_passes 4
 # corner_radius 10
