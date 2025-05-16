@@ -18,6 +18,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+b exec firefox
 bindsym $mod+Shift+apostrophe exec ~/scripts/switch.fish
+bindsym $mod+Control+l exec swaylock -f --image ~/pics/uw.png
 bindsym $mod+Return exec $term
 bindsym $mod+Control+e exec emacsclient -c &
 bindsym $mod+Shift+c kill

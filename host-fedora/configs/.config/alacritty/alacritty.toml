@@ -9,14 +9,14 @@ decorations_theme_variant = "Light" # "Dark"
 
 [font]
 size = 11.5
-# normal.family = "CartographCF Nerd Font"
-# normal.style = "Regular"
-# bold.family = "CartographCF Nerd Font"
-# bold.style = "DemiBold"
-# italic.family = "CartographCF Nerd Font"
-# italic.style = "Italic"
-# bold_italic.family = "CartographCF Nerd Font"
-# bold_italic.style = "ExtraBold Italic"
+normal.family = "Lilex Nerd Font"
+normal.style = "Regular"
+bold.family = "Lilex Nerd Font"
+bold.style = "DemiBold"
+italic.family = "Lilex Nerd Font"
+italic.style = "Italic"
+bold_italic.family = "Lilex Nerd Font"
+bold_italic.style = "ExtraBold Italic"
 
 
 [[hints.enabled]]
