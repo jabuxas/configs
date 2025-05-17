@@ -5,6 +5,8 @@ fish_add_path "$HOME/go/bin"
 source "$HOME/.cargo/env.fish"
 source "$HOME/.cache/wal/colors.fish"
 
+set -gx GPG_TTY (tty)
+
 set -gx EDITOR "nvim"
 # set -gx BAT_THEME "Solarized (light)"
 # set -gx SOLARIZED true

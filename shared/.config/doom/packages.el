@@ -62,3 +62,4 @@
 (package! kaolin-themes)
 (package! znc)
 (package! drag-stuff)
+(package! pinentry)
