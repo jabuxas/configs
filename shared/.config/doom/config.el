@@ -460,3 +460,6 @@ Project Compile Commands
 
 (after! pinentry
   (pinentry-start))
+
+
+(drag-stuff-global-mode 1)
