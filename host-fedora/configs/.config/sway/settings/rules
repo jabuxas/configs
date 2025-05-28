@@ -15,6 +15,7 @@ for_window [instance="CoreKeeper"] move to workspace 9, fullscreen enable
 
 # xwayland
 for_window [class="Anki" title="Add"] floating enable
+for_window [class="Sxiv"] floating enable
 for_window [class="battle.net.exe"] move to workspace 9, floating enable
 for_window [class="Bitwarden"] move to workspace 9
 for_window [class="com.github.th_ch.youtube_music"] move to workspace 4

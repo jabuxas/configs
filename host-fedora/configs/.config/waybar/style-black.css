@@ -4,30 +4,30 @@
 	/* padding: 0; */
 	/* margin: 0; */
 	font-size: 18px;
-	font-family: CozetteVector;
+	font-family: CartographCF Nerd Font;
 	font-style: italic;
 }
 
 window#waybar {
-	background: #eaeaea;
-	color: #222221;
+	background: #0a0c10;
+	color: #f0f3f6;
 	margin: 10px;
 }
 
 #workspaces button {
 	margin-left: 2px;
 	padding: 2px 8px;
-	color: #222221;
 }
 
 #workspaces button:hover,
 #workspaces button:active {
-	background-color: #004d61;
-	color: #222221;
+	background-color: #424242;
+	color: #f0f3f6;
 }
 
 #workspaces button.focused {
-	background-color: #c1c1c1;
+	background-color: #424242;
+	color: #f0f3f6;
 }
 
 #language {

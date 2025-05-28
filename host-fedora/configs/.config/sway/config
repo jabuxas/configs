@@ -1,6 +1,9 @@
 include ~/.config/sway/settings/*
+include "$HOME/.cache/wal/colors-sway"
 
-output LVDS-1 background ~/pics/hi.jpg fill
-output HDMI-A-1 background ~/pics/uw.png fill
+output * background $wallpaper fill
+client.unfocused $color0 $background $foreground $color7 $background
+client.focused $color8 $color3 $foreground $color7 $color1
+client.focused_inactive $color7 $background $foreground $color7 $color8
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

@@ -5,7 +5,7 @@
     "exclusive": true,
     "passtrough": false,
     "gtk-layer-shell": true,
-    "height": 15,
+    "height": 30,
     /* "output": "DP-3", */
 
     "modules-left": [
@@ -19,13 +19,11 @@
     "modules-right": [
 	"pulseaudio",
 	"clock",
-	"battery",
 	"tray",
     ],
 
     "sway/window": {
-	"format": "{}",
-	"max-length": 30
+	"format": "{}"
     },
 
     "sway/workspaces": {
@@ -79,9 +77,9 @@
 	    "warning": 20,
 	    "critical": 15
 	},
-	"format": "󰁹 {capacity}% //",
-	"format-charging": "󰂄 {capacity}% //",
-	"format-plugged": "󰂄 {capacity}% //"
+	"format": "󰁹 {capacity}%",
+	"format-charging": "󰂄 {capacity}%",
+	"format-plugged": "󰂄 {capacity}%"
     }
 }
 
