@@ -30,6 +30,7 @@ for_window [class="ffxiv_dx11.exe"] move to workspace 9, floating enable
 for_window [class="gamescope"] floating enable
 for_window [class="heroic"] move to workspace 7
 for_window [class = "(?i)pinentry"] floating enable
+for_window [class = "Sxiv"] floating enable
 for_window [class=".*jetbrains.*"] move to workspace 5
 for_window [class="Lacuna.WebPkiCore"] floating enable
 for_window [class="Mattermost"] move to workspace 7
