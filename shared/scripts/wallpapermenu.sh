@@ -12,7 +12,7 @@ menu () {
 		if command -v nsxiv >/dev/null; then 
 				CHOICE=$(nsxiv -otb $FOLDER/*)
 		else 
-				CHOICE=$(echo -e "Random\n$(command ls -v $FOLDER)" | dmenu -c -l 15 -i -p "Wallpaper: ")
+				CHOICE=$(sxiv -otb $FOLDER/*)
 		fi
 
 case $CHOICE in
