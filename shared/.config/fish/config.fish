@@ -159,3 +159,5 @@ function fish_prompt
     fish_write magenta (prompt_pwd --full-length-dirs=99999)
     fish_write normal "\n := "
 end
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /p/.ghcup/bin # ghcup-env
