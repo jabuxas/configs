@@ -19,6 +19,13 @@ input "1137:50504:Logitech_USB_Receiver_Mouse" {
       pointer_accel 0.5
 }
 
+input "2362:9523:Gaming_Mouse" {
+      accel_profile flat
+      dwt enabled
+      middle_emulation enabled
+      pointer_accel 0.5
+}
+
 input "1133:50504:Logitech_USB_Receiver" {
       xkb_layout us
       xkb_variant intl 

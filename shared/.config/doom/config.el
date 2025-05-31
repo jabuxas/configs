@@ -353,6 +353,28 @@ Priority:
 ;; Configure Org mode to use Tectonic for LaTeX export
 (after! ox-latex
   (setq org-latex-compiler "tectonic")
+  (add-to-list 'org-latex-packages-alist '("" "listings"))
+  (add-to-list 'org-latex-packages-alist '("" "color"))
+  (add-to-list 'org-latex-packages-alist '("svgnames" "xcolor" t))
+  (add-to-list 'org-latex-packages-alist '("" "textcomp" t))
+
+  (setq org-latex-listings-options
+        '(("basicstyle" . "\\footnotesize\\ttfamily")
+          ("keywordstyle" . "\\color{RoyalBlue}\\bfseries")
+          ("commentstyle" . "\\color{ForestGreen}\\itshape")
+          ("stringstyle" . "\\color{purple}")
+          ("numberstyle" . "\\tiny\\color{Gray}")
+          ("backgroundcolor" . "\\color{LightGray!15}")
+          ("frame" . "tb")
+          ("breaklines" . "true")
+          ("showstringspaces" . "false")
+          ("tabsize" . "2")
+          ("upquote" . "true")
+          ("captionpos" . "b")
+          ("numbers" . "left")
+          ("identifierstyle" . "")))
+  (setq org-latex-src-block-backend 'listings)
+
   (setq org-latex-pdf-process
         '("tectonic -Z shell-escape %f")))
 
