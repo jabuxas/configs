@@ -9,7 +9,7 @@ export SWWW_TRANSITION_ANGLE=30
 export SWWW_TRANSITION_POS=center
 
 swww img -o HDMI-A-1 "$WALLPAPER" &
-swww img -o DP-3 "$WALLPAPER" &
+swww img -o DP-2 "$WALLPAPER" &
 
 tmux source ~/.config/tmux/tmux.conf &
 
