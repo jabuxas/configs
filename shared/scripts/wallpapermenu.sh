@@ -9,8 +9,8 @@ SCRIPT=~/scripts/post-wal.sh # script to run after wal for refreshing programs, 
 
 
 menu () {
-		if command -v nsxiv >/dev/null; then 
-				CHOICE=$(nsxiv -otb $FOLDER/*)
+		if command -v sxiv >/dev/null; then 
+				CHOICE=$(sxiv -otb $FOLDER/*)
 		else 
 				CHOICE=$(sxiv -otb $FOLDER/*)
 		fi

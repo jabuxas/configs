@@ -7,7 +7,7 @@ exec_always {
 }
 
 exec {
-    waybar &
+    waybar -c ~/.config/waybar/config.jsonc &
     autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 &
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
