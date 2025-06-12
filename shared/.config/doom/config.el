@@ -489,3 +489,24 @@ Project Compile Commands
 (flycheck-popup-tip-mode 1)
 
 (map! :n "C-e" #'treemacs)
+
+;; (after! lsp-mode
+;;   (setq lsp-volar-take-over-mode nil)
+;;   (setq lsp-volar-hybrid-mode t))
+
+
+;; https://emacs.stackexchange.com/questions/71436/undo-tree-changed-treemacs-layout-when-move-history-cursor-in-spacemacs
+(with-eval-after-load 'undo-tree
+
+  ;; [2023-10-20 Fri] modify this function from undo-tree.el to prevent
+  ;; re-balancing windows ------------------------------------------------------
+  (defun undo-tree-visualizer-update-diff (&optional node)
+    ;; update visualizer diff display to show diff between current state and
+    ;; NODE (or previous state, if NODE is null)
+    (with-current-buffer undo-tree-visualizer-parent-buffer
+      (undo-tree-diff node))
+    (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
+      (when win
+        ;; (balance-windows); comment this line out
+        (shrink-window-if-larger-than-buffer win))))
+  )
