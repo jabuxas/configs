@@ -510,3 +510,27 @@ Project Compile Commands
         ;; (balance-windows); comment this line out
         (shrink-window-if-larger-than-buffer win))))
   )
+
+(defun blend-colors (fg bg alpha)
+  "Blend FG and BG hex colors by ALPHA (0.0-1.0)."
+  (cl-labels ((hex-to-rgb (hex)
+                (mapcar (lambda (x) (/ (float x) 255))
+                        (list (string-to-number (substring hex 1 3) 16)
+                              (string-to-number (substring hex 3 5) 16)
+                              (string-to-number (substring hex 5 7) 16)))))
+    (let* ((fg-rgb (hex-to-rgb fg))
+           (bg-rgb (hex-to-rgb bg))
+           (blend (cl-mapcar (lambda (f b) (+ (* alpha f) (* (- 1 alpha) b)))
+                             fg-rgb bg-rgb)))
+      (format "#%02x%02x%02x"
+              (floor (* 255 (nth 0 blend)))
+              (floor (* 255 (nth 1 blend)))
+              (floor (* 255 (nth 2 blend)))))))
+
+
+(after! ewal
+  (let* ((fg (ewal-get-color 'magenta))
+         (bg (ewal-get-color 'background))
+         (blend-color (blend-colors fg bg 0.3))) ;; 50% alpha
+    (custom-set-faces!
+      `(minimap-active-region-background :background ,blend-color))))

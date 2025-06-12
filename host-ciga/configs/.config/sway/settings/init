@@ -16,6 +16,8 @@ exec {
     flatpak run com.mattermost.Desktop
     flatpak run com.bitwarden.desktop
 
+    nm-applet &
+
     swaync &
 
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8 &
