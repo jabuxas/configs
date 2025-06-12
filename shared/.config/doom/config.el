@@ -485,3 +485,7 @@ Project Compile Commands
 
 
 (drag-stuff-global-mode 1)
+(minimap-mode 1)
+(flycheck-popup-tip-mode 1)
+
+(map! :n "C-e" #'treemacs)

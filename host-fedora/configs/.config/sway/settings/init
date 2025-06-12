@@ -17,9 +17,10 @@ exec {
 
 
     swayidle -w \
-         timeout 300 'swaylock -f --image ~/pics/uw.png' \
+ swaylock -f --image ~/pics/wallpapers/2521B.png
+         timeout 300 'swaylock -f --image ~/pics/wallpapers/2521B.png' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f --image ~/pics/uw.png'
+         before-sleep 'swaylock -f --image ~/pics/wallpapers/2521B.png'
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
