@@ -23,7 +23,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font "BlexMono Nerd Font-12")
+(setq doom-font "CodeNewRoman Nerd Font-18")
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -49,9 +49,9 @@
 (use-package! ewal-spacemacs-themes
   :init
   (setq spacemacs-theme-underline-parens t
-        my:rice:font (font-spec :family "DaddyTimeMono Nerd Font"
+        my:rice:font (font-spec :family "CodeNewRoman Nerd Font"
                                 :weight 'semi-bold
-                                :size 13.0))
+                                :size 18.0))
   (show-paren-mode 1)
   (global-hl-line-mode 1)
   (set-frame-font my:rice:font nil t)
@@ -206,7 +206,7 @@
 (map! :leader :n "g g" #'+lazygit-in-project)
 (map! :leader
       :desc "Search by grep"  ; This description shows in which-key popups
-      "r g" #'consult-ripgrep)
+      "r g" #'+default/search-project)
 
 ;; accept completion from copilot and fallback to company
 (use-package! copilot

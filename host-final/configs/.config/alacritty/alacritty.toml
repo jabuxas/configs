@@ -9,13 +9,13 @@ decorations_theme_variant = "Light" # "Dark"
 
 [font]
 size = 14
-normal.family = "BlexMono Nerd Font"
+normal.family = "CodeNewRoman Nerd Font"
 normal.style = "Regular"
-bold.family = "BlexMono Nerd Font"
+bold.family = "CodeNewRoman Nerd Font"
 bold.style = "Bold"
-italic.family = "BlexMono Nerd Font"
+italic.family = "CodeNewRoman Nerd Font"
 italic.style = "Italic"
-bold_italic.family = "BlexMono Nerd Font"
+bold_italic.family = "CodeNewRoman Nerd Font"
 bold_italic.style = "Bold Italic"
 
 
