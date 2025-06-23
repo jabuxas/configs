@@ -8,14 +8,14 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
 [font]
-size = 11.5
-normal.family = "MesloLGM Nerd Font"
+size = 12
+normal.family = "Iosevka Nerd Font"
 normal.style = "Regular"
-bold.family = "MesloLGM Nerd Font"
+bold.family = "Iosevka Nerd Font"
 bold.style = "Bold"
-italic.family = "MesloLGM Nerd Font"
+italic.family = "Iosevka Nerd Font"
 italic.style = "Italic"
-bold_italic.family = "MesloLGM Nerd Font"
+bold_italic.family = "Iosevka Nerd Font"
 bold_italic.style = "Bold Italic"
 
 

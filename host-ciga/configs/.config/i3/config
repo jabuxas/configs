@@ -1,0 +1,256 @@
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $menu rofi -show drun
+
+floating_modifier $mod
+
+# resize mode
+mode "resize" {
+    bindsym $left resize shrink width 40 px or 4 ppt
+    bindsym $down resize grow height 40 px or 4 ppt
+    bindsym $up resize shrink height 40 px or 4 ppt
+    bindsym $right resize grow width 40 px or 4 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# start a terminal
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+c kill
+
+# start your launcher
+bindsym $mod+Shift+Return exec $menu
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# exit i3
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# focus
+bindsym $mod+$up focus up
+bindsym $mod+$down focus down
+bindsym $mod+$left focus left
+bindsym $mod+$right focus right
+
+# move focused window
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$right move right
+
+# split in horizontal orientation
+bindsym $mod+Control+h split h
+
+# split in vertical orientation
+bindsym $mod+Control+v split v
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+e layout toggle split
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# toggle tiling / floating
+bindsym $mod+t floating toggle
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 exec ~/.config/i3/xmonad workspace 1
+bindsym $mod+2 exec ~/.config/i3/xmonad workspace 2
+bindsym $mod+3 exec ~/.config/i3/xmonad workspace 3
+bindsym $mod+4 exec ~/.config/i3/xmonad workspace 4
+bindsym $mod+5 exec ~/.config/i3/xmonad workspace 5
+bindsym $mod+6 exec ~/.config/i3/xmonad workspace 6
+bindsym $mod+7 exec ~/.config/i3/xmonad workspace 7
+bindsym $mod+8 exec ~/.config/i3/xmonad workspace 8
+bindsym $mod+9 exec ~/.config/i3/xmonad workspace 9
+bindsym $mod+0 exec ~/.config/i3/xmonad workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# scratchpad
+bindsym $mod+Control+Return move scratchpad
+bindsym $mod+Control+s scratchpad show
+
+# focus output
+bindsym $mod+comma focus output left
+bindsym $mod+period focus output right
+
+# move container to output
+bindsym $mod+Shift+comma move container to output left
+bindsym $mod+Shift+period move container to output right
+
+# custom application binds
+bindsym $mod+Shift+F1 exec ~/scripts/wallpapermenu.sh
+bindsym $mod+o exec fish -c 'heaven'
+bindsym $mod+b exec firefox -P personal
+bindsym $mod+Control+e exec emacsclient -s /run/user/1000/emacs/server -c
+bindsym $mod+Shift+s exec steam
+bindsym $mod+e exec pcmanfm
+
+bindsym Print exec ~/scripts/x-print.sh p
+bindsym Shift+Print exec ~/scripts/x-print.sh s
+bindsym $mod+Print exec ~/scripts/x-print.sh t
+bindsym Control+Shift+Print exec ~/scripts/x-print.sh m
+bindsym Control+Print exec ~/scripts/x-print.sh cw
+
+bindsym Menu exec ~/scripts/x-print.sh p
+bindsym Shift+Menu exec ~/scripts/x-print.sh s
+bindsym $mod+Menu exec ~/scripts/x-print.sh t
+bindsym Control+Shift+Menu exec ~/scripts/x-print.sh m
+bindsym Control+Menu exec ~/scripts/x-print.sh cw
+
+# audio (these should work fine)
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+
+# brightness (these should work fine)
+bindsym $mod+F9 exec brightnessctl set 5%-
+bindsym $mod+F10 exec brightnessctl set 5%+
+
+font pango:Overpass Nerd Font 12
+
+set_from_resource $foreground i3wm.foreground #f0f0f0
+set_from_resource $background i3wm.background #f0f0f0
+set_from_resource $color7 i3wm.color7 #f0f0f0
+set_from_resource $color3 i3wm.color3 #f0f0f0
+set_from_resource $color0 i3wm.color0 #f0f0f0
+
+# window colors
+# client.background is set by the wal include
+client.unfocused $color0 $background $foreground $color7
+client.focused  $background $color3 $foreground $color7
+
+# Gaps
+gaps inner 10
+
+# Window borders
+# "pixel 3" for new windows, "none" for fullscreen windows
+new_window pixel 3
+new_float pixel 3
+hide_edge_borders both
+
+# Focus behavior
+focus_on_window_activation focus
+focus_wrapping workspace
+mouse_warping none
+no_focus [window_role="pop-up"]
+
+assign [class="(?i)gamescope"] 9
+
+# Rules for specific windows
+for_window [class="(?i)firefox" title="Library"] floating enable, border pixel 1, sticky enable
+for_window [class="floating"] floating enable
+for_window [class="floating_update"] floating enable, resize set width 1000 px height 600 px
+for_window [class="(?i)lutris"] move to workspace 7
+for_window [class="(?i).*office.*"] move to workspace 5
+for_window [class="(?i)evolution"] move to workspace 10
+for_window [class="(?i)prismlauncher"] move to workspace 7
+for_window [class="(?i)teams-for-linux"] move to workspace 8
+for_window [class="(?i)webcord"] move to workspace 6
+for_window [class="(?i)xdg-desktop-portal-gtk"] floating enable
+for_window [instance="CoreKeeper"] move to workspace 9, fullscreen enable
+
+for_window [class="Anki" title="Add"] floating enable
+for_window [class="(?i)battle.net.exe"] move to workspace 9, floating enable
+for_window [class="Bitwarden"] move to workspace 9
+for_window [class="(?i)youtube-music"] move to workspace 4
+for_window [class="client-win64-shipping.exe"] move to workspace 10, floating enable
+for_window [class="(?i)cs2"] move to workspace 9, fullscreen enable
+for_window [class="(?i).*csgo.*"] move to workspace 9, floating enable
+for_window [class="(?i)diablo iv.exe"] move to workspace 9, floating enable
+for_window [class="(?i)enderlilies"] move to workspace 9
+for_window [class="(?i).*.exe"] move to workspace 9, floating enable
+for_window [class="explorer.exe"] move to workspace 9
+for_window [class="ffxiv_dx11.exe"] move to workspace 9, floating enable
+for_window [class="(?i)heroic"] move to workspace 7
+for_window [class="(?i)pinentry"] floating enable
+for_window [class="Sxiv"] floating enable
+for_window [class=".*jetbrains.*"] move to workspace 5
+for_window [class="Lacuna.WebPkiCore"] floating enable
+for_window [class="Mattermost"] move to workspace 7
+for_window [class="Melvor Idle"] move to workspace 10
+for_window [class=".*Minecraft.*"] move to workspace 9, floating enable
+for_window [class="osu!"] move to workspace 9
+for_window [class="outlook-for-linux"] move to workspace 10
+for_window [class="Spotify"] move to workspace 4
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="(?i)steam"] move to workspace 8
+for_window [class=".*steam_.*"] move to workspace 9, floating enable
+for_window [class="vrising.exe"] move to workspace 9
+for_window [class="XIVLauncher.Core"] move to workspace 9, floating enable
+for_window [title="About Mozilla Firefox"] floating enable
+for_window [title="Administrator privileges required"] floating enable
+for_window [title="Firefox - Sharing Indicator"] kill
+for_window [title="Firefox — Sharing Indicator"] kill
+for_window [title="Flawless Widescreen.*"] move to workspace 10
+for_window [title="^Steam Keyboard$"] floating enable
+for_window [title="Wine System Tray"] kill
+for_window [title="Wuthering Waves  "] move to workspace 9, fullscreen enable
+for_window [class="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] floating enable, sticky enable
+
+# Floating dialogs
+for_window [window_role="dialog"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+
+exec_always --no-startup-id feh --bg-fill "$wallpaper"
+
+# Start compositor for blur/shadows
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+
+exec_always --no-startup-id /home/lucas/scripts/i3init.sh
+# Autostart applications
+exec --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme "Sunrise-Dark"
+exec --no-startup-id gsettings set org.gnome.desktop.interface icon-theme "Reversal-black-dark"
+# MOD: Xcursor theme is set via .Xresources or .xinitrc, see notes
+exec --no-startup-id gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Adw'
+exec --no-startup-id gsettings set org.gnome.desktop.interface font-name 'Cartograph CF 12'
+exec --no-startup-id autotiling
+exec --no-startup-id rm -rf ~/tmp/*
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id dunst
+exec --no-startup-id gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8
+exec --no-startup-id flatpak run com.mattermost.Desktop
+exec --no-startup-id flatpak run com.bitwarden.desktop
+exec --no-startup-id /home/lucas/.config/polybar/launch.sh
+
+# Idle and screen locker
+# exec --no-startup-id xautolock -time 5 -locker "i3lock -i ~/pics/wallpapers/1fumYiO.jpeg" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"

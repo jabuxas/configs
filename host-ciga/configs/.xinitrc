@@ -44,7 +44,7 @@ fi
 
 if [ -n "$failsafe" ]; then
     export XDG_SESSION_TYPE="x11"
-    exec leftwm > ~/leftwm.log
+    exec i3 > ~/i3.log
 else
     exec $command
 fi

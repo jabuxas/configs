@@ -63,3 +63,5 @@
 (package! znc)
 (package! drag-stuff)
 (package! pinentry)
+
+(package! uv-mode)
