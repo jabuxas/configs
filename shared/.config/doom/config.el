@@ -120,6 +120,7 @@
 
 (global-set-key (kbd "M-<") 'previous-buffer)
 (global-set-key (kbd "M->") 'next-buffer)
+(global-set-key (kbd "M-X") 'doom/kill-this-buffer-in-all-windows)
 
 ;; Custom function to handle double comma
 (defvar my-last-comma-time nil

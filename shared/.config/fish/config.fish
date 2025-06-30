@@ -4,6 +4,7 @@ fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/go/bin"
 source "$HOME/.cargo/env.fish"
 source "$HOME/.cache/wal/colors.fish"
+bind \cH backward-kill-word 
 
 fish_add_path "$HOME/.local/share/nvim/mason/bin"
 
