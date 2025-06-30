@@ -30,6 +30,7 @@ input "1133:50504:Logitech_USB_Receiver" {
       xkb_layout us
       xkb_variant intl 
       xkb_options ctrl:nocaps
+      xkb_numlock enabled
 }
 
 input "1241:6185:LogoTech_Gaming_Keyboard" {

@@ -25,6 +25,12 @@ exec {
     #
     # emacs --daemon &
     # syncthing --no-browser &
+
+    alacritty -e tmux &
+    discord &
+    steam &
+    firefox-bin &
+    /opt/youtube-music/youtube-music &
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
