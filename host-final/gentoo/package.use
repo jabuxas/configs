@@ -1,7 +1,15 @@
+# php
+dev-lang/php apache2 argon2 avif bcmath berkdb cdb cgi cjk curl embed enchant exif ffi fpm ftp gd gmp imap inifile intl iodbc kerberos ldap ldap-sasl lmdb mhash mysql mysqli odbc pcntl pdo phpdbg sharedmem snmp soap sockets sodium sysvipc threads tidy truetype webp valgrind xmlreader xmlwriter xpm xslt zip sqlite
+app-eselect/eselect-php fpm apache2
+www-servers/apache threads
+net-libs/c-client kerberos
+
 # system
+net-libs/nodejs npm
 sys-kernel/installkernel dracut grub
 media-video/pipewire sound-server pipewire-alsa echo-cancel
-app-editors/emacs harfbuzz imagemagick source xwidgets libxml2 json tree-sitter -X jit
+app-editors/emacs harfbuzz imagemagick source xwidgets libxml2 json tree-sitter -X jit webp gsettings dynamic-loading athena motif sqlite
+app-emacs/emacs-common gsettings
 gui-wm/gamescope -wsi-layer
 sys-libs/glibc hash-sysv-compat
 app-misc/fastfetch imagemagick osmesa
@@ -9,6 +17,22 @@ media-libs/mesa osmesa
 games-util/mangohud mangoapp mangohudctl
 media-libs/imgui glfw
 dev-qt/qtwebsockets qml
+gui-apps/waybar tray
+## waybar
+dev-libs/libdbusmenu gtk3
+app-arch/p7zip rar
+sys-kernel/linux-firmware compress-zstd deduplicate
+media-video/obs-studio v4l vlc test-input browser
+media-video/ffmpeg opus x265
+gui-wm/swayfx -swaybar -swaynag
+x11-base/xorg-server xvfb suid
+net-dns/avahi mdnsresponder-compat
+dev-libs/libfido2 smartcard
+media-gfx/nsxiv -statusbar
+
+# sway
+gui-wm/sway tray
+gui-libs/gtk-layer-shell vala introspection
 
 # steam
 sys-libs/readline abi_x86_32
@@ -19,6 +43,9 @@ x11-libs/libxcb  abi_x86_32
 x11-libs/libXdmcp  abi_x86_32
 virtual/opengl  abi_x86_32
 media-libs/mesa  abi_x86_32
+dev-util/sysprof-capture abi_x86_32
+sys-libs/gdbm abi_x86_32
+dev-util/spirv-tools abi_x86_32
 dev-libs/expat  abi_x86_32
 media-libs/libglvnd  abi_x86_32
 sys-libs/zlib  abi_x86_32
@@ -29,6 +56,7 @@ x11-libs/libXxf86vm  abi_x86_32
 x11-libs/libXfixes  abi_x86_32
 app-arch/zstd  abi_x86_32
 sys-devel/llvm  abi_x86_32
+llvm-core/llvm abi_x86_32
 x11-libs/libXrandr  abi_x86_32
 x11-libs/libXrender  abi_x86_32
 dev-libs/libffi  abi_x86_32
@@ -77,20 +105,13 @@ sys-apps/systemd abi_x86_32
 dev-libs/libgcrypt abi_x86_32
 app-arch/lz4 abi_x86_32
 dev-libs/libgpg-error abi_x86_32
-
-
+media-libs/libva abi_x86_32
+x11-libs/libvdpau abi_x86_32
 
 # qutebrowser
-dev-python/PyQt6 qml webchannel
+# move dev-python/PyQt6 dev-python/pyqt6
+dev-python/pyqt6 qml webchannel
 www-client/qutebrowser widevine
-
-# ags
-gui-libs/gtk-layer-shell introspection
-dev-libs/libdbusmenu gtk3
-
-# keepassxc
-sys-libs/zlib minizip
-
 
 # unar
 gnustep-base/gnustep-make native-exceptions
@@ -98,3 +119,18 @@ sys-devel/gcc objc jit
 
 # wayland
 media-libs/libsdl2 gles2
+
+# calibre
+dev-qt/qtwebengine bindist qml screencast
+dev-python/pillow webp
+# move dev-python/PyQt6 dev-python/pyqt6
+dev-python/pyqt6 quick
+
+# steamtinker
+gnome-extra/yad -deprecated -icon-browser -sourceview -spell -tools -tray -webkit standalone
+
+# qemu
+app-emulation/qemu io-uring jemalloc spice virgl usbredir qemu_user_targets_riscv32 qemu_softmmu_targets_riscv32
+net-misc/spice-gtk usbredir
+net-dns/dnsmasq script
+net-libs/gnutls pkcs11 tools

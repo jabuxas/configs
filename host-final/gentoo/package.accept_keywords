@@ -4,6 +4,30 @@ gui-apps/ags
 gui-wm/gamescope
 app-office/qownnotes
 x11-themes/kvantum
+sci-visualization/labplot
+dev-util/rustup
+app-editors/neovim
+net-irc/senpai
+media-video/obs-studio
+app-admin/bitwarden-desktop-bin
+gui-apps/kanshi
+gui-apps/gtkgreet
+dev-build/just
+app-mobilephone/scrcpy
+net-misc/sunshine
+dev-lang/rust-bin
+
+# jekyll
+www-apps/jekyll
+dev-ruby/em-websocket
+dev-ruby/liquid
+dev-ruby/mercenary
+dev-ruby/pathutil
+www-apps/jekyll-sass-converter
+www-apps/jekyll-watch
+dev-ruby/forwardable-extended
+dev-ruby/terminal-table
+dev-ruby/unicode-display_width
 
 app-eselect/eselect-zig
 dev-lang/zig-bin
@@ -27,3 +51,4 @@ sys-libs/libudev-compat
 # pcmanfm
 x11-misc/pcmanfm
 x11-libs/libfm
+sys-kernel/scx
