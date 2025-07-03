@@ -8,7 +8,7 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
 [font]
-size = 12
+size = 16
 normal.family = "Iosevka Nerd Font"
 normal.style = "Regular"
 bold.family = "Iosevka Nerd Font"
@@ -31,7 +31,8 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 
 [keyboard]
 bindings = [
-    { key = "T", mods = "Control|Shift", command = { program = "fish", args = ["/home/lucas/scripts/toggle_opacity_alacritty.fish"] } }
+    { key = "T", mods = "Control|Shift", command = { program = "fish", args = ["/home/lucas/scripts/toggle_opacity_alacritty.fish"] } },
+    # { key = "Grave", mods = "Shift", chars = "~" }
 ]
 
 [general]

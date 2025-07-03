@@ -23,7 +23,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font "CodeNewRoman Nerd Font-18")
+(setq doom-font "Iosevka Nerd Font-18")
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -49,7 +49,7 @@
 (use-package! ewal-spacemacs-themes
   :init
   (setq spacemacs-theme-underline-parens t
-        my:rice:font (font-spec :family "CodeNewRoman Nerd Font"
+        my:rice:font (font-spec :family "Iosevka Nerd Font"
                                 :weight 'semi-bold
                                 :size 18.0))
   (show-paren-mode 1)
@@ -121,6 +121,8 @@
 (global-set-key (kbd "M-<") 'previous-buffer)
 (global-set-key (kbd "M->") 'next-buffer)
 (global-set-key (kbd "M-X") 'doom/kill-this-buffer-in-all-windows)
+(global-set-key (kbd "M-<") 'projectile-previous-project-buffer)
+(global-set-key (kbd "M->") 'projectile-next-project-buffer)
 
 ;; Custom function to handle double comma
 (defvar my-last-comma-time nil

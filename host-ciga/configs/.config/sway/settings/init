@@ -3,24 +3,31 @@ exec {
     gsettings set $gnome-schema gtk-theme "Sunrise-Dark"
     gsettings set $gnome-schema icon-theme "Reversal-black-dark"
     gsettings set $gnome-schema cursor-theme 'Simp1e-Adw'
-    gsettings set $gnome-schema font-name 'Cartograph CF 12'
+    gsettings set $gnome-schema font-name 'Terminess Nerd Font 12'
+
     waybar -c ~/.config/waybar/config.jsonc &
     autotiling &
+
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
+
+    ~/scripts/swww.sh &
+
     rm -rf ~/tmp/*
-    blueman-applet &
+
     swayidle -w \
          timeout 300 'swaylock -f --image ~/pics/wallpapers/1fumYiO.jpeg' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f --image ~/pics/wallpapers/1fumYiO.jpeg'
-    flatpak run com.mattermost.Desktop
-    flatpak run com.bitwarden.desktop
 
+    blueman-applet &
+    flatpak run com.mattermost.Desktop &
+    flatpak run com.bitwarden.desktop &
     nm-applet &
-
     swaync &
-
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8 &
+    alacritty -e tmux &
+    flatpak run com.github.th_ch.youtube_music &
+    firefox-bin &
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

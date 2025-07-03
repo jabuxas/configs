@@ -1,6 +1,6 @@
 output {
   eDP-1 pos 0 0 
-  HDMI-A-1 pos 1920 0 mode --custom 2560x1080@75Hz adaptive_sync on
+  HDMI-A-1 pos 1920 0 mode --custom 2560x1080@59Hz
 }
 
 default_border pixel 3
