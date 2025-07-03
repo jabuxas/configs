@@ -158,8 +158,18 @@ function fish_write
 end
 
 function fish_prompt
-    fish_write normal "\n "
+    fish_write normal "\n"
+
+    if set -q SSH_CONNECTION
+        fish_write green (whoami)
+        fish_write normal "@"
+        fish_write blue (hostname)
+        fish_write normal " [ssh]:"
+    end
+
+    fish_write normal " "
     fish_write magenta (prompt_pwd --full-length-dirs=99999)
+
     fish_write normal "\n := "
 end
 

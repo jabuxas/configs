@@ -8,18 +8,19 @@ SCRIPT=~/scripts/post-wal.sh # script to run after wal for refreshing programs, 
 
 
 
+# If no image is selected, pick random
 menu () {
-		if command -v sxiv >/dev/null; then 
-				CHOICE=$(sxiv -otb $FOLDER/*)
-		else 
-				CHOICE=$(nsxiv -otb $FOLDER/*)
-		fi
+	if command -v sxiv >/dev/null; then 
+		CHOICE=$(sxiv -otb "$FOLDER"/*)
+	else 
+		CHOICE=$(nsxiv -otb "$FOLDER"/*)
+	fi
 
-case $CHOICE in
-		Random) wal -i "$FOLDER" ${WAL_ARGS} -a 90 -o $SCRIPT ;; # dmenu random option
-		*.*) wal -i "$CHOICE" ${WAL_ARGS} -a 90 -o $SCRIPT ;;
-		*) exit 0 ;;
-esac
+	if [ -z "$CHOICE" ]; then
+		wal -i "$FOLDER" ${WAL_ARGS} -a 90 -o $SCRIPT
+	else
+		wal -i "$CHOICE" ${WAL_ARGS} -a 90 -o $SCRIPT
+	fi
 }
 
 case "$#" in
