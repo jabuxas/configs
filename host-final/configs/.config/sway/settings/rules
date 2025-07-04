@@ -1,43 +1,40 @@
-assign [app_id="gamescope"] 10
 # wayland
 for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
-for_window [app_id="discord"] move to workspace 6
+for_window [app_id="discord"] move to workspace 2
 for_window [app_id = "floating"] floating enable
 for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
-for_window [app_id="lutris"] move to workspace 7
-for_window [app_id=".*office.*"] move to workspace 5
-for_window [app_id="org.gnome.Evolution"] move to workspace 10
-for_window [app_id="org.prismlauncher.PrismLauncher"] move to workspace 7
-for_window [app_id="teams-for-linux"] move to workspace 8
-for_window [app_id="WebCord"] move to workspace 6
+for_window [app_id="lutris"] move to workspace 5
+for_window [app_id="org.prismlauncher.PrismLauncher"] move to workspace 5
+for_window [app_id="teams-for-linux"] move to workspace 5
+for_window [app_id="WebCord"] move to workspace 2
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
-for_window [instance="CoreKeeper"] move to workspace 9, fullscreen enable
+# for_window [app_id="firefox"] move to workspace 1
+for_window [app_id="Alacritty"] move to workspace 3
+for_window [instance="CoreKeeper"] move to workspace 6, fullscreen enable
 
 # xwayland
 for_window [class="Nsxiv"] floating enable
 for_window [class="Anki" title="Add"] floating enable
-for_window [class="battle.net.exe"] move to workspace 9, floating enable
-for_window [class="Bitwarden"] move to workspace 9
+for_window [class="battle.net.exe"] move to workspace 6, floating enable
+for_window [class="Bitwarden"] move to workspace 6
 for_window [class="com.github.th_ch.youtube_music"] move to workspace 4
-for_window [class="client-win64-shipping.exe"] move to workspace 10, floating enable
-for_window [class="cs2"] move to workspace 9, fullscreen enable
-for_window [class=".*csgo.*"] move to workspace 9, floating enable
-for_window [class="diablo iv.exe"] move to workspace 9, floating enable
-for_window [class="discord"] move to workspace 6
-for_window [class="EnderLiliesSteam-Linux-Shipping"] move to workspace 9
-for_window [class=".*.exe"] move to workspace 9, floating enable
-for_window [class="explorer.exe"] move to workspace 9
-for_window [class="ffxiv_dx11.exe"] move to workspace 9, floating enable
+for_window [class="client-win64-shipping.exe"] move to workspace 6, floating enable
+for_window [class="cs2"] move to workspace 6, fullscreen enable
+for_window [class=".*csgo.*"] move to workspace 6, floating enable
+for_window [class="diablo iv.exe"] move to workspace 6, floating enable
+for_window [class="discord"] move to workspace 2
+for_window [class="EnderLiliesSteam-Linux-Shipping"] move to workspace 6
+for_window [class=".*.exe"] move to workspace 6, floating enable
+for_window [class="explorer.exe"] move to workspace 6
+for_window [class="ffxiv_dx11.exe"] move to workspace 6, floating enable
 for_window [app_id="gamescope"] fullscreen enable
-for_window [class="heroic"] move to workspace 7
+for_window [class="heroic"] move to workspace 5
 for_window [class = "(?i)pinentry"] floating enable
-for_window [class=".*jetbrains.*"] move to workspace 5
+for_window [class=".*jetbrains.*"] move to workspace 3
 for_window [class="Lacuna.WebPkiCore"] floating enable
-for_window [class="Mattermost"] move to workspace 7
-for_window [class="Melvor Idle"] move to workspace 10
-for_window [class=".*Minecraft.*"] move to workspace 9, floating enable
-for_window [class="osu!"] move to workspace 9
-for_window [class="outlook-for-linux"] move to workspace 10
+for_window [class="Mattermost"] move to workspace 2
+for_window [class=".*Minecraft.*"] move to workspace 6, floating enable
+for_window [class="osu!"] move to workspace 6
 for_window [class="Spotify"] move to workspace 4
 for_window [class="^Steam$" title=".* CD key"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -48,13 +45,13 @@ for_window [class="^Steam$" title="^Settings$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
-for_window [class="steam"] move to workspace 8
-for_window [class="Steam"] move to workspace 8
-for_window [class=".*steam_.*"] move to workspace 9, floating enable
-for_window [class="teams-for-linux"] move to workspace 8
-for_window [class="vrising.exe"] move to workspace 9
-for_window [class="WebCord"] move to workspace 6
-for_window [class="XIVLauncher.Core"] move to workspace 9, floating enable
+for_window [class="steam"] move to workspace 5
+for_window [class="Steam"] move to workspace 5
+for_window [class=".*steam_.*"] move to workspace 6, floating enable
+for_window [class="teams-for-linux"] move to workspace 5
+for_window [class="vrising.exe"] move to workspace 6
+for_window [class="WebCord"] move to workspace 2
+for_window [class="XIVLauncher.Core"] move to workspace 6, floating enable
 for_window [class="YouTube Music"] move to workspace 4
 
 # fullscreen inhibit
@@ -65,10 +62,9 @@ for_window [title = "About Mozilla Firefox"] floating enable
 for_window [title = "Administrator privileges required"] floating enable
 for_window [title = "Firefox - Sharing Indicator"] kill
 for_window [title = "Firefox — Sharing Indicator"] kill
-for_window [title="Flawless Widescreen.*"] move to workspace 10
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [title="Wine System Tray"] kill
-for_window [title="Wuthering Waves  "] move to workspace 9, fullscreen enable
+for_window [title="Wuthering Waves  "] move to workspace 6, fullscreen enable
 
 for_window [window_role = "About"] floating enable
 for_window [window_role = "About"] floating enable

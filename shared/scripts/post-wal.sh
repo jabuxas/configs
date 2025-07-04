@@ -18,7 +18,7 @@ tmux source ~/.config/tmux/tmux.conf &
 
 ~/.local/bin/pywalfox update &
 
-pkill waybar; waybar -c ~/.config/waybar/config.jsonc 2>/dev/null & disown
+sed -i '' ~/.config/waybar/*.css
 
 pkill polybar && ~/.config/polybar/launch.sh
 
