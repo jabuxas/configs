@@ -65,3 +65,6 @@
 (package! pinentry)
 
 (package! uv-mode)
+
+(package! lsp-tailwindcss
+  :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
