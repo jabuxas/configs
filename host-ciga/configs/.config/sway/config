@@ -18,5 +18,6 @@ output * bg $wallpaper fill
 
 client.unfocused $color0 $background $foreground $color7 $background
 client.focused  $background $color3 $foreground $color7 $background
+client.focused_tab_title  $color3 $background $foreground $color7 $background
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
