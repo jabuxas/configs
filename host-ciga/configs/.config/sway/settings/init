@@ -5,10 +5,12 @@ exec {
     gsettings set $gnome-schema cursor-theme 'Simp1e-Adw'
     gsettings set $gnome-schema font-name 'Terminess Nerd Font 12'
 
-    waybar -c ~/.config/waybar/config.jsonc &
+    waybar -c ~/.config/waybar/modern.jsonc -s ~/.config/waybar/modern.css &
     autotiling &
 
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
+
+    lxqt-policykit-agent &
 
     ~/scripts/swww.sh &
 
