@@ -1,35 +1,80 @@
-default_border pixel 2 
-client.focused #268bd2 #268bd2 #002b36
-client.focused_inactive #268bd2 #002b36 #839496
+output {
+  eDP-1 pos 0 0 
+  HDMI-A-1 pos 1920 0 mode --custom 2560x1080@59Hz
+}
+
+default_border pixel 3
+client.focused  "#a7c080" "#272e33" "#a7c080" "#d699b6" 
+client.focused_inactive "#272e33" "#272e33" "#a7c080"
 focus_on_window_activation none
 popup_during_fullscreen smart
 no_focus [window_role="pop-up"]
+focus_wrapping workspace
 
 gaps inner 10
 mouse_warping none
 
-input "2:14:ETPS/2_Elantech_Touchpad" {
-      accel_profile adaptive
-      dwt enabled
-      tap enabled
-      middle_emulation enabled
+input "2362:9523:Gaming_Mouse" {
+  accel_profile flat
+  dwt enabled
+  pointer_accel 0.5
 }
 
-input "1:1:AT_Translated_Set_2_keyboard" {
-      xkb_layout us
-      xkb_variant intl
-      xkb_options ctrl:nocaps
+input "1267:12721:ELAN050A:00_04F3:31B1_Touchpad" {
+  dwt enabled
+  tap enabled
+}
+
+input "1267:12721:ELAN050A:00_04F3:31B1_Mouse" {
+  accel_profile flat
+  dwt enabled
+  pointer_accel 0.5
 }
 
 input "1241:6185:LogoTech_Gaming_Keyboard" {
-      xkb_layout us
-      xkb_variant intl
-      xkb_options ctrl:nocaps
+  xkb_variant intl
+  xkb_layout us
+  # xkb_layout br
+  # xkb_variant abnt2
+  xkb_options ctrl:nocaps
+}
+input "1:1:AT_Translated_Set_2_keyboard" {
+  # xkb_layout br
+  # xkb_variant abnt2
+  xkb_variant intl
+  xkb_layout us
+  xkb_options ctrl:nocaps
+}
+input "6700:11555:USB_USB_Keyboard" {
+  # xkb_layout br
+  # xkb_variant abnt2
+  xkb_variant intl
+  xkb_layout us
+  xkb_options ctrl:nocaps
+}
+
+input "10874:27160:CASUE_CASUE_USB_Keyboard" {
+  # xkb_layout br
+  # xkb_variant abnt2
+  xkb_variant intl
+  xkb_layout us
+  xkb_options ctrl:nocaps
+}
+
+input "1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad" {
+  map_to_output DISABLED
+}
+
+input "1137:50504:Logitech_USB_Receiver_Mouse" {
+      accel_profile flat
+      dwt enabled
+      middle_emulation enabled
+      pointer_accel 0.5
 }
 
 input "1133:50504:Logitech_USB_Receiver" {
       xkb_layout us
-      xkb_variant intl
+      xkb_variant intl 
       xkb_options ctrl:nocaps
 }
 

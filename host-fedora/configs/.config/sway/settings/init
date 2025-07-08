@@ -7,20 +7,30 @@ exec_always {
 }
 
 exec {
-    waybar -c ~/.config/waybar/config.jsonc &
+    waybar -c ~/.config/waybar/modern.jsonc -s ~/.config/waybar/modern.css &
     autotiling &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 &
     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
     rm -rf ~/temp/*
     nm-applet &
+    blueman-applet &
     syncthing --no-browser &
+    ~/scripts/swww.sh &
+
+
+    flatpak run com.bitwarden.desktop &
+    swaync &
+
+    alacritty -e tmux &
+    flatpak run com.github.th_ch.youtube_music &
+    firefox &
 
 
     swayidle -w \
- swaylock -f --image ~/pics/wallpapers/2521B.png
-         timeout 300 'swaylock -f --image ~/pics/wallpapers/2521B.png' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f --image ~/pics/wallpapers/2521B.png'
+    swaylock -f --image ~/pics/wallpapers/2521B.png
+             timeout 300 'swaylock -f --image ~/pics/wallpapers/2521B.png' \
+             timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+             before-sleep 'swaylock -f --image ~/pics/wallpapers/2521B.png'
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

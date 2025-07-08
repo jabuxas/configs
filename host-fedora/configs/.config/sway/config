@@ -1,9 +1,23 @@
 include ~/.config/sway/settings/*
-include "$HOME/.cache/wal/colors-sway"
 
-output * background $wallpaper fill
+# blur enable
+# blur_passes 4
+# corner_radius 10
+# blur_radius 2
+# blur_noise 0.2
+
+# shadow_on_csd enable
+# shadow_color #424242
+# shadow_offset 12 12
+# shadow_blur_radius 10
+
+seat seat0 xcursor_theme Simp1e-Adw
+
+include "$HOME/.cache/wal/colors-sway"
+output * bg $wallpaper fill
+
 client.unfocused $color0 $background $foreground $color7 $background
-client.focused $color8 $color3 $foreground $color7 $color1
-client.focused_inactive $color7 $background $foreground $color7 $color8
+client.focused  $background $color3 $foreground $color7 $background
+client.focused_tab_title  $color3 $background $foreground $color7 $background
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

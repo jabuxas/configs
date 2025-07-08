@@ -9,7 +9,7 @@ outputs = [o for o in sway.get_outputs() if o.active]
 def focus_monitor(args):
     indices = {"left": 0, "center": 1, "right": 2}
     orientation = indices[args.orientation]
-    if len(outputs) <= 1 or len(outputs) < orientation+1:
+    if len(outputs) <= 1 or len(outputs) < orientation + 1:
         print(len(outputs))
         return
 
@@ -22,7 +22,7 @@ def focus_monitor(args):
 def send_to_monitor(args):
     indices = {"left": 0, "center": 1, "right": 2}
     orientation = indices[args.orientation]
-    if len(outputs) <= 1 or len(outputs) < orientation+1:
+    if len(outputs) <= 1 or len(outputs) < orientation + 1:
         print(len(outputs))
         return
 
@@ -74,7 +74,7 @@ def switch_workspace(args):
         # since we know there's at least one more
         commands = [
             f"workspace {destination}",
-            f"move workspace to output {destination_output}"
+            f"move workspace to output {destination_output}",
         ]
         command = ";".join(commands)
         sway.command(command)
@@ -85,35 +85,23 @@ parser = argparse.ArgumentParser(description="Process custom sway commands")
 subparsers = parser.add_subparsers(help="sub-command help")
 
 output_choose = subparsers.add_parser(
-    "monitor",
-    help="pick monitor in X orientation order"
+    "monitor", help="pick monitor in X orientation order"
 )
 output_choose.add_argument(
-    "orientation",
-    type=str,
-    choices=["left", "center", "right"]
+    "orientation", type=str, choices=["left", "center", "right"]
 )
 output_choose.set_defaults(func=focus_monitor)
 
 send_to_output = subparsers.add_parser(
-    "send_to_output",
-    help="pick monitor in X orientation order"
+    "send_to_output", help="pick monitor in X orientation order"
 )
 send_to_output.add_argument(
-    "orientation",
-    type=str,
-    choices=["left", "center", "right"]
+    "orientation", type=str, choices=["left", "center", "right"]
 )
 send_to_output.set_defaults(func=send_to_monitor)
 
-workspace_choose = subparsers.add_parser(
-    "workspace",
-    help="switch workspace"
-)
-workspace_choose.add_argument(
-    "workspace",
-    type=str
-)
+workspace_choose = subparsers.add_parser("workspace", help="switch workspace")
+workspace_choose.add_argument("workspace", type=str)
 workspace_choose.set_defaults(func=switch_workspace)
 
 
