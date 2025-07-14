@@ -1,19 +1,19 @@
-# bass source /etc/profile
+bass source /etc/profile
+
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/go/bin"
-source "$HOME/.cargo/env.fish"
-source "$HOME/.cache/wal/colors.fish"
-bind \cH backward-kill-word 
-
 fish_add_path "$HOME/.local/share/nvim/mason/bin"
 
-set -gx GPG_TTY (tty)
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /p/.ghcup/bin # ghcup-env
+source "$HOME/.cargo/env.fish"
+source "$HOME/.cache/wal/colors.fish"
 
+set -gx GPG_TTY (tty)
 set -gx EDITOR "nvim"
-# set -gx BAT_THEME "Solarized (light)"
-# set -gx SOLARIZED true
+
 set -gx FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
+
 if test -z "$XDG_VTNR"; set XDG_VTNR 0; end
 if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
     set -gx XDG_CURRENT_DESKTOP "sway"
@@ -21,50 +21,50 @@ if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
 end
 
 if status is-interactive
-    alias cb="~/repos/cports/cbuild"
-    alias g="git"
+    abbr -a cb "~/repos/cports/cbuild"
+    abbr -a g "git"
     alias ls="bash ~/scripts/elash.sh"
-    alias l="ls -lah"
-    alias v="nvim"
-    alias hr="date +'%Hh:%M, %d-%m-%Y'"
-    alias ff="fastfetch"
-    alias feh="imv"
-    alias lg="lazygit"
-    alias cpr="cd ~/repos/cports-docker && docker compose run --build --rm cports"
-    alias cop="wl-copy"
-    alias cat="bat"
-    alias dom="docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
-    alias emackie="emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
+    abbr -a l "ls -lah"
+    abbr -a v "nvim"
+    abbr -a hr "date +'%Hh:%M, %d-%m-%Y'"
+    abbr -a ff "fastfetch"
+    abbr -a feh "imv"
+    abbr -a lg "lazygit"
+    abbr -a cpr "cd ~/repos/cports-docker && docker compose run --build --rm cports"
+    abbr -a cop "wl-copy"
+    abbr -a cat "bat"
+    abbr -a dom "docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
+    abbr -a emackie "emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
 
-    alias calc="bc"
-    alias please="sudo"
-    alias tokei="tokei --sort lines"
+    abbr -a b 'cd -'
+    abbr -a .. 'cd ..'
+    abbr -a ... 'cd ../..'
+    abbr -a .... 'cd ../../..'
 
-    alias protontricks='flatpak run com.github.Matoking.protontricks'
-    alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
+    abbr -a calc "bc"
+    abbr -a please "sudo"
+    abbr -a tokei "tokei --sort lines"
 
-    alias generate_token="curl -u jabuxas https://paste.jabuxas.com | wl-copy"
+    abbr -a protontricks 'flatpak run com.github.Matoking.protontricks'
+    abbr -a protontricks-launch 'flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
 
-    alias deck="pkill steam; sleep 3; gamescope --mangoapp -e -- env STEAM_RUNTIME=1 steam -tenfoot -steamos3"
-    alias df="dysk"
+    abbr -a generate_token "curl -u jabuxas https://paste.jabuxas.com | wl-copy"
+
+    abbr -a deck "pkill steam; sleep 3; gamescope --mangoapp -e -- env STEAM_RUNTIME=1 steam -tenfoot -steamos3"
+    abbr -a df "dysk"
+
+    abbr -a rst "sudo ip link set enp4s0 down && sudo ip link set enp4s0 up && sudo systemctl restart NetworkManager && sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
+
+    abbr -a poweroff "systemctl poweroff"
+    abbr -a reboot "systemctl reboot"
+    abbr -a hi "systemctl hibernate"
+
+    abbr -a '!*' --position anywhere --function last_history_arguments
+    abbr -a !! --position anywhere --function last_history_item
+
+    bind \cH backward-kill-word 
 end
 
-
-function set-power-aliases
-    if type -q systemctl
-        alias poweroff "systemctl poweroff"
-        alias reboot "systemctl reboot"
-        alias hi "systemctl hibernate"
-    else if type -q loginctl
-        alias poweroff "loginctl poweroff"
-        alias reboot "loginctl reboot"
-        alias hi "loginctl hibernate"
-    else
-        echo "Neither systemctl nor loginctl found."
-    end
-end
-
-set-power-aliases
 
 function heaven
    AUTH_KEY=(cat ~/.key) AUTH_PARAM='X-Auth' PASTEBIN_URL='https://paste.jabuxas.com' revelation
@@ -134,12 +134,11 @@ end
 function last_history_item
     echo $history[1]
 end
+
 function last_history_arguments
     set -l args (string split ' ' $history[1])
     echo $args[-1]
 end
-abbr -a '!*' --position anywhere --function last_history_arguments
-abbr -a !! --position anywhere --function last_history_item
 
 function switch_git_personal
     git config user.name "jabuxas"
@@ -172,5 +171,3 @@ function fish_prompt
 
     fish_write normal "\n := "
 end
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /p/.ghcup/bin # ghcup-env

@@ -19,7 +19,14 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+F1 exec ~/scripts/wallpapermenu.sh &
 bindsym $mod+Shift+F2 exec ~/scripts/wallpapermenu.sh light &
 bindsym $mod+Control+s exec swaync-client -t
+
+# useful for regular browsing, prevents cookie exploitation
+bindsym $mod+Control+b exec firefox-bin 'ext+container:name=Random&url=https://ecosia.org' --browser
+
+# regular profile with accounts
 bindsym $mod+b exec firefox-bin
+
+# work profile
 bindsym $mod+Shift+b exec firefox-bin -P work
 bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
 bindsym $mod+Return exec $term

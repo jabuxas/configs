@@ -1,6 +1,12 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+(setq lsp-use-plists t)
 (setq shell-file-name (executable-find "bash"))
 (setq-default term-shell (executable-find "fish"))
+(setenv "LSP_USE_PLISTS" "true")
+(setq read-process-output-max (* 10 1024 1024)) ;; 10mb
+(setq gc-cons-threshold 200000000)
+(setq lsp-idle-delay 0.500)
+(setq lsp-log-io nil) ; if set to true can cause a performance hit
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -491,7 +497,7 @@ Project Compile Commands
 (minimap-mode 1)
 (flycheck-popup-tip-mode 1)
 
-(map! :n "C-e" #'treemacs)
+(map! :n "C-e" #'+treemacs/toggle)
 
 ;; (after! lsp-mode
 ;;   (setq lsp-volar-take-over-mode nil)
@@ -663,3 +669,41 @@ Looks for .venv directory in project root and activates the Python interpreter."
   (dolist (mode '(css-mode css-ts-mode typescript-mode typescript-ts-mode
                   tsx-ts-mode js2-mode js-ts-mode clojure-mode))
     (add-to-list 'lsp-tailwindcss-major-modes mode)))
+
+(add-hook 'tsx-ts-mode-hook #'lsp-deferred)
+(add-hook 'typescript-ts-mode-hook #'lsp-deferred)
+(add-hook 'js-ts-mode-hook #'lsp-deferred)
+
+(use-package! lsp-mode
+  :init
+  (setq lsp-use-plists t)
+
+  :config
+  (defun lsp-booster--advice-json-parse (old-fn &rest args)
+    "Try to parse bytecode instead of json."
+    (or
+     (when (equal (following-char) ?#)
+       (let ((bytecode (read (current-buffer))))
+         (when (byte-code-function-p bytecode)
+           (funcall bytecode))))
+     (apply old-fn args)))
+
+  (defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
+    "Prepend emacs-lsp-booster command to lsp CMD."
+    (let ((orig-result (funcall old-fn cmd test?)))
+      (if (and (not test?)                             ;; for check lsp-server-present?
+               (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
+               lsp-use-plists
+               (executable-find "emacs-lsp-booster"))
+          (progn
+            (when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
+              (setcar orig-result command-from-exec-path))
+            (message "Using emacs-lsp-booster for %s!" orig-result)
+            (cons "emacs-lsp-booster" orig-result))
+        orig-result)))
+
+  ;; Add the advice. This runs after lsp-mode is loaded.
+  (advice-add (if (fboundp 'json-parse-buffer) 'json-parse-buffer 'json-read)
+              :around #'lsp-booster--advice-json-parse)
+  (advice-add 'lsp-resolve-final-command
+              :around #'lsp-booster--advice-final-command))
