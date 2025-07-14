@@ -6,6 +6,7 @@
   "reload_style_on_change": true,
   "modules-right": [
     "pulseaudio",
+    "power-profiles-daemon",
     "battery",
     "network",
     "cpu",
@@ -41,6 +42,17 @@
     "format-disconnected": "󰤠 ",
     "interval": 5,
     "tooltip": false,
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "󰗑",
+      "power-saver": "󰌪",
+    },
   },
   "cpu": {
     "interval": 1,

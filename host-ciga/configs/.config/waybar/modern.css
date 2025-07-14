@@ -46,6 +46,7 @@
 #backlight,
 #clock,
 #battery,
+#power-profiles-daemon,
 #pulseaudio,
 #network,
 #cpu,
@@ -74,6 +75,11 @@
 	/* Was green #a6d189 */
 }
 
+#power-profiles-daemon {
+	color: @color4;
+	/* Was green #a6d189 */
+}
+
 #battery.charging {
 	color: @color2;
 	/* Was green #a6d189 */
@@ -91,7 +97,7 @@
 
 #backlight,
 #battery,
-#cpu {
+#cpu, #power-profiles-daemon {
 	border-radius: 0;
 }
 
