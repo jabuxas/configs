@@ -18,6 +18,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+F1 exec ~/scripts/wallpapermenu.sh &
 bindsym $mod+Shift+F2 exec ~/scripts/wallpapermenu.sh light &
+bindsym $mod+Shift+F3 exec ~/scripts/fuzzel-bluetooth.sh &
 bindsym $mod+Control+s exec swaync-client -t
 
 # useful for regular browsing, prevents cookie exploitation
