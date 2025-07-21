@@ -6,13 +6,8 @@ output {
 default_border pixel 3
 client.focused  "#a7c080" "#272e33" "#a7c080" "#d699b6" 
 client.focused_inactive "#272e33" "#272e33" "#a7c080"
-focus_on_window_activation none
-popup_during_fullscreen smart
-no_focus [window_role="pop-up"]
-focus_wrapping workspace
 
 gaps inner 10
-mouse_warping none
 
 input "2362:9523:Gaming_Mouse" {
   accel_profile flat

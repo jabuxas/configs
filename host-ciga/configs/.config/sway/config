@@ -15,6 +15,7 @@ seat seat0 xcursor_theme Simp1e-Adw
 
 include "$HOME/.cache/wal/colors-sway"
 output * bg $wallpaper fill
+include ~/.config/sway/shared.conf
 
 client.unfocused $color0 $background $foreground $color7 $background
 client.focused  $background $color3 $foreground $color7 $background
