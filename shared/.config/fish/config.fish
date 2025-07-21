@@ -33,6 +33,7 @@ if status is-interactive
     abbr -a cpr "cd ~/repos/cports-docker && docker compose run --build --rm cports"
     abbr -a cop "wl-copy"
     abbr -a cat "bat"
+    abbr -a sus "systemctl suspend"
     abbr -a dom "docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
     abbr -a emackie "emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
 
@@ -171,3 +172,7 @@ function fish_prompt
 
     fish_write normal "\n := "
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
