@@ -15,12 +15,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
-bindsym $mod+Shift+F1 exec ~/scripts/wallpapermenu.sh &
-bindsym $mod+Shift+F2 exec ~/scripts/wallpapermenu.sh light &
-bindsym $mod+Shift+F3 exec ~/scripts/fuzzel-bluetooth.sh &
-bindsym $mod+Control+s exec swaync-client -t
-
 # useful for regular browsing, prevents cookie exploitation
 bindsym $mod+Control+b exec firefox-bin 'ext+container:name=Random&url=https://ecosia.org' --browser
 
@@ -29,48 +23,18 @@ bindsym $mod+b exec firefox-bin
 
 # work profile
 bindsym $mod+Shift+b exec firefox-bin -P work
-bindsym $mod+Shift+d exec flatpak run de.shorsh.discord-screenaudio
-bindsym $mod+Return exec $term
 bindsym $mod+Control+e exec emacsclient -c &
-bindsym $mod+o exec fish -c 'heaven'
-bindsym $mod+Shift+c kill
-bindsym $mod+Shift+Return exec $menu
 floating_modifier $mod normal
-bindsym $mod+Shift+r reload
-bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 bindsym $mod+$up focus up
 bindsym $mod+$down focus down
 bindsym $mod+$left focus left
 bindsym $mod+$right focus right
-bindsym $mod+z exec hyprmag --radius 150 --scale 2.5
 
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$right move right
-
-bindsym $mod+1 exec ~/.config/sway/xmonad workspace 1
-bindsym $mod+2 exec ~/.config/sway/xmonad workspace 2
-bindsym $mod+3 exec ~/.config/sway/xmonad workspace 3
-bindsym $mod+4 exec ~/.config/sway/xmonad workspace 4
-bindsym $mod+5 exec ~/.config/sway/xmonad workspace 5
-bindsym $mod+6 exec ~/.config/sway/xmonad workspace 6
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-
-bindsym $mod+Control+h splith
-bindsym $mod+Control+v splitv
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+Shift+e layout toggle split
-bindsym $mod+f fullscreen
-bindsym $mod+Shift+f exec "swaymsg focus parent, fullscreen enable, focus child"
-bindsym $mod+t floating toggle
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
@@ -89,16 +53,8 @@ bindsym $mod+Shift+period move container to output right
 
 bindsym $mod+Shift+s exec STEAM_RUNTIME=1 steam
 bindsym $mod+e exec pcmanfm
-bindsym Menu exec ~/scripts/way-print.sh p
-bindsym Shift+Menu exec ~/scripts/way-print.sh s
-bindsym $mod+Menu exec ~/scripts/way-print.sh t
-bindsym Control+Shift+Menu exec ~/scripts/way-print.sh m
-bindsym Control+Menu exec ~/scripts/way-print.sh cw
+
 # bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE flatpak run --parent-expose-pids --parent-share-pids --parent-pid=1 --branch=stable --arch=x86_64 --command=xivlauncher dev.goats.xivlauncher
 bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE xivlauncher
-
-# audio
-bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
