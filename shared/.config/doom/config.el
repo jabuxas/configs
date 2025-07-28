@@ -6,35 +6,21 @@
 (setq read-process-output-max (* 10 1024 1024)) ;; 10mb
 (setq gc-cons-threshold 200000000)
 (setq lsp-idle-delay 0.500)
+(setq vterm-timer-delay nil)
 (setq lsp-log-io nil) ; if set to true can cause a performance hit
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 ;; (setq user-full-name "John Doe"
 ;;       user-mail-address "john@doe.com")
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
 ;; - `doom-font' -- the primary font to use
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
 ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
 ;; - `doom-symbol-font' -- for symbols
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
 (setq doom-font "Iosevka Nerd Font-18")
-;;
-;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
-;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
-;; refresh your font settings. If Emacs still can't find your font, it likely
-;; wasn't installed correctly. Font issues are rarely Doom issues!
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -129,6 +115,10 @@
 (global-set-key (kbd "M-X") 'doom/kill-this-buffer-in-all-windows)
 (global-set-key (kbd "M-<") 'projectile-previous-project-buffer)
 (global-set-key (kbd "M->") 'projectile-next-project-buffer)
+
+(after! vterm
+  (define-key vterm-mode-map (kbd "M-<") #'projectile-previous-project-buffer)
+  (define-key vterm-mode-map (kbd "M->") #'projectile-next-project-buffer))
 
 ;; Custom function to handle double comma
 (defvar my-last-comma-time nil
@@ -658,6 +648,13 @@ Looks for .venv directory in project root and activates the Python interpreter."
               ("M-n" . flycheck-next-error) ; optional but recommended error navigation
               ("M-p" . flycheck-previous-error)))
 
+;; (use-package treesit-auto
+;;   :custom
+;;   (treesit-auto-install 'prompt)
+;;   :config!
+;;   (treesit-auto-add-to-auto-mode-alist 'all)
+;;   (global-treesit-auto-mode))
+
 (use-package lsp-eslint
   :demand t
   :after lsp-mode)
@@ -707,3 +704,8 @@ Looks for .venv directory in project root and activates the Python interpreter."
               :around #'lsp-booster--advice-json-parse)
   (advice-add 'lsp-resolve-final-command
               :around #'lsp-booster--advice-final-command))
+
+(setf (alist-get 'python-mode apheleia-mode-alist)
+      '(ruff-isort ruff))
+(setf (alist-get 'python-ts-mode apheleia-mode-alist)
+      '(ruff-isort ruff))

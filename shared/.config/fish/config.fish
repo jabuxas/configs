@@ -35,6 +35,7 @@ if status is-interactive
     abbr -a cat "bat"
     abbr -a sus "systemctl suspend"
     abbr -a dom "docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
+    abbr -a dcs "docker compose"
     abbr -a emackie "emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
 
     abbr -a b 'cd -'
