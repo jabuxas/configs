@@ -7,7 +7,7 @@ fish_add_path "$HOME/.local/share/nvim/mason/bin"
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /p/.ghcup/bin # ghcup-env
 source "$HOME/.cargo/env.fish"
-source "$HOME/.cache/wal/colors.fish"
+# source "$HOME/.cache/wal/colors.fish"
 
 set -gx GPG_TTY (tty)
 set -gx EDITOR "nvim"

@@ -70,3 +70,4 @@
   :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 
 (package! glab)
+(package! shanty-themes)

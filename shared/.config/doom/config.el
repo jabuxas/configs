@@ -26,44 +26,56 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
-;; (setq doom-theme 'doom-horizon)
 ;; (setq doom-theme 'doom-rouge)
 ;; (setq doom-theme 'kaolin-dark)
 
 ;; pywal!!
 
-(use-package! ewal
-  :init
-  (setq ewal-use-built-in-always-p nil
-        ewal-use-built-in-on-failure-p t
-        ewal-built-in-palette "sexy-material"))
+;; if ~/colorscheme is a file with "wal in it, use ewal"
+(let ((wal-colorscheme-exists
+       (and (file-exists-p "~/colorscheme")
+            (with-temp-buffer
+              (insert-file-contents "~/colorscheme")
+              (string-match-p "wal" (buffer-string))))))
+  ;; If the conditions are met, proceed with the ewal configuration
+  (progn
+    (use-package! ewal
+      :init
+      (setq ewal-use-built-in-always-p nil
+            ewal-use-built-in-on-failure-p t
+            ewal-built-in-palette "sexy-material"))
 
-(use-package! ewal-spacemacs-themes
-  :init
-  (setq spacemacs-theme-underline-parens t
-        my:rice:font (font-spec :family "Iosevka Nerd Font"
-                                :weight 'semi-bold
-                                :size 18.0))
-  (show-paren-mode 1)
-  (global-hl-line-mode 1)
-  (set-frame-font my:rice:font nil t)
-  (add-to-list 'default-frame-alist `(font . ,(font-xlfd-name my:rice:font)))
-  :config
-  (load-theme 'ewal-spacemacs-modern t)
-  (enable-theme 'ewal-spacemacs-modern))
+    (use-package! ewal-spacemacs-themes
+      :init
+      (setq spacemacs-theme-underline-parens t
+            my:rice:font (font-spec :family "Iosevka Nerd Font"
+                                    :weight 'semi-bold
+                                    :size 18.0))
+      (show-paren-mode 1)
+      (global-hl-line-mode 1)
+      (set-frame-font my:rice:font nil t)
+      (add-to-list 'default-frame-alist `(font . ,(font-xlfd-name my:rice:font)))
+      :config
+      (load-theme 'ewal-spacemacs-modern t)
+      (enable-theme 'ewal-spacemacs-modern))
 
-(use-package! ewal-evil-cursors
-  :after ewal-spacemacs-themes
-  :config
-  (ewal-evil-cursors-get-colors :apply t :spaceline t))
+    (use-package! ewal-evil-cursors
+      :after ewal-spacemacs-themes
+      :config
+      (ewal-evil-cursors-get-colors :apply t :spaceline t))
 
-(use-package! spaceline
-  :after (ewal-evil-cursors winum)
-  :init
-  (setq powerline-default-separator nil)
-  :config
-  (spaceline-spacemacs-theme))
+    (use-package! spaceline
+      :after (ewal-evil-cursors winum)
+      :init
+      (setq powerline-default-separator nil)
+      :config
+      (spaceline-spacemacs-theme)))
 
+  ;; Optional: Define an alternative behavior if the condition is not met
+  (progn
+    (message "Wal colorscheme not detected. Using default theme instead.")
+    (load-theme 'shanty-themes-dark t)
+    ))
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -705,7 +717,7 @@ Looks for .venv directory in project root and activates the Python interpreter."
   (advice-add 'lsp-resolve-final-command
               :around #'lsp-booster--advice-final-command))
 
-(setf (alist-get 'python-mode apheleia-mode-alist)
-      '(ruff-isort ruff))
-(setf (alist-get 'python-ts-mode apheleia-mode-alist)
-      '(ruff-isort ruff))
+;; (setf (alist-get 'python-mode apheleia-mode-alist)
+;;      '(ruff-isort ruff))
+;; (setf (alist-get 'python-ts-mode apheleia-mode-alist)
+;;      '(ruff-isort ruff))
