@@ -12,6 +12,7 @@ include ~/.config/sway/settings/*
 # shadow_blur_radius 10
 
 seat seat0 xcursor_theme Simp1e-Adw
+font pango:Terminess Nerd Font 12
 
 # include "$HOME/.cache/wal/colors-sway"
 # client.unfocused $color0 $background $foreground $color7 $background
