@@ -6,7 +6,6 @@
 (setq read-process-output-max (* 10 1024 1024)) ;; 10mb
 (setq gc-cons-threshold 200000000)
 (setq lsp-idle-delay 0.500)
-(setq vterm-timer-delay nil)
 (setq lsp-log-io nil) ; if set to true can cause a performance hit
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -128,9 +127,9 @@
 (global-set-key (kbd "M-<") 'projectile-previous-project-buffer)
 (global-set-key (kbd "M->") 'projectile-next-project-buffer)
 
-(after! vterm
-  (define-key vterm-mode-map (kbd "M-<") #'projectile-previous-project-buffer)
-  (define-key vterm-mode-map (kbd "M->") #'projectile-next-project-buffer))
+;; (after! vterm
+;;   (define-key vterm-mode-map (kbd "M-<") #'projectile-previous-project-buffer)
+;;   (define-key vterm-mode-map (kbd "M->") #'projectile-next-project-buffer))
 
 ;; Custom function to handle double comma
 (defvar my-last-comma-time nil
@@ -151,70 +150,6 @@
 (after! evil
   (define-key evil-insert-state-map (kbd ",") #'my-insert-comma-or-emmet))
 
-;; Ensure vterm is loaded
-(use-package! vterm
-  :commands vterm
-  :config
-  (setq vterm-kill-buffer-on-exit t)) ; Auto-kill buffer on exit
-
-(after! vterm
-  (setq vterm-shell "fish")); Replace "fish" with the path to your Fish binary if needed)
-
-;; Function to open lazygit in a split
-;; (defun +lazygit-in-project ()
-;;   "Open lazygit in a vterm buffer at the project root."
-;;   (interactive)
-;;   (let ((default-directory (doom-project-root)))
-;;     (message "Opening lazygit in %s" default-directory)
-;;     ;; Open in a side window (adjust height as needed)
-;;     (pop-to-buffer
-;;      (generate-new-buffer "*lazygit*")
-;;      '((display-buffer-in-side-window)
-;;        (side . bottom)
-;;        (window-height . 0.5)))
-;;     ;; Start vterm and run lazygit
-;;     (vterm-mode)
-;;     (vterm-send-string "lazygit")
-;;     (vterm-send-return)))
-
-(defun +lazygit-in-project ()
-  "Open lazygit in a floating frame and auto-close on exit."
-  (interactive)
-  (let* ((default-directory (doom-project-root))
-         ;; Create a new floating frame
-         (frame (make-frame `((name . "lazygit")
-                              (width . 120)
-                              (height . 30)
-                              (minibuffer . nil)
-                              (left . 0.5)    ; Center horizontally
-                              (top . 0.5)     ; Center vertically
-                              (transient . t) ; Mark as temporary
-                              (no-accept-focus . t))))
-         ;; Create a dedicated buffer
-         (buffer (generate-new-buffer "*lazygit*")))
-    ;; Configure the new frame and buffer
-    (select-frame frame)
-    (switch-to-buffer buffer)
-    (vterm-mode)
-    ;; Launch lazygit
-    (vterm-send-string "lazygit")
-    (vterm-send-return)
-    ;; Bind 'q' to kill buffer and frame
-    (define-key vterm-mode-map (kbd "q")
-                (lambda ()
-                  (interactive)
-                  (kill-buffer buffer)
-                  (delete-frame frame)))
-    ;; Auto-close frame when process dies (e.g., lazygit exits)
-    (let ((proc (get-buffer-process buffer)))
-      (when proc
-        (set-process-sentinel proc
-                              (lambda (proc _event)
-                                (when (memq (process-status proc) '(exit signal))
-                                  (kill-buffer buffer)
-                                  (delete-frame frame))))))))
-
-(map! :leader :n "g g" #'+lazygit-in-project)
 (map! :leader
       :desc "Search by grep"  ; This description shows in which-key popups
       "r g" #'+default/search-project)
