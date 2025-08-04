@@ -13,13 +13,38 @@ include ~/.config/sway/settings/*
 
 seat seat0 xcursor_theme Simp1e-Adw
 
-include "$HOME/.cache/wal/colors-sway"
-output * bg $wallpaper fill
+# include "$HOME/.cache/wal/colors-sway"
+# client.unfocused $color0 $background $foreground $color7 $background
+# client.focused  $background $color3 $foreground $color7 $background
+# client.focused_tab_title  $color3 $background $foreground $color7 $background
+# client.focused_inactive $color3 $background $foreground $color7 $background
+
 include ~/.config/sway/shared.conf
 
-client.unfocused $color0 $background $foreground $color7 $background
-client.focused  $background $color3 $foreground $color7 $background
-client.focused_tab_title  $color3 $background $foreground $color7 $background
-client.focused_inactive $color3 $background $foreground $color7 $background
+set $background #002b36
+set $foreground #839496
+
+set $color0  #073642
+set $color1  #dc322f
+set $color2  #859900
+set $color3  #b58900
+set $color4  #268bd2
+set $color5  #d33682
+set $color6  #2aa198
+set $color7  #eee8d5
+set $color8  #002b36
+set $color9  #cb4b16
+set $color10 #586e75
+set $color11 #657b83
+set $color12 #839496
+set $color13 #6c71c4
+set $color14 #93a1a1
+set $color15 #fdf6e3
+
+
+client.unfocused         $color0 $background $foreground $color7 $background
+client.focused           $background $color0 $foreground $color7 $background
+client.focused_tab_title $color4 $background $foreground $color7 $background
+client.focused_inactive  $color4 $background $foreground $color7 $background
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

@@ -19,7 +19,7 @@
 ;;   presentations or streaming.
 ;; - `doom-symbol-font' -- for symbols
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-(setq doom-font "Iosevka Nerd Font-18")
+(setq doom-font "Terminess Nerd Font-20")
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -73,7 +73,8 @@
   ;; Optional: Define an alternative behavior if the condition is not met
   (progn
     (message "Wal colorscheme not detected. Using default theme instead.")
-    (load-theme 'shanty-themes-dark t)
+    ;; (load-theme 'shanty-themes-dark t)
+    (setq! doom-theme 'doom-oksolar-dark)
     ))
 
 

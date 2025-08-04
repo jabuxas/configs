@@ -8,14 +8,14 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
 [font]
-size = 16
-normal.family = "Iosevka Nerd Font"
+size = 17
+normal.family = "Terminess Nerd Font"
 normal.style = "Regular"
-bold.family = "Iosevka Nerd Font"
+bold.family = "Terminess Nerd Font"
 bold.style = "Bold"
-italic.family = "Iosevka Nerd Font"
+italic.family = "Terminess Nerd Font"
 italic.style = "Italic"
-bold_italic.family = "Iosevka Nerd Font"
+bold_italic.family = "Terminess Nerd Font"
 bold_italic.style = "Bold Italic"
 
 
@@ -50,4 +50,4 @@ bindings = [
 # I put the file alacritty.toml in $HOME/.config/alacritty. However it can be kept anywhere among the places mentioned in
 # https://github.com/alacritty/alacritty/tree/master#configuration
 
-import = ["~/.cache/wal/colors-alacritty.toml"]
+import = ["~/.config/alacritty/solarized-dark.toml"]
