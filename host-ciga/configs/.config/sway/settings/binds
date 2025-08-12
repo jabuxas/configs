@@ -17,7 +17,8 @@ mode "resize" {
 
 bindsym $mod+Shift+b exec firefox-bin
 bindsym $mod+b exec firefox-bin -P personal
-bindsym $mod+Control+e exec emacsclient -s /run/user/1000/emacs/server -c &
+# bindsym $mod+Control+e exec emacsclient -s /run/user/1000/emacs/server -c &
+bindsym $mod+Control+e exec emacs &
 floating_modifier $mod normal
 
 bindsym $mod+$up focus up

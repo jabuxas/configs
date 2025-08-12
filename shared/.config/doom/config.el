@@ -31,52 +31,53 @@
 ;; pywal!!
 
 ;; if ~/colorscheme is a file with "wal in it, use ewal"
-(let ((wal-colorscheme-exists
-       (and (file-exists-p "~/colorscheme")
-            (with-temp-buffer
-              (insert-file-contents "~/colorscheme")
-              (string-match-p "wal" (buffer-string))))))
-  ;; If the conditions are met, proceed with the ewal configuration
-  (progn
-    (use-package! ewal
-      :init
-      (setq ewal-use-built-in-always-p nil
-            ewal-use-built-in-on-failure-p t
-            ewal-built-in-palette "sexy-material"))
+;; (let ((wal-colorscheme-exists
+;;        (and (file-exists-p "~/colorscheme")
+;;             (with-temp-buffer
+;;               (insert-file-contents "~/colorscheme")
+;;               (string-match-p "wal" (buffer-string))))))
+;;   ;; If the conditions are met, proceed with the ewal configuration
+;;   (progn
+;;     (use-package! ewal
+;;       :init
+;;       (setq ewal-use-built-in-always-p nil
+;;             ewal-use-built-in-on-failure-p t
+;;             ewal-built-in-palette "sexy-material"))
 
-    (use-package! ewal-spacemacs-themes
-      :init
-      (setq spacemacs-theme-underline-parens t
-            my:rice:font (font-spec :family "Iosevka Nerd Font"
-                                    :weight 'semi-bold
-                                    :size 18.0))
-      (show-paren-mode 1)
-      (global-hl-line-mode 1)
-      (set-frame-font my:rice:font nil t)
-      (add-to-list 'default-frame-alist `(font . ,(font-xlfd-name my:rice:font)))
-      :config
-      (load-theme 'ewal-spacemacs-modern t)
-      (enable-theme 'ewal-spacemacs-modern))
+;;     (use-package! ewal-spacemacs-themes
+;;       :init
+;;       (setq spacemacs-theme-underline-parens t
+;;             my:rice:font (font-spec :family "Iosevka Nerd Font"
+;;                                     :weight 'semi-bold
+;;                                     :size 18.0))
+;;       (show-paren-mode 1)
+;;       (global-hl-line-mode 1)
+;;       (set-frame-font my:rice:font nil t)
+;;       (add-to-list 'default-frame-alist `(font . ,(font-xlfd-name my:rice:font)))
+;;       :config
+;;       (load-theme 'ewal-spacemacs-modern t)
+;;       (enable-theme 'ewal-spacemacs-modern))
 
-    (use-package! ewal-evil-cursors
-      :after ewal-spacemacs-themes
-      :config
-      (ewal-evil-cursors-get-colors :apply t :spaceline t))
+;;     (use-package! ewal-evil-cursors
+;;       :after ewal-spacemacs-themes
+;;       :config
+;;       (ewal-evil-cursors-get-colors :apply t :spaceline t))
 
-    (use-package! spaceline
-      :after (ewal-evil-cursors winum)
-      :init
-      (setq powerline-default-separator nil)
-      :config
-      (spaceline-spacemacs-theme)))
+;;     (use-package! spaceline
+;;       :after (ewal-evil-cursors winum)
+;;       :init
+;;       (setq powerline-default-separator nil)
+;;       :config
+;;       (spaceline-spacemacs-theme)))
 
-  ;; Optional: Define an alternative behavior if the condition is not met
-  (progn
-    (message "Wal colorscheme not detected. Using default theme instead.")
-    ;; (load-theme 'shanty-themes-dark t)
-    (setq! doom-theme 'doom-oksolar-dark)
-    ))
+;;   ;; Optional: Define an alternative behavior if the condition is not met
+;;   (progn
+;;     (message "Wal colorscheme not detected. Using default theme instead.")
+;;     ;; (load-theme 'shanty-themes-dark t)
+;;     (setq! doom-theme 'doom-oksolar-dark)
+;;     ))
 
+(setq! doom-theme 'doom-oksolar-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -131,6 +132,17 @@
 ;; (after! vterm
 ;;   (define-key vterm-mode-map (kbd "M-<") #'projectile-previous-project-buffer)
 ;;   (define-key vterm-mode-map (kbd "M->") #'projectile-next-project-buffer))
+
+(defun clear-undo-tree ()
+  (interactive)
+  (setq buffer-undo-tree nil))
+
+(after! undo-tree
+  (setq undo-tree-enable-undo-in-region nil))
+
+(map! :leader
+      :desc "Clear undo tree"
+      "c u" #'clear-undo-tree)
 
 ;; Custom function to handle double comma
 (defvar my-last-comma-time nil
@@ -657,3 +669,5 @@ Looks for .venv directory in project root and activates the Python interpreter."
 ;;      '(ruff-isort ruff))
 ;; (setf (alist-get 'python-ts-mode apheleia-mode-alist)
 ;;      '(ruff-isort ruff))
+
+(rainbow-mode 1)
