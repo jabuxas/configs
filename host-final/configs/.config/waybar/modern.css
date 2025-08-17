@@ -1,4 +1,23 @@
-@import url("file:///p/.cache/wal/colors-waybar.css");
+/* @import url("file:///p/.cache/wal/colors-waybar.css"); */
+
+@define-color foreground #839496;
+@define-color background #002b36;
+@define-color color0 #073642;
+/* base02 */
+@define-color color1 #dc322f;
+/* red */
+@define-color color2 #859900;
+/* green */
+@define-color color3 #b58900;
+/* yellow */
+@define-color color4 #268bd2;
+/* blue */
+@define-color color5 #d33682;
+/* magenta */
+@define-color color6 #2aa198;
+/* cyan */
+@define-color color7 #eee8d5;
+/* base2 */
 
 * {
 	font-family: Mononoki Nerd Font;

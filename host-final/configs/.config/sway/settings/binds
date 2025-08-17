@@ -54,7 +54,7 @@ bindsym $mod+Shift+period move container to output right
 bindsym $mod+Shift+s exec STEAM_RUNTIME=1 steam
 bindsym $mod+e exec pcmanfm
 
-# bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE flatpak run --parent-expose-pids --parent-share-pids --parent-pid=1 --branch=stable --arch=x86_64 --command=xivlauncher dev.goats.xivlauncher
-bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE xivlauncher
+bindsym $mod+Alt+x exec flatpak run --env=XL_SECRET_PROVIDER=FILE --env=FLATPAK_DISABLE_SANDBOX=1 dev.goats.xivlauncher
+# bindsym $mod+Alt+x exec XL_SECRET_PROVIDER=FILE xivlauncher
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig
