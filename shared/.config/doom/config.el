@@ -1,4 +1,4 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+                                ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq lsp-use-plists t)
 (setq shell-file-name (executable-find "bash"))
 (setq-default term-shell (executable-find "fish"))
@@ -8,8 +8,7 @@
 (setq lsp-idle-delay 0.500)
 (setq lsp-log-io nil) ; if set to true can cause a performance hit
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
+
 ;; (setq user-full-name "John Doe"
 ;;       user-mail-address "john@doe.com")
 
@@ -82,11 +81,6 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -200,8 +194,8 @@
 (defun kb/toggle-window-transparency (arg)
   "Toggle the value of `alpha-background'.
 
-Toggles between 100 and 85 by default.
-If called with ARG (via C-u or numeric input), asks the user which value to set."
+                                Toggles between 100 and 85 by default.
+                                If called with ARG (via C-u or numeric input), asks the user which value to set."
   (interactive "P")
   (let ((transparency
          (cond
@@ -220,16 +214,12 @@ If called with ARG (via C-u or numeric input), asks the user which value to set.
 ;; also set it defaultly
 (set-frame-parameter nil 'alpha-background 90)
 
-
-;; set default org img inline
-(setq org-startup-with-inline-images t)
-
 (defun my/org-download-image-smart ()
   "Download image to ./images/ and insert as Org link.
-Priority:
-1. URL under point (on a link)
-2. Last yanked URL (from kill-ring)
-3. Prompt user for URL"
+                                Priority:
+                                1. URL under point (on a link)
+                                2. Last yanked URL (from kill-ring)
+                                3. Prompt user for URL"
   (interactive)
   (let* ((img-dir "images")  ;; Path relative to your Org file
          (url
@@ -258,10 +248,6 @@ Priority:
       :desc "Download image to repo"
       "m i d" #'my/org-download-image-smart)
 
-
-;;;;;; LATEX
-
-;; latex-mode
 (setq tex-command "tectonic -X compile")
 
 (defun tex-compile-and-open-with-zathura ()
@@ -307,8 +293,6 @@ Priority:
               (TeX-view))))
 
 
-;; org latex
-
 ;; Configure Org mode to use Tectonic for LaTeX export
 (after! ox-latex
   (setq org-latex-compiler "tectonic")
@@ -352,27 +336,6 @@ Priority:
 ;; set default project path
 (setq projectile-project-search-path '(("~/proprietary/" . 2)))
 
-;; erc znc
-(require 'znc)
-
-(setq znc-servers
-      `(("irc.jabuxas.com" 6697 t
-         ((libera
-           "jabuxas/libera"
-           ,(auth-source-pick-first-password :host "irc.jabuxas.com" :user "jabuxas/libera"))
-          (oftc
-           "jabuxas/oftc"
-           ,(auth-source-pick-first-password :host "irc.jabuxas.com" :user "jabuxas/oftc"))
-          (mam
-           "jabuxas/mam"
-           ,(auth-source-pick-first-password :host "irc.jabuxas.com" :user "jabuxas/mam"))))))
-
-(after! erc
-  (define-key erc-mode-map (kbd "C-c C-s") #'erc-track-switch-buffer))
-
-;; osd erc
-(load! "modules/doom-erc-notifications")
-
 (after! hydra
   (defun get-project-compile-commands ()
     "Get compile commands from .dir-locals.el"
@@ -389,13 +352,8 @@ Priority:
       (compile command t)))
 
   (defhydra hydra-project-compile (:color blue :hint nil)
-    "
-        Project Compile Commands
-        -----------------------
-    "
-    ("q" nil "quit")
-    ;; Dynamic heads will be added below
-    )
+    "Project Compile Commands -----------------------"
+    ("q" nil "quit"))
 
   (defun call-hydra-project-compile ()
     "Create and call a hydra with project compile commands"
@@ -407,9 +365,9 @@ Priority:
         (eval
          `(defhydra hydra-project-compile (:color blue :hint nil)
             "
-Project Compile Commands
------------------------
-"
+                                Project Compile Commands
+                                -----------------------
+                                "
             ,@(mapcar (lambda (cmd-pair)
                         (let ((name (car cmd-pair))
                               (cmd (cdr cmd-pair)))
@@ -436,102 +394,50 @@ Project Compile Commands
 (put 'evil-ex-history 'history-length 50)
 (put 'kill-ring 'history-length 25)
 
-(after! epg
-  (setq epg-pinentry-mode 'loopback))
-
-(after! pinentry
-  (pinentry-start))
-
-
 (drag-stuff-global-mode 1)
-;; (minimap-mode 1)
 (flycheck-popup-tip-mode 1)
 
 (map! :n "C-e" #'+treemacs/toggle)
 
-;; (after! lsp-mode
-;;   (setq lsp-volar-take-over-mode nil)
-;;   (setq lsp-volar-hybrid-mode t))
+;; ;; https://emacs.stackexchange.com/questions/71436/undo-tree-changed-treemacs-layout-when-move-history-cursor-in-spacemacs
+;; (with-eval-after-load 'undo-tree
+
+;;   ;; [2023-10-20 Fri] modify this function from undo-tree.el to prevent
+;;   ;; re-balancing windows ------------------------------------------------------
+;;   (defun undo-tree-visualizer-update-diff (&optional node)
+;;     ;; update visualizer diff display to show diff between current state and
+;;     ;; NODE (or previous state, if NODE is null)
+;;     (with-current-buffer undo-tree-visualizer-parent-buffer
+;;       (undo-tree-diff node))
+;;     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
+;;       (when win
+;;         ;; (balance-windows); comment this line out
+;;         (shrink-window-if-larger-than-buffer win))))
+;;   )
+
+;; (defun blend-colors (fg bg alpha)
+;;   "Blend FG and BG hex colors by ALPHA (0.0-1.0)."
+;;   (cl-labels ((hex-to-rgb (hex)
+;;                 (mapcar (lambda (x) (/ (float x) 255))
+;;                         (list (string-to-number (substring hex 1 3) 16)
+;;                               (string-to-number (substring hex 3 5) 16)
+;;                               (string-to-number (substring hex 5 7) 16)))))
+;;     (let* ((fg-rgb (hex-to-rgb fg))
+;;            (bg-rgb (hex-to-rgb bg))
+;;            (blend (cl-mapcar (lambda (f b) (+ (* alpha f) (* (- 1 alpha) b)))
+;;                              fg-rgb bg-rgb)))
+;;       (format "#%02x%02x%02x"
+;;               (floor (* 255 (nth 0 blend)))
+;;               (floor (* 255 (nth 1 blend)))
+;;               (floor (* 255 (nth 2 blend)))))))
 
 
-;; https://emacs.stackexchange.com/questions/71436/undo-tree-changed-treemacs-layout-when-move-history-cursor-in-spacemacs
-(with-eval-after-load 'undo-tree
-
-  ;; [2023-10-20 Fri] modify this function from undo-tree.el to prevent
-  ;; re-balancing windows ------------------------------------------------------
-  (defun undo-tree-visualizer-update-diff (&optional node)
-    ;; update visualizer diff display to show diff between current state and
-    ;; NODE (or previous state, if NODE is null)
-    (with-current-buffer undo-tree-visualizer-parent-buffer
-      (undo-tree-diff node))
-    (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
-      (when win
-        ;; (balance-windows); comment this line out
-        (shrink-window-if-larger-than-buffer win))))
-  )
-
-(defun blend-colors (fg bg alpha)
-  "Blend FG and BG hex colors by ALPHA (0.0-1.0)."
-  (cl-labels ((hex-to-rgb (hex)
-                (mapcar (lambda (x) (/ (float x) 255))
-                        (list (string-to-number (substring hex 1 3) 16)
-                              (string-to-number (substring hex 3 5) 16)
-                              (string-to-number (substring hex 5 7) 16)))))
-    (let* ((fg-rgb (hex-to-rgb fg))
-           (bg-rgb (hex-to-rgb bg))
-           (blend (cl-mapcar (lambda (f b) (+ (* alpha f) (* (- 1 alpha) b)))
-                             fg-rgb bg-rgb)))
-      (format "#%02x%02x%02x"
-              (floor (* 255 (nth 0 blend)))
-              (floor (* 255 (nth 1 blend)))
-              (floor (* 255 (nth 2 blend)))))))
-
-
-(after! ewal
-  (let* ((fg (ewal-get-color 'magenta))
-         (bg (ewal-get-color 'background))
-         (blend-color (blend-colors fg bg 0.3))) ;; 50% alpha
-    (custom-set-faces!
-      `(minimap-active-region-background :background ,blend-color))))
-
-(defun uv-activate ()
-  "Activate Python environment managed by uv based on current project directory.
-Looks for .venv directory in project root and activates the Python interpreter."
-  (interactive)
-  (let* ((project-root (project-root (project-current t)))
-         (venv-path (expand-file-name ".venv" project-root))
-         (python-path (expand-file-name
-                       (if (eq system-type 'windows-nt)
-                           "Scripts/python.exe"
-                         "bin/python")
-                       venv-path)))
-    (if (file-exists-p python-path)
-        (progn
-          ;; Set Python interpreter path
-          (setq python-shell-interpreter python-path)
-
-          ;; Update exec-path to include the venv's bin directory
-          (let ((venv-bin-dir (file-name-directory python-path)))
-            (setq exec-path (cons venv-bin-dir
-                                  (remove venv-bin-dir exec-path))))
-
-          ;; Update PATH environment variable
-          (setenv "PATH" (concat (file-name-directory python-path)
-                                 path-separator
-                                 (getenv "PATH")))
-
-          ;; Update VIRTUAL_ENV environment variable
-          (setenv "VIRTUAL_ENV" venv-path)
-
-          ;; Remove PYTHONHOME if it exists
-          (setenv "PYTHONHOME" nil)
-
-          (message "Activated UV Python environment at %s" venv-path))
-      (error "No UV Python environment found in %s" project-root))))
-
-
-(use-package! uv-mode
-  :hook (python-mode . uv-mode-auto-activate-hook))
+;; (after! ewal
+;;   (let* ((fg (ewal-get-color 'magenta))
+;;          (bg (ewal-get-color 'background))
+;;          (blend-color (blend-colors fg bg 0.3))) ;; 50% alpha
+;;     (custom-set-faces!
+;;       `(minimap-active-region-background :background ,blend-color))))
 
 (use-package treesit
   :mode (("\\.tsx\\'" . tsx-ts-mode)
@@ -583,20 +489,22 @@ Looks for .venv directory in project root and activates the Python interpreter."
   ;; that this does *not* extend to hooks! Make sure you migrate them
   ;; also
   (dolist (mapping
-           '((python-mode . python-ts-mode)
-             (css-mode . css-ts-mode)
-             (typescript-mode . typescript-ts-mode)
-             (js-mode . typescript-ts-mode)
-             (js2-mode . typescript-ts-mode)
-             (c-mode . c-ts-mode)
-             (c++-mode . c++-ts-mode)
-             (c-or-c++-mode . c-or-c++-ts-mode)
-             (bash-mode . bash-ts-mode)
-             (css-mode . css-ts-mode)
-             (json-mode . json-ts-mode)
-             (js-json-mode . json-ts-mode)
-             (sh-mode . bash-ts-mode)
-             (sh-base-mode . bash-ts-mode)))
+           '(
+             ;; (python-mode . python-ts-mode)
+             ;; (css-mode . css-ts-mode)
+             ;; (typescript-mode . typescript-ts-mode)
+             ;; (js-mode . typescript-ts-mode)
+             ;; (js2-mode . typescript-ts-mode)
+             ;; (c-mode . c-ts-mode)
+             ;; (c++-mode . c++-ts-mode)
+             ;; (c-or-c++-mode . c-or-c++-ts-mode)
+             ;; (bash-mode . bash-ts-mode)
+             ;; (css-mode . css-ts-mode)
+             ;; (json-mode . json-ts-mode)
+             ;; (js-json-mode . json-ts-mode)
+             ;; (sh-mode . bash-ts-mode)
+             ;; (sh-base-mode . bash-ts-mode)
+             ))
     (add-to-list 'major-mode-remap-alist mapping))
   :config
   (os/setup-install-grammars))
@@ -608,12 +516,6 @@ Looks for .venv directory in project root and activates the Python interpreter."
               ("M-n" . flycheck-next-error) ; optional but recommended error navigation
               ("M-p" . flycheck-previous-error)))
 
-;; (use-package treesit-auto
-;;   :custom
-;;   (treesit-auto-install 'prompt)
-;;   :config!
-;;   (treesit-auto-add-to-auto-mode-alist 'all)
-;;   (global-treesit-auto-mode))
 
 (use-package lsp-eslint
   :demand t
@@ -665,9 +567,13 @@ Looks for .venv directory in project root and activates the Python interpreter."
   (advice-add 'lsp-resolve-final-command
               :around #'lsp-booster--advice-final-command))
 
-;; (setf (alist-get 'python-mode apheleia-mode-alist)
-;;      '(ruff-isort ruff))
-;; (setf (alist-get 'python-ts-mode apheleia-mode-alist)
-;;      '(ruff-isort ruff))
+(after! apheleia
+  (setf (alist-get 'python-mode apheleia-mode-alist)
+        '(ruff-isort ruff))
+  (setf (alist-get 'python-ts-mode apheleia-mode-alist)
+        '(ruff-isort ruff)))
+
+(dolist (hook '(python-mode-hook python-ts-mode-hook))
+  (add-hook hook #'lsp))
 
 (rainbow-mode 1)

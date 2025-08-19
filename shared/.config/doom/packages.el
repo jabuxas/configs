@@ -52,22 +52,21 @@
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
-(package! ewal)
-(package! ewal-spacemacs-themes)
-(package! ewal-evil-cursors)
-(package! spaceline)
+;; (package! ewal)
+;; (package! ewal-spacemacs-themes)
+;; (package! ewal-evil-cursors)
+;; (package! spaceline)
 
 ;; (package! tao-theme)
 
-(package! kaolin-themes)
-(package! znc)
+;; (package! kaolin-themes)
+;; (package! znc)
 (package! drag-stuff)
-(package! pinentry)
 
-(package! uv-mode)
+;; (package! uv-mode)
 
 (package! lsp-tailwindcss
   :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 
 (package! glab)
-(package! shanty-themes)
+;; (package! shanty-themes)
