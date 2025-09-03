@@ -3,7 +3,7 @@ output {
   HDMI-A-1 pos 1920 0 mode --custom 2560x1080@59Hz
 }
 
-default_border pixel 3
+default_border pixel 1
 client.focused  "#a7c080" "#272e33" "#a7c080" "#d699b6" 
 client.focused_inactive "#272e33" "#272e33" "#a7c080"
 

@@ -15,7 +15,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+b exec flatpak run com.brave.Browser
+bindsym $mod+b exec brave-bin
 # bindsym $mod+Control+e exec emacsclient -s /run/user/1000/emacs/server -c &
 bindsym $mod+Control+e exec emacs &
 floating_modifier $mod normal

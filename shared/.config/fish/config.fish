@@ -5,7 +5,6 @@ fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/go/bin"
 fish_add_path "$HOME/.local/share/nvim/mason/bin"
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /p/.ghcup/bin # ghcup-env
 source "$HOME/.cargo/env.fish"
 # source "$HOME/.cache/wal/colors.fish"
 
@@ -143,7 +142,7 @@ function last_history_arguments
 end
 
 function switch_git_personal
-    git config user.name "jabuxas"
+    git config user.name "jab"
     git config user.email "jabuxas@proton.me"
 end
 

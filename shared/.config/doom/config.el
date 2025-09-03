@@ -76,7 +76,8 @@
 ;;     (setq! doom-theme 'doom-oksolar-dark)
 ;;     ))
 
-(setq! doom-theme 'doom-oksolar-dark)
+;; (setq! doom-theme 'doom-oksolar-dark)
+(setq! doom-theme 'doom-henna)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -110,18 +111,16 @@
 ;; This will open documentation for it, including demos of how they are used.
 ;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
 ;; etc).
-;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
 ;; https://superuser.com/questions/271023/can-i-disable-continuation-of-comments-to-the-next-line-in-vim
 (setq +evil-want-o/O-to-continue-comments nil)
 
-(global-set-key (kbd "M-<") 'previous-buffer)
-(global-set-key (kbd "M->") 'next-buffer)
-(global-set-key (kbd "M-X") 'doom/kill-this-buffer-in-all-windows)
-(global-set-key (kbd "M-<") 'projectile-previous-project-buffer)
-(global-set-key (kbd "M->") 'projectile-next-project-buffer)
+(map! "M->" #'next-buffer
+      "M-X" #'doom/kill-this-buffer-in-all-windows
+      "M-<" #'projectile-previous-project-buffer
+      "M->" #'projectile-next-project-buffer)
 
 ;; (after! vterm
 ;;   (define-key vterm-mode-map (kbd "M-<") #'projectile-previous-project-buffer)
@@ -163,7 +162,7 @@
 
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
-  ;; :hook (prog-mode . copilot-mode)
+  :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map
               ("<tab>" . 'copilot-accept-completion)
               ("TAB" . 'copilot-accept-completion)

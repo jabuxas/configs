@@ -22,30 +22,31 @@ font pango:Terminess Nerd Font 12
 
 include ~/.config/sway/shared.conf
 
-set $background #002b36
-set $foreground #839496
+set $background #21272e
+set $foreground #f8f8f0
 
-set $color0  #073642
-set $color1  #dc322f
-set $color2  #859900
-set $color3  #b58900
-set $color4  #268bd2
-set $color5  #d33682
-set $color6  #2aa198
-set $color7  #eee8d5
-set $color8  #002b36
-set $color9  #cb4b16
-set $color10 #586e75
-set $color11 #657b83
-set $color12 #839496
-set $color13 #6c71c4
-set $color14 #93a1a1
-set $color15 #fdf6e3
+set $color0  #181A1F
+set $color1  #e74c3c
+set $color2  #53df83
+set $color3  #9cd230
+set $color4  #56b6c2
+set $color5  #1abc9c
+set $color6  #30c965
+set $color7  #f8f8f0
+
+set $color8  #737c8c
+set $color9  #ff6b5a
+set $color10 #6cf89b
+set $color11 #b8e639
+set $color12 #7fd9e5
+set $color13 #2fe2c2
+set $color14 #53df83
+set $color15 #ffffff
 
 
-client.unfocused         $color0 $background $foreground $color7 $background
-client.focused           $background $color0 $foreground $color7 $background
-client.focused_tab_title $color4 $background $foreground $color7 $background
-client.focused_inactive  $color4 $background $foreground $color7 $background
+client.unfocused         $color0 $background $foreground $color7 $color2
+client.focused           $color10 $color0 $foreground $color7 $color2
+client.focused_tab_title $color4 $background $foreground $color7 $color2
+client.focused_inactive  $color10 $background $foreground $color7 $color0
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

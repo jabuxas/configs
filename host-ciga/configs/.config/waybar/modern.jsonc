@@ -12,7 +12,6 @@
     "cpu",
     "memory",
     "tray",
-    "custom/lock",
   ],
   "sway/workspaces": {
     "sort-by-number": true,

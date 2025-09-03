@@ -1,17 +1,28 @@
 /* @import url("file:///home/lucas/.cache/wal/colors-waybar.css"); */
-@define-color foreground #839496;
-@define-color background #002b36;
-@define-color color0     #073642; /* base02 */
-@define-color color1     #dc322f; /* red */
-@define-color color2     #859900; /* green */
-@define-color color3     #b58900; /* yellow */
-@define-color color4     #268bd2; /* blue */
-@define-color color5     #d33682; /* magenta */
-@define-color color6     #2aa198; /* cyan */
-@define-color color7     #eee8d5; /* base2 */
+
+@define-color foreground #f8f8f0;
+@define-color background #21272e;
+
+@define-color color0     #181A1F; /* black   */
+@define-color color1     #e74c3c; /* red     */
+@define-color color2     #53df83; /* green   */
+@define-color color3     #9cd230; /* yellow  */
+@define-color color4     #56b6c2; /* blue    */
+@define-color color5     #1abc9c; /* magenta */
+@define-color color6     #30c965; /* cyan    */
+@define-color color7     #f8f8f0; /* white   */
+
+@define-color color8     #737c8c; /* bright black (gray) */
+@define-color color9     #ff6b5a; /* bright red          */
+@define-color color10    #6cf89b; /* bright green        */
+@define-color color11    #b8e639; /* bright yellow       */
+@define-color color12    #7fd9e5; /* bright blue         */
+@define-color color13    #2fe2c2; /* bright magenta      */
+@define-color color14    #53df83; /* bright cyan         */
+@define-color color15    #ffffff; /* bright white        */
 
 * {
-	font-family: Mononoki Nerd Font;
+	font-family: Terminess Nerd Font;
 	font-size: 20px;
 	min-height: 0;
 	padding-right: 2px;
