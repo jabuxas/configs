@@ -28,8 +28,8 @@ exec {
     swaync &
     gammastep -t 4500:3500 -l -23.5475:-46.63611 -b 1.0:0.8 &
     alacritty -e tmux &
-    flatpak run com.github.th_ch.youtube_music &
-    brave-bin &
+    /opt/youtube-music/youtube-music &
+    firefox-bin &
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

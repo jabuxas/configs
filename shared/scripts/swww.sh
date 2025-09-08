@@ -37,8 +37,8 @@ if [[ -z "$1" ]]; then
             SECOND=~/pics/wallpapers/ef2.jpg
             ;;
         henna)
-            FIRST=~/pics/wallpapers/123.jpg
-            SECOND=~/pics/wallpapers/123.jpg
+            FIRST=~/pics/wallpapers/wallhaven-5yw7d8.jpg
+            SECOND=~/pics/wallpapers/wallhaven-5yw7d8.jpg
             ;;
         wal)
             FIRST=$(<~/.cache/wal/wal)

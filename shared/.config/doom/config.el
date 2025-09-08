@@ -77,7 +77,8 @@
 ;;     ))
 
 ;; (setq! doom-theme 'doom-oksolar-dark)
-(setq! doom-theme 'doom-henna)
+;; (setq! doom-theme 'doom-henna)
+(setq! doom-theme 'doom-monokai-spectrum)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -576,3 +577,15 @@
   (add-hook hook #'lsp))
 
 (rainbow-mode 1)
+
+(map!
+ :nvi "C-c C-o C-a" #'copilot-chat-add-current-buffer
+ :nvi "C-c C-o C-e" #'copilot-chat-explain
+ :nvi "C-c C-o C-r" #'copilot-chat-review
+ :nvi "C-c C-o C-d" #'copilot-chat-doc
+ :nvi "C-c C-o C-o" #'copilot-chat-optimize
+ :nvi "C-c C-o C-f" #'copilot-chat-fix
+ :nvi "C-c C-o C-i" #'copilot-chat-goto-input
+ :nvi "C-c C-o C-c" #'copilot-chat-display
+ :nvi "C-c C-o C-k" #'copilot-chat-kill-instance
+ :nvi "C-c C-o C-y" #'copilot-chat-copy-code-at-point)

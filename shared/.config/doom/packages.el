@@ -70,3 +70,5 @@
 
 (package! glab)
 ;; (package! shanty-themes)
+
+(package! copilot-chat)
