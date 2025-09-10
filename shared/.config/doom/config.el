@@ -589,3 +589,8 @@
  :nvi "C-c C-o C-c" #'copilot-chat-display
  :nvi "C-c C-o C-k" #'copilot-chat-kill-instance
  :nvi "C-c C-o C-y" #'copilot-chat-copy-code-at-point)
+
+(after! lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]node_modules\\'")
+  (setq lsp-file-watch-threshold 2000))
