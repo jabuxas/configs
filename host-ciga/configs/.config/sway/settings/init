@@ -17,9 +17,9 @@ exec {
     rm -rf ~/tmp/*
 
     swayidle -w \
-         timeout 300 'swaylock -f --image ~/pics/wallpapers/hennium.png' \
+         timeout 300 'hyprlock' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f --image ~/pics/wallpapers/hennium.png'
+         before-sleep 'hyprlock'
 
     blueman-applet &
     flatpak run com.mattermost.Desktop &
