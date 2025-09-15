@@ -22,31 +22,46 @@ font pango:Terminess Nerd Font 12
 
 include ~/.config/sway/shared.conf
 
-set $background #21272e
-set $foreground #f8f8f0
+set $background #222222
+set $foreground #f7f1ff
 
-set $color0  #181A1F
-set $color1  #e74c3c
-set $color2  #53df83
-set $color3  #9cd230
-set $color4  #56b6c2
-set $color5  #1abc9c
-set $color6  #30c965
-set $color7  #f8f8f0
+set $color0  #131313
+set $color1  #fc618d
+set $color2  #7bd88f
+set $color3  #fce566
+set $color4  #948ae3
+set $color5  #fd9353
+set $color6  #5ad4e6
+set $color7  #f7f1ff
 
-set $color8  #737c8c
-set $color9  #ff6b5a
-set $color10 #6cf89b
-set $color11 #b8e639
-set $color12 #7fd9e5
-set $color13 #2fe2c2
-set $color14 #53df83
+set $color8  #191919
+set $color9  #fc618d
+set $color10 #7bd88f
+set $color11 #fce566
+set $color12 #948ae3
+set $color13 #fd9353
+set $color14 #5ad4e6
 set $color15 #ffffff
 
-
-client.unfocused         $color0 $background $foreground $color7 $color2
-client.focused           $color10 $color0 $foreground $color7 $color2
-client.focused_tab_title $color4 $background $foreground $color7 $color2
+client.unfocused         $color0 $background $foreground $color7 $color5
+client.focused           $color10 $color0 $foreground $color7 $color5
+client.focused_tab_title $color4 $background $foreground $color7 $color5
 client.focused_inactive  $color10 $background $foreground $color7 $color0
+
+blur enable
+blur_passes 3
+blur_radius 5
+blur_noise 0.3
+blur_xray disable
+
+shadows enable
+
+# layer_effects "waybar" {
+#   shadows enable
+# } 
+
+default_dim_inactive 0.15
+dim_inactive_colors.unfocused #000000FF
+dim_inactive_colors.urgent #900000FF
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

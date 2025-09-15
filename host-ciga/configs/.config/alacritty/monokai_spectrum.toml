@@ -1,0 +1,27 @@
+[colors.primary]
+background = "#222222" # bg
+foreground = "#f7f1ff" # fg
+
+[colors.normal]
+black   = "#363537" # term-color-black (base3)
+red     = "#fc618d" # term-color-red
+green   = "#7bd88f" # term-color-green
+yellow  = "#fce566" # term-color-yellow
+blue    = "#5ad4e6" # term-color-blue (cyan in theme)
+magenta = "#fc618d" # term-color-magenta (red in theme)
+cyan    = "#948ae3" # term-color-cyan (violet in theme)
+white   = "#f7f1ff" # term-color-white
+
+[colors.bright]
+black   = "#525053" # base4
+red     = "#fd9353" # orange
+green   = "#7bd88f" # same green (no distinct bright version)
+yellow  = "#fce566" # same yellow
+blue    = "#948ae3" # violet, to contrast with cyan normal
+magenta = "#fd9353" # orange again, keeps warm spectrum
+cyan    = "#5ad4e6" # same cyan
+white   = "#ffffff" # base8
+
+[colors.cursor]
+text   = "#222222"
+cursor = "#f7f1ff"

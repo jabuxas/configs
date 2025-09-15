@@ -23,6 +23,7 @@ if status is-interactive
     abbr -a cb "~/repos/cports/cbuild"
     abbr -a g "git"
     alias ls="bash ~/scripts/elash.sh"
+    alias ipa="curl ipinfo.io && echo -e '\n' && curl ifconfig.me"
     abbr -a l "ls -lah"
     abbr -a v "nvim"
     abbr -a hr "date +'%Hh:%M, %d-%m-%Y'"

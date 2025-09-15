@@ -1,7 +1,7 @@
 
 [window]
 
-opacity = 0.95
+opacity = 0.90
 padding.x = 10
 # padding.y = 10
 decorations = "Full"
@@ -50,4 +50,4 @@ bindings = [
 # I put the file alacritty.toml in $HOME/.config/alacritty. However it can be kept anywhere among the places mentioned in
 # https://github.com/alacritty/alacritty/tree/master#configuration
 
-import = ["~/.config/alacritty/henna.toml"]
+import = ["~/.config/alacritty/monokai_spectrum.toml"]
