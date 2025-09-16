@@ -1,6 +1,5 @@
 /* @import url("file:///home/lucas/.cache/wal/colors-waybar.css"); */
 
-
 @define-color foreground #f7f1ff;
 @define-color background #222222;
 
@@ -46,20 +45,17 @@
 
 #workspaces button {
 	color: @color5;
-	/* Was purplish #babbf1 */
 	border-radius: 5px;
 	padding: 0.4rem;
 }
 
 #workspaces button.active {
 	color: @color6;
-	/* Was cyanish #99d1db */
 	border-radius: 5px;
 }
 
 #workspaces button:hover {
 	color: @foreground;
-	/* Was bluish #85c1dc */
 	border-radius: 5px;
 }
 
@@ -81,72 +77,63 @@
 	border-radius: 0px 5px 5px 0px;
 }
 
-#memory {
-	border-radius: 0px 5px 5px 0px;
-}
-
 #clock {
 	color: @color4;
-	/* Was blue #8caaee */
 	border-radius: 5px;
 	margin-right: 1rem;
 }
 
 #battery {
 	color: @color2;
-	/* Was green #a6d189 */
 }
 
 #power-profiles-daemon {
 	color: @color4;
-	/* Was green #a6d189 */
 }
 
 #battery.charging {
 	color: @color2;
-	/* Was green #a6d189 */
 }
 
 #battery.warning:not(.charging) {
 	color: @color1;
-	/* Was red #e78284 */
 }
 
 #backlight {
 	color: @color3;
-	/* Was yellow #e5c890 */
 }
 
 #backlight,
-#battery,
-#cpu, #power-profiles-daemon {
+#network,
+#cpu,
+#power-profiles-daemon {
 	border-radius: 0;
 }
 
 #pulseaudio {
 	color: @color5;
-	/* Was pink/magenta #ea999c */
 	border-radius: 5px 0px 0px 5%;
 	margin-left: 1rem;
 }
 
+#network {
+	border-radius: 5px 0px 0px 5%;
+}
+
 #custom-music {
 	color: @color6;
-	/* Was purple #ca9ee6 */
 	border-radius: 5px;
 }
 
 #custom-lock {
 	border-radius: 5px 0px 0px 5px;
 	color: @foreground;
-	/* Was purplish #babbf1 */
 }
 
 #custom-power {
 	margin-right: 1rem;
 	border-radius: 0px 5px 5px 0px;
 	color: @color1;
-	/* Was red #e78284 */
 }
 
 #tray {

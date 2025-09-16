@@ -1,6 +1,6 @@
 set $gnome-schema org.gnome.desktop.interface
 exec {
-    gsettings set $gnome-schema gtk-theme "Sunrise-Dark"
+    gsettings set $gnome-schema gtk-theme "Materia-dark-compact"
     gsettings set $gnome-schema icon-theme "Reversal-black-dark"
     gsettings set $gnome-schema cursor-theme 'Simp1e-Adw'
     gsettings set $gnome-schema font-name 'Terminess Nerd Font 12'
@@ -16,10 +16,7 @@ exec {
 
     rm -rf ~/tmp/*
 
-    swayidle -w \
-         timeout 300 'hyprlock' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'hyprlock'
+    hypridle &
 
     blueman-applet &
     flatpak run com.mattermost.Desktop &

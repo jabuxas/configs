@@ -8,6 +8,7 @@ for_window [app_id="WebCord"] move to workspace 2
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 # for_window [app_id="firefox"] move to workspace 1
 for_window [app_id="Alacritty"] move to workspace 3
+for_window [app_id="org.pulseaudio.pavucontrol"] floating on, move position cursor, move down 50
 
 # xwayland
 for_window [class="Nsxiv"] floating enable

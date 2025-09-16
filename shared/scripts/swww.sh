@@ -39,6 +39,9 @@ if [[ -z "$1" ]]; then
         henna)
             FIRST=~/pics/wallpapers/wallhaven-5yw7d8.jpg
             SECOND=~/pics/wallpapers/wallhaven-5yw7d8.jpg
+
+            # FIRST=~/pics/wallpapers/diabao.jpg
+            # SECOND=~/pics/wallpapers/diabao.jpg
             ;;
         wal)
             FIRST=$(<~/.cache/wal/wal)
