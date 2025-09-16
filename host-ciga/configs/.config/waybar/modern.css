@@ -1,25 +1,22 @@
 /* @import url("file:///home/lucas/.cache/wal/colors-waybar.css"); */
-
-@define-color foreground #f7f1ff;
-@define-color background #222222;
-
-@define-color color0     #131313; /* black   */
-@define-color color1     #fc618d; /* red     */
-@define-color color2     #7bd88f; /* green   */
-@define-color color3     #fce566; /* yellow  */
-@define-color color4     #948ae3; /* blue    */
-@define-color color5     #fd9353; /* orange  */
-@define-color color6     #5ad4e6; /* cyan    */
-@define-color color7     #f7f1ff; /* white   */
-
-@define-color color8     #191919; /* bright black */
-@define-color color9     #fc618d; /* bright red   */
-@define-color color10    #7bd88f; /* bright green */
-@define-color color11    #fce566; /* bright yellow*/
-@define-color color12    #948ae3; /* bright blue  */
-@define-color color13    #fd9353; /* bright magenta/orange */
-@define-color color14    #5ad4e6; /* bright cyan  */
-@define-color color15    #ffffff; /* bright white */
+@define-color foreground     #d4d4d8; /* muted light gray */
+@define-color background     #18181b; /* very dark gray, almost black */
+@define-color color0         #09090b; /* deeper black */
+@define-color color1         #7f1d1d; /* dark muted red */
+@define-color color2         #71717a; /* medium gray */
+@define-color color3         #a1a1aa; /* lighter gray */
+@define-color color4         #52525b; /* dark gray */
+@define-color color5         #3f3f46; /* darker gray */
+@define-color color6         #e4e4e7; /* very light gray */
+@define-color color7         #a1a1aa; /* light gray */
+@define-color color8         #27272a; /* dark gray */
+@define-color color9         #991b1b; /* slightly brighter muted red */
+@define-color color10        #71717a; /* medium gray */
+@define-color color11        #a1a1aa; /* light gray */
+@define-color color12        #52525b; /* dark gray */
+@define-color color13        #3f3f46; /* darker gray */
+@define-color color14        #6b7280; /* blue-gray */
+@define-color color15        #f4f4f5; /* near white */
 
 * {
 	font-family: Terminess Nerd Font;
@@ -44,18 +41,18 @@
 }
 
 #workspaces button {
-	color: @color5;
+	color: @color2; /* medium gray for inactive */
 	border-radius: 5px;
 	padding: 0.4rem;
 }
 
 #workspaces button.active {
-	color: @color6;
+	color: @foreground; /* light gray for active */
 	border-radius: 5px;
 }
 
 #workspaces button:hover {
-	color: @foreground;
+	color: @color6; /* very light gray on hover */
 	border-radius: 5px;
 }
 
@@ -78,29 +75,29 @@
 }
 
 #clock {
-	color: @color4;
+	color: @color6; /* very light gray for time */
 	border-radius: 5px;
 	margin-right: 1rem;
 }
 
 #battery {
-	color: @color2;
+	color: @color3; /* light gray for battery */
 }
 
 #power-profiles-daemon {
-	color: @color4;
+	color: @color2; /* medium gray */
 }
 
 #battery.charging {
-	color: @color2;
+	color: @foreground; /* brighter when charging */
 }
 
 #battery.warning:not(.charging) {
-	color: @color1;
+	color: @color1; /* muted red for warnings */
 }
 
 #backlight {
-	color: @color3;
+	color: @color3; /* light gray for brightness */
 }
 
 #backlight,
@@ -111,29 +108,38 @@
 }
 
 #pulseaudio {
-	color: @color5;
+	color: @color2; /* medium gray for audio */
 	border-radius: 5px 0px 0px 5%;
 	margin-left: 1rem;
 }
 
 #network {
+	color: @color3; /* light gray for network */
 	border-radius: 5px 0px 0px 5%;
 }
 
+#cpu {
+	color: @color14; /* blue-gray for CPU */
+}
+
+#memory {
+	color: @color2; /* medium gray for memory */
+}
+
 #custom-music {
-	color: @color6;
+	color: @color3; /* light gray for music */
 	border-radius: 5px;
 }
 
 #custom-lock {
 	border-radius: 5px 0px 0px 5px;
-	color: @foreground;
+	color: @color2; /* medium gray */
 }
 
 #custom-power {
 	margin-right: 1rem;
 	border-radius: 0px 5px 5px 0px;
-	color: @color1;
+	color: @color1; /* muted red for power */
 }
 
 #tray {

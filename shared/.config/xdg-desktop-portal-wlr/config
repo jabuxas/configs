@@ -1,3 +1,7 @@
 [screencast]
+output_name=eDP-1
+max_fps=144
+chooser_type=none
+force_mod_linear=true
 exec_before=swaync-client --inhibitor-add "xdg-desktop-portal-wlr"
 exec_after=swaync-client --inhibitor-remove "xdg-desktop-portal-wlr"

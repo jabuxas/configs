@@ -1,0 +1,77 @@
+# Monochromatic Alacritty Theme
+# Matches the apocalyptic background aesthetic
+
+[colors.primary]
+background = "#18181b"  # very dark gray, almost black
+foreground = "#d4d4d8"  # muted light gray
+dim_foreground = "#a1a1aa"  # dimmed light gray
+bright_foreground = "#f4f4f5"  # near white
+
+[colors.cursor]
+text = "#18181b"  # dark background for cursor text
+cursor = "#d4d4d8"  # light gray cursor
+
+[colors.vi_mode_cursor]
+text = "#18181b"
+cursor = "#a1a1aa"
+
+[colors.search.matches]
+foreground = "#18181b"
+background = "#a1a1aa"
+
+[colors.search.focused_match]
+foreground = "#18181b"
+background = "#d4d4d8"
+
+[colors.footer_bar]
+foreground = "#d4d4d8"
+background = "#27272a"
+
+[colors.hints.start]
+foreground = "#18181b"
+background = "#a1a1aa"
+
+[colors.hints.end]
+foreground = "#18181b"
+background = "#d4d4d8"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.selection]
+text = "#18181b"
+background = "#52525b"
+
+# Normal colors
+[colors.normal]
+black = "#09090b"     # deeper black
+red = "#7f1d1d"       # dark muted red
+green = "#71717a"     # medium gray (as green replacement)
+yellow = "#a1a1aa"    # lighter gray (as yellow replacement)
+blue = "#52525b"      # dark gray (as blue replacement)
+magenta = "#3f3f46"   # darker gray (as magenta replacement)
+cyan = "#6b7280"      # blue-gray (as cyan replacement)
+white = "#e4e4e7"     # very light gray
+
+# Bright colors
+[colors.bright]
+black = "#27272a"     # dark gray
+red = "#991b1b"       # slightly brighter muted red
+green = "#71717a"     # medium gray
+yellow = "#a1a1aa"    # light gray
+blue = "#52525b"      # dark gray
+magenta = "#3f3f46"   # darker gray
+cyan = "#6b7280"      # blue-gray
+white = "#f4f4f5"     # near white
+
+# Dim colors (optional, for when dim is enabled)
+[colors.dim]
+black = "#09090b"
+red = "#5c1414"       # even more muted red
+green = "#525258"     # dimmed medium gray
+yellow = "#71717a"    # dimmed gray
+blue = "#3c3c42"      # dimmed dark gray
+magenta = "#2d2d32"   # dimmed darker gray
+cyan = "#4b5563"      # dimmed blue-gray
+white = "#a1a1aa"     # dimmed light gray

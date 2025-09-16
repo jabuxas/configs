@@ -22,30 +22,33 @@ font pango:Terminess Nerd Font 12
 
 include ~/.config/sway/shared.conf
 
-set $background #222222
-set $foreground #f7f1ff
 
-set $color0  #131313
-set $color1  #fc618d
-set $color2  #7bd88f
-set $color3  #fce566
-set $color4  #948ae3
-set $color5  #fd9353
-set $color6  #5ad4e6
-set $color7  #f7f1ff
+set $background  #18181b
+set $foreground  #d4d4d8
 
-set $color8  #191919
-set $color9  #fc618d
-set $color10 #7bd88f
-set $color11 #fce566
-set $color12 #948ae3
-set $color13 #fd9353
-set $color14 #5ad4e6
-set $color15 #ffffff
 
-client.unfocused         $color0 $background $foreground $color7 $color5
-client.focused           $color10 $color0 $foreground $color7 $color5
-client.focused_tab_title $color4 $background $foreground $color7 $color5
+set $color0   #09090b
+set $color1   #7f1d1d
+set $color2   #71717a
+set $color3   #a1a1aa
+set $color4   #52525b
+set $color5   #3f3f46
+set $color6   #6b7280
+set $color7   #e4e4e7
+
+
+set $color8   #27272a
+set $color9   #991b1b
+set $color10  #71717a
+set $color11  #a1a1aa
+set $color12  #52525b
+set $color13  #3f3f46
+set $color14  #6b7280
+set $color15  #f4f4f5
+
+client.unfocused         $color0 $background $foreground $color7 $color15
+client.focused           $color9 $color0 $foreground $color7 $color15
+client.focused_tab_title $color4 $background $foreground $color7 $color15
 client.focused_inactive  $color10 $background $foreground $color7 $color0
 
 blur enable
