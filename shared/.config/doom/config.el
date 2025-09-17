@@ -334,7 +334,9 @@
                '("AUTO" "babel" t ("pdflatex" "xelatex" "lualatex"))))
 
 ;; set default project path
-(setq projectile-project-search-path '(("~/proprietary/" . 2)))
+(setq! projectile-project-search-path '("/srv" "/git" ("/ifsc" . 1)))
+(setq! projectile-auto-cleanup-known-projects t)
+(setq! projectile-enable-caching nil)
 
 (after! hydra
   (defun get-project-compile-commands ()
@@ -441,11 +443,11 @@
 
 (use-package treesit
   :mode (("\\.tsx\\'" . tsx-ts-mode)
-         ("\\.js\\'"  . typescript-ts-mode)
-         ("\\.mjs\\'" . typescript-ts-mode)
-         ("\\.mts\\'" . typescript-ts-mode)
-         ("\\.cjs\\'" . typescript-ts-mode)
-         ("\\.ts\\'"  . typescript-ts-mode)
+         ("\\.js\\'"  . typescript-mode)
+         ("\\.mjs\\'" . typescript-mode)
+         ("\\.mts\\'" . typescript-mode)
+         ("\\.cjs\\'" . typescript-mode)
+         ("\\.ts\\'"  . typescript-mode)
          ("\\.jsx\\'" . tsx-ts-mode)
          ("\\.json\\'" .  json-ts-mode)
          ("\\.Dockerfile\\'" . dockerfile-ts-mode)
