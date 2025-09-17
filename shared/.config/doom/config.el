@@ -1,4 +1,4 @@
-                                ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq lsp-use-plists t)
 (setq shell-file-name (executable-find "bash"))
 (setq-default term-shell (executable-find "fish"))
@@ -18,7 +18,7 @@
 ;;   presentations or streaming.
 ;; - `doom-symbol-font' -- for symbols
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-(setq doom-font "Terminess Nerd Font-20")
+(setq doom-font "Terminess Nerd Font-18")
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -193,9 +193,8 @@
 
 (defun kb/toggle-window-transparency (arg)
   "Toggle the value of `alpha-background'.
-
-                                Toggles between 100 and 85 by default.
-                                If called with ARG (via C-u or numeric input), asks the user which value to set."
+        Toggles between 100 and 85 by default.
+        If called with ARG (via C-u or numeric input), asks the user which value to set."
   (interactive "P")
   (let ((transparency
          (cond
@@ -442,13 +441,13 @@
 ;;       `(minimap-active-region-background :background ,blend-color))))
 
 (use-package treesit
-  :mode (("\\.tsx\\'" . tsx-ts-mode)
+  :mode (("\\.tsx\\'" . typescript-tsx-mode)
          ("\\.js\\'"  . typescript-mode)
          ("\\.mjs\\'" . typescript-mode)
          ("\\.mts\\'" . typescript-mode)
          ("\\.cjs\\'" . typescript-mode)
          ("\\.ts\\'"  . typescript-mode)
-         ("\\.jsx\\'" . tsx-ts-mode)
+         ("\\.jsx\\'" . typescript-tsx-mode)
          ("\\.json\\'" .  json-ts-mode)
          ("\\.Dockerfile\\'" . dockerfile-ts-mode)
          ("\\.prisma\\'" . prisma-ts-mode)

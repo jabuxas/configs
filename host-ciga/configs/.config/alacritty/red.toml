@@ -1,5 +1,5 @@
 # Monochromatic Alacritty Theme
-# Matches the apocalyptic background aesthetic
+# Original dark theme with much brighter path colors
 
 [colors.primary]
 background = "#18181b"  # very dark gray, almost black
@@ -43,35 +43,35 @@ background = "None"
 text = "#18181b"
 background = "#52525b"
 
-# Normal colors
+# Normal colors - much brighter path colors
 [colors.normal]
 black = "#09090b"     # deeper black
 red = "#7f1d1d"       # dark muted red
-green = "#71717a"     # medium gray (as green replacement)
-yellow = "#a1a1aa"    # lighter gray (as yellow replacement)
-blue = "#52525b"      # dark gray (as blue replacement)
-magenta = "#3f3f46"   # darker gray (as magenta replacement)
-cyan = "#6b7280"      # blue-gray (as cyan replacement)
+green = "#a1a1aa"     # much brighter for paths/directories
+yellow = "#d4d4d8"    # much brighter gray
+blue = "#a1a1aa"      # much brighter for directories
+magenta = "#71717a"   # brighter gray
+cyan = "#d4d4d8"      # much brighter for files/paths
 white = "#e4e4e7"     # very light gray
 
-# Bright colors
+# Bright colors - very bright path colors
 [colors.bright]
 black = "#27272a"     # dark gray
 red = "#991b1b"       # slightly brighter muted red
-green = "#71717a"     # medium gray
-yellow = "#a1a1aa"    # light gray
-blue = "#52525b"      # dark gray
-magenta = "#3f3f46"   # darker gray
-cyan = "#6b7280"      # blue-gray
+green = "#d4d4d8"     # very bright for paths
+yellow = "#f4f4f5"    # very bright gray
+blue = "#d4d4d8"      # very bright for directories
+magenta = "#a1a1aa"   # brighter gray
+cyan = "#f4f4f5"      # very bright for files/paths
 white = "#f4f4f5"     # near white
 
-# Dim colors (optional, for when dim is enabled)
+# Dim colors - brighter dim colors for paths
 [colors.dim]
 black = "#09090b"
 red = "#5c1414"       # even more muted red
-green = "#525258"     # dimmed medium gray
-yellow = "#71717a"    # dimmed gray
-blue = "#3c3c42"      # dimmed dark gray
-magenta = "#2d2d32"   # dimmed darker gray
-cyan = "#4b5563"      # dimmed blue-gray
+green = "#71717a"     # brighter for paths
+yellow = "#a1a1aa"    # brighter gray
+blue = "#71717a"      # brighter for directories
+magenta = "#52525b"   # brighter gray
+cyan = "#a1a1aa"      # brighter for files/paths
 white = "#a1a1aa"     # dimmed light gray
