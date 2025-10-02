@@ -56,6 +56,7 @@ if [ $(hostname -s) == gu ]; then
     SWWW_ARGS="--format xrgb"
 fi
 
+sleep 2
 swww-daemon $SWWW_ARGS &
 sleep 0.3
 

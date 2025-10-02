@@ -16,8 +16,7 @@ set -gx FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat 
 
 if test -z "$XDG_VTNR"; set XDG_VTNR 0; end
 if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
-    set -gx XDG_CURRENT_DESKTOP "sway"
-    sleep 2 && sway
+    sleep 2 && exec niri-session &> ~/tmp/niri.log
 end
 
 if status is-interactive
