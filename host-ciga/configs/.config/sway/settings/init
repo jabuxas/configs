@@ -13,6 +13,7 @@ exec {
     lxqt-policykit-agent &
 
     ~/scripts/swww.sh &
+    ~/scripts/senpai.sh &
 
     rm -rf ~/tmp/*
 
@@ -27,6 +28,7 @@ exec {
     alacritty -e tmux &
     /opt/youtube-music/youtube-music &
     firefox-bin &
+
 } 
 
 # vim: ts=2 sts=2 sw=2 ft=swayconfig

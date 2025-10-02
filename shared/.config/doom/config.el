@@ -18,7 +18,7 @@
 ;;   presentations or streaming.
 ;; - `doom-symbol-font' -- for symbols
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-(setq doom-font "Terminess Nerd Font-18")
+(setq doom-font "Terminess Nerd Font-20")
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -78,7 +78,12 @@
 
 ;; (setq! doom-theme 'doom-oksolar-dark)
 ;; (setq! doom-theme 'doom-henna)
+
+;; dark theme
 (setq! doom-theme 'doom-monokai-spectrum)
+
+;; light theme
+;; (setq! doom-theme 'doom-opera-light)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.

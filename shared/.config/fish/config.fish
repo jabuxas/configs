@@ -9,6 +9,7 @@ source "$HOME/.cargo/env.fish"
 # source "$HOME/.cache/wal/colors.fish"
 
 set -gx GPG_TTY (tty)
+set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set -gx EDITOR "nvim"
 
 set -gx FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
@@ -20,20 +21,18 @@ if test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" -eq 1
 end
 
 if status is-interactive
-    abbr -a cb "~/repos/cports/cbuild"
-    abbr -a g "git"
     alias ls="bash ~/scripts/elash.sh"
-    alias ipa="curl ipinfo.io && echo -e '\n' && curl ifconfig.me"
+    alias cat="bat"
+    alias please="sudo"
+
+    abbr -a g "git"
     abbr -a l "ls -lah"
     abbr -a v "nvim"
-    abbr -a hr "date +'%Hh:%M, %d-%m-%Y'"
+    abbr -a now "date +'%Hh:%M, %d-%m-%Y'"
     abbr -a ff "fastfetch"
     abbr -a feh "imv"
     abbr -a lg "lazygit"
-    abbr -a cpr "cd ~/repos/cports-docker && docker compose run --build --rm cports"
     abbr -a cop "wl-copy"
-    abbr -a cat "bat"
-    abbr -a sus "systemctl suspend"
     abbr -a dom "docker compose -p "ciga-diario" -f CIGA-DIARIO-DEV-LOCALHOST.yml"
     abbr -a dcs "docker compose"
     abbr -a emackie "emacsclient --socket-name=/run/user/$(id -u)/emacs/server -nw"
@@ -42,27 +41,21 @@ if status is-interactive
     abbr -a .. 'cd ..'
     abbr -a ... 'cd ../..'
     abbr -a .... 'cd ../../..'
+    abbr -a c "clear"
 
     abbr -a calc "bc"
-    abbr -a please "sudo"
     abbr -a tokei "tokei --sort lines"
-
     abbr -a protontricks 'flatpak run com.github.Matoking.protontricks'
     abbr -a protontricks-launch 'flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
-
-    abbr -a generate_token "curl -u jabuxas https://paste.jabuxas.com | wl-copy"
-
-    abbr -a deck "pkill steam; sleep 3; gamescope --mangoapp -e -- env STEAM_RUNTIME=1 steam -tenfoot -steamos3"
     abbr -a df "dysk"
-
-    abbr -a rst "sudo ip link set enp4s0 down && sudo ip link set enp4s0 up && sudo systemctl restart NetworkManager && sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
-
     abbr -a poweroff "systemctl poweroff"
     abbr -a reboot "systemctl reboot"
     abbr -a hi "systemctl hibernate"
+    abbr -a sus "systemctl suspend"
 
     abbr -a '!*' --position anywhere --function last_history_arguments
     abbr -a !! --position anywhere --function last_history_item
+
 
     bind \cH backward-kill-word 
 end
@@ -143,8 +136,8 @@ function last_history_arguments
 end
 
 function switch_git_personal
-    git config user.name "jab"
-    git config user.email "jabuxas@proton.me"
+    git config user.name "lucas"
+    git config user.email "lucas@jabuxas.com"
 end
 
 function switch_git_work
@@ -172,6 +165,37 @@ function fish_prompt
     fish_write magenta (prompt_pwd --full-length-dirs=99999)
 
     fish_write normal "\n := "
+end
+
+function yubigpg
+    gpgconf --kill gpg-agent
+    gpgconf --launch gpg-agent
+    set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+    ssh-add -L
+end
+
+function yubifido
+    eval (ssh-agent -c)
+    ssh-add ~/.ssh/id_ed25519_sk
+end
+
+function myip
+    curl ipinfo.io
+    echo
+    curl ifconfig.me
+end
+
+function rst
+    sudo ip link set enp4s0 down
+    sudo ip link set enp4s0 up
+    sudo systemctl restart NetworkManager
+    sudo ntpdate -b -u 0.gentoo.pool.ntp.org
+end
+
+function deck
+    pkill steam
+    sleep 3
+    gamescope --mangoapp -e -- env STEAM_RUNTIME=1 steam -tenfoot -steamos3
 end
 
 # bun
