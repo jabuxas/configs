@@ -80,7 +80,8 @@
 ;; (setq! doom-theme 'doom-henna)
 
 ;; dark theme
-(setq! doom-theme 'doom-monokai-spectrum)
+;; (setq! doom-theme 'doom-monokai-spectrum)
+(setq! doom-theme 'doom-nord)
 
 ;; light theme
 ;; (setq! doom-theme 'doom-opera-light)

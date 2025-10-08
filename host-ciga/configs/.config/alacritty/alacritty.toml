@@ -1,6 +1,6 @@
 [window]
 
-opacity = 0.90
+opacity = 1
 padding.x = 10
 # padding.y = 10
 decorations = "Full"
@@ -49,4 +49,4 @@ bindings = [
 # I put the file alacritty.toml in $HOME/.config/alacritty. However it can be kept anywhere among the places mentioned in
 # https://github.com/alacritty/alacritty/tree/master#configuration
 
-import = ["~/.config/alacritty/red.toml"]
+import = ["~/.config/alacritty/nord.toml"]

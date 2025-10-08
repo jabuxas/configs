@@ -63,9 +63,9 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-        active-gradient from="#e4e4e7" to="#52525b" angle=45
+        active-gradient from="#81a1c1" to="#e5e9f0" angle=45
         urgent-color "#991b1b"
-        width 2
+        width 3
     }
 
     border {
@@ -119,7 +119,7 @@ spawn-at-startup "/opt/youtube-music/youtube-music" "--ozone-platform-hint=auto"
 spawn-at-startup "firefox-bin"
 spawn-at-startup "flatpak" "run" "com.mattermost.Desktop"
 spawn-at-startup "flatpak" "run" "com.bitwarden.desktop"
-spawn-at-startup "rm" "-rf" "~/tmp"
+spawn-at-startup "rm" "-rf" "~/tmp/*"
 spawn-at-startup "hypridle"
 spawn-at-startup "~/scripts/swww.sh"
 spawn-at-startup "~/scripts/senpai.sh"

@@ -12,6 +12,10 @@ if [[ -z "$1" ]]; then
             FIRST=~/pics/wallpapers/bm5.jpg
             SECOND=~/pics/wallpapers/bm3.png
             ;;
+        nord)
+            FIRST=~/pics/wallpapers/feitu.jpg
+            SECOND=~/pics/wallpapers/samba.jpg
+            ;;
         rose)
             SECOND=~/pics/flower.jpg
             FIRST=~/pics/wallpapers/rose1.jpg
