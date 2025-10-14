@@ -81,10 +81,10 @@
 
 ;; dark theme
 ;; (setq! doom-theme 'doom-monokai-spectrum)
-(setq! doom-theme 'doom-nord)
+;; (setq! doom-theme 'doom-nord)
 
 ;; light theme
-;; (setq! doom-theme 'doom-opera-light)
+(setq! doom-theme 'doom-opera-light)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.

@@ -124,7 +124,7 @@ spawn-at-startup "hypridle"
 spawn-at-startup "~/scripts/swww.sh"
 spawn-at-startup "~/scripts/senpai.sh"
 spawn-at-startup "emacs"
-spawn-at-startup "sudo" "nvidia-smi" "-lgc" "646,1785"
+spawn-at-startup "sudo" "nvidia-smi" "-lgc" "1000,1785"
 
 environment {
     QT_QPA_PLATFORM "wayland"
@@ -456,14 +456,14 @@ binds {
     Print { spawn "~/scripts/way-print.sh" "p"; }
     Shift+Print { spawn "~/scripts/way-print.sh" "s"; }
     Mod+Print { spawn "~/scripts/way-print.sh" "t"; }
-    Control+Shift+Print { spawn "~/scripts/way-print.sh" "m"; }
-    Control+Print { spawn "~/scripts/way-print.sh" "cw"; }
+    Control+Shift+Print { screenshot-screen write-to-disk=false; }
+    Control+Print { screenshot-window write-to-disk=false; }
 
     Menu { spawn "~/scripts/way-print.sh" "p"; }
     Shift+Menu { spawn "~/scripts/way-print.sh" "s"; }
     Mod+Menu { spawn "~/scripts/way-print.sh" "t"; }
-    Control+Shift+Menu { spawn "~/scripts/way-print.sh" "m"; }
-    Control+Menu { spawn "~/scripts/way-print.sh" "cw"; }
+    Control+Shift+Menu { screenshot-screen write-to-disk=false; }
+    Control+Menu { screenshot-window write-to-disk=false; }
 
 
     // Applications such as remote-desktop clients and software KVM switches may
