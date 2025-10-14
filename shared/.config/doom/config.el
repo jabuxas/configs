@@ -601,3 +601,8 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]node_modules\\'")
   (setq lsp-file-watch-threshold 2000))
+
+(use-package! zone
+  :defer t
+  :config
+  (zone-when-idle 300))
