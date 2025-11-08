@@ -65,6 +65,7 @@ swww-daemon $SWWW_ARGS &
 sleep 0.3
 
 swww img -o HDMI-A-1 $FIRST
+swww img -o HDMI-A-2 $FIRST
 swww img -o eDP-1 $SECOND
 swww img -o DP-3 $SECOND
 
