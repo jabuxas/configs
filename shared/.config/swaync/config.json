@@ -1,64 +1,105 @@
 {
-  "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "right",
-  "positionY": "top",
-  "cssPriority": "user",
-  "control-center-margin-top": 8,
-  "control-center-margin-bottom": 0,
-  "control-center-margin-right": 8,
-  "control-center-margin-left": 0,
-  "control-center-width": 320,
-  "control-center-height": 600,
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "positionX": "right",
+    "positionY": "top",
+    "cssPriority": "user",
+    "control-center-width": 450,
+    "fit-to-screen": true,
 
-  "notification-window-width": 350,
-  "notification-icon-size": 30,
-  "notification-body-image-height": 100,
-  "notification-body-image-width": 220,
+    "notification-window-width": 400,
+    "notification-icon-size": 40,
+    "notification-body-image-height": 500,
+    "notification-body-image-width": 500,
+    "notification-inline-replies": true,
+    "notification-2fa-action": false,
 
-  "timeout": 3,
-  "timeout-low": 2,
-  "timeout-critical": 6,
-  "fit-to-screen": false,
+    "timeout": 4,
+    "timeout-low": 4,
+    "timeout-critical": 6,
 
-  "keyboard-shortcuts": true,
-  "image-visibility": "when-available",
-  "transition-time": 200,
-  "hide-on-clear": false,
-  "hide-on-action": true,
-  "script-fail-notify": true,
-  "widgets": ["mpris", "backlight", "volume", "dnd", "title", "notifications" ],
+    "keyboard-shortcuts": true,
+    "image-visibility": "when-available",
+    "transition-time": 200,
+    "hide-on-clear": false,
+    "hide-on-action": false,
+    "script-fail-notify": true,
 
-  "notification-visibility": {
-    "example-name": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Spotify"
+    "widgets": [
+        "mpris",
+        "volume",
+        "backlight",
+        "dnd",
+        "notifications",
+        "buttons-grid"
+    ],
+
+    "widget-config": {
+        "backlight": {
+            "device": "amdgpu_bl0",
+            "label": "󰃠",
+            "slider": true,
+            "min": 10
+        },
+        "volume": {
+            "device": "default",
+            "label": "",
+            "slider": true
+        },
+
+        "dnd": {
+            "text": "Do not disturb"
+        },
+
+        "mpris": {
+            "image-size": 110,
+            "image-radius": 12,
+            "autohide": false,
+            "blacklist": [ "org.mpris.MediaPlayer2.playerctld"]
+        },
+
+        "buttons-grid": {
+            "actions": [
+                {
+                    "label": "",
+                    "type": "toggle",
+                    "active": true,
+                    "command": "sh -c '~/.config/swaync/scripts/toggle_wifi.sh'",
+                    "update-command": "sh -c 'set +e;[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
+                },
+                {
+                    "label": "󰂯",
+                    "type": "toggle",
+                    "active": true,
+                    "command": "sh -c '~/.config/swaync/scripts/toggle_bluetooth.sh'",
+                    "update-command": "sh -c 'set +e;bluetoothctl show | grep -qF Powered:\\ yes && echo true || echo false'"
+                },
+                {
+                    "label": "󰀝",
+                    "type": "toggle",
+                    "active": true,
+                    "command": "sh -c '~/.config/swaync/scripts/toggle_airplanemode.sh'",
+                    "update-command": "sh -c 'set +e;[[ $(nmcli radio wifi) == \"enabled\" ]] || bluetoothctl show | grep -qF Powered:\\ yes && echo false || echo true'"
+                },
+                {
+                    "label": "󰌪",
+                    "type": "toggle",
+                    "command": "bash -c $HOME/.config/swaync/scripts/toggle_powerprofile.sh",
+                    "update-command": "sh -c 'powerprofilesctl get | grep -q \"power-saver\" && echo true || echo false'"
+                },
+                {
+                    "label": "",
+                    "type": "toggle",
+                    "command": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+                    "update-command": "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'Mute: yes' && echo true || echo false"
+                },
+                {
+                  "label": "",
+                  "type": "toggle",
+                  "active": true,
+                  "command": "sh -c '~/.config/swaync/scripts/toggle_hypridle.sh'",
+                  "update-command": "sh -c '~/.config/swaync/scripts/update_hypridle.sh'"
+                }
+            ]
+        }
     }
-  },
-
-  "widget-config": {
-    "title": {
-      "text": " Notifications",
-      "clear-all-button": true,
-      "button-text": ""
-    },
-    "dnd": {
-      "text": " DND"
-    },
-    "mpris": {
-      "image-size": 60,
-      "image-radius": 12,
-      "autohide": true,
-      "loop-carousel": true,
-      "show-album-art": "when-available"
-    },
-    "backlight": {
-      "label": "󰃞 ",
-      "device": "amdgpu_bl1"
-    },
-    "volume": {
-      "label": " ",
-      "show-per-app": true
-    }
-  }
 }
