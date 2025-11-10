@@ -105,11 +105,13 @@ layout {
 
 
 // spawn-at-startup "waybar -c ~/.config/waybar/modern.jsonc -s ~/.config/waybar/modern.css"
+// spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "gtk-theme" "Materia-dark-compact"
+// spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "icon-theme" "Reversal-black-dark"
+// spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "cursor-theme" "Simp1e-Adw"
+// spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-name" "Terminess Nerd Font 12"
+
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "gtk-theme" "Materia-dark-compact"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "icon-theme" "Reversal-black-dark"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "cursor-theme" "Simp1e-Adw"
-spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-name" "Terminess Nerd Font 12"
+
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "DISPLAY"
 spawn-at-startup "lxqt-policykit-agent"
 spawn-at-startup "swaync"
@@ -117,14 +119,12 @@ spawn-at-startup "gammastep" "-t" "4500:3500" "-l" "-23.5475:-46.63611" "-b" "1.
 spawn-at-startup "alacritty" "-e" "tmux"
 spawn-at-startup "/opt/youtube-music/youtube-music" "--ozone-platform-hint=auto"
 spawn-at-startup "firefox-bin"
-spawn-at-startup "flatpak" "run" "com.mattermost.Desktop"
-spawn-at-startup "flatpak" "run" "com.bitwarden.desktop"
-spawn-at-startup "rm" "-rf" "~/tmp/*"
 spawn-at-startup "hypridle"
 spawn-at-startup "~/scripts/swww.sh"
 spawn-at-startup "~/scripts/senpai.sh"
-spawn-at-startup "emacs"
-spawn-at-startup "sudo" "nvidia-smi" "-lgc" "1000,1785"
+spawn-at-startup "~/scripts/battery.sh"
+spawn-at-startup "emacsclient" "-s" "/run/user/1000/emacs/server" "-c"
+spawn-at-startup "sudo" "nvidia-smi" "-lgc" "1000,12002"
 
 environment {
     QT_QPA_PLATFORM "wayland"
@@ -143,7 +143,7 @@ overview {
     zoom 0.75
 }
 
-// xwayland-satellite {}
+xwayland-satellite {}
 
 hotkey-overlay {
     skip-at-startup
@@ -171,6 +171,10 @@ workspace "code" {
 
 workspace "music" {
     open-on-output "eDP-1"
+}
+
+workspace "game" {
+    open-on-output "HDMI-A-1"
 }
 
 
@@ -206,13 +210,37 @@ window-rule {
 window-rule {
     match app-id=r#"steam_app.*"#
     match app-id=r#".*\.exe"#
+    open-on-workspace "game"
     open-maximized true
     variable-refresh-rate true
     default-column-width { proportion 1.0; }
 }
 
 window-rule {
+    match app-id=r#"steam"# title="Steam"
+    default-column-width { proportion 0.7; }
+    open-on-workspace "game"
+}
+
+window-rule {
+    match app-id=r#"steam"# title="Friends List"
+    default-column-width { proportion 0.3; }
+    open-on-workspace "game"
+}
+
+window-rule {
+    match app-id=r#"moe.launcher.the-honkers-railway-launcher"#
+    open-on-workspace "game"
+    open-floating true
+    variable-refresh-rate true
+}
+
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"pavucontrol"#
+    match app-id=r#"blueman"#
+    match app-id=r#"nwg-look"#
+    match app-id=r#"nm-connection-editor"#
     open-floating true
 }
 
@@ -257,7 +285,8 @@ binds {
     Super+Control+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
 
     Mod+B { spawn "firefox-bin"; }
-    Mod+Control+E { spawn "emacs"; }
+    Mod+P { spawn "pavucontrol"; }
+    Mod+Control+E { spawn "emacsclient" "-s" "/run/user/1000/emacs/server" "-c"; }
     Mod+E { spawn "pcmanfm"; }
     Mod+U { spawn "fish" "-c" "heaven"; }
     Mod+F12 { spawn "~/scripts/fuzzel-bluetooth.sh"; }
