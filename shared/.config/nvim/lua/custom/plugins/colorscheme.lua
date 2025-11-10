@@ -152,6 +152,16 @@ elseif fileContent == "wal" then
       vim.cmd.colorscheme("pywal16")
     end,
   }
+elseif fileContent == "nord" then
+  colorscheme = {
+ "gbprod/nord.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nord").setup({})
+      vim.cmd.colorscheme("nord")
+    end,
+  }
 else
   colorscheme = {
     'marko-cerovac/material.nvim',
