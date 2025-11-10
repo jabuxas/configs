@@ -118,6 +118,8 @@ spawn-at-startup "swaync"
 spawn-at-startup "gammastep" "-t" "4500:3500" "-l" "-23.5475:-46.63611" "-b" "1.0:0.8"
 spawn-at-startup "alacritty" "-e" "tmux"
 spawn-at-startup "/opt/youtube-music/youtube-music" "--ozone-platform-hint=auto"
+spawn-at-startup "flatpak" "run" "com.mattermost.Desktop" "--ozone-platform-hint=auto"
+spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
 spawn-at-startup "firefox-bin"
 spawn-at-startup "hypridle"
 spawn-at-startup "~/scripts/swww.sh"
@@ -186,7 +188,8 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id="Mattermost"
+    match at-startup=true app-id=r#"mattermost"#
+    match at-startup=true app-id=r#"discord"#
     open-maximized true
     open-on-workspace "chat"
     default-column-width { proportion 1.0; }
@@ -241,6 +244,7 @@ window-rule {
     match app-id=r#"blueman"#
     match app-id=r#"nwg-look"#
     match app-id=r#"nm-connection-editor"#
+    match app-id=r#"Nautilus"#
     open-floating true
 }
 
@@ -286,8 +290,9 @@ binds {
 
     Mod+B { spawn "firefox-bin"; }
     Mod+P { spawn "pavucontrol"; }
+    Mod+Shift+P { spawn "blueman-manager"; }
     Mod+Control+E { spawn "emacsclient" "-s" "/run/user/1000/emacs/server" "-c"; }
-    Mod+E { spawn "pcmanfm"; }
+    Mod+E { spawn "nautilus"; }
     Mod+U { spawn "fish" "-c" "heaven"; }
     Mod+F12 { spawn "~/scripts/fuzzel-bluetooth.sh"; }
 
@@ -509,5 +514,5 @@ binds {
     Mod+Shift+Q { quit; }
     Ctrl+Alt+Delete { quit; }
 
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Control+P { power-off-monitors; }
 }
