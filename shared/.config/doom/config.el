@@ -209,7 +209,7 @@
           (t (pcase (frame-parameter nil 'alpha-background)
                (90 100)
                (100 90)
-               (_ 95))))))
+               (_ 90))))))
     (set-frame-parameter nil 'alpha-background transparency)
     (message "Transparency set to %s" transparency)))
 

@@ -32,13 +32,9 @@ input {
 }
 
 output "eDP-1" {
-    mode "1920x1080@144"
+    // mode "1920x1080@60.201"
     position x=0 y=0
     variable-refresh-rate on-demand=true
-    
-    // layout {
-    //     always-center-single-column
-    // }
 }
 
 output "HDMI-A-1" {
@@ -126,7 +122,6 @@ spawn-at-startup "~/scripts/swww.sh"
 spawn-at-startup "~/scripts/senpai.sh"
 spawn-at-startup "~/scripts/battery.sh"
 spawn-at-startup "emacsclient" "-s" "/run/user/1000/emacs/server" "-c"
-spawn-at-startup "sudo" "nvidia-smi" "-lgc" "1000,12002"
 
 environment {
     QT_QPA_PLATFORM "wayland"
@@ -291,6 +286,7 @@ binds {
     Mod+B { spawn "firefox-bin"; }
     Mod+P { spawn "pavucontrol"; }
     Mod+Shift+P { spawn "blueman-manager"; }
+    Mod+Shift+S { spawn "steam"; }
     Mod+Control+E { spawn "emacsclient" "-s" "/run/user/1000/emacs/server" "-c"; }
     Mod+E { spawn "nautilus"; }
     Mod+U { spawn "fish" "-c" "heaven"; }
@@ -515,4 +511,8 @@ binds {
     Ctrl+Alt+Delete { quit; }
 
     Mod+Control+P { power-off-monitors; }
+}
+
+debug {
+    render-drm-device "/dev/dri/renderD129"
 }
