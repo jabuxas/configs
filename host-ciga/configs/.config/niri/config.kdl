@@ -115,7 +115,6 @@ spawn-at-startup "gammastep" "-t" "4500:3500" "-l" "-23.5475:-46.63611" "-b" "1.
 spawn-at-startup "alacritty" "-e" "tmux"
 spawn-at-startup "/opt/youtube-music/youtube-music" "--ozone-platform-hint=auto"
 spawn-at-startup "flatpak" "run" "com.mattermost.Desktop" "--ozone-platform-hint=auto"
-spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
 spawn-at-startup "firefox-bin"
 spawn-at-startup "hypridle"
 spawn-at-startup "~/scripts/swww.sh"
@@ -284,6 +283,7 @@ binds {
     Super+Control+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
 
     Mod+B { spawn "firefox-bin"; }
+    Mod+Control+S { spawn "firefox-bin" "--new-window" "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Yg8f9JsAG2py9WOJu4lSdcn3d-KY78Wgwg&s"; }
     Mod+P { spawn "pavucontrol"; }
     Mod+Shift+P { spawn "blueman-manager"; }
     Mod+Shift+S { spawn "steam"; }

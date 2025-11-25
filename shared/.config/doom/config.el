@@ -168,31 +168,32 @@
       "r g" #'+default/search-project)
 
 ;; accept completion from copilot and fallback to company
-;; (use-package! copilot
-;;   :hook (prog-mode . copilot-mode)
-;;   :bind (:map copilot-completion-map
-;;               ("<tab>" . 'copilot-accept-completion)
-;;               ("TAB" . 'copilot-accept-completion)
-;;               ("C-TAB" . 'copilot-accept-completion-by-word)
-;;               ("C-<tab>" . 'copilot-accept-completion-by-word))
-;;   :config
-;;   (add-to-list 'copilot-indentation-alist '(prog-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(org-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(text-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(closure-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
+(use-package! copilot
+  ;; enable copilot
+  ;; :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word))
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 
-;; (after! (evil copilot)
-;;   ;; Define the custom function that either accepts the completion or does the default behavior
-;;   (defun my/copilot-tab-or-default ()
-;;     (interactive)
-;;     (if (and (bound-and-true-p copilot-mode)
-;;              (not (eq major-mode 'erc-mode))) ; Exclude ERC mode
-;;         (copilot-accept-completion)
-;;       (call-interactively (key-binding (kbd "TAB")))))
+(after! (evil copilot)
+  ;; Define the custom function that either accepts the completion or does the default behavior
+  (defun my/copilot-tab-or-default ()
+    (interactive)
+    (if (and (bound-and-true-p copilot-mode)
+             (not (eq major-mode 'erc-mode))) ; Exclude ERC mode
+        (copilot-accept-completion)
+      (call-interactively (key-binding (kbd "TAB")))))
 
-;;   ;; Bind the custom function to <tab> in Evil's insert state
-;;   (evil-define-key 'insert 'global (kbd "<tab>") 'my/copilot-tab-or-default))
+  ;; Bind the custom function to <tab> in Evil's insert state
+  (evil-define-key 'insert 'global (kbd "<tab>") 'my/copilot-tab-or-default))
 
 
 ;; (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -500,6 +501,7 @@
              ;; (python-mode . python-ts-mode)
              ;; (css-mode . css-ts-mode)
              ;; (typescript-mode . typescript-ts-mode)
+             (typescript-tsx-mode . tsx-ts-mode)
              ;; (js-mode . typescript-ts-mode)
              ;; (js2-mode . typescript-ts-mode)
              ;; (c-mode . c-ts-mode)
