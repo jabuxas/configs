@@ -1,6 +1,12 @@
 #!/bin/bash
 notify_levels=(3 5 10 20 30 50)
 BAT=$(find /sys/class/power_supply -maxdepth 1 -name 'BAT*' -printf '%f\n' -quit 2>/dev/null)
+
+if [ -z "$BAT" ]; then
+    echo "No battery found, exiting."
+    exit 1
+fi
+
 last_notify=100
 
 while true; do

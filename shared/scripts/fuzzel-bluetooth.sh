@@ -246,8 +246,7 @@ print_status() {
     connected_list=""
     # Loop through MACs and build a list of connected device aliases
     for mac in $paired_macs; do
-        # Use cached device info - reuse result from device_connected check
-        clear_device_cache
+        # Cache is automatically refreshed for each new MAC in get_device_info
         if device_connected "$mac"; then
             device_alias=$(get_device_info "$mac" | grep "Alias" | cut -d ' ' -f 2-)
             if [ -z "$connected_list" ]; then
