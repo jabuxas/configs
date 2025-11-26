@@ -20,9 +20,25 @@
 divider="---------"
 goback="Back"
 
+# Cache for bluetoothctl show output to avoid repeated calls
+_bt_show_cache=""
+
+# Get cached bluetoothctl show output (refreshes if empty)
+get_bt_show() {
+    if [ -z "$_bt_show_cache" ]; then
+        _bt_show_cache=$(bluetoothctl show)
+    fi
+    printf '%s' "$_bt_show_cache"
+}
+
+# Clear the cache (call when state changes)
+clear_bt_cache() {
+    _bt_show_cache=""
+}
+
 # Checks if bluetooth controller is powered on
 power_on() {
-    if bluetoothctl show | grep -q "Powered: yes"; then
+    if get_bt_show | grep -q "Powered: yes"; then
         return 0
     else
         return 1
@@ -33,19 +49,21 @@ power_on() {
 toggle_power() {
     if power_on; then
         bluetoothctl power off
+        clear_bt_cache
         show_menu
     else
         if rfkill list bluetooth | grep -q 'blocked: yes'; then
             rfkill unblock bluetooth && sleep 3
         fi
         bluetoothctl power on
+        clear_bt_cache
         show_menu
     fi
 }
 
 # Checks if controller is scanning for new devices
 scan_on() {
-    if bluetoothctl show | grep -q "Discovering: yes"; then
+    if get_bt_show | grep -q "Discovering: yes"; then
         echo "Scan: on"
         return 0
     else
@@ -59,18 +77,20 @@ toggle_scan() {
     if scan_on; then
         # 'scan off' is sufficient to stop the background scan process
         bluetoothctl scan off
+        clear_bt_cache
         show_menu
     else
         bluetoothctl scan on &
         echo "Scanning..."
         sleep 5
+        clear_bt_cache
         show_menu
     fi
 }
 
 # Checks if controller is able to pair to devices
 pairable_on() {
-    if bluetoothctl show | grep -q "Pairable: yes"; then
+    if get_bt_show | grep -q "Pairable: yes"; then
         echo "Pairable: on"
         return 0
     else
@@ -83,16 +103,18 @@ pairable_on() {
 toggle_pairable() {
     if pairable_on; then
         bluetoothctl pairable off
+        clear_bt_cache
         show_menu
     else
         bluetoothctl pairable on
+        clear_bt_cache
         show_menu
     fi
 }
 
 # Checks if controller is discoverable by other devices
 discoverable_on() {
-    if bluetoothctl show | grep -q "Discoverable: yes"; then
+    if get_bt_show | grep -q "Discoverable: yes"; then
         echo "Discoverable: on"
         return 0
     else
@@ -105,17 +127,35 @@ discoverable_on() {
 toggle_discoverable() {
     if discoverable_on; then
         bluetoothctl discoverable off
+        clear_bt_cache
         show_menu
     else
         bluetoothctl discoverable on
+        clear_bt_cache
         show_menu
     fi
 }
 
+# Get device info (uses cache if available for same MAC)
+_device_info_cache=""
+_device_info_mac=""
+
+get_device_info() {
+    if [ "$_device_info_mac" != "$1" ] || [ -z "$_device_info_cache" ]; then
+        _device_info_mac="$1"
+        _device_info_cache=$(bluetoothctl info "$1")
+    fi
+    printf '%s' "$_device_info_cache"
+}
+
+clear_device_cache() {
+    _device_info_cache=""
+    _device_info_mac=""
+}
+
 # Checks if a device is connected
 device_connected() {
-    device_info=$(bluetoothctl info "$1")
-    if echo "$device_info" | grep -q "Connected: yes"; then
+    if get_device_info "$1" | grep -q "Connected: yes"; then
         return 0
     else
         return 1
@@ -126,17 +166,18 @@ device_connected() {
 toggle_connection() {
     if device_connected "$1"; then
         bluetoothctl disconnect "$1"
+        clear_device_cache
         device_menu "$device"
     else
         bluetoothctl connect "$1"
+        clear_device_cache
         device_menu "$device"
     fi
 }
 
 # Checks if a device is paired
 device_paired() {
-    device_info=$(bluetoothctl info "$1")
-    if echo "$device_info" | grep -q "Paired: yes"; then
+    if get_device_info "$1" | grep -q "Paired: yes"; then
         echo "Paired: yes"
         return 0
     else
@@ -149,17 +190,18 @@ device_paired() {
 toggle_paired() {
     if device_paired "$1"; then
         bluetoothctl remove "$1"
+        clear_device_cache
         device_menu "$device"
     else
         bluetoothctl pair "$1"
+        clear_device_cache
         device_menu "$device"
     fi
 }
 
 # Checks if a device is trusted
 device_trusted() {
-    device_info=$(bluetoothctl info "$1")
-    if echo "$device_info" | grep -q "Trusted: yes"; then
+    if get_device_info "$1" | grep -q "Trusted: yes"; then
         echo "Trusted: yes"
         return 0
     else
@@ -172,9 +214,11 @@ device_trusted() {
 toggle_trust() {
     if device_trusted "$1"; then
         bluetoothctl untrust "$1"
+        clear_device_cache
         device_menu "$device"
     else
         bluetoothctl trust "$1"
+        clear_device_cache
         device_menu "$device"
     fi
 }
@@ -201,9 +245,11 @@ print_status() {
 
     connected_list=""
     # Loop through MACs and build a list of connected device aliases
-    for device in $paired_macs; do
-        if device_connected "$device"; then
-            device_alias=$(bluetoothctl info "$device" | grep "Alias" | cut -d ' ' -f 2-)
+    for mac in $paired_macs; do
+        # Use cached device info - reuse result from device_connected check
+        clear_device_cache
+        if device_connected "$mac"; then
+            device_alias=$(get_device_info "$mac" | grep "Alias" | cut -d ' ' -f 2-)
             if [ -z "$connected_list" ]; then
                 connected_list=" $device_alias"
             else

@@ -17,7 +17,8 @@
 # Function to create a transparent Wx1 px XPM icon
 create_xpm_icon () {
 timestamp=$(date)
-pixels=$(for i in `seq $1`; do echo -n "."; done)
+# Use printf to repeat '.' characters efficiently instead of a loop
+pixels=$(printf '.%.0s' $(seq 1 $1))
 
 cat << EOF > "$2"
 /* XPM *

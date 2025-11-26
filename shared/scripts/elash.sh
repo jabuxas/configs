@@ -109,6 +109,6 @@ shift "$((OPTIND - 1))"
 (( gpd >= 1 )) && exa_opts+=(--group-directories-first)
 (( ico == 1 )) && exa_opts+=(--icons)
 (( git == 1 )) && \
-  [[ $(git -C "${*:-.}" rev-parse --is-inside-work-tree) == true ]] 2>/dev/null && exa_opts+=(--git)
+  git -C "${*:-.}" rev-parse --is-inside-work-tree >/dev/null 2>&1 && exa_opts+=(--git)
 
 eza "${exa_opts[@]}" "$@"

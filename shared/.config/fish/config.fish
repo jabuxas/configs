@@ -65,7 +65,7 @@ function pst
     set -l file
     set -l use_ansifilter false
 
-    if command -v ansifilter > /dev/null
+    if type -q ansifilter
         set use_ansifilter true
     end
 
@@ -100,7 +100,7 @@ function pstf
     set -l file
     set -l use_ansifilter false
 
-    if command -v ansifilter > /dev/null
+    if type -q ansifilter
         set use_ansifilter true
     end
 

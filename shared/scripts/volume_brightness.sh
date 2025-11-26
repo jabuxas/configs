@@ -46,23 +46,13 @@ function get_album_art {
     url=$(playerctl -f "{{mpris:artUrl}}" metadata)
     if [[ $url == "file://"* ]]; then
         album_art="${url/file:\/\//}"
-    elif [[ $url == "http://"* ]] && [[ $download_album_art == "true" ]]; then
+    elif [[ $url == "http://"* || $url == "https://"* ]] && [[ $download_album_art == "true" ]]; then
         # Identify filename from URL
-        filename="$(echo $url | sed "s/.*\///")"
+        filename="${url##*/}"
 
         # Download file to /tmp if it doesn't exist
         if [ ! -f "/tmp/$filename" ]; then
-            wget -O "/tmp/$filename" "$url"
-        fi
-
-        album_art="/tmp/$filename"
-    elif [[ $url == "https://"* ]] && [[ $download_album_art == "true" ]]; then
-        # Identify filename from URL
-        filename="$(echo $url | sed "s/.*\///")"
-        
-        # Download file to /tmp if it doesn't exist
-        if [ ! -f "/tmp/$filename" ]; then
-            wget -O "/tmp/$filename" "$url"
+            wget -q -O "/tmp/$filename" "$url"
         fi
 
         album_art="/tmp/$filename"
