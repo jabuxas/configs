@@ -13,7 +13,7 @@ autocmd({ 'WinEnter' }, {
   end,
 })
 
-autocmd('Filetype', {
+autocmd({ 'Filetype' }, {
   pattern = '*',
   callback = function()
     vim.o.formatoptions = 'jql'
@@ -353,14 +353,79 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
-        gopls = {},
-        pyright = {},
+        gopls = {
+          gopls = {
+            usePlaceholders = true,
+            analyses = {
+              unusedparams = true,
+            },
+          },
+        },
+
+        html = { provideFormatter = false, filetypes = { 'html', 'htmldjango', 'php' } },
+        cssls = {},
+
+        pyright = {
+          settings = {
+            pyright = {
+              disableOrganizeImports = false,
+            },
+            python = {
+              analysis = {
+                diagnosticMode = 'workspace',
+              },
+            },
+          },
+        },
         intelephense = {},
 
         vue_ls = {
           init_options = {
             vue = {
               hybridMode = true,
+            },
+          },
+        },
+
+        vtsls = {
+          filetypes = {
+            'vue',
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTsdk = true,
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+              tsserver = {
+                globalPlugins = {
+                  {
+                    name = '@vue/typescript-plugin',
+                    location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                    languages = { 'vue' },
+                    configNamespace = 'typescript',
+                    enableForWorkspaceTypeScriptVersions = true,
+                  },
+                },
+              },
+            },
+            typescript = {
+              updateImportsOnFileMove = { enabled = 'always' },
+              suggest = {
+                completeFunctionCalls = true,
+              },
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
+              },
             },
           },
         },
@@ -411,6 +476,11 @@ require('lazy').setup({
           end,
         },
       }
+
+      for name, config in pairs(servers) do
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
+      end
     end,
   },
 
@@ -449,6 +519,7 @@ require('lazy').setup({
         return {
           lua = { 'stylua' },
           python = { 'ruff', 'black', stop_after_first = true },
+          go = { 'gofmt' },
           javascript = prettier,
           typescript = prettier,
           typescriptreact = prettier,
