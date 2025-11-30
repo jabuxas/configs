@@ -55,3 +55,5 @@ host-final/configs/.var/app
 !host-final/configs/.var/app/dev.zed.Zed
 
 shared/.config/fish/fish_variables
+
+host-final/configs/.mozilla/firefox

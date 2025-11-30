@@ -1,5 +1,5 @@
 # include "$HOME/.cache/wal/colors-sway"
-# include ~/.config/sway/settings/*
+include ~/.config/sway/settings/*
 # include shared.conf
 #
 # client.unfocused $color0 $background $foreground $color7 $background

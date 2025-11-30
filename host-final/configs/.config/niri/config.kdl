@@ -105,7 +105,7 @@ spawn-at-startup "swaync"
 spawn-at-startup "gammastep" "-t" "4500:3500" "-l" "-23.5475:-46.63611" "-b" "1.0:0.8"
 spawn-at-startup "alacritty" "-e" "tmux"
 spawn-at-startup "/opt/youtube-music/youtube-music" "--ozone-platform-hint=auto"
-spawn-at-startup "firefox-bin"
+spawn-at-startup "firefox"
 spawn-at-startup "discord" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--use-gl=angle" "--use-angle=gl" "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
 spawn-at-startup "flatpak" "run" "com.bitwarden.desktop"
 spawn-at-startup "rm" "-rf" "~/tmp"
@@ -248,9 +248,9 @@ binds {
     Mod+Shift+Return hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Control+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
 
-    Mod+B { spawn "firefox-bin"; }
-    Mod+Shift+B { spawn "firefox-bin" "-P" "work"; }
-    Mod+Control+B { spawn "firefox-bin" "'ext+container:name=Random&url=https://ecosia.org'" "--browser" ;}
+    Mod+B { spawn "firefox"; }
+    Mod+Shift+B { spawn "firefox" "-P" "work"; }
+    Mod+Control+B { spawn "firefox" "'ext+container:name=Random&url=https://ecosia.org'" "--browser" ;}
     Mod+Control+E { spawn "emacs"; }
     Mod+E { spawn "pcmanfm"; }
     Mod+U { spawn "fish" "-c" "heaven"; }
