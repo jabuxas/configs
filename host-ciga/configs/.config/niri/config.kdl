@@ -107,20 +107,19 @@ layout {
 // spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-name" "Terminess Nerd Font 12"
 
 spawn-at-startup "xwayland-satellite"
-
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "DISPLAY"
-spawn-at-startup "lxqt-policykit-agent"
+// spawn-at-startup "lxqt-policykit-agent"
 spawn-at-startup "swaync"
 spawn-at-startup "gammastep" "-t" "4500:3500" "-l" "-23.5475:-46.63611" "-b" "1.0:0.8"
 spawn-at-startup "alacritty" "-e" "tmux"
-spawn-at-startup "/opt/youtube-music/youtube-music" "--ozone-platform-hint=auto"
-spawn-at-startup "flatpak" "run" "com.mattermost.Desktop" "--ozone-platform-hint=auto"
-spawn-at-startup "firefox-bin"
+spawn-at-startup "pear-desktop"
+spawn-at-startup "mattermost-desktop"
+spawn-at-startup "firefox"
 spawn-at-startup "hypridle"
 spawn-at-startup "~/scripts/swww.sh"
 spawn-at-startup "~/scripts/senpai.sh"
 spawn-at-startup "~/scripts/battery.sh"
-spawn-at-startup "emacsclient" "-s" "/run/user/1000/emacs/server" "-c"
+// spawn-at-startup "emacsclient" "-s" "/run/user/1000/emacs/server" "-c"
 
 environment {
     QT_QPA_PLATFORM "wayland"
@@ -182,7 +181,7 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id=r#"mattermost"#
+    match at-startup=true app-id=r#"Mattermost"#
     match at-startup=true app-id=r#"discord"#
     open-maximized true
     open-on-workspace "chat"
@@ -241,6 +240,7 @@ window-rule {
     match app-id=r#"nm-connection-editor"#
     match app-id=r#"Nautilus"#
     match app-id=r#"jetbrains-studio"# title="Welcome to Android Studio"
+    match app-id=r#"Pinentry-gtk"#
     open-floating true
 }
 

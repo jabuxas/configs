@@ -11,6 +11,7 @@ source "$HOME/.cargo/env.fish"
 set -gx GPG_TTY (tty)
 set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set -gx EDITOR "nvim"
+set -gx XDG_DATA_DIRS "/var/lib/flatpak/exports/share:/home/lucas/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 
 set -gx FZF_DEFAULT_OPTS '--height 50% --layout=reverse --border --preview "bat --style=numbers --color=always {}"'
 
