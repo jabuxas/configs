@@ -42,8 +42,8 @@ if status is-interactive
 
     abbr -a calc "bc"
     abbr -a tokei "tokei --sort lines"
-    abbr -a protontricks 'flatpak run com.github.Matoking.protontricks'
-    abbr -a protontricks-launch 'flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
+    # abbr -a protontricks 'flatpak run com.github.Matoking.protontricks'
+    # abbr -a protontricks-launch 'flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
     abbr -a df "dysk"
     abbr -a poweroff "systemctl poweroff"
     abbr -a reboot "systemctl reboot"

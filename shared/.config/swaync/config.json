@@ -35,7 +35,7 @@
 
     "widget-config": {
         "backlight": {
-            "device": "amdgpu_bl0",
+            "device": "amdgpu_bl1",
             "label": "󰃠",
             "slider": true,
             "min": 10

@@ -520,6 +520,7 @@ require('lazy').setup({
           lua = { 'stylua' },
           python = { 'ruff', 'black', stop_after_first = true },
           go = { 'gofmt' },
+          php = { 'phpcbs', 'phpcf' },
           javascript = prettier,
           typescript = prettier,
           typescriptreact = prettier,

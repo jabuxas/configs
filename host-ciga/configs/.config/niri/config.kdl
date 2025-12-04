@@ -35,12 +35,14 @@ output "eDP-1" {
     // mode "1920x1080@60.201"
     position x=0 y=0
     variable-refresh-rate on-demand=true
+    scale 1.0
 }
 
 output "HDMI-A-1" {
     mode "2560x1080@74.991"
     focus-at-startup
     position x=1920 y=0
+    scale 1.0
 
     // hot-corners {
     //     off
@@ -106,13 +108,14 @@ layout {
 // spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "cursor-theme" "Simp1e-Adw"
 // spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-name" "Terminess Nerd Font 12"
 
-spawn-at-startup "xwayland-satellite"
+// spawn-at-startup "xwayland-satellite"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "DISPLAY"
 // spawn-at-startup "lxqt-policykit-agent"
 spawn-at-startup "swaync"
+spawn-at-startup "discord"
 spawn-at-startup "gammastep" "-t" "4500:3500" "-l" "-23.5475:-46.63611" "-b" "1.0:0.8"
 spawn-at-startup "alacritty" "-e" "tmux"
-spawn-at-startup "pear-desktop"
+// spawn-at-startup "pear-desktop"
 spawn-at-startup "mattermost-desktop"
 spawn-at-startup "firefox"
 spawn-at-startup "hypridle"
@@ -241,6 +244,7 @@ window-rule {
     match app-id=r#"Nautilus"#
     match app-id=r#"jetbrains-studio"# title="Welcome to Android Studio"
     match app-id=r#"Pinentry-gtk"#
+    match app-id=r#"zenity"#
     open-floating true
 }
 

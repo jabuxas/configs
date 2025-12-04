@@ -4,3 +4,5 @@ test.sh
 
 spell/
 lazy-lock.json
+
+!plugins/
